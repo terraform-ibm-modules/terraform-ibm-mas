@@ -2,7 +2,7 @@
 # Outputs
 ########################################################################################################################
 
-#output "myoutput" {
-#  description = "Description of my output"
-#  value       = "value"
-#}
+output "maximo_admin_url" {
+  description = "Deploying of MAS instance has started.."
+  value       = "Deploying of MAS instance has started.."
+}

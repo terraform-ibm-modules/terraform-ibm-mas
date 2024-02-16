@@ -1,0 +1,168 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mas-{{ .Values.mas_instance_id }}-pipelines
+
+---
+kind: Secret
+apiVersion: v1
+metadata:
+  name: mas-deploy
+  namespace: mas-{{ .Values.mas_instance_id }}-pipelines
+data:
+  entitlement_key: {{ .Values.entitlement_key | b64enc}}
+  authorized_entitlement: {{ .Files.Get "authorized_entitlement.lic" | b64enc }}
+type: Opaque
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sync-sa
+  namespace: mas-{{ .Values.mas_instance_id }}-pipelines
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: sync-sa
+  namespace: mas-{{ .Values.mas_instance_id }}-pipelines
+subjects:
+  - kind: ServiceAccount
+    name: sync-sa
+    namespace: mas-{{ .Values.mas_instance_id }}-pipelines
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mas-deploy-sync-role
+  generateName: "mirror-core-811x-"
+  namespace: mas-{{ .Values.mas_instance_id }}-pipelines
+  annotations:
+    checkov.io/skip1: CKV_K8S_20
+    checkov.io/skip2: CKV_K8S_37
+    checkov.io/skip3: CKV_K8S_40
+    checkov.io/skip4: CKV_K8S_35
+    checkov.io/skip5: CKV_K8S_43
+    checkov.io/skip6: CKV_K8S_38
+    checkov.io/skip7: CKV_K8S_13
+    checkov.io/skip8: CKV_K8S_11
+    checkov.io/skip9: CKV_K8S_10
+    checkov.io/skip10: CKV_K8S_29
+    checkov.io/skip11: CKV_K8S_28
+    checkov.io/skip12: CKV_K8S_31
+    checkov.io/skip13: CKV_K8S_30
+    checkov.io/skip14: CKV_K8S_12
+    checkov.io/skip15: CKV_K8S_23
+    checkov.io/skip16: CKV_K8S_22
+spec:
+  template:
+    metadata:
+      labels:
+        app: "mas-deploy-job"
+    spec:
+      volumes:
+        #- name: pv-storage
+        #  persistentVolumeClaim:
+        #    claimName: config-pvc
+      containers:
+        - name: mas-deploy
+          image: quay.io/ibmmas/cli:7.14.0-pre.master
+          imagePullPolicy: Always
+          #volumeMounts:
+          #  - mountPath: "/usr/config-pvc"
+          #    name: pv-storage
+          command:
+            - /bin/sh
+            - -c
+            - |
+
+
+              set -e
+
+              #TODO : move authorized_entitlement file to IBM secret manager. ( for POC, we are keeping locally )
+              SLS_LICENSE_FILE_LOCAL=/tmp/authorized_entitlement.lic
+
+              #echo "AUTHORIZED_ENTITLEMENT = ${AUTHORIZED_ENTITLEMENT} "
+              echo ${AUTHORIZED_ENTITLEMENT} > /tmp/authorized_entitlement.lic
+              printf "$AUTHORIZED_ENTITLEMENT\n" > /tmp/authorized_entitlement.lic
+              echo "--------------------"
+              cat /tmp/authorized_entitlement.lic
+              echo "--------------------"
+
+              echo "MAS_INSTANCE_ID=${MAS_INSTANCE_ID}"
+              echo "MAS_WORKSPACE_ID${MAS_WORKSPACE_ID}"
+              echo "MAS_WORKSPACE_NAME=${MAS_WORKSPACE_NAME}"
+              echo "MAS_CATALOG_VERSION=${MAS_CATALOG_VERSION}"
+              echo "MAS_CHANNEL=${MAS_CHANNEL}"
+              echo "ENTITLEMENT_KEY=${ENTITLEMENT_KEY}"
+              echo "SLS_LICENSE_ID=${SLS_LICENSE_ID}"
+              echo "SLS_LICENSE_FILE_LOCAL=${SLS_LICENSE_FILE_LOCAL}"
+              echo "UDS_CONTACT_EMAIL=${UDS_CONTACT_EMAIL}"
+              echo "UDS_CONTACT_FIRSTNAME=${UDS_CONTACT_FIRSTNAME}"
+              echo "UDS_CONTACT_LASTNAME=${UDS_CONTACT_LASTNAME}"
+              echo "STORAGE_CLASS_RWX=${STORAGE_CLASS_RWX}"
+              echo "PIPELINE_STORAGE_CLASS=${PIPELINE_STORAGE_CLASS}"
+              echo "PIPELINE_STORAGE_ACCESSMODE=${PIPELINE_STORAGE_ACCESSMODE}"
+
+              mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
+                -W "${MAS_WORKSPACE_NAME}" -c "${MAS_CATALOG_VERSION}" \
+                --mas-channel "${MAS_CHANNEL}" --ibm-entitlement-key ${ENTITLEMENT_KEY} \
+                --license-id ${SLS_LICENSE_ID} --license-file ${SLS_LICENSE_FILE_LOCAL} \
+                --uds-email ${UDS_CONTACT_EMAIL} --uds-firstname ${UDS_CONTACT_FIRSTNAME} \
+                --uds-lastname ${UDS_CONTACT_LASTNAME} --storage-rwx ${STORAGE_CLASS_RWX} \
+                --storage-pipeline ${PIPELINE_STORAGE_CLASS} --storage-accessmode ${PIPELINE_STORAGE_ACCESSMODE} \
+                --no-confirm --accept-license
+
+          env:
+            - name: MAS_INSTANCE_ID
+              value: "{{ .Values.mas_instance_id }}"
+
+            - name: MAS_WORKSPACE_ID
+              value: "{{ .Values.mas_workspace_id  }}"
+            - name: MAS_WORKSPACE_NAME
+              value: "{{ .Values.mas_workspace_name }}"
+            - name: MAS_CATALOG_VERSION
+              value: "{{ .Values.mas_catalog_version }}"
+            - name: MAS_CHANNEL
+              value: "{{ .Values.mas_channel }}"
+
+            - name: SLS_LICENSE_ID
+              value: "{{ .Values.sls_license_id }}"
+            - name: UDS_CONTACT_EMAIL
+              value: "{{ .Values.uds_contact_email  }}"
+            - name: UDS_CONTACT_FIRSTNAME
+              value: "{{ .Values.uds_contact_firstname }}"
+            - name: UDS_CONTACT_LASTNAME
+              value: "{{ .Values.uds_contact_lastname }}"
+            - name: STORAGE_CLASS_RWO
+              value: "{{ .Values.storage_class_rwo }}"
+            - name: STORAGE_CLASS_RWX
+              value: "{{ .Values.storage_class_rwx }}"
+            - name: PIPELINE_STORAGE_CLASS
+              value: "{{ .Values.pipeline_storage_class }}"
+            - name: PIPELINE_STORAGE_ACCESSMODE
+              value: "{{ .Values.pipeline_storage_accessmode }}"
+
+            - name: ENTITLEMENT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: mas-deploy
+                  key: entitlement_key
+
+            - name: AUTHORIZED_ENTITLEMENT
+              valueFrom:
+                secretKeyRef:
+                  name: mas-deploy
+                  key: authorized_entitlement
+
+
+      restartPolicy: Never
+      serviceAccountName: sync-sa
+  backoffLimit: 0

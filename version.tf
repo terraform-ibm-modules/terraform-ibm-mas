@@ -1,12 +1,30 @@
 terraform {
   required_version = ">= 1.3.0, <1.6.0"
-  # If your module requires any terraform providers, uncomment the "required_providers" section below and add all required providers.
-  # Each required provider's version should be a flexible range to future proof the module's usage with upcoming minor and patch versions.
-
-  #  required_providers {
-  #    ibm = {
-  #      source  = "IBM-Cloud/ibm"
-  #      version = ">= 1.49.0, < 2.0.0"
-  #    }
-  #  }
+  required_providers {
+    # Use a range in modules
+    ibm = {
+      source  = "ibm-cloud/ibm"
+      version = ">= 1.59.0, < 2.0.0"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = ">= 2.8.0, <3.0.0"
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = ">= 2.16.1, <3.0.0"
+    }
+    # time = {
+    #   source  = "hashicorp/time"
+    #   version = ">= 0.9.1, < 1.0.0"
+    # }
+    # null = {
+    #   source  = "hashicorp/null"
+    #   version = ">= 3.2.1, < 4.0.0"
+    # }
+    # external = {
+    #   source  = "hashicorp/external"
+    #   version = ">=2.2.3, <3.0.0"
+    # }
+  }
 }
