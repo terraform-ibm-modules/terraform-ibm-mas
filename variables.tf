@@ -20,6 +20,11 @@ variable "mas_entitlement_key" {
   sensitive   = true
 }
 
+variable "mas_license" {
+  description = "MAS License file content"
+  type        = string
+  sensitive   = true
+}
 
 variable "cluster_id" {
   type        = string

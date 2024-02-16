@@ -12,4 +12,5 @@ storage_class_rwo: ibmc-vpc-block-retain-10iops-tier
 storage_class_rwx: ibmc-vpc-block-retain-10iops-tier
 pipeline_storage_class: ibmc-vpc-block-retain-10iops-tier
 pipeline_storage_accessmode: ReadWriteOnce
-entitlement_key: replace
+mas_entitlement_key: replace
+mas_license: replace

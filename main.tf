@@ -22,7 +22,13 @@ resource "helm_release" "maximo_operator_catalog" {
   set {
     name  = "mas_entitlement_key"
     type  = "string"
-    value = var.mas_entitlement_key
+    value = base64encode(var.mas_entitlement_key)
+  }
+
+  set {
+    name  = "mas_license"
+    type  = "string"
+    value = base64encode(var.mas_license)
   }
 
   name             = "maximo-operator-catalog-helm-release"

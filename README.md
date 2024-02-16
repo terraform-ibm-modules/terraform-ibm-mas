@@ -112,6 +112,7 @@ No modules.
 | <a name="input_cluster_id"></a> [cluster\_id](#input\_cluster\_id) | Id of the target IBM Cloud OpenShift Cluster | `string` | n/a | yes |
 | <a name="input_ibmcloud_api_key"></a> [ibmcloud\_api\_key](#input\_ibmcloud\_api\_key) | APIkey that's associated with the account to use | `string` | n/a | yes |
 | <a name="input_mas_entitlement_key"></a> [mas\_entitlement\_key](#input\_mas\_entitlement\_key) | Entitlement key to access MAS Image registry | `string` | n/a | yes |
+| <a name="input_mas_license"></a> [mas\_license](#input\_mas\_license) | MAS License file content | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | Cluster region | `string` | n/a | yes |
 
 ### Outputs

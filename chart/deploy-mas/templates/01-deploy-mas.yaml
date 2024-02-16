@@ -11,8 +11,8 @@ metadata:
   name: mas-deploy
   namespace: mas-{{ .Values.mas_instance_id }}-pipelines
 data:
-  entitlement_key: {{ .Values.entitlement_key | b64enc}}
-  authorized_entitlement: {{ .Files.Get "authorized_entitlement.lic" | b64enc }}
+  entitlement_key: {{ .Values.mas_entitlement_key }}
+  authorized_entitlement: {{ .Values.mas_license }}
 type: Opaque
 
 ---
