@@ -1,0 +1,1012 @@
+<svg width="1400" height="1264" viewBox="0 0 1400 1264" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1400" height="1264" fill="#1E1E1E"/>
+<g id="mas_tech_ow_nn">
+<rect width="1400" height="1264" fill="white"/>
+<g id="RHOS Cluster">
+<rect x="48.5" y="48.5" width="1303" height="975" stroke="#FA4D56"/>
+<rect id="Background white" x="49" y="49" width="1302" height="974" fill="white"/>
+<rect id="Background color" x="49" y="49" width="1302" height="974" fill="#FFF1F1"/>
+<g id="Content" clip-path="url(#clip0_0_1)">
+<g id="Label + Text">
+<text id="Label" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="112" y="76.25">Red Hat OpenShift cluster</tspan></text>
+</g>
+<g id="_Solid square icon block">
+<rect width="48" height="48" transform="translate(48 48)" fill="#FA4D56"/>
+<g id="Logo--openshift">
+<rect width="24" height="24" transform="translate(60 60)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<path id="Vector" d="M79.8459 71.8476C79.7544 70.7229 79.4545 69.625 78.9616 68.61L81.75 67.5975C81.5301 67.142 81.2722 66.7059 80.9789 66.2938L79.6716 66.7701C78.5295 65.1693 76.8942 63.987 75.0161 63.4044C73.1379 62.8218 71.1206 62.8709 69.2731 63.5443C67.4255 64.2177 65.8497 65.4782 64.787 67.1327C63.7242 68.7872 63.2332 70.7445 63.3891 72.7048L64.6999 72.2239C64.7414 72.726 64.8244 73.2238 64.948 73.7123L62.1628 74.7288C62.4384 75.8224 62.9147 76.8553 63.5674 77.775L65.0421 77.2378L65.044 77.2407C65.9389 78.5005 67.1458 79.5062 68.5465 80.1589C70.71 81.1644 73.184 81.2707 75.4258 80.4547C77.6676 79.6386 79.4942 77.9667 80.505 75.8057C81.161 74.4036 81.4402 72.8546 81.315 71.3117L79.8459 71.8476ZM77.6559 74.4701C77.0004 75.8741 75.8146 76.9607 74.3589 77.4914C72.9031 78.0221 71.2962 77.9536 69.8909 77.3009C69.2544 77.0043 68.6772 76.5945 68.1874 76.0913L66.6989 76.6339C65.8993 75.8098 65.3585 74.7697 65.1433 73.6418L65.1439 73.6412L67.9371 72.6238C67.8378 72.1138 67.8067 71.5929 67.8447 71.0748L66.5309 71.5519C66.6006 70.6093 66.8984 69.6977 67.3987 68.8957C67.8991 68.0938 68.5869 67.4255 69.403 66.9485C70.219 66.4715 71.1388 66.2001 72.0831 66.1577C73.0274 66.1153 73.9678 66.3031 74.8234 66.705H74.8284C75.463 67.0029 76.0384 67.4133 76.5268 67.9162L77.835 67.4407C78.1958 67.8121 78.5058 68.2297 78.7567 68.6826L75.9742 69.7022C76.5351 70.704 76.7897 71.8483 76.7067 72.9934L78.1831 72.457C78.1311 73.1545 77.9525 73.8367 77.6558 74.4701H77.6559Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+<g id="VM and storage">
+<rect x="376.5" y="113.5" width="959" height="894" stroke="black"/>
+<rect id="Background white_2" x="377" y="114" width="958" height="893" fill="white"/>
+<g id="Content_2" clip-path="url(#clip1_0_1)">
+<g id="Label + Text_2">
+<text id="Label_2" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="392" y="142.25">Virtual machines and storage</tspan></text>
+</g>
+<line id="Border" x1="378" y1="113" x2="378" y2="161" stroke="black" stroke-width="4"/>
+</g>
+</g>
+<g id="RHOSCP infrasturcture">
+<rect x="64.5" y="420.5" width="279" height="387" stroke="#FA4D56"/>
+<rect id="Background white_3" x="65" y="421" width="278" height="386" fill="white"/>
+<g id="Content_3" clip-path="url(#clip2_0_1)">
+<g id="Label + Text_3">
+<text id="Label_3" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="128" y="442.25">Red Hat OpenShift Container </tspan><tspan x="128" y="460.25">Platform data plane</tspan></text>
+</g>
+<g id="_Solid square icon block_2">
+<rect width="48" height="48" transform="translate(64 420)" fill="#FA4D56"/>
+<g id="Logo--openshift_2">
+<rect width="24" height="24" transform="translate(76 432)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<path id="Vector_2" d="M95.8459 443.848C95.7544 442.723 95.4545 441.625 94.9616 440.61L97.75 439.597C97.5301 439.142 97.2722 438.706 96.9789 438.294L95.6716 438.77C94.5295 437.169 92.8942 435.987 91.0161 435.404C89.1379 434.822 87.1206 434.871 85.2731 435.544C83.4255 436.218 81.8497 437.478 80.787 439.133C79.7242 440.787 79.2332 442.745 79.3891 444.705L80.6999 444.224C80.7414 444.726 80.8244 445.224 80.948 445.712L78.1628 446.729C78.4384 447.822 78.9147 448.855 79.5674 449.775L81.0421 449.238L81.044 449.241C81.9389 450.501 83.1458 451.506 84.5465 452.159C86.71 453.164 89.184 453.271 91.4258 452.455C93.6676 451.639 95.4942 449.967 96.505 447.806C97.161 446.404 97.4402 444.855 97.315 443.312L95.8459 443.848ZM93.6559 446.47C93.0004 447.874 91.8146 448.961 90.3589 449.491C88.9031 450.022 87.2962 449.954 85.8909 449.301C85.2544 449.004 84.6772 448.594 84.1874 448.091L82.6989 448.634C81.8993 447.81 81.3585 446.77 81.1433 445.642L81.1439 445.641L83.9371 444.624C83.8378 444.114 83.8067 443.593 83.8447 443.075L82.5309 443.552C82.6006 442.609 82.8984 441.698 83.3987 440.896C83.8991 440.094 84.5869 439.425 85.403 438.949C86.219 438.472 87.1388 438.2 88.0831 438.158C89.0274 438.115 89.9678 438.303 90.8234 438.705H90.8284C91.463 439.003 92.0384 439.413 92.5268 439.916L93.835 439.441C94.1958 439.812 94.5058 440.23 94.7567 440.683L91.9742 441.702C92.5351 442.704 92.7897 443.848 92.7067 444.993L94.1831 444.457C94.1311 445.155 93.9525 445.837 93.6558 446.47H93.6559Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+<path id="Union" fill-rule="evenodd" clip-rule="evenodd" d="M97 568.5C93.7531 568.5 90.9314 566.679 89.5 564.004V696C89.5 700.142 92.8579 703.5 97 703.5H104V700L112 704L104 708V704.5H97C93.7531 704.5 90.9314 702.68 89.5 700.004V760C89.5 764.142 92.8579 767.5 97 767.5H104V764L112 768L104 772V768.5H97C92.3056 768.5 88.5 764.694 88.5 760V696V560V528H89.5V560C89.5 564.142 92.8579 567.5 97 567.5H104V564L112 568L104 572V568.5H97Z" fill="black"/>
+<g id="RHOSCP master nodes">
+<rect x="80.5" y="480.5" width="247" height="47" stroke="#FA4D56"/>
+<rect id="Background white_4" x="81" y="481" width="246" height="46" fill="white"/>
+<rect id="Background color_2" x="81" y="481" width="246" height="46" fill="#FFF1F1"/>
+<g id="_Multiple border">
+<rect width="256" height="56" transform="translate(80 472)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="_Container">
+<path d="M336 472H80V528H336V472Z" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+</g>
+<path id="Vector_3" d="M84 476.5H331.5V524" stroke="#FA4D56"/>
+<path id="Vector_4" d="M88 472.5H335.5V520" stroke="#FA4D56"/>
+</g>
+<g id="Content_4" clip-path="url(#clip3_0_1)">
+<g id="Label + Text_4">
+<text id="Label_4" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="144" y="509.25">Worker nodes</tspan></text>
+</g>
+<g id="_Solid square icon block_3">
+<rect width="48" height="48" transform="translate(80 480)" fill="#FA4D56"/>
+<g id="Logo--openshift_3">
+<rect width="24" height="24" transform="translate(92 492)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<path id="Vector_5" d="M111.846 503.848C111.754 502.723 111.454 501.625 110.962 500.61L113.75 499.597C113.53 499.142 113.272 498.706 112.979 498.294L111.672 498.77C110.53 497.169 108.894 495.987 107.016 495.404C105.138 494.822 103.121 494.871 101.273 495.544C99.4255 496.218 97.8497 497.478 96.787 499.133C95.7242 500.787 95.2332 502.745 95.3891 504.705L96.6999 504.224C96.7414 504.726 96.8244 505.224 96.948 505.712L94.1628 506.729C94.4384 507.822 94.9147 508.855 95.5674 509.775L97.0421 509.238L97.044 509.241C97.9389 510.501 99.1458 511.506 100.547 512.159C102.71 513.164 105.184 513.271 107.426 512.455C109.668 511.639 111.494 509.967 112.505 507.806C113.161 506.404 113.44 504.855 113.315 503.312L111.846 503.848ZM109.656 506.47C109 507.874 107.815 508.961 106.359 509.491C104.903 510.022 103.296 509.954 101.891 509.301C101.254 509.004 100.677 508.594 100.187 508.091L98.6989 508.634C97.8993 507.81 97.3585 506.77 97.1433 505.642L97.1439 505.641L99.9371 504.624C99.8378 504.114 99.8067 503.593 99.8447 503.075L98.5309 503.552C98.6006 502.609 98.8984 501.698 99.3987 500.896C99.8991 500.094 100.587 499.425 101.403 498.949C102.219 498.472 103.139 498.2 104.083 498.158C105.027 498.115 105.968 498.303 106.823 498.705H106.828C107.463 499.003 108.038 499.413 108.527 499.916L109.835 499.441C110.196 499.812 110.506 500.23 110.757 500.683L107.974 501.702C108.535 502.704 108.79 503.848 108.707 504.993L110.183 504.457C110.131 505.155 109.952 505.837 109.656 506.47H109.656Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+<g id="RHOSCP master nodes_2">
+<rect x="112.5" y="544.5" width="215" height="119" stroke="#FA4D56"/>
+<rect id="Background white_5" x="113" y="545" width="214" height="118" fill="white"/>
+<rect id="Background color_3" x="113" y="545" width="214" height="118" fill="#FFF1F1"/>
+<g id="Content_5" clip-path="url(#clip4_0_1)">
+<g id="Label + Text_5">
+<text id="Label_5" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="176" y="564.25">Red Hat OpenShift </tspan><tspan x="176" y="582.25">Data Foundation</tspan></text>
+<text id="Text" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" letter-spacing="0.16px"><tspan x="176" y="600.25">Internal storage for </tspan><tspan x="176" y="618.25">application data </tspan><tspan x="176" y="636.25">needs, registry, </tspan><tspan x="176" y="654.25">logging, and metrics</tspan></text>
+</g>
+<g id="_Solid square icon block_4">
+<rect width="48" height="48" transform="translate(112 544)" fill="#FA4D56"/>
+<g id="Logo--openshift_4">
+<rect width="24" height="24" transform="translate(124 556)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<path id="Vector_6" d="M143.846 567.848C143.754 566.723 143.454 565.625 142.962 564.61L145.75 563.597C145.53 563.142 145.272 562.706 144.979 562.294L143.672 562.77C142.53 561.169 140.894 559.987 139.016 559.404C137.138 558.822 135.121 558.871 133.273 559.544C131.426 560.218 129.85 561.478 128.787 563.133C127.724 564.787 127.233 566.745 127.389 568.705L128.7 568.224C128.741 568.726 128.824 569.224 128.948 569.712L126.163 570.729C126.438 571.822 126.915 572.855 127.567 573.775L129.042 573.238L129.044 573.241C129.939 574.501 131.146 575.506 132.547 576.159C134.71 577.164 137.184 577.271 139.426 576.455C141.668 575.639 143.494 573.967 144.505 571.806C145.161 570.404 145.44 568.855 145.315 567.312L143.846 567.848ZM141.656 570.47C141 571.874 139.815 572.961 138.359 573.491C136.903 574.022 135.296 573.954 133.891 573.301C133.254 573.004 132.677 572.594 132.187 572.091L130.699 572.634C129.899 571.81 129.359 570.77 129.143 569.642L129.144 569.641L131.937 568.624C131.838 568.114 131.807 567.593 131.845 567.075L130.531 567.552C130.601 566.609 130.898 565.698 131.399 564.896C131.899 564.094 132.587 563.426 133.403 562.949C134.219 562.472 135.139 562.2 136.083 562.158C137.027 562.115 137.968 562.303 138.823 562.705H138.828C139.463 563.003 140.038 563.413 140.527 563.916L141.835 563.441C142.196 563.812 142.506 564.23 142.757 564.683L139.974 565.702C140.535 566.704 140.79 567.848 140.707 568.993L142.183 568.457C142.131 569.155 141.952 569.837 141.656 570.47H141.656Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+<g id="other services">
+<rect x="112.5" y="680.5" width="215" height="47" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<rect x="112.5" y="680.5" width="215" height="47" stroke="#FA4D56"/>
+<rect id="Background white_6" x="113" y="681" width="214" height="46" fill="white"/>
+<rect id="Background color_4" x="113" y="681" width="214" height="46" fill="#FFF1F1"/>
+<g id="Content_6" clip-path="url(#clip5_0_1)">
+<g id="Label + Text_6">
+<text id="Label_6" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="128" y="709.25">Other services</tspan></text>
+</g>
+<line id="Border_2" x1="114" y1="680" x2="114" y2="728" stroke="#FA4D56" stroke-width="4"/>
+</g>
+</g>
+<g id="other services_2">
+<rect x="112.5" y="744.5" width="215" height="47" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<rect x="112.5" y="744.5" width="215" height="47" stroke="#1192E8"/>
+<rect id="Background white_7" x="113" y="745" width="214" height="46" fill="white"/>
+<rect id="Background color_5" x="113" y="745" width="214" height="46" fill="#E5F6FF"/>
+<g id="Content_7" clip-path="url(#clip6_0_1)">
+<g id="Label + Text_7">
+<text id="Label_7" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="128" y="764.25">Maximo Application Suite </tspan></text>
+<text id="Text_2" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="128" y="782.25">services</tspan></text>
+</g>
+<line id="Border_3" x1="114" y1="744" x2="114" y2="792" stroke="#1192E8" stroke-width="4"/>
+</g>
+</g>
+<g id="RHOSCP control plane">
+<rect x="64.5" y="112.5" width="279" height="291" stroke="#FA4D56"/>
+<rect id="Background white_8" x="65" y="113" width="278" height="290" fill="white"/>
+<g id="Content_8" clip-path="url(#clip7_0_1)">
+<g id="Label + Text_8">
+<text id="Label_8" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="128" y="134.25">Red Hat OpenShift Container </tspan><tspan x="128" y="152.25">Platform control plane</tspan></text>
+</g>
+<g id="_Solid square icon block_5">
+<rect width="48" height="48" transform="translate(64 112)" fill="#FA4D56"/>
+<g id="Logo--openshift_5">
+<rect width="24" height="24" transform="translate(76 124)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<path id="Vector_7" d="M95.8459 135.848C95.7544 134.723 95.4545 133.625 94.9616 132.61L97.75 131.597C97.5301 131.142 97.2722 130.706 96.9789 130.294L95.6716 130.77C94.5295 129.169 92.8942 127.987 91.0161 127.404C89.1379 126.822 87.1206 126.871 85.2731 127.544C83.4255 128.218 81.8497 129.478 80.787 131.133C79.7242 132.787 79.2332 134.745 79.3891 136.705L80.6999 136.224C80.7414 136.726 80.8244 137.224 80.948 137.712L78.1628 138.729C78.4384 139.822 78.9147 140.855 79.5674 141.775L81.0421 141.238L81.044 141.241C81.9389 142.501 83.1458 143.506 84.5465 144.159C86.71 145.164 89.184 145.271 91.4258 144.455C93.6676 143.639 95.4942 141.967 96.505 139.806C97.161 138.404 97.4402 136.855 97.315 135.312L95.8459 135.848ZM93.6559 138.47C93.0004 139.874 91.8146 140.961 90.3589 141.491C88.9031 142.022 87.2962 141.954 85.8909 141.301C85.2544 141.004 84.6772 140.594 84.1874 140.091L82.6989 140.634C81.8993 139.81 81.3585 138.77 81.1433 137.642L81.1439 137.641L83.9371 136.624C83.8378 136.114 83.8067 135.593 83.8447 135.075L82.5309 135.552C82.6006 134.609 82.8984 133.698 83.3987 132.896C83.8991 132.094 84.5869 131.425 85.403 130.948C86.219 130.472 87.1388 130.2 88.0831 130.158C89.0274 130.115 89.9678 130.303 90.8234 130.705H90.8284C91.463 131.003 92.0384 131.413 92.5268 131.916L93.835 131.441C94.1958 131.812 94.5058 132.23 94.7567 132.683L91.9742 133.702C92.5351 134.704 92.7897 135.848 92.7067 136.993L94.1831 136.457C94.1311 137.155 93.9525 137.837 93.6558 138.47H93.6559Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+<path id="Union_2" fill-rule="evenodd" clip-rule="evenodd" d="M97 282.5C93.7531 282.5 90.9314 280.679 89.5 278.004V356.182C89.5 360.324 92.8579 363.682 97 363.682H104V360L112 364L104 368V364.682H97C92.3056 364.682 88.5 360.876 88.5 356.182V274V242H89.5V274C89.5 278.142 92.8579 281.5 97 281.5H104V278L112 282L104 286V282.5H97Z" fill="black"/>
+<g id="General worker nodes">
+<rect x="392.5" y="176.5" width="928" height="815" stroke="black"/>
+<rect id="Background white_9" x="393" y="177" width="927" height="814" fill="#E5E5E5"/>
+<g id="Content_9">
+<g id="Label + Text_9">
+<text id="Label_9" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="411" y="205.25">General worker nodes</tspan></text>
+</g>
+</g>
+</g>
+<g id="Prerequisites">
+<rect x="408.5" y="240.5" width="215" height="511" stroke="#8D8D8D"/>
+<rect id="Background white_10" x="409" y="241" width="214" height="510" fill="#F4F4F4"/>
+<g id="Content_10" clip-path="url(#clip8_0_1)">
+<g id="Label + Text_10">
+<text id="Label_10" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="424" y="269.25">Prerequisites</tspan></text>
+</g>
+<line id="Border_4" x1="410" y1="240" x2="410" y2="288" stroke="#8D8D8D" stroke-width="4"/>
+</g>
+</g>
+<line id="Border_5" x1="394" y1="176" x2="394" y2="224" stroke="#262626" stroke-width="4"/>
+<g id="App Connect">
+<rect id="Background white_11" x="424" y="368" width="184" height="48" fill="white"/>
+<g id="Content_11" clip-path="url(#clip9_0_1)">
+<g id="Label + Text_11">
+<text id="Label_11" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="440" y="397.25">IBM App Connect</tspan></text>
+</g>
+</g>
+<g id="Dash border">
+<mask id="path-55-inside-1_0_1" fill="white">
+<path d="M608 368H424V416H608V368Z"/>
+</mask>
+<path d="M608 368H424V416H608V368Z" stroke="#878D96" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-55-inside-1_0_1)"/>
+</g>
+</g>
+<g id="Kafka">
+<rect id="Background white_12" x="424" y="304" width="184" height="48" fill="white"/>
+<g id="Content_12" clip-path="url(#clip10_0_1)">
+<g id="Label + Text_12">
+<text id="Label_12" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="440" y="333.25">Kafka</tspan></text>
+</g>
+</g>
+<g id="Dash border_2">
+<mask id="path-58-inside-2_0_1" fill="white">
+<path d="M608 304H424V352H608V304Z"/>
+</mask>
+<path d="M608 304H424V352H608V304Z" stroke="#878D96" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-58-inside-2_0_1)"/>
+</g>
+</g>
+<g id="Couch db">
+<rect id="Background white_13" x="424" y="432" width="184" height="48" fill="white"/>
+<g id="Content_13" clip-path="url(#clip11_0_1)">
+<g id="Label + Text_13">
+<text id="Label_13" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="440" y="461.25">Couch Db</tspan></text>
+</g>
+</g>
+<g id="Dash border_3">
+<mask id="path-61-inside-3_0_1" fill="white">
+<path d="M608 432H424V480H608V432Z"/>
+</mask>
+<path d="M608 432H424V480H608V432Z" stroke="#878D96" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-61-inside-3_0_1)"/>
+</g>
+</g>
+<g id="suite licence service">
+<rect x="424.5" y="496.5" width="183" height="47" stroke="#878D96"/>
+<rect id="Background white_14" x="425" y="497" width="182" height="46" fill="white"/>
+<g id="Content_14" clip-path="url(#clip12_0_1)">
+<g id="Label + Text_14">
+<text id="Label_14" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="440" y="525.25">Suite Licence Service</tspan></text>
+</g>
+</g>
+</g>
+<g id="user data services">
+<rect x="424.5" y="560.5" width="183" height="47" stroke="#878D96"/>
+<rect id="Background white_15" x="425" y="561" width="182" height="46" fill="white"/>
+<g id="Content_15" clip-path="url(#clip13_0_1)">
+<g id="Label + Text_15">
+<text id="Label_15" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="440" y="589.25">User data services</tspan></text>
+</g>
+</g>
+</g>
+<g id="Certificate manager">
+<rect x="424.5" y="624.5" width="183" height="47" stroke="#878D96"/>
+<rect id="Background white_16" x="425" y="625" width="182" height="46" fill="white"/>
+<g id="Content_16" clip-path="url(#clip14_0_1)">
+<g id="Label + Text_16">
+<text id="Label_16" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="440" y="653.25">Certificate manager</tspan></text>
+</g>
+</g>
+</g>
+<g id="Maximo application Suite">
+<rect x="968.5" y="240.5" width="336" height="736" stroke="#1192E8"/>
+<rect id="Background white_17" x="969" y="241" width="335" height="735" fill="white"/>
+<rect id="Background color_6" x="969" y="241" width="335" height="735" fill="#E5F6FF"/>
+<g id="Content_17" clip-path="url(#clip15_0_1)">
+<g id="Label + Text_17">
+<text id="Label_17" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="1032" y="269.25">Maximo Application Suite instance</tspan></text>
+</g>
+<g id="_Solid square icon block_6">
+<rect width="48" height="48" transform="translate(968 240)" fill="#1192E8"/>
+<g id="Bee">
+<rect width="24" height="24" transform="translate(980 252)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="Vector_8">
+<path d="M992 259.5C990.807 259.5 989.662 259.974 988.818 260.818C987.974 261.662 987.5 262.807 987.5 264V270C987.5 271.193 987.974 272.338 988.818 273.182C989.662 274.026 990.807 274.5 992 274.5C993.193 274.5 994.338 274.026 995.182 273.182C996.026 272.338 996.5 271.193 996.5 270V264C996.5 262.807 996.026 261.662 995.182 260.818C994.338 259.974 993.193 259.5 992 259.5ZM988.812 265.403H995.188V268.59H988.812V265.403ZM992 273.187C991.156 273.184 990.347 272.846 989.75 272.25C989.154 271.653 988.816 270.844 988.812 270V269.903H995.188V270C995.184 270.844 994.846 271.653 994.25 272.25C993.653 272.846 992.844 273.184 992 273.187ZM995.188 264.09H988.812V264C988.812 263.155 989.148 262.344 989.746 261.746C990.344 261.148 991.155 260.813 992 260.813C992.845 260.813 993.656 261.148 994.254 261.746C994.852 262.344 995.188 263.155 995.188 264V264.09Z" fill="white"/>
+<path d="M1002.99 266.407L998 261.75V268.575C998 269.371 998.316 270.134 998.879 270.696C999.441 271.259 1000.2 271.575 1001 271.575C1001.8 271.575 1002.56 271.259 1003.12 270.696C1003.68 270.134 1004 269.371 1004 268.575C1004 268.163 1003.91 267.756 1003.73 267.382C1003.56 267.008 1003.31 266.676 1002.99 266.407ZM1001 270.263C1000.55 270.263 1000.12 270.085 999.807 269.768C999.49 269.452 999.312 269.023 999.312 268.575V264.75L1002.1 267.352C1002.27 267.494 1002.41 267.669 1002.5 267.867C1002.59 268.065 1002.65 268.281 1002.65 268.5C1002.66 268.725 1002.63 268.949 1002.55 269.16C1002.47 269.371 1002.35 269.564 1002.2 269.729C1002.04 269.893 1001.86 270.025 1001.65 270.116C1001.45 270.208 1001.22 270.258 1001 270.263Z" fill="white"/>
+<path d="M980 268.575C980 269.371 980.316 270.134 980.879 270.696C981.441 271.259 982.204 271.575 983 271.575C983.796 271.575 984.559 271.259 985.121 270.696C985.684 270.134 986 269.371 986 268.575V261.75L981.005 266.407C980.694 266.677 980.443 267.01 980.27 267.383C980.097 267.757 980.005 268.163 980 268.575ZM981.86 267.405L984.688 264.75V268.575C984.688 269.023 984.51 269.452 984.193 269.768C983.877 270.085 983.448 270.263 983 270.263C982.552 270.263 982.123 270.085 981.807 269.768C981.49 269.452 981.312 269.023 981.312 268.575C981.313 268.352 981.363 268.132 981.457 267.93C981.552 267.728 981.689 267.549 981.86 267.405Z" fill="white"/>
+<path d="M991.25 256.125C991.25 255.606 991.096 255.098 990.808 254.667C990.519 254.235 990.109 253.898 989.63 253.7C989.15 253.501 988.622 253.449 988.113 253.55C987.604 253.652 987.136 253.902 986.769 254.269C986.402 254.636 986.152 255.104 986.05 255.613C985.949 256.122 986.001 256.65 986.2 257.13C986.398 257.609 986.735 258.019 987.167 258.308C987.598 258.596 988.106 258.75 988.625 258.75C989.321 258.75 989.989 258.473 990.481 257.981C990.973 257.489 991.25 256.821 991.25 256.125ZM987.312 256.125C987.312 255.865 987.389 255.612 987.534 255.396C987.678 255.18 987.883 255.012 988.123 254.912C988.363 254.813 988.626 254.787 988.881 254.838C989.136 254.888 989.37 255.013 989.553 255.197C989.737 255.38 989.862 255.614 989.912 255.869C989.963 256.124 989.937 256.387 989.838 256.627C989.738 256.867 989.57 257.072 989.354 257.216C989.138 257.361 988.885 257.438 988.625 257.438C988.278 257.434 987.947 257.294 987.701 257.049C987.456 256.803 987.316 256.472 987.312 256.125Z" fill="white"/>
+<path d="M995.375 253.5C994.856 253.5 994.348 253.654 993.917 253.942C993.485 254.231 993.148 254.641 992.95 255.12C992.751 255.6 992.699 256.128 992.8 256.637C992.902 257.146 993.152 257.614 993.519 257.981C993.886 258.348 994.354 258.598 994.863 258.7C995.372 258.801 995.9 258.749 996.38 258.55C996.859 258.352 997.269 258.015 997.558 257.583C997.846 257.152 998 256.644 998 256.125C998 255.429 997.723 254.761 997.231 254.269C996.739 253.777 996.071 253.5 995.375 253.5ZM995.375 257.438C995.115 257.438 994.862 257.361 994.646 257.216C994.43 257.072 994.262 256.867 994.162 256.627C994.063 256.387 994.037 256.124 994.088 255.869C994.138 255.614 994.263 255.38 994.447 255.197C994.63 255.013 994.864 254.888 995.119 254.838C995.374 254.787 995.637 254.813 995.877 254.912C996.117 255.012 996.322 255.18 996.466 255.396C996.611 255.612 996.688 255.865 996.688 256.125C996.684 256.472 996.544 256.803 996.299 257.049C996.053 257.294 995.722 257.434 995.375 257.438Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Maximo Core">
+<rect x="984.5" y="304.5" width="304" height="127" stroke="#1192E8"/>
+<rect id="Background white_18" x="985" y="305" width="303" height="126" fill="white"/>
+<g id="Content_18" clip-path="url(#clip16_0_1)">
+<g id="Label + Text_18">
+<text id="Label_18" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="1000" y="333.25">Maximo Application Suite Core</tspan></text>
+</g>
+<line id="Border_6" x1="986" y1="304" x2="986" y2="352" stroke="#1192E8" stroke-width="4"/>
+</g>
+</g>
+<g id="registry of end users">
+<rect x="1000.5" y="369.5" width="247" height="47" stroke="#1192E8"/>
+<rect id="Background white_19" x="1001" y="370" width="246" height="46" fill="white"/>
+<rect id="Background color_7" x="1001" y="370" width="246" height="46" fill="#EDF5FF"/>
+<g id="_Multiple border_2">
+<rect width="256" height="56" transform="translate(1000 361)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="_Container_2">
+<path d="M1256 361H1000V417H1256V361Z" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+</g>
+<path id="Vector_9" d="M1004 365.5H1251.5V413" stroke="#1192E8"/>
+<path id="Vector_10" d="M1008 361.5H1255.5V409" stroke="#1192E8"/>
+</g>
+<g id="Content_19" clip-path="url(#clip17_0_1)">
+<g id="Label + Text_19">
+<text id="Label_19" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="1064" y="398.25">Registry of end users</tspan></text>
+</g>
+<g id="_Solid square icon block_7">
+<rect width="48" height="48" transform="translate(1000 369)" fill="#1192E8"/>
+<g id="User">
+<rect width="24" height="24" transform="translate(1012 381)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="Vector_11">
+<path d="M1024 384C1024.74 384 1025.47 384.22 1026.08 384.632C1026.7 385.044 1027.18 385.63 1027.46 386.315C1027.75 387 1027.82 387.754 1027.68 388.482C1027.53 389.209 1027.18 389.877 1026.65 390.402C1026.13 390.926 1025.46 391.283 1024.73 391.428C1024 391.573 1023.25 391.498 1022.56 391.215C1021.88 390.931 1021.29 390.45 1020.88 389.833C1020.47 389.217 1020.25 388.492 1020.25 387.75C1020.25 386.755 1020.65 385.802 1021.35 385.098C1022.05 384.395 1023.01 384 1024 384ZM1024 382.5C1022.96 382.5 1021.95 382.808 1021.08 383.385C1020.22 383.962 1019.55 384.782 1019.15 385.741C1018.75 386.7 1018.65 387.756 1018.85 388.774C1019.05 389.793 1019.55 390.728 1020.29 391.462C1021.02 392.197 1021.96 392.697 1022.98 392.899C1023.99 393.102 1025.05 392.998 1026.01 392.6C1026.97 392.203 1027.79 391.53 1028.37 390.667C1028.94 389.803 1029.25 388.788 1029.25 387.75C1029.25 386.358 1028.7 385.022 1027.71 384.038C1026.73 383.053 1025.39 382.5 1024 382.5Z" fill="white"/>
+<path d="M1031.5 403.5H1030V399.75C1030 399.258 1029.9 398.77 1029.71 398.315C1029.53 397.86 1029.25 397.447 1028.9 397.098C1028.55 396.75 1028.14 396.474 1027.69 396.285C1027.23 396.097 1026.74 396 1026.25 396H1021.75C1020.76 396 1019.8 396.395 1019.1 397.098C1018.4 397.802 1018 398.755 1018 399.75V403.5H1016.5V399.75C1016.5 398.358 1017.05 397.022 1018.04 396.038C1019.02 395.053 1020.36 394.5 1021.75 394.5H1026.25C1027.64 394.5 1028.98 395.053 1029.96 396.038C1030.95 397.022 1031.5 398.358 1031.5 399.75V403.5Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="apps tools addons">
+<rect width="305" height="512" transform="translate(984 448)" fill="white"/>
+<rect id="Background white_20" x="984" y="448" width="305" height="512" fill="white"/>
+<rect id="Background color_8" x="984" y="448" width="305" height="512" fill="white"/>
+<g id="Content_20" clip-path="url(#clip18_0_1)">
+<g id="Label + Text_20">
+<text id="Label_20" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="1048" y="477.25">Applications, tools, and addons</tspan></text>
+</g>
+<g id="_Solid square icon block_8">
+<rect width="48" height="48" transform="translate(984 448)" fill="#1192E8"/>
+<g id="Application">
+<rect width="24" height="24" transform="translate(996 460)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="Vector_12">
+<path d="M1008 473.5H1000.5C1000.1 473.5 999.721 473.342 999.439 473.061C999.158 472.779 999 472.398 999 472V464.5C999 464.102 999.158 463.721 999.439 463.439C999.721 463.158 1000.1 463 1000.5 463H1008C1008.4 463 1008.78 463.158 1009.06 463.439C1009.34 463.721 1009.5 464.102 1009.5 464.5V472C1009.5 472.398 1009.34 472.779 1009.06 473.061C1008.78 473.342 1008.4 473.5 1008 473.5ZM1000.5 464.5V472H1008V464.5H1000.5Z" fill="white"/>
+<path d="M1015.5 469V472H1012.5V469H1015.5ZM1015.5 467.5H1012.5C1012.1 467.5 1011.72 467.658 1011.44 467.939C1011.16 468.221 1011 468.602 1011 469V472C1011 472.398 1011.16 472.779 1011.44 473.061C1011.72 473.342 1012.1 473.5 1012.5 473.5H1015.5C1015.9 473.5 1016.28 473.342 1016.56 473.061C1016.84 472.779 1017 472.398 1017 472V469C1017 468.602 1016.84 468.221 1016.56 467.939C1016.28 467.658 1015.9 467.5 1015.5 467.5Z" fill="white"/>
+<path d="M1015.5 476.5V479.5H1012.5V476.5H1015.5ZM1015.5 475H1012.5C1012.1 475 1011.72 475.158 1011.44 475.439C1011.16 475.721 1011 476.102 1011 476.5V479.5C1011 479.898 1011.16 480.279 1011.44 480.561C1011.72 480.842 1012.1 481 1012.5 481H1015.5C1015.9 481 1016.28 480.842 1016.56 480.561C1016.84 480.279 1017 479.898 1017 479.5V476.5C1017 476.102 1016.84 475.721 1016.56 475.439C1016.28 475.158 1015.9 475 1015.5 475Z" fill="white"/>
+<path d="M1008 476.5V479.5H1005V476.5H1008ZM1008 475H1005C1004.6 475 1004.22 475.158 1003.94 475.439C1003.66 475.721 1003.5 476.102 1003.5 476.5V479.5C1003.5 479.898 1003.66 480.279 1003.94 480.561C1004.22 480.842 1004.6 481 1005 481H1008C1008.4 481 1008.78 480.842 1009.06 480.561C1009.34 480.279 1009.5 479.898 1009.5 479.5V476.5C1009.5 476.102 1009.34 475.721 1009.06 475.439C1008.78 475.158 1008.4 475 1008 475Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+<g id="Dash border_4">
+<mask id="path-92-inside-4_0_1" fill="white">
+<path d="M1289 448H984V960H1289V448Z"/>
+</mask>
+<path d="M1289 448H984V960H1289V448Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-92-inside-4_0_1)"/>
+</g>
+</g>
+<g id="Maximo visual inspection">
+<rect id="Background white_21" x="1000" y="576.264" width="272" height="48" fill="#EDF5FF"/>
+<g id="Content_21" clip-path="url(#clip19_0_1)">
+<g id="Label + Text_21">
+<text id="Label_21" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="1016" y="605.514">Maximo Visual Inspection</tspan></text>
+</g>
+</g>
+<g id="Dash border_5">
+<mask id="path-95-inside-5_0_1" fill="white">
+<path d="M1272 576.264H1000V624.264H1272V576.264Z"/>
+</mask>
+<path d="M1272 576.264H1000V624.264H1272V576.264Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-95-inside-5_0_1)"/>
+</g>
+</g>
+<g id="Maximo manage">
+<rect id="Background white_22" x="1000" y="512" width="272" height="48" fill="#EDF5FF"/>
+<g id="Content_22" clip-path="url(#clip20_0_1)">
+<g id="Label + Text_22">
+<text id="Label_22" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="1016" y="541.25">Maximo Manage</tspan></text>
+</g>
+</g>
+<g id="Dash border_6">
+<mask id="path-98-inside-6_0_1" fill="white">
+<path d="M1272 512H1000V560H1272V512Z"/>
+</mask>
+<path d="M1272 512H1000V560H1272V512Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-98-inside-6_0_1)"/>
+</g>
+</g>
+<g id="Maximo predict">
+<rect id="Background white_23" x="1000" y="640.462" width="272" height="48" fill="#EDF5FF"/>
+<g id="Content_23" clip-path="url(#clip21_0_1)">
+<g id="Label + Text_23">
+<text id="Label_23" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="1016" y="669.712">Maximo Predict</tspan></text>
+</g>
+</g>
+<g id="Dash border_7">
+<mask id="path-101-inside-7_0_1" fill="white">
+<path d="M1272 640.462H1000V688.462H1272V640.462Z"/>
+</mask>
+<path d="M1272 640.462H1000V688.462H1272V640.462Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-101-inside-7_0_1)"/>
+</g>
+</g>
+<g id="Maximo assist">
+<rect id="Background white_24" x="1000" y="704.462" width="272" height="48" fill="#EDF5FF"/>
+<g id="Content_24" clip-path="url(#clip22_0_1)">
+<g id="Label + Text_24">
+<text id="Label_24" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="1016" y="733.712">Maximo Assist</tspan></text>
+</g>
+</g>
+<g id="Dash border_8">
+<mask id="path-104-inside-8_0_1" fill="white">
+<path d="M1272 704.462H1000V752.462H1272V704.462Z"/>
+</mask>
+<path d="M1272 704.462H1000V752.462H1272V704.462Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-104-inside-8_0_1)"/>
+</g>
+</g>
+<g id="ibm cloudpak for data">
+<rect x="640.5" y="240.5" width="311" height="479" stroke="#0F62FE"/>
+<rect id="Background white_25" x="641" y="241" width="310" height="478" fill="white"/>
+<rect id="Background color_9" x="641" y="241" width="310" height="478" fill="#EDF5FF"/>
+<g id="Content_25" clip-path="url(#clip23_0_1)">
+<g id="Label + Text_25">
+<text id="Label_25" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="704" y="269.25">IBM CloudPak for Data</tspan></text>
+</g>
+<g id="_Solid square icon block_9">
+<rect width="48" height="48" transform="translate(640 240)" fill="#0F62FE"/>
+<g id="IBM-cloud-pak--data">
+<rect width="24" height="24" transform="translate(652 252)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="Vector_13">
+<path d="M669.25 264C669.664 264 670 263.664 670 263.25C670 262.836 669.664 262.5 669.25 262.5C668.836 262.5 668.5 262.836 668.5 263.25C668.5 263.664 668.836 264 669.25 264Z" fill="white"/>
+<path d="M658 264C658.414 264 658.75 263.664 658.75 263.25C658.75 262.836 658.414 262.5 658 262.5C657.586 262.5 657.25 262.836 657.25 263.25C657.25 263.664 657.586 264 658 264Z" fill="white"/>
+<path d="M667.75 260.25C668.164 260.25 668.5 259.914 668.5 259.5C668.5 259.086 668.164 258.75 667.75 258.75C667.336 258.75 667 259.086 667 259.5C667 259.914 667.336 260.25 667.75 260.25Z" fill="white"/>
+<path d="M663.25 270C663.664 270 664 269.664 664 269.25C664 268.836 663.664 268.5 663.25 268.5C662.836 268.5 662.5 268.836 662.5 269.25C662.5 269.664 662.836 270 663.25 270Z" fill="white"/>
+<path d="M667.75 266.25C667.62 266.252 667.491 266.27 667.366 266.306L666.03 264.97L666.011 264.989C666.166 264.682 666.248 264.344 666.25 264C666.249 263.403 666.012 262.832 665.59 262.41C665.168 261.988 664.597 261.751 664 261.75C663.656 261.752 663.318 261.834 663.011 261.989L663.03 261.97L661.694 260.634C661.785 260.309 661.765 259.963 661.638 259.651C661.512 259.338 661.285 259.077 660.994 258.907C660.703 258.737 660.363 258.668 660.029 258.711C659.694 258.754 659.384 258.907 659.145 259.145C658.907 259.384 658.754 259.694 658.711 260.029C658.668 260.363 658.737 260.703 658.907 260.994C659.077 261.285 659.338 261.512 659.651 261.638C659.963 261.765 660.309 261.785 660.634 261.694L661.97 263.03L661.989 263.011C661.834 263.318 661.752 263.656 661.75 264C661.751 264.597 661.988 265.168 662.41 265.59C662.832 266.012 663.403 266.249 664 266.25C664.344 266.248 664.682 266.166 664.989 266.011L664.97 266.03L666.306 267.366C666.226 267.669 666.243 267.988 666.355 268.28C666.466 268.572 666.666 268.822 666.927 268.995C667.188 269.167 667.496 269.254 667.808 269.242C668.12 269.231 668.421 269.122 668.669 268.931C668.916 268.74 669.097 268.476 669.187 268.177C669.277 267.877 669.27 267.557 669.169 267.262C669.068 266.966 668.877 266.709 668.622 266.528C668.367 266.347 668.063 266.249 667.75 266.25ZM664 264.75C663.852 264.75 663.707 264.706 663.583 264.624C663.46 264.541 663.364 264.424 663.307 264.287C663.25 264.15 663.235 263.999 663.264 263.854C663.293 263.708 663.365 263.575 663.47 263.47C663.575 263.365 663.708 263.293 663.854 263.264C663.999 263.235 664.15 263.25 664.287 263.307C664.424 263.364 664.541 263.46 664.624 263.583C664.706 263.707 664.75 263.852 664.75 264C664.75 264.199 664.671 264.39 664.53 264.53C664.39 264.671 664.199 264.75 664 264.75Z" fill="white"/>
+<path d="M664 275.25C663.867 275.25 663.737 275.215 663.622 275.148L654.622 269.898C654.509 269.832 654.415 269.737 654.35 269.624C654.284 269.51 654.25 269.381 654.25 269.25V258.75C654.25 258.619 654.284 258.49 654.35 258.376C654.415 258.263 654.509 258.168 654.622 258.102L663.622 252.852C663.737 252.785 663.867 252.75 664 252.75C664.133 252.75 664.263 252.785 664.378 252.852L673.378 258.102L672.622 259.398L664 254.368L655.75 259.181V268.819L664 273.632L672.25 268.819V263.25H673.75V269.25C673.75 269.381 673.716 269.51 673.65 269.624C673.585 269.737 673.491 269.832 673.378 269.898L664.378 275.148C664.263 275.215 664.133 275.25 664 275.25Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="ibm cloudpak for data_2">
+<rect x="640.5" y="736.5" width="311" height="127" stroke="#0F62FE"/>
+<rect id="Background white_26" x="641" y="737" width="310" height="126" fill="white"/>
+<rect id="Background color_10" x="641" y="737" width="310" height="126" fill="#EDF5FF"/>
+<g id="Content_26" clip-path="url(#clip24_0_1)">
+<g id="Label + Text_26">
+<text id="Label_26" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="704" y="765.25">IBM Db2 universal operator</tspan></text>
+</g>
+<g id="_Solid square icon block_10">
+<rect width="48" height="48" transform="translate(640 736)" fill="#0F62FE"/>
+<g id="IBM--db2">
+<rect width="24" height="24" transform="translate(652 748)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="Vector_14">
+<path d="M664 757.75C661.434 757.75 659.5 758.879 659.5 760.375V766.375C659.5 767.871 661.434 769 664 769C666.566 769 668.5 767.871 668.5 766.375V760.375C668.5 758.879 666.566 757.75 664 757.75ZM664 759.25C665.861 759.25 667 759.978 667 760.375C667 760.772 665.861 761.5 664 761.5C662.139 761.5 661 760.772 661 760.375C661 759.978 662.139 759.25 664 759.25ZM664 767.5C662.139 767.5 661 766.772 661 766.375V765.361C661.785 765.761 662.825 766 664 766C665.175 766 666.215 765.761 667 765.361V766.375C667 766.772 665.861 767.5 664 767.5ZM664 764.5C662.139 764.5 661 763.772 661 763.375V762.361C661.785 762.761 662.825 763 664 763C665.175 763 666.215 762.761 667 762.361V763.375C667 763.772 665.861 764.5 664 764.5Z" fill="white"/>
+<path d="M674.5 759.625C674.5 761.935 672.895 763.862 670.743 764.365V762.812C672.055 762.347 673 761.102 673 759.625C673 757.877 671.628 756.407 669.888 756.265L669.28 756.22L669.205 755.613C668.883 752.988 666.64 751 664 751C661.353 751 659.11 752.988 658.788 755.613L658.712 756.22L658.105 756.265C656.365 756.407 655 757.877 655 759.625C655 761.095 655.937 762.34 657.243 762.805V764.365C655.098 763.855 653.5 761.927 653.5 759.625C653.5 757.3 655.165 755.313 657.4 754.855C658.045 751.765 660.79 749.5 664 749.5C667.202 749.5 669.948 751.765 670.6 754.855C672.827 755.313 674.5 757.3 674.5 759.625Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="ibm cloud pak for data control plane">
+<rect id="Background white_27" x="657" y="304" width="279" height="128" fill="white"/>
+<g id="Content_27" clip-path="url(#clip25_0_1)">
+<g id="Label + Text_27">
+<text id="Label_27" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="673" y="333.25">IBM CloudPak for Data control plane</tspan></text>
+</g>
+</g>
+<g id="Dash border_9">
+<mask id="path-117-inside-9_0_1" fill="white">
+<path d="M936 304H657V432H936V304Z"/>
+</mask>
+<path d="M936 304H657V432H936V304Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-117-inside-9_0_1)"/>
+</g>
+</g>
+<g id="Watson studio">
+<rect id="Background white_28" x="656" y="448" width="279" height="256" fill="white"/>
+<g id="Content_28" clip-path="url(#clip26_0_1)">
+<g id="Label + Text_28">
+<text id="Label_28" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="672" y="477.25">IBM CloudPak for Data services</tspan></text>
+</g>
+</g>
+<g id="Dash border_10">
+<mask id="path-120-inside-10_0_1" fill="white">
+<path d="M935 448H656V704H935V448Z"/>
+</mask>
+<path d="M935 448H656V704H935V448Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-120-inside-10_0_1)"/>
+</g>
+</g>
+<g id="Watson studio_2">
+<rect id="Background white_29" x="656" y="800" width="279" height="48" fill="white"/>
+<g id="Content_29" clip-path="url(#clip27_0_1)">
+<g id="Label + Text_29">
+<text id="Label_29" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="672" y="829.25">Db2 Warehouse</tspan></text>
+</g>
+</g>
+<g id="Dash border_11">
+<mask id="path-123-inside-11_0_1" fill="white">
+<path d="M935 800H656V848H935V800Z"/>
+</mask>
+<path d="M935 800H656V848H935V800Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-123-inside-11_0_1)"/>
+</g>
+</g>
+<g id="Watson discovery">
+<rect id="Background white_30" x="672" y="512" width="246" height="48" fill="#EDF5FF"/>
+<g id="Content_30" clip-path="url(#clip28_0_1)">
+<g id="Label + Text_30">
+<text id="Label_30" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="688" y="541.25">Watson Discovery</tspan></text>
+</g>
+</g>
+<g id="Dash border_12">
+<mask id="path-126-inside-12_0_1" fill="white">
+<path d="M918 512H672V560H918V512Z"/>
+</mask>
+<path d="M918 512H672V560H918V512Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-126-inside-12_0_1)"/>
+</g>
+</g>
+<g id="Watson studio_3">
+<rect id="Background white_31" x="672" y="576" width="246" height="48" fill="#EDF5FF"/>
+<g id="Content_31" clip-path="url(#clip29_0_1)">
+<g id="Label + Text_31">
+<text id="Label_31" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="688" y="605.25">Watson Studio</tspan></text>
+</g>
+</g>
+<g id="Dash border_13">
+<mask id="path-129-inside-13_0_1" fill="white">
+<path d="M918 576H672V624H918V576Z"/>
+</mask>
+<path d="M918 576H672V624H918V576Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-129-inside-13_0_1)"/>
+</g>
+</g>
+<g id="Watson discovery_2">
+<rect id="Background white_32" x="672" y="640" width="246" height="48" fill="#EDF5FF"/>
+<g id="Content_32" clip-path="url(#clip30_0_1)">
+<g id="Label + Text_32">
+<text id="Label_32" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="688" y="669.25">Watson Machine Learning</tspan></text>
+</g>
+</g>
+<g id="Dash border_14">
+<mask id="path-132-inside-14_0_1" fill="white">
+<path d="M918 640H672V688H918V640Z"/>
+</mask>
+<path d="M918 640H672V688H918V640Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-132-inside-14_0_1)"/>
+</g>
+</g>
+<g id="Maximo monitor">
+<rect id="Background white_33" x="1000" y="768.462" width="272" height="48" fill="#EDF5FF"/>
+<g id="Content_33" clip-path="url(#clip31_0_1)">
+<g id="Label + Text_33">
+<text id="Label_33" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="1016" y="797.712">Maximo Monitor</tspan></text>
+</g>
+</g>
+<g id="Dash border_15">
+<mask id="path-135-inside-15_0_1" fill="white">
+<path d="M1272 768.462H1000V816.462H1272V768.462Z"/>
+</mask>
+<path d="M1272 768.462H1000V816.462H1272V768.462Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-135-inside-15_0_1)"/>
+</g>
+</g>
+<g id="iot tool">
+<rect id="Background white_34" x="1000" y="832.462" width="272" height="48" fill="#EDF5FF"/>
+<g id="Content_34" clip-path="url(#clip32_0_1)">
+<g id="Label + Text_34">
+<text id="Label_34" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="1016" y="861.712">IoT tool</tspan></text>
+</g>
+</g>
+<g id="Dash border_16">
+<mask id="path-138-inside-16_0_1" fill="white">
+<path d="M1272 832.462H1000V880.462H1272V832.462Z"/>
+</mask>
+<path d="M1272 832.462H1000V880.462H1272V832.462Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-138-inside-16_0_1)"/>
+</g>
+</g>
+<g id="iot tool_2">
+<rect id="Background white_35" x="1000" y="896" width="272" height="48" fill="#EDF5FF"/>
+<g id="Content_35" clip-path="url(#clip33_0_1)">
+<g id="Label + Text_35">
+<text id="Label_35" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="1016" y="925.25">Maximo Optimizer</tspan></text>
+</g>
+</g>
+<g id="Dash border_17">
+<mask id="path-141-inside-17_0_1" fill="white">
+<path d="M1272 896H1000V944H1272V896Z"/>
+</mask>
+<path d="M1272 896H1000V944H1272V896Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-141-inside-17_0_1)"/>
+</g>
+</g>
+<g id="Authorized users">
+<rect width="248" height="48" transform="translate(672 368)" fill="white"/>
+<rect id="Background white_36" x="672" y="368" width="248" height="48" fill="white"/>
+<rect id="Background color_11" x="672" y="368" width="248" height="48" fill="#EDF5FF"/>
+<g id="_Multiple border_3">
+<rect width="256" height="56" transform="translate(672 360)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="_Container_3">
+<path d="M928 360H672V416H928V360Z" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+</g>
+<path id="Vector_15" d="M676 364.5H923.5V412" stroke="#0F62FE" stroke-dasharray="4 4"/>
+<path id="Vector_16" d="M680 360.5H927.5V408" stroke="#0F62FE" stroke-dasharray="4 4"/>
+</g>
+<g id="Content_36" clip-path="url(#clip34_0_1)">
+<g id="Label + Text_36">
+<text id="Label_36" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="736" y="397.25">Authorized users</tspan></text>
+</g>
+<g id="_Solid square icon block_11">
+<rect width="48" height="48" transform="translate(672 368)" fill="#0F62FE"/>
+<g id="User_2">
+<rect width="24" height="24" transform="translate(684 380)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="Vector_17">
+<path d="M696 383C696.742 383 697.467 383.22 698.083 383.632C698.7 384.044 699.181 384.63 699.465 385.315C699.748 386 699.823 386.754 699.678 387.482C699.533 388.209 699.176 388.877 698.652 389.402C698.127 389.926 697.459 390.283 696.732 390.428C696.004 390.573 695.25 390.498 694.565 390.215C693.88 389.931 693.294 389.45 692.882 388.833C692.47 388.217 692.25 387.492 692.25 386.75C692.25 385.755 692.645 384.802 693.348 384.098C694.052 383.395 695.005 383 696 383ZM696 381.5C694.962 381.5 693.947 381.808 693.083 382.385C692.22 382.962 691.547 383.782 691.15 384.741C690.752 385.7 690.648 386.756 690.851 387.774C691.053 388.793 691.553 389.728 692.288 390.462C693.022 391.197 693.957 391.697 694.976 391.899C695.994 392.102 697.05 391.998 698.009 391.6C698.968 391.203 699.788 390.53 700.365 389.667C700.942 388.803 701.25 387.788 701.25 386.75C701.25 385.358 700.697 384.022 699.712 383.038C698.728 382.053 697.392 381.5 696 381.5Z" fill="white"/>
+<path d="M703.5 402.5H702V398.75C702 398.258 701.903 397.77 701.715 397.315C701.526 396.86 701.25 396.447 700.902 396.098C700.553 395.75 700.14 395.474 699.685 395.285C699.23 395.097 698.742 395 698.25 395H693.75C692.755 395 691.802 395.395 691.098 396.098C690.395 396.802 690 397.755 690 398.75V402.5H688.5V398.75C688.5 397.358 689.053 396.022 690.038 395.038C691.022 394.053 692.358 393.5 693.75 393.5H698.25C699.642 393.5 700.978 394.053 701.962 395.038C702.947 396.022 703.5 397.358 703.5 398.75V402.5Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+<g id="Dash border_18">
+<mask id="path-149-inside-18_0_1" fill="white">
+<path d="M920 368H672V416H920V368Z"/>
+</mask>
+<path d="M920 368H672V416H920V368Z" stroke="#0F62FE" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-149-inside-18_0_1)"/>
+</g>
+</g>
+<g id="Prerequisites_2">
+<rect x="47.5" y="1040.5" width="1304" height="135" stroke="#878D96"/>
+<rect id="Background white_37" x="48" y="1041" width="1303" height="134" fill="#F4F4F4"/>
+<g id="Content_37" clip-path="url(#clip35_0_1)">
+<g id="Label + Text_37">
+<text id="Label_37" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="63" y="1069.25">Prerequisites</tspan></text>
+</g>
+<line id="Border_7" x1="49" y1="1040" x2="49" y2="1088" stroke="#878D96" stroke-width="4"/>
+</g>
+</g>
+<g id="Identity provider for RHOSCP">
+<rect x="64.5" y="1105.5" width="239" height="55" stroke="#878D96"/>
+<rect id="Background white_38" x="65" y="1106" width="238" height="54" fill="white"/>
+<g id="Content_38" clip-path="url(#clip36_0_1)">
+<g id="Label + Text_38">
+<text id="Label_38" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="80" y="1129.25">Identity provider for Red Hat </tspan><tspan x="80" y="1147.25">OpenShift Container Platform</tspan></text>
+</g>
+<line id="Border_8" x1="66" y1="1105" x2="66" y2="1161" stroke="#878D96" stroke-width="4"/>
+</g>
+</g>
+<g id="SMTP server">
+<rect x="591.5" y="1105.5" width="127" height="55" stroke="#878D96" stroke-dasharray="4 4"/>
+<rect id="Background white_39" x="592" y="1106" width="126" height="54" fill="white"/>
+<g id="Content_39" clip-path="url(#clip37_0_1)">
+<g id="Label + Text_39">
+<text id="Label_39" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="607" y="1138.25">SMTP server</tspan></text>
+</g>
+<line id="Border_9" x1="593" y1="1105" x2="593" y2="1161" stroke="#878D96" stroke-width="4"/>
+</g>
+<g id="Dash border_19">
+<mask id="path-162-inside-19_0_1" fill="white">
+<path d="M719 1105H591V1161H719V1105Z"/>
+</mask>
+<path d="M719 1105H591V1161H719V1105Z" stroke="#878D96" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-162-inside-19_0_1)"/>
+</g>
+</g>
+<g id="Relational database">
+<rect x="471.5" y="1105.5" width="103" height="55" stroke="#878D96" stroke-dasharray="4 4"/>
+<rect id="Background white_40" x="472" y="1106" width="102" height="54" fill="white"/>
+<g id="Content_40" clip-path="url(#clip38_0_1)">
+<g id="Label + Text_40">
+<text id="Label_40" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="487" y="1129.25">Relational </tspan><tspan x="487" y="1147.25">database</tspan></text>
+</g>
+<line id="Border_10" x1="473" y1="1105" x2="473" y2="1161" stroke="#878D96" stroke-width="4"/>
+</g>
+<g id="Dash border_20">
+<mask id="path-167-inside-20_0_1" fill="white">
+<path d="M575 1105H471V1161H575V1105Z"/>
+</mask>
+<path d="M575 1105H471V1161H575V1105Z" stroke="#878D96" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-167-inside-20_0_1)"/>
+</g>
+</g>
+<g id="Load balancers">
+<rect x="320.5" y="1105.5" width="134" height="55" stroke="#878D96"/>
+<rect id="Background white_41" x="321" y="1106" width="133" height="54" fill="white"/>
+<g id="Content_41" clip-path="url(#clip39_0_1)">
+<g id="Label + Text_41">
+<text id="Label_41" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="336" y="1138.25">Load balancers</tspan></text>
+</g>
+<line id="Border_11" x1="322" y1="1105" x2="322" y2="1161" stroke="#878D96" stroke-width="4"/>
+</g>
+</g>
+<g id="ICE server">
+<rect x="888.5" y="1105.5" width="115" height="55" stroke="#878D96" stroke-dasharray="4 4"/>
+<rect id="Background white_42" x="889" y="1106" width="114" height="54" fill="white"/>
+<g id="Content_42" clip-path="url(#clip40_0_1)">
+<g id="Label + Text_42">
+<text id="Label_42" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="904" y="1138.25">ICE server</tspan></text>
+</g>
+<line id="Border_12" x1="890" y1="1105" x2="890" y2="1161" stroke="#878D96" stroke-width="4"/>
+</g>
+<g id="Dash border_21">
+<mask id="path-176-inside-21_0_1" fill="white">
+<path d="M1004 1105H888V1161H1004V1105Z"/>
+</mask>
+<path d="M1004 1105H888V1161H1004V1105Z" stroke="#878D96" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-176-inside-21_0_1)"/>
+</g>
+</g>
+<g id="Certificate issuer">
+<rect x="1020.5" y="1105.5" width="171" height="55" stroke="#878D96" stroke-dasharray="4 4"/>
+<rect id="Background white_43" x="1021" y="1106" width="170" height="54" fill="white"/>
+<g id="Content_43" clip-path="url(#clip41_0_1)">
+<g id="Label + Text_43">
+<text id="Label_43" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="1036" y="1138.25">Certificate issuer</tspan></text>
+</g>
+<line id="Border_13" x1="1022" y1="1105" x2="1022" y2="1161" stroke="#878D96" stroke-width="4"/>
+</g>
+<g id="Dash border_22">
+<mask id="path-181-inside-22_0_1" fill="white">
+<path d="M1192 1105H1020V1161H1192V1105Z"/>
+</mask>
+<path d="M1192 1105H1020V1161H1192V1105Z" stroke="#878D96" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-181-inside-22_0_1)"/>
+</g>
+</g>
+<g id="SAML">
+<rect x="735.5" y="1105.5" width="136" height="55" stroke="#878D96" stroke-dasharray="4 4"/>
+<rect id="Background white_44" x="736" y="1106" width="135" height="54" fill="white"/>
+<g id="Content_44" clip-path="url(#clip42_0_1)">
+<g id="Label + Text_44">
+<text id="Label_44" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="751" y="1129.25">SAML identity </tspan><tspan x="751" y="1147.25">provider</tspan></text>
+</g>
+<line id="Border_14" x1="737" y1="1105" x2="737" y2="1161" stroke="#878D96" stroke-width="4"/>
+</g>
+<g id="Dash border_23">
+<mask id="path-186-inside-23_0_1" fill="white">
+<path d="M872 1105H735V1161H872V1105Z"/>
+</mask>
+<path d="M872 1105H735V1161H872V1105Z" stroke="#878D96" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-186-inside-23_0_1)"/>
+</g>
+</g>
+<g id="Bastion host">
+<rect x="1208.5" y="1105.5" width="127" height="55" stroke="#878D96"/>
+<rect id="Background white_45" x="1209" y="1106" width="126" height="54" fill="white"/>
+<g id="Content_45" clip-path="url(#clip43_0_1)">
+<g id="Label + Text_45">
+<text id="Label_45" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="1224" y="1138.25">Bastion host</tspan></text>
+</g>
+<line id="Border_15" x1="1210" y1="1105" x2="1210" y2="1161" stroke="#878D96" stroke-width="4"/>
+</g>
+</g>
+<g id="Legend">
+<g id="Color key">
+<rect id="Spacer" x="48" y="1208" width="32" height="16" fill="#FA4D56"/>
+</g>
+<text id="Label_46" fill="#525252" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" letter-spacing="0.0016em"><tspan x="88" y="1221.25">Red Hat OpenShift</tspan></text>
+</g>
+<g id="Legend_2">
+<g id="Color key_2">
+<rect id="Spacer_2" x="221" y="1208" width="32" height="16" fill="#0F62FE"/>
+</g>
+<text id="Label_47" fill="#525252" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" letter-spacing="0.0016em"><tspan x="261" y="1221.25">IBM CloudPak for Data</tspan></text>
+</g>
+<g id="Legend_3">
+<g id="_Color">
+<rect id="Spacer_3" x="420" y="1208" width="32" height="16" fill="#1192E8"/>
+</g>
+<text id="Label_48" fill="#525252" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" letter-spacing="0.0016em"><tspan x="460" y="1221.25">IBM Maximo Application Suite</tspan></text>
+</g>
+<g id="Legend_4">
+<g id="Border key">
+<rect id="Spacer_4" x="806.5" y="1208.5" width="31" height="15" fill="white" stroke="#161616"/>
+</g>
+<text id="Label_49" fill="#161616" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" letter-spacing="0.0016em"><tspan x="846" y="1221.25">Required in all instances</tspan></text>
+</g>
+<g id="Legend_5">
+<g id="_Border">
+<g id="Spacer_5">
+<mask id="path-199-inside-24_0_1" fill="white">
+<path d="M1048 1208H1016V1224H1048V1208Z"/>
+</mask>
+<path d="M1048 1208H1016V1224H1048V1208Z" fill="white" stroke="#161616" stroke-width="2" stroke-dasharray="4 4" mask="url(#path-199-inside-24_0_1)"/>
+</g>
+</g>
+<text id="Label_50" fill="#161616" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" letter-spacing="0.0016em"><tspan x="1056" y="1221.25">Required depending on deployment choices </tspan></text>
+</g>
+<path id="Union_3" fill-rule="evenodd" clip-rule="evenodd" d="M391 200L383 196V199.5H368C363.306 199.5 359.5 203.306 359.5 208V254V255V356C359.5 360.142 356.142 363.5 352 363.5H328V364.5H352C355.247 364.5 358.069 362.68 359.5 360.004V760C359.5 764.142 356.142 767.5 352 767.5H328V768.5H352C356.694 768.5 360.5 764.694 360.5 760V356V255V254V208C360.5 203.858 363.858 200.5 368 200.5H383V204L391 200Z" fill="black"/>
+<g id="Group 6">
+<g id="Legend_6">
+<g id="Border key_2">
+<rect width="32" height="16" transform="translate(666 1208)" fill="#F4F4F4"/>
+<rect id="Spacer_6" x="666.5" y="1208.5" width="31" height="15" fill="#F2F4F8" stroke="#8D8D8D"/>
+</g>
+<text id="Label_51" fill="#525252" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" letter-spacing="0.0016em"><tspan x="706" y="1221.25">Prerequisites</tspan></text>
+</g>
+<line id="Border_16" x1="668" y1="1208" x2="668" y2="1224" stroke="#697077" stroke-width="4"/>
+</g>
+<g id="RHOSCP master nodes_3">
+<rect x="80.5" y="176.5" width="247" height="65" stroke="#FA4D56"/>
+<rect id="Background white_46" x="81" y="177" width="246" height="64" fill="white"/>
+<rect id="Background color_12" x="81" y="177" width="246" height="64" fill="#FFF1F1"/>
+<g id="_Multiple border_4">
+<rect width="256" height="74" transform="translate(80 168)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="_Container_4">
+<path d="M336 168H80V242H336V168Z" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+</g>
+<path id="Vector_18" d="M84 172.5H331.5V238" stroke="#FA4D56"/>
+<path id="Vector_19" d="M88 168.5H335.5V234" stroke="#FA4D56"/>
+</g>
+<g id="Content_46" clip-path="url(#clip44_0_1)">
+<g id="Label + Text_46">
+<text id="Label_52" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="144" y="196.25">Master nodes</tspan></text>
+<text id="Text_3" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" letter-spacing="0.16px"><tspan x="144" y="214.25">At least 3 to ensure high </tspan><tspan x="144" y="232.25">availability of the cluster</tspan></text>
+</g>
+<g id="_Solid square icon block_12">
+<rect width="48" height="48" transform="translate(80 176)" fill="#FA4D56"/>
+<g id="Logo--openshift_6">
+<rect width="24" height="24" transform="translate(92 188)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<path id="Vector_20" d="M111.846 199.848C111.754 198.723 111.454 197.625 110.962 196.61L113.75 195.597C113.53 195.142 113.272 194.706 112.979 194.294L111.672 194.77C110.53 193.169 108.894 191.987 107.016 191.404C105.138 190.822 103.121 190.871 101.273 191.544C99.4255 192.218 97.8497 193.478 96.787 195.133C95.7242 196.787 95.2332 198.745 95.3891 200.705L96.6999 200.224C96.7414 200.726 96.8244 201.224 96.948 201.712L94.1628 202.729C94.4384 203.822 94.9147 204.855 95.5674 205.775L97.0421 205.238L97.044 205.241C97.9389 206.501 99.1458 207.506 100.547 208.159C102.71 209.164 105.184 209.271 107.426 208.455C109.668 207.639 111.494 205.967 112.505 203.806C113.161 202.404 113.44 200.855 113.315 199.312L111.846 199.848ZM109.656 202.47C109 203.874 107.815 204.961 106.359 205.491C104.903 206.022 103.296 205.954 101.891 205.301C101.254 205.004 100.677 204.594 100.187 204.091L98.6989 204.634C97.8993 203.81 97.3585 202.77 97.1433 201.642L97.1439 201.641L99.9371 200.624C99.8378 200.114 99.8067 199.593 99.8447 199.075L98.5309 199.552C98.6006 198.609 98.8984 197.698 99.3987 196.896C99.8991 196.094 100.587 195.426 101.403 194.949C102.219 194.472 103.139 194.2 104.083 194.158C105.027 194.115 105.968 194.303 106.823 194.705H106.828C107.463 195.003 108.038 195.413 108.527 195.916L109.835 195.441C110.196 195.812 110.506 196.23 110.757 196.683L107.974 197.702C108.535 198.704 108.79 199.848 108.707 200.993L110.183 200.457C110.131 201.155 109.952 201.837 109.656 202.47H109.656Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+<g id="etcd Kubernetes">
+<rect x="112.5" y="258.5" width="215" height="65" stroke="#0F62FE"/>
+<rect id="Background white_47" x="113" y="259" width="214" height="64" fill="white"/>
+<rect id="Background color_13" x="113" y="259" width="214" height="64" fill="#EDF5FF"/>
+<g id="Content_47" clip-path="url(#clip45_0_1)">
+<g id="Label + Text_47">
+<text id="Label_53" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="176" y="278.25">etcd</tspan></text>
+<text id="Text_4" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" letter-spacing="0.16px"><tspan x="176" y="296.25">Kubernetes resource </tspan><tspan x="176" y="314.25">definitions</tspan></text>
+</g>
+<g id="_Solid square icon block_13">
+<rect width="48" height="48" transform="translate(112 258)" fill="#0F62FE"/>
+<g id="Logo--kubernetes">
+<rect width="24" height="24" transform="translate(124 270)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="Vector_21">
+<path d="M135.351 282.892L135.999 283.204L136.647 282.892L136.807 282.194L136.359 281.634H135.639L135.189 282.193L135.351 282.892Z" fill="white"/>
+<path d="M134.662 280.41L134.664 280.411C134.722 280.453 134.789 280.479 134.86 280.485C134.931 280.492 135.002 280.479 135.066 280.448C135.13 280.417 135.185 280.369 135.224 280.31C135.263 280.25 135.285 280.182 135.288 280.11V280.108L135.298 280.103L135.432 277.747C135.269 277.768 135.109 277.795 134.957 277.83C134.115 278.019 133.343 278.439 132.727 279.043L134.658 280.412L134.662 280.41Z" fill="white"/>
+<path d="M133.626 282.197L133.628 282.196C133.697 282.177 133.759 282.14 133.808 282.089C133.858 282.037 133.892 281.974 133.908 281.904C133.924 281.835 133.92 281.763 133.898 281.695C133.876 281.627 133.836 281.567 133.783 281.52L133.781 281.519L133.783 281.509L132.02 279.932C131.483 280.807 131.252 281.836 131.364 282.857L133.624 282.204L133.626 282.197Z" fill="white"/>
+<path d="M134.398 283.876C134.376 283.777 134.316 283.69 134.231 283.635C134.147 283.579 134.044 283.558 133.944 283.577H133.941L133.938 283.572L131.62 283.966C131.968 284.927 132.623 285.747 133.484 286.299L134.382 284.128L134.376 284.12L134.376 284.117C134.409 284.041 134.417 283.957 134.398 283.876Z" fill="white"/>
+<path d="M136.347 284.732L136.346 284.73C136.31 284.666 136.258 284.613 136.195 284.576C136.131 284.54 136.059 284.521 135.986 284.524C135.917 284.526 135.85 284.547 135.792 284.583C135.733 284.62 135.686 284.671 135.653 284.731L135.652 284.733H135.65L134.51 286.794C135.327 287.071 136.204 287.115 137.045 286.924C137.2 286.889 137.352 286.846 137.498 286.797L136.356 284.732H136.347Z" fill="white"/>
+<path d="M138.053 283.567H138.05C138.021 283.562 137.99 283.56 137.96 283.561C137.897 283.564 137.835 283.583 137.781 283.616C137.726 283.648 137.68 283.693 137.647 283.747C137.613 283.801 137.593 283.862 137.588 283.925C137.584 283.988 137.594 284.052 137.619 284.11L137.62 284.112L137.617 284.116L138.524 286.308C139.391 285.754 140.049 284.927 140.395 283.957L138.057 283.562L138.053 283.567Z" fill="white"/>
+<path d="M139.967 279.933L138.213 281.502L138.214 281.507L138.213 281.509C138.159 281.555 138.119 281.616 138.097 281.683C138.075 281.751 138.072 281.823 138.088 281.893C138.103 281.962 138.138 282.026 138.187 282.077C138.236 282.129 138.298 282.166 138.367 282.185L138.369 282.185L138.371 282.195L140.643 282.849C140.74 281.829 140.503 280.806 139.967 279.933Z" fill="white"/>
+<path d="M136.704 280.1V280.103C136.707 280.186 136.737 280.266 136.789 280.33C136.853 280.41 136.944 280.462 137.045 280.475C137.145 280.489 137.247 280.463 137.329 280.403L137.331 280.402L137.337 280.404L139.256 279.044C138.526 278.33 137.582 277.874 136.568 277.748L136.702 280.099L136.704 280.1Z" fill="white"/>
+<path d="M146.785 284.278L144.926 276.203C144.878 275.993 144.782 275.797 144.648 275.63C144.513 275.462 144.342 275.327 144.148 275.235L136.623 271.641C136.427 271.548 136.214 271.5 135.998 271.5C135.782 271.5 135.568 271.548 135.373 271.641L127.849 275.236C127.655 275.329 127.484 275.464 127.35 275.632C127.215 275.799 127.12 275.995 127.071 276.205L125.215 284.28C125.172 284.466 125.167 284.659 125.201 284.847C125.234 285.035 125.305 285.214 125.41 285.374C125.435 285.413 125.463 285.451 125.492 285.488L130.7 291.963C130.835 292.131 131.006 292.266 131.201 292.359C131.396 292.452 131.609 292.5 131.825 292.5L140.176 292.498C140.392 292.499 140.605 292.451 140.8 292.358C140.994 292.265 141.166 292.13 141.301 291.962L146.508 285.486C146.642 285.319 146.737 285.123 146.785 284.914C146.834 284.705 146.834 284.487 146.785 284.278ZM143.927 284.181C143.892 284.302 143.811 284.404 143.701 284.466C143.592 284.528 143.463 284.545 143.341 284.513H143.338L143.334 284.512L143.329 284.511L143.326 284.509L143.283 284.5C143.257 284.495 143.23 284.49 143.209 284.484C143.117 284.458 143.027 284.425 142.94 284.385C142.897 284.366 142.852 284.346 142.804 284.328L142.791 284.324C142.542 284.223 142.284 284.148 142.02 284.098C141.939 284.092 141.86 284.119 141.798 284.171L141.771 284.19L141.769 284.191C141.736 284.185 141.637 284.167 141.579 284.158C141.143 285.527 140.22 286.688 138.984 287.421C138.991 287.438 138.999 287.459 139.008 287.482C139.021 287.522 139.037 287.562 139.058 287.599L139.059 287.601L139.058 287.603L139.046 287.634C139.009 287.706 139.001 287.789 139.023 287.866C139.133 288.116 139.267 288.355 139.423 288.58C139.451 288.622 139.479 288.661 139.507 288.699C139.566 288.775 139.618 288.855 139.664 288.939C139.677 288.963 139.692 288.996 139.706 289.025L139.723 289.061C139.756 289.116 139.776 289.176 139.784 289.24C139.792 289.303 139.786 289.367 139.768 289.428C139.749 289.489 139.718 289.545 139.677 289.593C139.635 289.641 139.584 289.68 139.526 289.707C139.469 289.735 139.406 289.749 139.343 289.751C139.279 289.753 139.216 289.741 139.157 289.717C139.098 289.692 139.045 289.656 139.001 289.61C138.957 289.564 138.923 289.509 138.902 289.449L138.885 289.415C138.871 289.387 138.857 289.357 138.846 289.333C138.809 289.244 138.779 289.153 138.755 289.059C138.743 289.014 138.73 288.968 138.715 288.92L138.711 288.908C138.634 288.651 138.532 288.401 138.407 288.164C138.36 288.097 138.29 288.051 138.21 288.036L138.179 288.026L138.176 288.025C138.169 288.012 138.151 287.979 138.132 287.944C138.114 287.912 138.096 287.878 138.082 287.854C137.831 287.949 137.574 288.026 137.312 288.086C136.185 288.343 135.008 288.258 133.929 287.843L133.828 288.026L133.826 288.027C133.754 288.038 133.687 288.071 133.634 288.12C133.519 288.284 133.434 288.467 133.382 288.661C133.352 288.749 133.322 288.839 133.286 288.928C133.271 288.976 133.258 289.024 133.246 289.069C133.223 289.162 133.193 289.253 133.156 289.341C133.146 289.364 133.133 289.391 133.119 289.418L133.101 289.455L133.1 289.457L133.099 289.458C133.059 289.544 132.997 289.618 132.918 289.67C132.839 289.722 132.747 289.751 132.652 289.754C132.59 289.755 132.529 289.741 132.472 289.714C132.362 289.653 132.281 289.551 132.244 289.43C132.208 289.31 132.221 289.18 132.279 289.069C132.286 289.056 132.292 289.041 132.3 289.025C132.312 288.998 132.326 288.969 132.337 288.947C132.383 288.863 132.436 288.782 132.495 288.705C132.522 288.668 132.551 288.628 132.579 288.587C132.737 288.357 132.874 288.112 132.986 287.855C132.998 287.769 132.984 287.681 132.946 287.603V287.6L133.026 287.407C131.795 286.679 130.873 285.527 130.431 284.167L130.237 284.2L130.216 284.188C130.146 284.14 130.064 284.112 129.979 284.109C129.715 284.159 129.457 284.235 129.208 284.335L129.195 284.34C129.149 284.358 129.104 284.376 129.061 284.395C128.974 284.435 128.883 284.468 128.79 284.494C128.767 284.501 128.737 284.507 128.708 284.513L128.674 284.521L128.67 284.522L128.665 284.524L128.661 284.524H128.659C128.598 284.544 128.535 284.551 128.471 284.545C128.408 284.539 128.347 284.519 128.292 284.488C128.237 284.457 128.189 284.414 128.151 284.364C128.113 284.313 128.086 284.255 128.072 284.193C128.058 284.131 128.057 284.067 128.069 284.005C128.081 283.942 128.106 283.883 128.142 283.831C128.178 283.779 128.225 283.735 128.279 283.702C128.333 283.669 128.394 283.648 128.456 283.639L128.459 283.639L128.463 283.637H128.465L128.467 283.637L128.503 283.628C128.533 283.621 128.563 283.613 128.588 283.609C128.682 283.593 128.777 283.584 128.873 283.582C128.92 283.58 128.969 283.578 129.02 283.574L129.031 283.573C129.3 283.555 129.567 283.51 129.828 283.44C129.897 283.397 129.957 283.339 130.001 283.27L130.019 283.246L130.021 283.245L130.206 283.191C130.003 281.771 130.33 280.326 131.125 279.132L130.982 279.004L130.979 278.982C130.973 278.896 130.943 278.814 130.892 278.745C130.685 278.567 130.461 278.409 130.224 278.275C130.18 278.249 130.137 278.226 130.095 278.204C130.01 278.161 129.928 278.112 129.85 278.056C129.83 278.042 129.806 278.022 129.783 278.003L129.756 277.981L129.753 277.979L129.749 277.976C129.645 277.895 129.576 277.779 129.553 277.65C129.542 277.59 129.544 277.528 129.558 277.469C129.573 277.41 129.6 277.355 129.638 277.307C129.681 277.254 129.737 277.211 129.8 277.183C129.863 277.156 129.931 277.143 130 277.147C130.115 277.152 130.226 277.194 130.316 277.266L130.343 277.287C130.368 277.307 130.396 277.329 130.416 277.346C130.488 277.41 130.555 277.479 130.616 277.553C130.646 277.588 130.678 277.624 130.713 277.661L130.72 277.668C130.902 277.867 131.103 278.048 131.319 278.208C131.39 278.248 131.473 278.259 131.552 278.239L131.584 278.234L131.587 278.234C131.613 278.254 131.698 278.315 131.747 278.348C132.538 277.507 133.563 276.922 134.689 276.668C134.956 276.608 135.227 276.566 135.5 276.543L135.511 276.354C135.58 276.293 135.632 276.212 135.657 276.123C135.667 275.852 135.65 275.581 135.608 275.313L135.607 275.307C135.6 275.257 135.591 275.209 135.582 275.163C135.563 275.069 135.551 274.974 135.545 274.878C135.545 274.856 135.545 274.827 135.545 274.8L135.546 274.762L135.545 274.757V274.75C135.539 274.686 135.545 274.622 135.565 274.561C135.585 274.5 135.617 274.444 135.66 274.397C135.703 274.349 135.755 274.311 135.814 274.285C135.872 274.259 135.936 274.246 135.999 274.246C136.063 274.246 136.127 274.259 136.185 274.285C136.244 274.311 136.296 274.349 136.339 274.397C136.382 274.444 136.414 274.5 136.434 274.561C136.453 274.622 136.46 274.686 136.454 274.75L136.454 274.795C136.455 274.824 136.455 274.855 136.455 274.878C136.45 274.973 136.437 275.069 136.418 275.163C136.409 275.209 136.4 275.256 136.393 275.306L136.39 275.33C136.349 275.592 136.332 275.857 136.342 276.123C136.355 276.202 136.398 276.274 136.463 276.322L136.488 276.345L136.489 276.346C136.491 276.379 136.496 276.485 136.5 276.545C137.208 276.609 137.899 276.801 138.538 277.112C139.173 277.42 139.748 277.839 140.235 278.35L140.405 278.229L140.43 278.23C140.513 278.244 140.599 278.233 140.677 278.2C140.891 278.042 141.088 277.863 141.267 277.667L141.283 277.651C141.318 277.615 141.349 277.579 141.379 277.544C141.441 277.47 141.509 277.4 141.582 277.336C141.601 277.318 141.628 277.298 141.654 277.277L141.681 277.256C141.727 277.211 141.782 277.176 141.842 277.154C141.901 277.131 141.965 277.122 142.029 277.126C142.093 277.129 142.156 277.147 142.212 277.176C142.269 277.206 142.319 277.247 142.359 277.297C142.399 277.347 142.428 277.405 142.444 277.467C142.46 277.529 142.463 277.593 142.452 277.656C142.442 277.72 142.418 277.78 142.383 277.833C142.347 277.886 142.301 277.932 142.247 277.966L142.215 277.993C142.192 278.012 142.167 278.032 142.148 278.046C142.071 278.102 141.989 278.151 141.903 278.194C141.861 278.216 141.818 278.239 141.773 278.265C141.536 278.4 141.312 278.557 141.104 278.735C141.05 278.795 141.021 278.874 141.023 278.955L141.021 278.988L141.02 278.99C141.008 279.001 140.982 279.024 140.951 279.051C140.921 279.078 140.886 279.109 140.862 279.131C141.66 280.321 141.994 281.762 141.8 283.181L141.98 283.233L141.993 283.253C142.036 283.327 142.098 283.388 142.173 283.428C142.434 283.498 142.701 283.542 142.971 283.56L142.98 283.561C143.03 283.565 143.079 283.567 143.127 283.569C143.223 283.57 143.318 283.579 143.412 283.595C143.435 283.6 143.465 283.607 143.494 283.615L143.543 283.626C143.667 283.65 143.776 283.722 143.848 283.825C143.92 283.929 143.948 284.056 143.927 284.181Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Large node - Icon color block">
+<rect x="112.5" y="340.5" width="215" height="47" stroke="#0F62FE"/>
+<rect id="Background white_48" x="113" y="341" width="214" height="46" fill="white"/>
+<rect id="Background color_14" x="113" y="341" width="214" height="46" fill="#EDF5FF"/>
+<g id="Content_48" clip-path="url(#clip46_0_1)">
+<g id="Label + Text_48">
+<text id="Label_54" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="176" y="360.25">Kubernetes cluster</tspan></text>
+<text id="Text_5" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" letter-spacing="0.16px"><tspan x="176" y="378.25">control software</tspan></text>
+</g>
+<g id="_Solid square icon block_14">
+<rect width="48" height="48" transform="translate(112 340)" fill="#0F62FE"/>
+<g id="Logo--kubernetes_2">
+<rect width="24" height="24" transform="translate(124 352)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="Vector_22">
+<path d="M135.351 364.892L135.999 365.204L136.647 364.893L136.807 364.194L136.359 363.634H135.639L135.189 364.193L135.351 364.892Z" fill="white"/>
+<path d="M134.662 362.41L134.664 362.411C134.722 362.453 134.789 362.479 134.86 362.485C134.931 362.492 135.002 362.479 135.066 362.448C135.13 362.417 135.185 362.369 135.224 362.31C135.263 362.25 135.285 362.182 135.288 362.11V362.108L135.298 362.103L135.432 359.748C135.269 359.768 135.109 359.795 134.957 359.83C134.115 360.019 133.343 360.439 132.727 361.043L134.658 362.412L134.662 362.41Z" fill="white"/>
+<path d="M133.626 364.197L133.628 364.196C133.697 364.177 133.759 364.14 133.808 364.089C133.858 364.037 133.892 363.974 133.908 363.904C133.924 363.835 133.92 363.763 133.898 363.695C133.876 363.627 133.836 363.567 133.783 363.52L133.781 363.519L133.783 363.509L132.02 361.932C131.483 362.807 131.252 363.836 131.364 364.857L133.624 364.204L133.626 364.197Z" fill="white"/>
+<path d="M134.398 365.876C134.376 365.777 134.316 365.69 134.231 365.635C134.147 365.579 134.044 365.558 133.944 365.577H133.941L133.938 365.572L131.62 365.966C131.968 366.927 132.623 367.747 133.484 368.299L134.382 366.129L134.376 366.12L134.376 366.117C134.409 366.041 134.417 365.957 134.398 365.876Z" fill="white"/>
+<path d="M136.347 366.732L136.346 366.73C136.31 366.666 136.258 366.613 136.195 366.576C136.131 366.54 136.059 366.521 135.986 366.524C135.917 366.526 135.85 366.547 135.792 366.583C135.733 366.62 135.686 366.671 135.653 366.731L135.652 366.733H135.65L134.51 368.794C135.327 369.071 136.204 369.115 137.045 368.924C137.2 368.889 137.352 368.846 137.498 368.797L136.356 366.732H136.347Z" fill="white"/>
+<path d="M138.053 365.568H138.05C138.021 365.562 137.99 365.56 137.96 365.561C137.897 365.564 137.835 365.583 137.781 365.616C137.726 365.648 137.68 365.693 137.647 365.747C137.613 365.801 137.593 365.862 137.588 365.925C137.584 365.988 137.594 366.052 137.619 366.11L137.62 366.112L137.617 366.116L138.524 368.308C139.391 367.754 140.049 366.927 140.395 365.958L138.057 365.562L138.053 365.568Z" fill="white"/>
+<path d="M139.967 361.933L138.213 363.502L138.214 363.507L138.213 363.509C138.159 363.555 138.119 363.616 138.097 363.683C138.075 363.751 138.072 363.823 138.088 363.893C138.103 363.962 138.138 364.026 138.187 364.077C138.236 364.129 138.298 364.166 138.367 364.185L138.369 364.185L138.371 364.195L140.643 364.849C140.74 363.829 140.503 362.806 139.967 361.933Z" fill="white"/>
+<path d="M136.704 362.1V362.103C136.707 362.186 136.737 362.266 136.789 362.33C136.853 362.41 136.944 362.462 137.045 362.475C137.145 362.489 137.247 362.463 137.329 362.403L137.331 362.402L137.337 362.404L139.256 361.044C138.526 360.33 137.582 359.874 136.568 359.748L136.702 362.099L136.704 362.1Z" fill="white"/>
+<path d="M146.785 366.278L144.926 358.203C144.878 357.993 144.782 357.797 144.648 357.63C144.513 357.462 144.342 357.327 144.148 357.235L136.623 353.641C136.427 353.548 136.214 353.5 135.998 353.5C135.782 353.5 135.568 353.548 135.373 353.641L127.849 357.236C127.655 357.329 127.484 357.464 127.35 357.632C127.215 357.799 127.12 357.995 127.071 358.205L125.215 366.28C125.172 366.466 125.167 366.659 125.201 366.847C125.234 367.035 125.305 367.214 125.41 367.374C125.435 367.413 125.463 367.451 125.492 367.488L130.7 373.963C130.835 374.131 131.006 374.266 131.201 374.359C131.396 374.452 131.609 374.5 131.825 374.5L140.176 374.498C140.392 374.499 140.605 374.451 140.8 374.358C140.994 374.265 141.166 374.13 141.301 373.962L146.508 367.486C146.642 367.319 146.737 367.123 146.785 366.914C146.834 366.705 146.834 366.487 146.785 366.278ZM143.927 366.181C143.892 366.302 143.811 366.404 143.701 366.466C143.592 366.528 143.463 366.545 143.341 366.513H143.338L143.334 366.512L143.329 366.511L143.326 366.509L143.283 366.5C143.257 366.495 143.23 366.49 143.209 366.484C143.117 366.458 143.027 366.425 142.94 366.385C142.897 366.366 142.852 366.346 142.804 366.328L142.791 366.324C142.542 366.223 142.284 366.148 142.02 366.098C141.939 366.092 141.86 366.119 141.798 366.171L141.771 366.19L141.769 366.191C141.736 366.185 141.637 366.167 141.579 366.158C141.143 367.527 140.22 368.688 138.984 369.421C138.991 369.438 138.999 369.459 139.008 369.482C139.021 369.522 139.037 369.562 139.058 369.599L139.059 369.601L139.058 369.603L139.046 369.634C139.009 369.706 139.001 369.789 139.023 369.866C139.133 370.116 139.267 370.355 139.423 370.58C139.451 370.622 139.479 370.661 139.507 370.699C139.566 370.775 139.618 370.855 139.664 370.939C139.677 370.963 139.692 370.996 139.706 371.025L139.723 371.061C139.756 371.116 139.776 371.176 139.784 371.24C139.792 371.303 139.786 371.367 139.768 371.428C139.749 371.489 139.718 371.545 139.677 371.593C139.635 371.641 139.584 371.68 139.526 371.707C139.469 371.735 139.406 371.749 139.343 371.751C139.279 371.753 139.216 371.741 139.157 371.717C139.098 371.692 139.045 371.656 139.001 371.61C138.957 371.564 138.923 371.509 138.902 371.449L138.885 371.415C138.871 371.387 138.857 371.357 138.846 371.333C138.809 371.244 138.779 371.153 138.755 371.059C138.743 371.014 138.73 370.968 138.715 370.92L138.711 370.908C138.634 370.651 138.532 370.401 138.407 370.164C138.36 370.097 138.29 370.051 138.21 370.036L138.179 370.026L138.176 370.025C138.169 370.012 138.151 369.979 138.132 369.944C138.114 369.912 138.096 369.878 138.082 369.854C137.831 369.949 137.574 370.026 137.312 370.086C136.185 370.343 135.008 370.258 133.929 369.843L133.828 370.026L133.826 370.027C133.754 370.038 133.687 370.071 133.634 370.12C133.519 370.284 133.434 370.467 133.382 370.661C133.352 370.749 133.322 370.839 133.286 370.928C133.271 370.976 133.258 371.024 133.246 371.069C133.223 371.162 133.193 371.253 133.156 371.341C133.146 371.364 133.133 371.391 133.119 371.418L133.101 371.455L133.1 371.457L133.099 371.458C133.059 371.544 132.997 371.618 132.918 371.67C132.839 371.722 132.747 371.751 132.652 371.754C132.59 371.755 132.529 371.741 132.472 371.714C132.362 371.653 132.281 371.551 132.244 371.43C132.208 371.31 132.221 371.18 132.279 371.069C132.286 371.056 132.292 371.041 132.3 371.025C132.312 370.998 132.326 370.969 132.337 370.947C132.383 370.863 132.436 370.782 132.495 370.705C132.522 370.668 132.551 370.628 132.579 370.587C132.737 370.357 132.874 370.112 132.986 369.855C132.998 369.769 132.984 369.681 132.946 369.603V369.6L133.026 369.407C131.795 368.679 130.873 367.527 130.431 366.167L130.237 366.2L130.216 366.188C130.146 366.14 130.064 366.112 129.979 366.109C129.715 366.159 129.457 366.235 129.208 366.335L129.195 366.34C129.149 366.358 129.104 366.376 129.061 366.395C128.974 366.435 128.883 366.468 128.79 366.495C128.767 366.501 128.737 366.507 128.708 366.513L128.674 366.521L128.67 366.522L128.665 366.524L128.661 366.524H128.659C128.598 366.544 128.535 366.551 128.471 366.545C128.408 366.539 128.347 366.519 128.292 366.488C128.237 366.457 128.189 366.414 128.151 366.364C128.113 366.313 128.086 366.255 128.072 366.193C128.058 366.131 128.057 366.067 128.069 366.005C128.081 365.942 128.106 365.883 128.142 365.831C128.178 365.779 128.225 365.735 128.279 365.702C128.333 365.669 128.394 365.648 128.456 365.639L128.459 365.639L128.463 365.637H128.465L128.467 365.637L128.503 365.628C128.533 365.621 128.563 365.613 128.588 365.609C128.682 365.593 128.777 365.584 128.873 365.582C128.92 365.58 128.969 365.578 129.02 365.574L129.031 365.573C129.3 365.555 129.567 365.51 129.828 365.44C129.897 365.397 129.957 365.339 130.001 365.27L130.019 365.246L130.021 365.245L130.206 365.191C130.003 363.771 130.33 362.326 131.125 361.132L130.982 361.004L130.979 360.982C130.973 360.896 130.943 360.814 130.892 360.745C130.685 360.567 130.461 360.409 130.224 360.275C130.18 360.249 130.137 360.226 130.095 360.204C130.01 360.161 129.928 360.112 129.85 360.056C129.83 360.042 129.806 360.022 129.783 360.003L129.756 359.981L129.753 359.979L129.749 359.976C129.645 359.895 129.576 359.779 129.553 359.65C129.542 359.59 129.544 359.528 129.558 359.469C129.573 359.41 129.6 359.355 129.638 359.307C129.681 359.254 129.737 359.211 129.8 359.183C129.863 359.156 129.931 359.143 130 359.147C130.115 359.152 130.226 359.194 130.316 359.266L130.343 359.287C130.368 359.307 130.396 359.329 130.416 359.346C130.488 359.41 130.555 359.479 130.616 359.553C130.646 359.588 130.678 359.624 130.713 359.661L130.72 359.668C130.902 359.867 131.103 360.048 131.319 360.208C131.39 360.248 131.473 360.259 131.552 360.239L131.584 360.234L131.587 360.234C131.613 360.254 131.698 360.315 131.747 360.348C132.538 359.507 133.563 358.922 134.689 358.668C134.956 358.608 135.227 358.566 135.5 358.543L135.511 358.354C135.58 358.293 135.632 358.212 135.657 358.123C135.667 357.852 135.65 357.581 135.608 357.313L135.607 357.307C135.6 357.257 135.591 357.209 135.582 357.163C135.563 357.069 135.551 356.974 135.545 356.878C135.545 356.856 135.545 356.827 135.545 356.8L135.546 356.762L135.545 356.757V356.75C135.539 356.686 135.545 356.622 135.565 356.561C135.585 356.5 135.617 356.444 135.66 356.397C135.703 356.349 135.755 356.311 135.814 356.285C135.872 356.259 135.936 356.246 135.999 356.246C136.063 356.246 136.127 356.259 136.185 356.285C136.244 356.311 136.296 356.349 136.339 356.397C136.382 356.444 136.414 356.5 136.434 356.561C136.453 356.622 136.46 356.686 136.454 356.75L136.454 356.795C136.455 356.824 136.455 356.855 136.455 356.878C136.45 356.973 136.437 357.069 136.418 357.163C136.409 357.209 136.4 357.256 136.393 357.306L136.39 357.33C136.349 357.592 136.332 357.857 136.342 358.123C136.355 358.202 136.398 358.274 136.463 358.323L136.488 358.345L136.489 358.346C136.491 358.379 136.496 358.485 136.5 358.545C137.208 358.609 137.899 358.801 138.538 359.112C139.173 359.42 139.748 359.839 140.235 360.35L140.405 360.229L140.43 360.23C140.513 360.244 140.599 360.233 140.677 360.2C140.891 360.042 141.088 359.863 141.267 359.667L141.283 359.651C141.318 359.615 141.349 359.579 141.379 359.544C141.441 359.47 141.509 359.4 141.582 359.336C141.601 359.319 141.628 359.298 141.654 359.277L141.681 359.256C141.727 359.211 141.782 359.176 141.842 359.154C141.901 359.131 141.965 359.122 142.029 359.126C142.093 359.129 142.156 359.147 142.212 359.176C142.269 359.206 142.319 359.247 142.359 359.297C142.399 359.347 142.428 359.405 142.444 359.467C142.46 359.529 142.463 359.593 142.452 359.656C142.442 359.72 142.418 359.78 142.383 359.833C142.347 359.887 142.301 359.932 142.247 359.966L142.215 359.993C142.192 360.012 142.167 360.032 142.148 360.046C142.071 360.102 141.989 360.151 141.903 360.194C141.861 360.216 141.818 360.239 141.773 360.265C141.536 360.4 141.312 360.557 141.104 360.735C141.05 360.795 141.021 360.874 141.023 360.955L141.021 360.988L141.02 360.99C141.008 361.001 140.982 361.024 140.951 361.051C140.921 361.078 140.886 361.109 140.862 361.131C141.66 362.321 141.994 363.762 141.8 365.181L141.98 365.233L141.993 365.253C142.036 365.327 142.098 365.388 142.173 365.428C142.434 365.498 142.701 365.542 142.971 365.56L142.98 365.561C143.03 365.565 143.079 365.567 143.127 365.569C143.223 365.57 143.318 365.579 143.412 365.595C143.435 365.6 143.465 365.607 143.494 365.615L143.543 365.626C143.667 365.65 143.776 365.722 143.848 365.825C143.92 365.929 143.948 366.056 143.927 366.181Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<path id="Union_4" fill-rule="evenodd" clip-rule="evenodd" d="M1000 792L992 788V791.5H968C963.306 791.5 959.5 795.306 959.5 800V808V816C959.5 820.142 956.142 823.5 952 823.5H936H935V824.5H936H952C956.142 824.5 959.5 827.858 959.5 832V840V848C959.5 852.694 963.306 856.5 968 856.5H992V860L1000 856L992 852V855.5H968C963.858 855.5 960.5 852.142 960.5 848V840V832C960.5 828.316 958.157 825.18 954.879 824C958.157 822.82 960.5 819.684 960.5 816V808V800C960.5 795.858 963.858 792.5 968 792.5H992V796L1000 792Z" fill="black"/>
+<g id="Large node - Icon without bar">
+<rect x="425.5" y="688.5" width="183" height="47" fill="white"/>
+<rect x="425.5" y="688.5" width="183" height="47" stroke="#878D96"/>
+<rect id="Background white_49" x="426" y="689" width="182" height="46" fill="white"/>
+<g id="_Multiple border_5">
+<rect width="192" height="56" transform="translate(425 680)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="_Container_5">
+<path d="M617 680H425V736H617V680Z" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+</g>
+<path id="Vector_23" d="M429 684.5H612.5V732" stroke="#878D96"/>
+<path id="Vector_24" d="M433 680.5H616.5V728" stroke="#878D96"/>
+</g>
+<g id="Content_49" clip-path="url(#clip47_0_1)">
+<g id="Label + Text_49">
+<text id="Label_55" fill="black" xml:space="preserve" style="white-space: pre" font-family="IBM Plex Sans" font-size="14" font-weight="600" letter-spacing="0.16px"><tspan x="481" y="717.25">MongoDB</tspan></text>
+</g>
+<g id="_Icon only">
+<g id="Data--base">
+<rect width="24" height="24" transform="translate(441 700)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="Vector_25">
+<path d="M459 702.25H447C446.602 702.25 446.221 702.408 445.939 702.689C445.658 702.971 445.5 703.352 445.5 703.75V720.25C445.5 720.648 445.658 721.029 445.939 721.311C446.221 721.592 446.602 721.75 447 721.75H459C459.398 721.75 459.779 721.592 460.061 721.311C460.342 721.029 460.5 720.648 460.5 720.25V703.75C460.5 703.352 460.342 702.971 460.061 702.689C459.779 702.408 459.398 702.25 459 702.25ZM459 703.75V708.25H447V703.75H459ZM447 714.25V709.75H459V714.25H447ZM447 720.25V715.75H459V720.25H447Z" fill="black"/>
+<path d="M449.25 706.75C449.664 706.75 450 706.414 450 706C450 705.586 449.664 705.25 449.25 705.25C448.836 705.25 448.5 705.586 448.5 706C448.5 706.414 448.836 706.75 449.25 706.75Z" fill="black"/>
+<path d="M449.25 712.75C449.664 712.75 450 712.414 450 712C450 711.586 449.664 711.25 449.25 711.25C448.836 711.25 448.5 711.586 448.5 712C448.5 712.414 448.836 712.75 449.25 712.75Z" fill="black"/>
+<path d="M449.25 718.75C449.664 718.75 450 718.414 450 718C450 717.586 449.664 717.25 449.25 717.25C448.836 717.25 448.5 717.586 448.5 718C448.5 718.414 448.836 718.75 449.25 718.75Z" fill="black"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<g id="Connector elbow + line ending">
+<rect width="476" height="187" transform="translate(516 735)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<g id="Line wrapper">
+<g id="_Connector">
+<rect width="476" height="187" transform="matrix(1 0 0 -1 516 922)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<path id="Line" d="M992 922H524C519.582 922 516 918.418 516 914V735" stroke="black"/>
+</g>
+</g>
+<g id="Line ending end wrapper">
+<g id="Line ending end">
+<rect width="8" height="8" transform="matrix(1 0 0 -1 992 926)" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/>
+<path id="Vector_26" d="M992 926L1000 922L992 918V926Z" fill="black"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_1">
+<rect width="1304" height="48" fill="white" transform="translate(48 48)"/>
+</clipPath>
+<clipPath id="clip1_0_1">
+<rect width="960" height="48" fill="white" transform="translate(376 113)"/>
+</clipPath>
+<clipPath id="clip2_0_1">
+<rect width="280" height="52" fill="white" transform="translate(64 420)"/>
+</clipPath>
+<clipPath id="clip3_0_1">
+<rect width="248" height="48" fill="white" transform="translate(80 480)"/>
+</clipPath>
+<clipPath id="clip4_0_1">
+<rect width="216" height="120" fill="white" transform="translate(112 544)"/>
+</clipPath>
+<clipPath id="clip5_0_1">
+<rect width="216" height="48" fill="white" transform="translate(112 680)"/>
+</clipPath>
+<clipPath id="clip6_0_1">
+<rect width="216" height="48" fill="white" transform="translate(112 744)"/>
+</clipPath>
+<clipPath id="clip7_0_1">
+<rect width="280" height="52" fill="white" transform="translate(64 112)"/>
+</clipPath>
+<clipPath id="clip8_0_1">
+<rect width="216" height="48" fill="white" transform="translate(408 240)"/>
+</clipPath>
+<clipPath id="clip9_0_1">
+<rect width="184" height="48" fill="white" transform="translate(424 368)"/>
+</clipPath>
+<clipPath id="clip10_0_1">
+<rect width="184" height="48" fill="white" transform="translate(424 304)"/>
+</clipPath>
+<clipPath id="clip11_0_1">
+<rect width="184" height="48" fill="white" transform="translate(424 432)"/>
+</clipPath>
+<clipPath id="clip12_0_1">
+<rect width="184" height="48" fill="white" transform="translate(424 496)"/>
+</clipPath>
+<clipPath id="clip13_0_1">
+<rect width="184" height="48" fill="white" transform="translate(424 560)"/>
+</clipPath>
+<clipPath id="clip14_0_1">
+<rect width="184" height="48" fill="white" transform="translate(424 624)"/>
+</clipPath>
+<clipPath id="clip15_0_1">
+<rect width="337" height="48" fill="white" transform="translate(968 240)"/>
+</clipPath>
+<clipPath id="clip16_0_1">
+<rect width="305" height="48" fill="white" transform="translate(984 304)"/>
+</clipPath>
+<clipPath id="clip17_0_1">
+<rect width="248" height="48" fill="white" transform="translate(1000 369)"/>
+</clipPath>
+<clipPath id="clip18_0_1">
+<rect width="305" height="48" fill="white" transform="translate(984 448)"/>
+</clipPath>
+<clipPath id="clip19_0_1">
+<rect width="272" height="48" fill="white" transform="translate(1000 576.264)"/>
+</clipPath>
+<clipPath id="clip20_0_1">
+<rect width="272" height="48" fill="white" transform="translate(1000 512)"/>
+</clipPath>
+<clipPath id="clip21_0_1">
+<rect width="272" height="48" fill="white" transform="translate(1000 640.462)"/>
+</clipPath>
+<clipPath id="clip22_0_1">
+<rect width="272" height="48" fill="white" transform="translate(1000 704.462)"/>
+</clipPath>
+<clipPath id="clip23_0_1">
+<rect width="312" height="48" fill="white" transform="translate(640 240)"/>
+</clipPath>
+<clipPath id="clip24_0_1">
+<rect width="312" height="48" fill="white" transform="translate(640 736)"/>
+</clipPath>
+<clipPath id="clip25_0_1">
+<rect width="279" height="48" fill="white" transform="translate(657 304)"/>
+</clipPath>
+<clipPath id="clip26_0_1">
+<rect width="279" height="48" fill="white" transform="translate(656 448)"/>
+</clipPath>
+<clipPath id="clip27_0_1">
+<rect width="279" height="48" fill="white" transform="translate(656 800)"/>
+</clipPath>
+<clipPath id="clip28_0_1">
+<rect width="246" height="48" fill="white" transform="translate(672 512)"/>
+</clipPath>
+<clipPath id="clip29_0_1">
+<rect width="246" height="48" fill="white" transform="translate(672 576)"/>
+</clipPath>
+<clipPath id="clip30_0_1">
+<rect width="246" height="48" fill="white" transform="translate(672 640)"/>
+</clipPath>
+<clipPath id="clip31_0_1">
+<rect width="272" height="48" fill="white" transform="translate(1000 768.462)"/>
+</clipPath>
+<clipPath id="clip32_0_1">
+<rect width="272" height="48" fill="white" transform="translate(1000 832.462)"/>
+</clipPath>
+<clipPath id="clip33_0_1">
+<rect width="272" height="48" fill="white" transform="translate(1000 896)"/>
+</clipPath>
+<clipPath id="clip34_0_1">
+<rect width="248" height="48" fill="white" transform="translate(672 368)"/>
+</clipPath>
+<clipPath id="clip35_0_1">
+<rect width="1305" height="48" fill="white" transform="translate(47 1040)"/>
+</clipPath>
+<clipPath id="clip36_0_1">
+<rect width="240" height="56" fill="white" transform="translate(64 1105)"/>
+</clipPath>
+<clipPath id="clip37_0_1">
+<rect width="128" height="56" fill="white" transform="translate(591 1105)"/>
+</clipPath>
+<clipPath id="clip38_0_1">
+<rect width="104" height="56" fill="white" transform="translate(471 1105)"/>
+</clipPath>
+<clipPath id="clip39_0_1">
+<rect width="135" height="56" fill="white" transform="translate(320 1105)"/>
+</clipPath>
+<clipPath id="clip40_0_1">
+<rect width="116" height="56" fill="white" transform="translate(888 1105)"/>
+</clipPath>
+<clipPath id="clip41_0_1">
+<rect width="172" height="56" fill="white" transform="translate(1020 1105)"/>
+</clipPath>
+<clipPath id="clip42_0_1">
+<rect width="137" height="56" fill="white" transform="translate(735 1105)"/>
+</clipPath>
+<clipPath id="clip43_0_1">
+<rect width="128" height="56" fill="white" transform="translate(1208 1105)"/>
+</clipPath>
+<clipPath id="clip44_0_1">
+<rect width="248" height="66" fill="white" transform="translate(80 176)"/>
+</clipPath>
+<clipPath id="clip45_0_1">
+<rect width="216" height="66" fill="white" transform="translate(112 258)"/>
+</clipPath>
+<clipPath id="clip46_0_1">
+<rect width="216" height="48" fill="white" transform="translate(112 340)"/>
+</clipPath>
+<clipPath id="clip47_0_1">
+<rect width="184" height="48" fill="white" transform="translate(425 688)"/>
+</clipPath>
+</defs>
+</svg>
