@@ -115,7 +115,7 @@ No modules.
 | <a name="input_mas_license"></a> [mas\_license](#input\_mas\_license) | MAS License file content | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | Cluster region | `string` | n/a | yes |
 
-### Outputs 
+### Outputs
 
 | Name | Description |
 |------|-------------|
