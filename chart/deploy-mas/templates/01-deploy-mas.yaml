@@ -42,7 +42,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: mas-deploy-sync-role
-  generateName: "mirror-core-811x-"
+  generateName: "mas-deploy-sync-role-"
   namespace: mas-{{ .Values.mas_instance_id }}-pipelines
   annotations:
     checkov.io/skip1: CKV_K8S_20
@@ -165,4 +165,4 @@ spec:
 
       restartPolicy: Never
       serviceAccountName: sync-sa
-  backoffLimit: 0
+  backoffLimit: 6
