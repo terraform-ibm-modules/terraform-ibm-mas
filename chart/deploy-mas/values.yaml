@@ -14,3 +14,19 @@ pipeline_storage_class: ibmc-vpc-block-retain-10iops-tier
 pipeline_storage_accessmode: ReadWriteOnce
 mas_entitlement_key: replace
 mas_license: replace
+deployment_flavour: replace
+
+# manage specific
+manage_channel: 8.7.x
+manage_jdbc_config_scope: workspace-application
+manage_components: "base=latest,health=latest"
+db2u_channel: "v110508.0"
+db2u_cpu_request: 4000m 
+db2u_cpu_limit: 6000m
+db2u_memory_request: 8Gi
+db2u_memory_limit: 12Gi
+db2u_backup_storage: 100Gi 
+db2u_data_storage: 100Gi
+db2u_logs_storage: 100Gi 
+db2u_meta_storage: 20Gi
+db2u_temp_storage: 100Gi
