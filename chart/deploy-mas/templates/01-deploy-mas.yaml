@@ -159,6 +159,7 @@ spec:
 
               else
                 echo "Passed DEPLOYMENT_FLAVOUR not supported, Supported values = core, mange"
+                exit 1
               fi
 
           env:
