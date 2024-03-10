@@ -107,7 +107,6 @@ spec:
               echo "STORAGE_CLASS_RWX=${STORAGE_CLASS_RWX}"
               echo "PIPELINE_STORAGE_CLASS=${PIPELINE_STORAGE_CLASS}"
               echo "PIPELINE_STORAGE_ACCESSMODE=${PIPELINE_STORAGE_ACCESSMODE}"
-
               echo "MANAGE_CHANNEL=${MANAGE_CHANNEL}"
               echo "MANAGE_JDBC_CONFIG_SCOPE=${MANAGE_JDBC_CONFIG_SCOPE}"
               echo "MANAGE_COMPONENTS=${MANAGE_COMPONENTS}"
@@ -120,7 +119,7 @@ spec:
               echo "DB2U_DATA_STORAGE=${DB2U_DATA_STORAGE}"
               echo "DB2U_LOGS_STORAGE=${DB2U_LOGS_STORAGE}"
               echo "DB2U_META_STORAGE=${DB2U_META_STORAGE}"
-              echo "DB2U_TEMP_STORAGE=${DB2U_TEMP_STORAGE}"	
+              echo "DB2U_TEMP_STORAGE=${DB2U_TEMP_STORAGE}"
 
               echo "DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR}"
               DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR:-"core"}
@@ -167,7 +166,7 @@ spec:
               value: "{{ .Values.mas_instance_id }}"
 
             - name: MAS_WORKSPACE_ID
-              value: "{{ .Values.mas_workspace_id  }}"
+              value: "{{ .Values.mas_workspace_id }}"
             - name: MAS_WORKSPACE_NAME
               value: "{{ .Values.mas_workspace_name }}"
             - name: MAS_CATALOG_VERSION
@@ -178,7 +177,7 @@ spec:
             - name: SLS_LICENSE_ID
               value: "{{ .Values.sls_license_id }}"
             - name: UDS_CONTACT_EMAIL
-              value: "{{ .Values.uds_contact_email  }}"
+              value: "{{ .Values.uds_contact_email }}"
             - name: UDS_CONTACT_FIRSTNAME
               value: "{{ .Values.uds_contact_firstname }}"
             - name: UDS_CONTACT_LASTNAME
@@ -196,7 +195,7 @@ spec:
             - name: MANAGE_CHANNEL
               value: "{{ .Values.manage_channel }}"
             - name: MANAGE_JDBC_CONFIG_SCOPE
-              value: "{{ .Values.manage_jdbc_config_scope  }}"
+              value: "{{ .Values.manage_jdbc_config_scope }}"
             - name: MANAGE_COMPONENTS
               value: "{{ .Values.manage_components }}"
             - name: DB2U_CHANNEL
@@ -233,7 +232,6 @@ spec:
                 secretKeyRef:
                   name: mas-deploy
                   key: authorized_entitlement
-
 
       restartPolicy: Never
       serviceAccountName: sync-sa
