@@ -62,6 +62,7 @@ metadata:
     checkov.io/skip15: CKV_K8S_23
     checkov.io/skip16: CKV_K8S_22
 spec:
+  ttlSecondsAfterFinished: 10
   template:
     metadata:
       labels:
@@ -86,15 +87,11 @@ spec:
 
               set -e
 
-              #TODO : move authorized_entitlement file to IBM secret manager. ( for POC, we are keeping locally )
               SLS_LICENSE_FILE_LOCAL=/tmp/authorized_entitlement.lic
-
-              #echo "AUTHORIZED_ENTITLEMENT = ${AUTHORIZED_ENTITLEMENT} "
-              echo ${AUTHORIZED_ENTITLEMENT} > /tmp/authorized_entitlement.lic
               printf "$AUTHORIZED_ENTITLEMENT\n" > /tmp/authorized_entitlement.lic
-              echo "--------------------"
+              echo "------authorized_entitlement.lic--------------"
               cat /tmp/authorized_entitlement.lic
-              echo "--------------------"
+              echo "------authorized_entitlement.lic--------------"
 
               echo "MAS_INSTANCE_ID=${MAS_INSTANCE_ID}"
               echo "MAS_WORKSPACE_ID${MAS_WORKSPACE_ID}"
@@ -110,22 +107,66 @@ spec:
               echo "STORAGE_CLASS_RWX=${STORAGE_CLASS_RWX}"
               echo "PIPELINE_STORAGE_CLASS=${PIPELINE_STORAGE_CLASS}"
               echo "PIPELINE_STORAGE_ACCESSMODE=${PIPELINE_STORAGE_ACCESSMODE}"
+              echo "MANAGE_CHANNEL=${MANAGE_CHANNEL}"
+              echo "MANAGE_JDBC_CONFIG_SCOPE=${MANAGE_JDBC_CONFIG_SCOPE}"
+              echo "MANAGE_COMPONENTS=${MANAGE_COMPONENTS}"
+              echo "DB2U_CHANNEL=${DB2U_CHANNEL}"
+              echo "DB2U_CPU_REQUEST=${DB2U_CPU_REQUEST}"
+              echo "DB2U_CPU_LIMIT=${DB2U_CPU_LIMIT}"
+              echo "DB2U_MEMORY_REQUEST=${DB2U_MEMORY_REQUEST}"
+              echo "DB2U_MEMORY_LIMIT=${DB2U_MEMORY_LIMIT}"
+              echo "DB2U_BACKUP_STORAGE=${DB2U_BACKUP_STORAGE}"
+              echo "DB2U_DATA_STORAGE=${DB2U_DATA_STORAGE}"
+              echo "DB2U_LOGS_STORAGE=${DB2U_LOGS_STORAGE}"
+              echo "DB2U_META_STORAGE=${DB2U_META_STORAGE}"
+              echo "DB2U_TEMP_STORAGE=${DB2U_TEMP_STORAGE}"
 
-              mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
-                -W "${MAS_WORKSPACE_NAME}" -c "${MAS_CATALOG_VERSION}" \
-                --mas-channel "${MAS_CHANNEL}" --ibm-entitlement-key ${ENTITLEMENT_KEY} \
-                --license-id ${SLS_LICENSE_ID} --license-file ${SLS_LICENSE_FILE_LOCAL} \
-                --uds-email ${UDS_CONTACT_EMAIL} --uds-firstname ${UDS_CONTACT_FIRSTNAME} \
-                --uds-lastname ${UDS_CONTACT_LASTNAME} --storage-rwx ${STORAGE_CLASS_RWX} \
-                --storage-pipeline ${PIPELINE_STORAGE_CLASS} --storage-accessmode ${PIPELINE_STORAGE_ACCESSMODE} \
-                --no-confirm --accept-license
+              echo "DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR}"
+              DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR:-"core"}
+
+              if [ "${DEPLOYMENT_FLAVOUR}" == "core" ]; then
+                echo "Core installation started"
+
+                mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
+                  -W "${MAS_WORKSPACE_NAME}" -c "${MAS_CATALOG_VERSION}" \
+                  --mas-channel "${MAS_CHANNEL}" --ibm-entitlement-key "${ENTITLEMENT_KEY}" \
+                  --license-id "${SLS_LICENSE_ID}" --license-file "${SLS_LICENSE_FILE_LOCAL}" \
+                  --uds-email "${UDS_CONTACT_EMAIL}" --uds-firstname "${UDS_CONTACT_FIRSTNAME}" \
+                  --uds-lastname "${UDS_CONTACT_LASTNAME}" --storage-rwx "${STORAGE_CLASS_RWX}" \
+                  --storage-pipeline "${PIPELINE_STORAGE_CLASS}" --storage-accessmode "${PIPELINE_STORAGE_ACCESSMODE}" \
+                  --no-confirm --no-wait-for-pvcs --accept-license
+
+              elif [ "${DEPLOYMENT_FLAVOUR}" == "manage" ]; then
+                echo "Core+Manage installation started"
+
+                mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
+                  -W "${MAS_WORKSPACE_NAME}" -c "${MAS_CATALOG_VERSION}" \
+                  --mas-channel "${MAS_CHANNEL}" --ibm-entitlement-key ${ENTITLEMENT_KEY} \
+                  --license-id "${SLS_LICENSE_ID}" --license-file ${SLS_LICENSE_FILE_LOCAL} \
+                  --uds-email "${UDS_CONTACT_EMAIL}" --uds-firstname "${UDS_CONTACT_FIRSTNAME}" \
+                  --uds-lastname "${UDS_CONTACT_LASTNAME}" --storage-rwx "${STORAGE_CLASS_RWX}" --storage-rwo "${STORAGE_CLASS_RWO}" \
+                  --storage-pipeline "${PIPELINE_STORAGE_CLASS}" --storage-accessmode "${PIPELINE_STORAGE_ACCESSMODE}" \
+                  --manage-channel "${MANAGE_CHANNEL}" \
+                  --manage-jdbc "${MANAGE_JDBC_CONFIG_SCOPE}" --manage-components "${MANAGE_COMPONENTS}" \
+                  --db2u-channel "${DB2U_CHANNEL}" --db2u-manage \
+                  --db2u-cpu-request "${DB2U_CPU_REQUEST}" --db2u-cpu-limit "${DB2U_CPU_LIMIT}" \
+                  --db2u-memory-request "${DB2U_MEMORY_REQUEST}" --db2u-memory-limit "${DB2U_MEMORY_LIMIT}" \
+                  --db2u-backup-storage "${DB2U_BACKUP_STORAGE}" --db2u-data-storage "${DB2U_DATA_STORAGE}" \
+                  --db2u-logs-storage "${DB2U_LOGS_STORAGE}" --db2u-meta-storage "${DB2U_META_STORAGE}" \
+                  --db2u-temp-storage "${DB2U_TEMP_STORAGE}" \
+                  --no-confirm --no-wait-for-pvcs --accept-license
+
+              else
+                echo "Passed DEPLOYMENT_FLAVOUR not supported, Supported values = core, mange"
+                exit 1
+              fi
 
           env:
             - name: MAS_INSTANCE_ID
               value: "{{ .Values.mas_instance_id }}"
 
             - name: MAS_WORKSPACE_ID
-              value: "{{ .Values.mas_workspace_id  }}"
+              value: "{{ .Values.mas_workspace_id }}"
             - name: MAS_WORKSPACE_NAME
               value: "{{ .Values.mas_workspace_name }}"
             - name: MAS_CATALOG_VERSION
@@ -136,7 +177,7 @@ spec:
             - name: SLS_LICENSE_ID
               value: "{{ .Values.sls_license_id }}"
             - name: UDS_CONTACT_EMAIL
-              value: "{{ .Values.uds_contact_email  }}"
+              value: "{{ .Values.uds_contact_email }}"
             - name: UDS_CONTACT_FIRSTNAME
               value: "{{ .Values.uds_contact_firstname }}"
             - name: UDS_CONTACT_LASTNAME
@@ -150,6 +191,36 @@ spec:
             - name: PIPELINE_STORAGE_ACCESSMODE
               value: "{{ .Values.pipeline_storage_accessmode }}"
 
+            # Manage specific
+            - name: MANAGE_CHANNEL
+              value: "{{ .Values.manage_channel }}"
+            - name: MANAGE_JDBC_CONFIG_SCOPE
+              value: "{{ .Values.manage_jdbc_config_scope }}"
+            - name: MANAGE_COMPONENTS
+              value: "{{ .Values.manage_components }}"
+            - name: DB2U_CHANNEL
+              value: "{{ .Values.db2u_channel }}"
+            - name: DB2U_CPU_REQUEST
+              value: "{{ .Values.db2u_cpu_request }}"
+            - name: DB2U_CPU_LIMIT
+              value: "{{ .Values.db2u_cpu_limit }}"
+            - name: DB2U_MEMORY_REQUEST
+              value: "{{ .Values.db2u_memory_request }}"
+            - name: DB2U_MEMORY_LIMIT
+              value: "{{ .Values.db2u_memory_limit }}"
+            - name: DB2U_BACKUP_STORAGE
+              value: "{{ .Values.db2u_backup_storage }}"
+            - name: DB2U_DATA_STORAGE
+              value: "{{ .Values.db2u_data_storage }}"
+            - name: DB2U_LOGS_STORAGE
+              value: "{{ .Values.db2u_logs_storage }}"
+            - name: DB2U_META_STORAGE
+              value: "{{ .Values.db2u_meta_storage }}"
+            - name: DB2U_TEMP_STORAGE
+              value: "{{ .Values.db2u_temp_storage }}"
+            - name: DEPLOYMENT_FLAVOUR
+              value: "{{ .Values.deployment_flavour }}"
+
             - name: ENTITLEMENT_KEY
               valueFrom:
                 secretKeyRef:
@@ -161,7 +232,6 @@ spec:
                 secretKeyRef:
                   name: mas-deploy
                   key: authorized_entitlement
-
 
       restartPolicy: Never
       serviceAccountName: sync-sa
