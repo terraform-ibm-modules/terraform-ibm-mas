@@ -1,20 +1,12 @@
-locals {
-  # sleep times definition
-  # sleep_time_catalog_create  = "60s"
-  # sleep_time_operator_create = "120s"
-
-  # helm chart names
-  #maximo_chart                 = "ibm-operator-catalog"
-
-  # validation of ws_liberty_operator_target_namespace - if null the value of ws_liberty_operator_namespace must be equal to "openshift-operators" https://www.ibm.com/docs/en/was-liberty/core?topic=operator-installing-red-hat-openshift-cli#in-t-cli__install-op-cli__title__1
-  #default_liberty_operator_namespace = "openshift-operators"
-
-}
-
 data "ibm_container_cluster_config" "cluster_config" {
   cluster_name_id = var.cluster_id
   config_dir      = "${path.module}/kubeconfig"
   endpoint_type   = var.cluster_config_endpoint_type != "default" ? var.cluster_config_endpoint_type : null
+}
+
+resource "time_sleep" "wait_300_seconds" {
+  create_duration = "300s"
+  depends_on = [helm_release.maximo_operator_catalog]
 }
 
 resource "helm_release" "maximo_operator_catalog" {
@@ -30,8 +22,8 @@ resource "helm_release" "maximo_operator_catalog" {
     type  = "string"
     value = base64encode(var.mas_license)
   }
-
-  name             = "maximo-operator-catalog-helm-release"
+  
+   name             = "maximo-operator-catalog-helm-release"
   chart            = "${path.module}/chart/deploy-mas"
   create_namespace = false
   timeout          = 300
@@ -43,4 +35,26 @@ resource "helm_release" "maximo_operator_catalog" {
   recreate_pods              = true
   disable_openapi_validation = false
 
+
+}
+
+resource "null_resource" "install_verify" {
+
+provisioner "local-exec" {
+    interpreter = ["/bin/bash", "-c"]
+    command     = "${path.module}/scripts/installVerify.sh"
+	environment = {
+      KUBECONFIG = data.ibm_container_cluster_config.cluster_config.config_file_path
+    }
+  }
+  depends_on = [time_sleep.wait_300_seconds]
+}
+
+data "external" "maximo_admin_url" {
+
+  program    = ["/bin/bash", "${path.module}/scripts/getAdminURL.sh"]
+  query = {
+    KUBECONFIG   = data.ibm_container_cluster_config.cluster_config.config_file_path
+  }
+  depends_on = [null_resource.install_verify]
 }
