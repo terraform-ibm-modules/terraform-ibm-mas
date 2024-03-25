@@ -104,9 +104,19 @@ spec:
       labels:
         app: {{ $job_name }}
     spec:
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+        seccompProfile:
+          type: RuntimeDefault
+        capabilities:
+          drop:
+          - ALL
       containers:
         - name: {{ $job_name }}
-          image: quay.io/ibmmas/cli:7.14.0-pre.master
+          #image: quay.io/ibmmas/cli:7.16.0-pre.master
+          image: quay.io/ibmmas/cli@sha256:d1092b058928633f8e4f2f6052ad20427d01589d3365b9db3dd31784b7edcd8d
           imagePullPolicy: Always
           resources:
             limits:
@@ -163,7 +173,6 @@ spec:
 
               echo "DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR}"
               DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR:-"core"}
-              DEPLOYMENT_FLAVOUR="norun"
               if [ "${DEPLOYMENT_FLAVOUR}" == "core" ]; then
                 echo "Core installation started"
 
