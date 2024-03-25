@@ -14,6 +14,55 @@ variable "region" {
   nullable    = false
 }
 
+variable "mas_instance_id" {
+  type        = string
+  description = "Enter the MAS instance Id"
+  nullable    = false
+}
+
+variable "mas_workspace_id" {
+  type        = string
+  description = "Enter the workspace Id"
+  nullable    = false
+}
+
+variable "mas_workspace_name" {
+  type        = string
+  description = "Enter the workspace name"
+  nullable    = false
+}
+
+variable "deployment_flavour" {
+  type        = string
+  description = "Enter core for just MAS Core and enter manage for MAS Core+Manage"
+  nullable    = false
+}
+
+variable "sls_license_id" {
+  type        = string
+  description = "Enter the SLS license ID"
+  sensitive   = true
+  nullable    = false
+}
+
+variable "uds_contact_email" {
+  type        = string
+  description = "Enter the email ID for UDS"
+  nullable    = false
+}
+
+variable "uds_contact_firstname" {
+  type        = string
+  description = "Enter your first name to be used in UDS"
+  nullable    = false
+}
+
+variable "uds_contact_lastname" {
+  type        = string
+  description = "Enter your last name to be used in UDS"
+  nullable    = false
+}
+
 variable "mas_entitlement_key" {
   description = "Entitlement key to access MAS Image registry"
   type        = string
@@ -31,13 +80,6 @@ variable "cluster_id" {
   description = "Id of the target IBM Cloud OpenShift Cluster"
   nullable    = false
 }
-
-# variable "resource_group" {
-#   type        = string
-#   description = "Resource group to provision the cluster in"
-#   default     = null
-# }
-
 
 variable "cluster_config_endpoint_type" {
   description = "Specify which type of endpoint to use for for cluster config access: 'default', 'private', 'vpe', 'link'. 'default' value will use the default endpoint of the cluster."
