@@ -1,27 +1,27 @@
-KSV001 # "Containers should not run with allowPrivilegeEscalation"
+#KSV001 # "Containers should not run with allowPrivilegeEscalation"
 
-KSV003 # "The container should drop all default capabilities"
+#KSV003 # "The container should drop all default capabilities"
 
-KSV011 # "CPU limits should be set"
+#KSV011 # "CPU limits should be set"
 
-KSV012 # "Container should not be privileged"
+#KSV012 # "Container should not be privileged"
 
-KSV014 # "Use read-only filesystem for containers where possible"
+#KSV014 # "Use read-only filesystem for containers where possible"
 
-KSV015 # "CPU requests should be set"
+#KSV015 # "CPU requests should be set"
 
-KSV016 # "Memory requests should be set"
+#KSV016 # "Memory requests should be set"
 
-KSV018 # "Memory limits should be set"
+#KSV018 # "Memory limits should be set"
 
-KSV020 # "Force the container to run with user ID > 10000"
+#KSV020 # "Force the container to run with user ID > 10000"
 
-KSV021 # "Force the container to run with group ID > 10000"
+#KSV021 # "Force the container to run with group ID > 10000"
 
-KSV030 # "Use sefault seccomp"
+#KSV030 # "Use sefault seccomp"
 
-KSV104 # "The default namespace should not be used"
+#KSV104 # "The default namespace should not be used"
 
-KSV106 # "Container capabilities must only include NET_BIND_SERVICE "
+#KSV106 # "Container capabilities must only include NET_BIND_SERVICE "
 
-KSV111 # "Cluster admin role only used where required"
+#KSV111 # "Cluster admin role only used where required"

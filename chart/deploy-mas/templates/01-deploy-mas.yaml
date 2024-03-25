@@ -1,15 +1,24 @@
+{{ $ns              :=  printf "mas-%s-pipelines" .Values.mas_instance_id }}
+{{ $role_name       :=  "mas-deploy-role" }}
+{{ $secret_name       :=  "mas-deploy-secret" }}
+{{ $crole_name      :=  "mas-deploy-crole" }}
+{{ $sa_name         :=  "mas-deploy-sa" }}
+{{ $rb_name         :=  "mas-deploy-rb" }}
+{{ $crb_name        :=  "mas-deploy-crb" }}
+{{ $job_name        :=  "mas-deploy-job" }}
+
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: mas-{{ .Values.mas_instance_id }}-pipelines
+  name: {{ $ns }}
 
 ---
 kind: Secret
 apiVersion: v1
 metadata:
-  name: mas-deploy
-  namespace: mas-{{ .Values.mas_instance_id }}-pipelines
+  name: {{ $secret_name }}
+  namespace: {{ $ns }}
 data:
   entitlement_key: {{ .Values.mas_entitlement_key }}
   authorized_entitlement: {{ .Values.mas_license }}
@@ -19,31 +28,78 @@ type: Opaque
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: sync-sa
-  namespace: mas-{{ .Values.mas_instance_id }}-pipelines
+  name: {{ $sa_name }}
+  namespace: {{ $ns }}
+
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ $role_name }}
+  namespace: {{ $ns }}
+rules:
+  - verbs:
+      - get
+    apiGroups:
+      - ""
+    resources:
+      - secrets
+  - verbs:
+      - get
+    apiGroups:
+      - "route.openshift.io"
+    resources:
+      - routes
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ $rb_name }}
+  namespace: {{ $ns }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ $sa_name }}
+    namespace: {{ $ns }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ $role_name }}
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ $crole_name }}
+rules:
+  - verbs:
+      - get
+      - list
+    apiGroups:
+      - ""
+    resources:
+      - nodes
 
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: sync-sa
-  namespace: mas-{{ .Values.mas_instance_id }}-pipelines
+  name: {{ $crb_name }}
+  namespace: {{ $ns }}
 subjects:
   - kind: ServiceAccount
-    name: sync-sa
-    namespace: mas-{{ .Values.mas_instance_id }}-pipelines
+    name: {{ $sa_name }}
+    namespace: {{ $ns }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: cluster-admin
+  name: {{ $crole_name }}
 
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: mas-deploy-sync-role
-  generateName: "mas-deploy-sync-role-"
-  namespace: mas-{{ .Values.mas_instance_id }}-pipelines
+  name: {{ $job_name }}
+  generateName: "{{ $job_name }}-"
+  namespace: {{ $ns }}
   annotations:
     checkov.io/skip1: CKV_K8S_20
     checkov.io/skip2: CKV_K8S_37
@@ -66,16 +122,19 @@ spec:
   template:
     metadata:
       labels:
-        app: "mas-deploy-job"
+        app: {{ $job_name }}
     spec:
-      volumes:
-        #- name: pv-storage
-        #  persistentVolumeClaim:
-        #    claimName: config-pvc
       containers:
-        - name: mas-deploy
+        - name: {{ $job_name }}
           image: quay.io/ibmmas/cli:7.14.0-pre.master
           imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 200m
+              memory: 512Mi
+            requests:
+              cpu: 10m
+              memory: 64Mi
           #volumeMounts:
           #  - mountPath: "/usr/config-pvc"
           #    name: pv-storage
@@ -84,13 +143,15 @@ spec:
             - -c
             - |
 
-
               set -e
 
-              SLS_LICENSE_FILE_LOCAL=/tmp/authorized_entitlement.lic
-              printf "$AUTHORIZED_ENTITLEMENT\n" > /tmp/authorized_entitlement.lic
+              export AUTHORIZED_ENTITLEMENT=$(cat /etc/mas/deploy/secrets/entitlement_key)
+              export ENTITLEMENT_KEY=$(cat /etc/mas/deploy/secrets/authorized_entitlement)
+              echo "ENTITLEMENT_KEY=${ENTITLEMENT_KEY}"
+              SLS_LICENSE_FILE_LOCAL=/etc/mas/deploy/secrets/authorized_entitlement
+              #$printf "$AUTHORIZED_ENTITLEMENT\n" > /tmp/authorized_entitlement.lic
               echo "------authorized_entitlement.lic--------------"
-              cat /tmp/authorized_entitlement.lic
+              cat $SLS_LICENSE_FILE_LOCAL
               echo "------authorized_entitlement.lic--------------"
 
               echo "MAS_INSTANCE_ID=${MAS_INSTANCE_ID}"
@@ -98,7 +159,6 @@ spec:
               echo "MAS_WORKSPACE_NAME=${MAS_WORKSPACE_NAME}"
               echo "MAS_CATALOG_VERSION=${MAS_CATALOG_VERSION}"
               echo "MAS_CHANNEL=${MAS_CHANNEL}"
-              echo "ENTITLEMENT_KEY=${ENTITLEMENT_KEY}"
               echo "SLS_LICENSE_ID=${SLS_LICENSE_ID}"
               echo "SLS_LICENSE_FILE_LOCAL=${SLS_LICENSE_FILE_LOCAL}"
               echo "UDS_CONTACT_EMAIL=${UDS_CONTACT_EMAIL}"
@@ -123,7 +183,7 @@ spec:
 
               echo "DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR}"
               DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR:-"core"}
-
+              DEPLOYMENT_FLAVOUR="norun"
               if [ "${DEPLOYMENT_FLAVOUR}" == "core" ]; then
                 echo "Core installation started"
 
@@ -224,15 +284,34 @@ spec:
             - name: ENTITLEMENT_KEY
               valueFrom:
                 secretKeyRef:
-                  name: mas-deploy
+                  name: {{ $secret_name }}
                   key: entitlement_key
 
             - name: AUTHORIZED_ENTITLEMENT
               valueFrom:
                 secretKeyRef:
-                  name: mas-deploy
+                  name: {{ $secret_name }}
                   key: authorized_entitlement
 
+          volumeMounts:
+            - name: {{ $secret_name }}
+              mountPath: /etc/mas/deploy/secrets
+
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+              - ALL
       restartPolicy: Never
-      serviceAccountName: sync-sa
+      serviceAccountName: {{ $sa_name }}
+      volumes:
+        - name: {{ $secret_name }}
+          secret:
+            secretName: {{ $secret_name }}
+            defaultMode: 420
+            optional: false
   backoffLimit: 6
