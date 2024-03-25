@@ -1,8 +1,9 @@
 {{ $ns              :=  printf "mas-%s-pipelines" .Values.mas_instance_id }}
 {{ $role_name       :=  "mas-deploy-role" }}
-{{ $secret_name       :=  "mas-deploy-secret" }}
+{{ $secret_name     :=  "mas-deploy-secret" }}
 {{ $crole_name      :=  "mas-deploy-crole" }}
 {{ $sa_name         :=  "mas-deploy-sa" }}
+{{ $scc_name        :=  "mas-deploy-scc" }}
 {{ $rb_name         :=  "mas-deploy-rb" }}
 {{ $crb_name        :=  "mas-deploy-crb" }}
 {{ $job_name        :=  "mas-deploy-job" }}
@@ -32,18 +33,29 @@ metadata:
   namespace: {{ $ns }}
 
 ---
+kind: SecurityContextConstraints
+apiVersion: security.openshift.io/v1
+metadata:
+  name: {{ $scc_name }}
+allowPrivilegedContainer: true
+runAsUser:
+  type: MustRunAsRange
+  uidRangeMax: 1000900000
+  uidRangeMin: 1000800000
+seLinuxContext:
+  type: RunAsAny
+
+---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: {{ $role_name }}
   namespace: {{ $ns }}
 rules:
-  - verbs:
-      - get
-    apiGroups:
-      - ""
-    resources:
-      - ""
+  - apiGroups: ["security.openshift.io"]
+    resources: ["securitycontextconstraints"]
+    resourceNames: [ "{{ $scc_name }}" ]
+    verbs: ["use"]
 
 ---
 kind: RoleBinding
@@ -67,23 +79,23 @@ metadata:
   name: {{ $job_name }}
   generateName: "{{ $job_name }}-"
   namespace: {{ $ns }}
-  annotations:
-    checkov.io/skip1: CKV_K8S_20
-    checkov.io/skip2: CKV_K8S_37
-    checkov.io/skip3: CKV_K8S_40
-    checkov.io/skip4: CKV_K8S_35
-    checkov.io/skip5: CKV_K8S_43
-    checkov.io/skip6: CKV_K8S_38
-    checkov.io/skip7: CKV_K8S_13
-    checkov.io/skip8: CKV_K8S_11
-    checkov.io/skip9: CKV_K8S_10
-    checkov.io/skip10: CKV_K8S_29
-    checkov.io/skip11: CKV_K8S_28
-    checkov.io/skip12: CKV_K8S_31
-    checkov.io/skip13: CKV_K8S_30
-    checkov.io/skip14: CKV_K8S_12
-    checkov.io/skip15: CKV_K8S_23
-    checkov.io/skip16: CKV_K8S_22
+  #annotations:
+  #  checkov.io/skip1: CKV_K8S_20
+  #  checkov.io/skip2: CKV_K8S_37
+  #  checkov.io/skip3: CKV_K8S_40
+  #  checkov.io/skip4: CKV_K8S_35
+  #  checkov.io/skip5: CKV_K8S_43
+  #  checkov.io/skip6: CKV_K8S_38
+  #  checkov.io/skip7: CKV_K8S_13
+  #  checkov.io/skip8: CKV_K8S_11
+  #  checkov.io/skip9: CKV_K8S_10
+  #  checkov.io/skip10: CKV_K8S_29
+  #  checkov.io/skip11: CKV_K8S_28
+  #  checkov.io/skip12: CKV_K8S_31
+  #  checkov.io/skip13: CKV_K8S_30
+  #  checkov.io/skip14: CKV_K8S_12
+  #  checkov.io/skip15: CKV_K8S_23
+  #  checkov.io/skip16: CKV_K8S_22
 spec:
   ttlSecondsAfterFinished: 10
   template:
@@ -268,8 +280,6 @@ spec:
             runAsNonRoot: true
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
-            runAsUser: 1000900000
-            runAsGroup: 1000900000
             seccompProfile:
               type: RuntimeDefault
             capabilities:
