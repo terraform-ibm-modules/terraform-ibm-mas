@@ -64,34 +64,6 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: {{ $role_name }}
----
-kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: {{ $crole_name }}
-rules:
-  - verbs:
-      - get
-      - list
-    apiGroups:
-      - ""
-    resources:
-      - nodes
-
----
-kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: {{ $crb_name }}
-  namespace: {{ $ns }}
-subjects:
-  - kind: ServiceAccount
-    name: {{ $sa_name }}
-    namespace: {{ $ns }}
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: {{ $crole_name }}
 
 ---
 apiVersion: batch/v1
