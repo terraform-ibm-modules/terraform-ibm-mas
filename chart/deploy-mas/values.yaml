@@ -2,7 +2,8 @@
 mas_instance_id: inst1
 mas_workspace_id: wrkid1
 mas_workspace_name: wrkns1
-mas_catalog_version: v8-amd64
+# catalog which support dro install by default
+mas_catalog_version: v8-240227-amd64
 mas_channel: 8.11.x
 sls_license_id: 0242ac110002
 uds_contact_email: nataraj.s@in.ibm.com
