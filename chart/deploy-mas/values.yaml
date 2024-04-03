@@ -31,3 +31,4 @@ db2u_data_storage: 100Gi
 db2u_logs_storage: 100Gi
 db2u_meta_storage: 20Gi
 db2u_temp_storage: 100Gi
+readonly_root_filesystem: "false"
