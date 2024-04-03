@@ -112,12 +112,31 @@ metadata:
   name: {{ $role_name }}
   namespace: {{ $ns }}
 rules:
-  - verbs:
-      - '*'
-    apiGroups:
-      - '*'
-    resources:
-      - '*'
+  - apiGroups: ["*"]
+    resources: ["nodes"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["*"]
+    resources: ["clusterversions"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["*"]
+    resources: ["catalogsources"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["*"]
+    resources: ["packagemanifests"]
+    verbs: ["get", "list", "watch"]
+
+  - apiGroups: [""]
+    resources: ["persistentvolumes"]
+    verbs: ["get", "list", "watch", "create", "delete"]
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims"]
+    verbs: ["get", "list", "watch", "update"]
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["storageclasses"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "update", "patch"]
 
 
 ---
@@ -125,14 +144,32 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: {{ $crole_name }}
-
 rules:
-  - verbs:
-      - '*'
-    apiGroups:
-      - '*'
-    resources:
-      - '*'
+  - apiGroups: ["*"]
+    resources: ["nodes"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["*"]
+    resources: ["clusterversions"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["*"]
+    resources: ["catalogsources"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["*"]
+    resources: ["packagemanifests"]
+    verbs: ["get", "list", "watch"]
+
+  - apiGroups: [""]
+    resources: ["persistentvolumes"]
+    verbs: ["get", "list", "watch", "create", "delete"]
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims"]
+    verbs: ["get", "list", "watch", "update"]
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["storageclasses"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "update", "patch"]
 
 ---
 kind: RoleBinding
@@ -213,10 +250,10 @@ spec:
 
           imagePullPolicy: Always
           securityContext:
+            readOnlyRootFilesystem: {{ $readonly_root_filesystem }}
             runAsNonRoot: true
             #runAsUser: 1007770000
             allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: {{ $readonly_root_filesystem }}
             seccompProfile:
               type: RuntimeDefault
             capabilities:
@@ -398,4 +435,5 @@ spec:
             secretName: {{ $secret_name }}
             defaultMode: 420
             optional: false
+
   backoffLimit: 6
