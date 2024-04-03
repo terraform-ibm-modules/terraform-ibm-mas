@@ -71,7 +71,7 @@ apiVersion: security.openshift.io/v1
 defaultAddCapabilities: null
 fsGroup:
   ranges:
-  - max: 65535
+  - max: 1077770000
     min: 1
   type: MustRunAs
 groups: []
@@ -79,22 +79,21 @@ kind: SecurityContextConstraints
 metadata:
   annotations:
     kubernetes.io/description: This policy is the most restrictive to Deploy MAS 
-
   name: {{ $scc_name }}
   namespace: {{ $ns }}
-readOnlyRootFilesystem: false
+readOnlyRootFilesystem: true
 requiredDropCapabilities:
 - ALL
 runAsUser:
   type: MustRunAsRange
-  uidRangeMax: 65535
+  uidRangeMax: 1077770000
   uidRangeMin: 0
 seLinuxContext:
   type: RunAsAny
 seccompProfiles: null
 supplementalGroups:
   ranges:
-  - max: 65535
+  - max: 1077770000
     min: 1
   type: MustRunAs
 users: []
@@ -228,7 +227,7 @@ spec:
       serviceAccountName: {{ $sa_name }}
       securityContext:
         runAsNonRoot: true
-        #runAsUser: 1000770000
+        #runAsUser: 1007770000
       containers:
         - name: {{ $job_name }}
           #image: quay.io/ibmmas/cli:7.16.0-pre.master
@@ -237,9 +236,9 @@ spec:
           imagePullPolicy: Always
           securityContext:
             runAsNonRoot: true
-            #runAsUser: 1000770000
+            #runAsUser: 1007770000
             allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: false
+            readOnlyRootFilesystem: true
             seccompProfile:
               type: RuntimeDefault
             capabilities:
