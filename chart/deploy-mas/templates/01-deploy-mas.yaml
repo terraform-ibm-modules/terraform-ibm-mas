@@ -33,17 +33,78 @@ metadata:
   namespace: {{ $ns }}
 
 ---
-kind: SecurityContextConstraints
+#kind: SecurityContextConstraints
+#apiVersion: security.openshift.io/v1
+#metadata:
+#  name: {{ $scc_name }}
+#allowPrivilegedContainer: true
+#runAsUser:
+#  type: MustRunAsRange
+#  uidRangeMax: 1000900000
+#  uidRangeMin: 1000800000
+#seLinuxContext:
+#  type: RunAsAny
+
+---
+
+allowHostDirVolumePlugin: false
+allowHostIPC: false
+allowHostNetwork: false
+allowHostPID: false
+allowHostPorts: false
+allowPrivilegeEscalation: false
+allowPrivilegedContainer: false
+allowedCapabilities:
+- CHOWN
+- DAC_OVERRIDE
+- FOWNER
+- FSETID
+- KILL
+- SETGID
+- SETUID
+- SETPCAP
+- NET_BIND_SERVICE
+- NET_RAW
+- SYS_CHROOT
+allowedUnsafeSysctls: null
 apiVersion: security.openshift.io/v1
+defaultAddCapabilities: null
+fsGroup:
+  ranges:
+  - max: 65535
+    min: 1
+  type: MustRunAs
+groups: []
+kind: SecurityContextConstraints
 metadata:
+  annotations:
+    kubernetes.io/description: This policy is the most restrictive to Deploy MAS 
+
   name: {{ $scc_name }}
-allowPrivilegedContainer: true
+  namespace: {{ $ns }}
+readOnlyRootFilesystem: false
+requiredDropCapabilities:
+- ALL
 runAsUser:
   type: MustRunAsRange
-  uidRangeMax: 1000900000
-  uidRangeMin: 1000800000
+  uidRangeMax: 65535
+  uidRangeMin: 0
 seLinuxContext:
   type: RunAsAny
+seccompProfiles: null
+supplementalGroups:
+  ranges:
+  - max: 65535
+    min: 1
+  type: MustRunAs
+users: []
+volumes:
+- configMap
+- downwardAPI
+- emptyDir
+- persistentVolumeClaim
+- projected
+- secret
 
 ---
 kind: Role
@@ -52,10 +113,50 @@ metadata:
   name: {{ $role_name }}
   namespace: {{ $ns }}
 rules:
-  - apiGroups: ["security.openshift.io"]
-    resources: ["securitycontextconstraints"]
-    resourceNames: [ "{{ $scc_name }}" ]
-    verbs: ["use"]
+- apiGroups:
+  - security.openshift.io
+  resourceNames:
+  - {{ $scc_name }}
+  - restricted-v2
+  - restricted
+  resources:
+  - securitycontextconstraints
+  verbs:
+  - use
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ $crole_name }}
+
+rules:
+- apiGroups:
+  - security.openshift.io
+  resourceNames:
+  - {{ $scc_name }}
+  - restricted-v2
+  - restricted
+  resources:
+  - securitycontextconstraints
+  verbs:
+  - use
+- apiGroups:
+  - ""
+  resources:
+  - nodes
+  - pods
+  verbs:
+  - list
+- apiGroups:
+  - ""
+  resources:
+  - persistentvolumes
+  verbs:
+  - get
+  - list
+  - update
+  - watch
 
 ---
 kind: RoleBinding
@@ -64,13 +165,27 @@ metadata:
   name: {{ $rb_name }}
   namespace: {{ $ns }}
 subjects:
-  - kind: ServiceAccount
-    name: {{ $sa_name }}
-    namespace: {{ $ns }}
+- kind: ServiceAccount
+  name: {{ $sa_name }}
+  #namespace: {{ $ns }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: {{ $role_name }}
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ $crb_name }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ $crole_name }}
+subjects:
+- kind: ServiceAccount
+  name: {{ $sa_name }}
+  namespace: {{ $ns }}
 
 ---
 apiVersion: batch/v1
@@ -109,21 +224,27 @@ spec:
       labels:
         app: {{ $job_name }}
     spec:
+      restartPolicy: Never
+      serviceAccountName: {{ $sa_name }}
       securityContext:
         runAsNonRoot: true
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-        seccompProfile:
-          type: RuntimeDefault
-        capabilities:
-          drop:
-          - ALL
+        #runAsUser: 1000770000
       containers:
         - name: {{ $job_name }}
           #image: quay.io/ibmmas/cli:7.16.0-pre.master
           image: quay.io/ibmmas/cli@sha256:d1092b058928633f8e4f2f6052ad20427d01589d3365b9db3dd31784b7edcd8d
 
           imagePullPolicy: Always
+          securityContext:
+            runAsNonRoot: true
+            #runAsUser: 1000770000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop: ["ALL"]
+              #add: ["CHOWN", "DAC_OVERRIDE", "FOWNER", "FSETID", "KILL", "SETGID", "SETUID", "SETPCAP", "NET_BIND_SERVICE", "NET_RAW", "SYS_CHROOT"]
           resources:
             limits:
               cpu: 200m
@@ -179,6 +300,7 @@ spec:
 
               echo "DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR}"
               DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR:-"core"}
+
               if [ "${DEPLOYMENT_FLAVOUR}" == "core" ]; then
                 echo "Core installation started"
 
@@ -290,19 +412,9 @@ spec:
 
           volumeMounts:
             - name: {{ $secret_name }}
+              readOnly: true
               mountPath: /etc/mas/deploy/secrets
 
-          securityContext:
-            runAsNonRoot: true
-            allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: true
-            seccompProfile:
-              type: RuntimeDefault
-            capabilities:
-              drop:
-              - ALL
-      restartPolicy: Never
-      serviceAccountName: {{ $sa_name }}
       volumes:
         - name: {{ $secret_name }}
           secret:
