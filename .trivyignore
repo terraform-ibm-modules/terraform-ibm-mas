@@ -14,9 +14,9 @@
 
 #KSV018 # "Memory limits should be set"
 
-KSV020 # "Force the container to run with user ID > 10000"
+#KSV020 # "Force the container to run with user ID > 10000"
 
-KSV021 # "Force the container to run with group ID > 10000"
+#KSV021 # "Force the container to run with group ID > 10000"
 
 #KSV030 # "Use sefault seccomp"
 

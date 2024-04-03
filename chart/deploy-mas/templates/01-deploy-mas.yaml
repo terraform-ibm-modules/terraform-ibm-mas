@@ -198,9 +198,9 @@ metadata:
   #  checkov.io/skip1: CKV_K8S_20
   #  checkov.io/skip2: CKV_K8S_37
 
-    checkov.io/skip3: CKV_K8S_40
-    checkov.io/skip4: CKV_K8S_35
-    checkov.io/skip6: CKV_K8S_38
+  #  checkov.io/skip3: CKV_K8S_40
+  #  checkov.io/skip4: CKV_K8S_35
+  #  checkov.io/skip6: CKV_K8S_38
 
   #  checkov.io/skip5: CKV_K8S_43
   #  checkov.io/skip10: CKV_K8S_29
