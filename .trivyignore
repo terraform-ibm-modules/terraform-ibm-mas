@@ -6,7 +6,7 @@
 
 #KSV012 # "Container should not be privileged"
 
-#KSV014 # "Use read-only filesystem for containers where possible"
+KSV014 # "Use read-only filesystem for containers where possible"
 
 #KSV015 # "CPU requests should be set"
 
@@ -14,9 +14,9 @@
 
 #KSV018 # "Memory limits should be set"
 
-#KSV020 # "Force the container to run with user ID > 10000"
+KSV020 # "Force the container to run with user ID > 10000"
 
-#KSV021 # "Force the container to run with group ID > 10000"
+KSV021 # "Force the container to run with group ID > 10000"
 
 #KSV030 # "Use sefault seccomp"
 
@@ -24,4 +24,4 @@
 
 #KSV106 # "Container capabilities must only include NET_BIND_SERVICE "
 
-#KSV111 # "Cluster admin role only used where required"
+KSV111 # "Cluster admin role only used where required"

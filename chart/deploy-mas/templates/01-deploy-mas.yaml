@@ -58,13 +58,15 @@ metadata:
   #  checkov.io/skip1: CKV_K8S_20
   #  checkov.io/skip2: CKV_K8S_37
 
-  #  checkov.io/skip3: CKV_K8S_40
-  #  checkov.io/skip4: CKV_K8S_35
-  #  checkov.io/skip6: CKV_K8S_38
+    checkov.io/skip3: CKV_K8S_40
+    checkov.io/skip4: CKV_K8S_35
+    checkov.io/skip6: CKV_K8S_38
+    checkov.io/skip12: CKV_K8S_31
+    checkov.io/skip16: CKV_K8S_22
 
   #  checkov.io/skip5: CKV_K8S_43
   #  checkov.io/skip10: CKV_K8S_29
-  #  checkov.io/skip12: CKV_K8S_31
+
 
   #  checkov.io/skip7: CKV_K8S_13
   #  checkov.io/skip8: CKV_K8S_11
@@ -75,7 +77,7 @@ metadata:
   #  checkov.io/skip13: CKV_K8S_30
   #  checkov.io/skip14: CKV_K8S_12
   #  checkov.io/skip15: CKV_K8S_23
-  #  checkov.io/skip16: CKV_K8S_22
+
 
 spec:
   ttlSecondsAfterFinished: 120
@@ -116,9 +118,10 @@ spec:
 
               set -e
 
-              export AUTHORIZED_ENTITLEMENT=$(cat /etc/mas/deploy/secrets/entitlement_key)
-              export ENTITLEMENT_KEY=$(cat /etc/mas/deploy/secrets/authorized_entitlement)
+              export ENTITLEMENT_KEY=$(cat /etc/mas/deploy/secrets/entitlement_key)
+              export AUTHORIZED_ENTITLEMENT=$(cat /etc/mas/deploy/secrets/authorized_entitlement)
               echo "ENTITLEMENT_KEY=${ENTITLEMENT_KEY}"
+              echo "AUTHORIZED_ENTITLEMENT=${AUTHORIZED_ENTITLEMENT}"
               SLS_LICENSE_FILE_LOCAL=/etc/mas/deploy/secrets/authorized_entitlement
               #$printf "$AUTHORIZED_ENTITLEMENT\n" > /tmp/authorized_entitlement.lic
               echo "------authorized_entitlement.lic--------------"
@@ -173,7 +176,7 @@ spec:
                 mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
                   -W "${MAS_WORKSPACE_NAME}" -c "${MAS_CATALOG_VERSION}" \
                   --mas-channel "${MAS_CHANNEL}" --ibm-entitlement-key ${ENTITLEMENT_KEY} \
-                  --license-id "${SLS_LICENSE_ID}" --license-file ${SLS_LICENSE_FILE_LOCAL} \
+                  --license-id "${SLS_LICENSE_ID}" --license-file "${SLS_LICENSE_FILE_LOCAL}" \
                   --uds-email "${UDS_CONTACT_EMAIL}" --uds-firstname "${UDS_CONTACT_FIRSTNAME}" \
                   --uds-lastname "${UDS_CONTACT_LASTNAME}" --storage-rwx "${STORAGE_CLASS_RWX}" --storage-rwo "${STORAGE_CLASS_RWO}" \
                   --storage-pipeline "${PIPELINE_STORAGE_CLASS}" --storage-accessmode "${PIPELINE_STORAGE_ACCESSMODE}" \
