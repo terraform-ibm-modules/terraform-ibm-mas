@@ -32,65 +32,6 @@ metadata:
   name: {{ $sa_name }}
   namespace: {{ $ns }}
 
-
-
----
-kind: Role
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: {{ $role_name }}
-  namespace: {{ $ns }}
-rules:
-  - apiGroups: [""]
-    resources: ["nodes"]
-    verbs: ["get", "list"]
-  - apiGroups: ["config.openshift.io"]
-    resources: ["clusterversions", "nodes"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: ["operators.coreos.com"]
-    resources: ["catalogsources"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: ["packages.operators.coreos.com"]
-    resources: ["packagemanifests"]
-    verbs: ["get", "list", "watch"]
-
-
-
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: {{ $crole_name }}
-rules:
-  - apiGroups: [""]
-    resources: ["nodes"]
-    verbs: ["get", "list"]
-  - apiGroups: ["config.openshift.io"]
-    resources: ["clusterversions", "nodes"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: ["operators.coreos.com"]
-    resources: ["catalogsources"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: ["packages.operators.coreos.com"]
-    resources: ["packagemanifests"]
-    verbs: ["get", "list", "watch"]
-
-
----
-kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: {{ $rb_name }}
-  namespace: {{ $ns }}
-subjects:
-- kind: ServiceAccount
-  name: {{ $sa_name }}
-  #namespace: {{ $ns }}
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: {{ $role_name }}
-
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -99,11 +40,12 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ $crole_name }}
+  name: cluster-admin
 subjects:
 - kind: ServiceAccount
   name: {{ $sa_name }}
   namespace: {{ $ns }}
+
 
 ---
 apiVersion: batch/v1
