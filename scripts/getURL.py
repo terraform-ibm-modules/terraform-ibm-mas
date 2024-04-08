@@ -3,10 +3,14 @@ import subprocess
 import sys
 
 
-def getAdminURLCore(instid):
+def getAdminURLCore(kube_config, instid):
     try:
-        process = subprocess.Popen(['oc', 'get', 'route', '-n', f'mas-{instid}-core', '-o', 'json'], stdout=subprocess.PIPE, universal_newlines=True)
-        
+        process = subprocess.Popen(['oc', 'get', 'route',
+                                    '-n', f'mas-{instid}-core',
+                                    '-o', 'json',
+                                    '--kubeconfig', kube_config],
+                                   stdout=subprocess.PIPE, universal_newlines=True)
+
         output, _ = process.communicate()
 
         if process.returncode != 0:
@@ -25,7 +29,7 @@ def getAdminURLCore(instid):
             sys.exit(2)
 
         result = {
-            "admin_url": f"https://{varstr}"
+            "admin_url": varstr
         }
         json_output = json.dumps(result)
         print(json_output)
@@ -43,4 +47,12 @@ def getAdminURLCore(instid):
         sys.exit(5)
 
 
-getAdminURLCore(instid="natinst1")
+if __name__ == "__main__":
+    # get KUBECONFIG containing path from json passed to the command as an argument
+    config_json = sys.argv[1]
+
+    # get the KUBECONFIG path from the json
+    config = json.loads(config_json)
+    kubeconfig = config.get("KUBECONFIG")
+
+    getAdminURLCore(kube_config=kubeconfig, instid="natinst1")
