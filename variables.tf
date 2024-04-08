@@ -12,32 +12,37 @@ variable "region" {
   description = "Cluster region"
   type        = string
   nullable    = false
+  default     = "ca-tor"
 }
 
-variable "mas_entitlement_key" {
-  description = "Entitlement key to access MAS Image registry"
+variable "mas_instance_id" {
   type        = string
-  sensitive   = true
+  description = "Enter the MAS instance Id"
+  nullable    = false
+  default     = "natinst1"
 }
 
-variable "mas_license" {
-  description = "MAS License file content"
+variable "mas_workspace_id" {
   type        = string
-  sensitive   = true
+  description = "Enter the MAS instance Id"
+  nullable    = false
+  default     = "wrkid1"
+}
+
+
+variable "deployment_flavour" {
+  type        = string
+  description = "Enter core for just MAS Core and enter manage for MAS Core+Manage"
+  nullable    = false
+  default     = "core"
 }
 
 variable "cluster_id" {
   type        = string
   description = "Id of the target IBM Cloud OpenShift Cluster"
   nullable    = false
+  default     = "masubda8-workload-cluster"
 }
-
-# variable "resource_group" {
-#   type        = string
-#   description = "Resource group to provision the cluster in"
-#   default     = null
-# }
-
 
 variable "cluster_config_endpoint_type" {
   description = "Specify which type of endpoint to use for for cluster config access: 'default', 'private', 'vpe', 'link'. 'default' value will use the default endpoint of the cluster."

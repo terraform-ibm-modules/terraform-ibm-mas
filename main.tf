@@ -1,46 +1,14 @@
-locals {
-  # sleep times definition
-  # sleep_time_catalog_create  = "60s"
-  # sleep_time_operator_create = "120s"
-
-  # helm chart names
-  #maximo_chart                 = "ibm-operator-catalog"
-
-  # validation of ws_liberty_operator_target_namespace - if null the value of ws_liberty_operator_namespace must be equal to "openshift-operators" https://www.ibm.com/docs/en/was-liberty/core?topic=operator-installing-red-hat-openshift-cli#in-t-cli__install-op-cli__title__1
-  #default_liberty_operator_namespace = "openshift-operators"
-
-}
-
 data "ibm_container_cluster_config" "cluster_config" {
   cluster_name_id = var.cluster_id
   config_dir      = "${path.module}/kubeconfig"
   endpoint_type   = var.cluster_config_endpoint_type != "default" ? var.cluster_config_endpoint_type : null
 }
 
-resource "helm_release" "maximo_operator_catalog" {
+data "external" "maximo_admin_url" {
 
-  set {
-    name  = "mas_entitlement_key"
-    type  = "string"
-    value = base64encode(var.mas_entitlement_key)
+  #program    = ["/bin/bash", "-c", "${path.module}/scripts/getAdminURL.sh ${var.deployment_flavour} ${var.mas_instance_id} ${var.mas_workspace_id}"]
+  program    = ["python3", "${path.module}/scripts/getURL.py"]
+  query = {
+    KUBECONFIG   = data.ibm_container_cluster_config.cluster_config.config_file_path
   }
-
-  set {
-    name  = "mas_license"
-    type  = "string"
-    value = base64encode(var.mas_license)
-  }
-
-  name             = "maximo-operator-catalog-helm-release"
-  chart            = "${path.module}/chart/deploy-mas"
-  create_namespace = false
-  timeout          = 300
-  # dependency_update = true
-  # force_update      = false
-  force_update               = true
-  cleanup_on_fail            = true
-  wait                       = true
-  recreate_pods              = true
-  disable_openapi_validation = false
-
 }
