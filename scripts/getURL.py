@@ -5,8 +5,7 @@ import sys
 
 def getAdminURLCore(instid):
     try:
-        process = subprocess.Popen(['oc', 'get', 'route', '-n', f'mas-{instid}-core', '-o', 'json'],
-                                   stdout=subprocess.PIPE, text=True)
+        process = subprocess.Popen(['oc', 'get', 'route', '-n', f'mas-{instid}-core', '-o', 'json'], stdout=subprocess.PIPE, universal_newlines=True)
         
         output, _ = process.communicate()
 
