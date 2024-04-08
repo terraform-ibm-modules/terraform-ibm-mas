@@ -49,10 +49,10 @@ def getAdminURLCore(kube_config, instid):
 
 if __name__ == "__main__":
     # get KUBECONFIG containing path from json passed to the command as an argument
-    config_json = sys.argv[1]
+    # Read the JSON input from stdin
+    input_json = json.loads(sys.stdin.read())
 
     # get the KUBECONFIG path from the json
-    config = json.loads(config_json)
-    kubeconfig = config.get("KUBECONFIG")
+    kubeconfig = input_json['KUBECONFIG']
 
     getAdminURLCore(kube_config=kubeconfig, instid="natinst1")
