@@ -29,7 +29,7 @@ def getAdminURLCore(kube_config, instid):
             sys.exit(2)
 
         result = {
-            "admin_url": varstr
+            "admin_url": f"https://{varstr}"
         }
         json_output = json.dumps(result)
         print(json_output)
