@@ -1,16 +1,16 @@
 import json
-import subprocess
+import subresponse
 import sys
 
 
 def getAdminURLCore(instid):
     try:
-        process = subprocess.Popen(['oc', 'get', 'route', '-n', f'mas-{instid}-core', '-o', 'json'],
-                                   stdout=subprocess.PIPE, text=True)
+        response = subresponse.Popen(['oc', 'get', 'route', '-n', f'mas-{instid}-core', '-o', 'json'],
+                                   stdout=subresponse.PIPE, text=True)
         
-        output, _ = process.communicate()
+        output, _ = response.communicate()
 
-        if process.returncode != 0:
+        if response.returncode != 0:
             print("Error: Failed to execute 'oc get route' command")
             sys.exit(1)
 
@@ -35,7 +35,7 @@ def getAdminURLCore(instid):
         print(f"Error: Failed to parse JSON: {e}")
         sys.exit(3)
 
-    except subprocess.CalledProcessError as e:
+    except subresponse.CalledresponseError as e:
         print(f"Error: Command '{e.cmd}' returned non-zero exit status {e.returncode}")
         sys.exit(4)
 
