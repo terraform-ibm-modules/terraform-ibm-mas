@@ -6,7 +6,7 @@ import sys
 def getAdminURLCore(instid):
     try:
         process = subprocess.Popen(['oc', 'get', 'route', '-n', f'mas-{instid}-core', '-o', 'json'],
-                                   stdout=subprocess.PIPE, text=True)
+                                   stdout=subprocess.PIPE, universal_newlines=True)
         
         output, _ = process.communicate()
 
@@ -26,7 +26,7 @@ def getAdminURLCore(instid):
             sys.exit(2)
 
         result = {
-            "admin_url": varstr
+            "admin_url": f"https://{varstr}"
         }
         json_output = json.dumps(result)
         print(json_output)
