@@ -93,7 +93,8 @@ spec:
       containers:
         - name: {{ $job_name }}
           #image: quay.io/ibmmas/cli:7.16.0-pre.master
-          image: quay.io/ibmmas/cli@sha256:d1092b058928633f8e4f2f6052ad20427d01589d3365b9db3dd31784b7edcd8d
+          # 8.0.0-pre.master
+          image: quay.io/ibmmas/cli@sha256:5b5222caecdd860840fd1eb070999e29ed356310474741f76934d0a9f8921d99
 
           imagePullPolicy: Always
           securityContext:
@@ -120,13 +121,12 @@ spec:
 
               export ENTITLEMENT_KEY=$(cat /etc/mas/deploy/secrets/entitlement_key)
               export AUTHORIZED_ENTITLEMENT=$(cat /etc/mas/deploy/secrets/authorized_entitlement)
-              echo "ENTITLEMENT_KEY=${ENTITLEMENT_KEY}"
-              echo "AUTHORIZED_ENTITLEMENT=${AUTHORIZED_ENTITLEMENT}"
+              ##echo "ENTITLEMENT_KEY=${ENTITLEMENT_KEY}"
+              ##echo "AUTHORIZED_ENTITLEMENT=${AUTHORIZED_ENTITLEMENT}"
               SLS_LICENSE_FILE_LOCAL=/etc/mas/deploy/secrets/authorized_entitlement
-              #$printf "$AUTHORIZED_ENTITLEMENT\n" > /tmp/authorized_entitlement.lic
-              echo "------authorized_entitlement.lic--------------"
-              cat $SLS_LICENSE_FILE_LOCAL
-              echo "------authorized_entitlement.lic--------------"
+              ##echo "------authorized_entitlement.lic--------------"
+              ##cat $SLS_LICENSE_FILE_LOCAL
+              ##echo "------authorized_entitlement.lic--------------"
 
               echo "MAS_INSTANCE_ID=${MAS_INSTANCE_ID}"
               echo "MAS_WORKSPACE_ID${MAS_WORKSPACE_ID}"
@@ -134,7 +134,7 @@ spec:
               echo "MAS_CATALOG_VERSION=${MAS_CATALOG_VERSION}"
               echo "MAS_CHANNEL=${MAS_CHANNEL}"
               echo "SLS_LICENSE_ID=${SLS_LICENSE_ID}"
-              echo "SLS_LICENSE_FILE_LOCAL=${SLS_LICENSE_FILE_LOCAL}"
+              ##echo "SLS_LICENSE_FILE_LOCAL=${SLS_LICENSE_FILE_LOCAL}"
               echo "UDS_CONTACT_EMAIL=${UDS_CONTACT_EMAIL}"
               echo "UDS_CONTACT_FIRSTNAME=${UDS_CONTACT_FIRSTNAME}"
               echo "UDS_CONTACT_LASTNAME=${UDS_CONTACT_LASTNAME}"
