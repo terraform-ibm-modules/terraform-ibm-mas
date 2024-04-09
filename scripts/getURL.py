@@ -55,4 +55,4 @@ if __name__ == "__main__":
     # get the KUBECONFIG path from the json
     kubeconfig = input_json['KUBECONFIG']
 
-    getAdminURLCore(kube_config=kubeconfig, instid="natinst1")
+    getAdminURLCore(kube_config=kubeconfig, instid="pkinst1")
