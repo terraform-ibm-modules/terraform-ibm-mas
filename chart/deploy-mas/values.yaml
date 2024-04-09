@@ -2,15 +2,15 @@
 mas_instance_id: inst1
 mas_workspace_id: wrkid1
 mas_workspace_name: wrkns1
-# catalog which support dro install by default
-mas_catalog_version: v8-240227-amd64
+# catalog which install dro by default - v8-amd64 , v8-240227-amd64 , v8-240326-amd64 , v8-240405-amd64
+mas_catalog_version: v8-240405-amd64
 mas_channel: 8.11.x
 sls_license_id: 0242ac110002
 uds_contact_email: nataraj.s@in.ibm.com
 uds_contact_firstname: Nataraj
 uds_contact_lastname: Shivashankaraiah
 storage_class_rwo: ibmc-vpc-block-retain-10iops-tier
-storage_class_rwx: ibmc-vpc-block-retain-10iops-tier
+storage_class_rwx: ibmc-vpc-file-dp2
 pipeline_storage_class: ibmc-vpc-block-retain-10iops-tier
 pipeline_storage_accessmode: ReadWriteOnce
 mas_entitlement_key: replace
@@ -31,3 +31,4 @@ db2u_data_storage: 100Gi
 db2u_logs_storage: 100Gi
 db2u_meta_storage: 20Gi
 db2u_temp_storage: 100Gi
+readonly_root_filesystem: "false"

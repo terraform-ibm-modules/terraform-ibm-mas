@@ -1,15 +1,25 @@
+{{ $ns              :=  printf "mas-%s-pipelines" .Values.mas_instance_id }}
+{{ $role_name       :=  "mas-deploy-role" }}
+{{ $secret_name     :=  "mas-deploy-secret" }}
+{{ $crole_name      :=  "mas-deploy-crole" }}
+{{ $sa_name         :=  "mas-deploy-sa" }}
+{{ $scc_name        :=  "mas-deploy-scc" }}
+{{ $rb_name         :=  "mas-deploy-rb" }}
+{{ $crb_name        :=  "mas-deploy-crb" }}
+{{ $job_name        :=  "mas-deploy-job" }}
+{{ $readonly_root_filesystem        :=  printf "%s" .Values.readonly_root_filesystem }}
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: mas-{{ .Values.mas_instance_id }}-pipelines
+  name: {{ $ns }}
 
 ---
 kind: Secret
 apiVersion: v1
 metadata:
-  name: mas-deploy
-  namespace: mas-{{ .Values.mas_instance_id }}-pipelines
+  name: {{ $secret_name }}
+  namespace: {{ $ns }}
 data:
   entitlement_key: {{ .Values.mas_entitlement_key }}
   authorized_entitlement: {{ .Values.mas_license }}
@@ -19,88 +29,112 @@ type: Opaque
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: sync-sa
-  namespace: mas-{{ .Values.mas_instance_id }}-pipelines
+  name: {{ $sa_name }}
+  namespace: {{ $ns }}
 
 ---
-kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
 metadata:
-  name: sync-sa
-  namespace: mas-{{ .Values.mas_instance_id }}-pipelines
-subjects:
-  - kind: ServiceAccount
-    name: sync-sa
-    namespace: mas-{{ .Values.mas_instance_id }}-pipelines
+  name: {{ $crb_name }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: {{ $sa_name }}
+  namespace: {{ $ns }}
+
 
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: mas-deploy-sync-role
-  generateName: "mas-deploy-sync-role-"
-  namespace: mas-{{ .Values.mas_instance_id }}-pipelines
+  name: {{ $job_name }}
+  generateName: "{{ $job_name }}-"
+  namespace: {{ $ns }}
   annotations:
-    checkov.io/skip1: CKV_K8S_20
-    checkov.io/skip2: CKV_K8S_37
+  #  checkov.io/skip1: CKV_K8S_20
+  #  checkov.io/skip2: CKV_K8S_37
+
     checkov.io/skip3: CKV_K8S_40
     checkov.io/skip4: CKV_K8S_35
-    checkov.io/skip5: CKV_K8S_43
     checkov.io/skip6: CKV_K8S_38
-    checkov.io/skip7: CKV_K8S_13
-    checkov.io/skip8: CKV_K8S_11
-    checkov.io/skip9: CKV_K8S_10
-    checkov.io/skip10: CKV_K8S_29
-    checkov.io/skip11: CKV_K8S_28
     checkov.io/skip12: CKV_K8S_31
-    checkov.io/skip13: CKV_K8S_30
-    checkov.io/skip14: CKV_K8S_12
-    checkov.io/skip15: CKV_K8S_23
     checkov.io/skip16: CKV_K8S_22
+
+  #  checkov.io/skip5: CKV_K8S_43
+  #  checkov.io/skip10: CKV_K8S_29
+
+
+  #  checkov.io/skip7: CKV_K8S_13
+  #  checkov.io/skip8: CKV_K8S_11
+  #  checkov.io/skip9: CKV_K8S_10
+
+  #  checkov.io/skip11: CKV_K8S_28
+
+  #  checkov.io/skip13: CKV_K8S_30
+  #  checkov.io/skip14: CKV_K8S_12
+  #  checkov.io/skip15: CKV_K8S_23
+
+
 spec:
-  ttlSecondsAfterFinished: 10
+  ttlSecondsAfterFinished: 120
   template:
     metadata:
       labels:
-        app: "mas-deploy-job"
+        app: {{ $job_name }}
     spec:
-      volumes:
-        #- name: pv-storage
-        #  persistentVolumeClaim:
-        #    claimName: config-pvc
+      restartPolicy: Never
+      serviceAccountName: {{ $sa_name }}
+      securityContext:
+        runAsNonRoot: true
       containers:
-        - name: mas-deploy
-          image: quay.io/ibmmas/cli:7.16.0-pre.master
+        - name: {{ $job_name }}
+          # 8.0.0-pre.master - sha256:5b5222caecdd860840fd1eb070999e29ed356310474741f76934d0a9f8921d99
+          # below sha is for quay.io/ibmmas/cli:8.0.0-pre.mascore-2054 (tag 8.0.0), update it once we get a new release tag
+          image: quay.io/ibmmas/cli@sha256:2e82de3f6bf025ccbecbd9c704bca60f884c7a3cef8211690ebec1ba2ae02791
+
           imagePullPolicy: Always
-          #volumeMounts:
-          #  - mountPath: "/usr/config-pvc"
-          #    name: pv-storage
+          securityContext:
+            readOnlyRootFilesystem: {{ $readonly_root_filesystem }}
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            limits:
+              cpu: 200m
+              memory: 512Mi
+            requests:
+              cpu: 10m
+              memory: 64Mi
           command:
             - /bin/sh
             - -c
             - |
 
-
               set -e
 
-              SLS_LICENSE_FILE_LOCAL=/tmp/authorized_entitlement.lic
-              printf "$AUTHORIZED_ENTITLEMENT\n" > /tmp/authorized_entitlement.lic
-              echo "------authorized_entitlement.lic--------------"
-              cat /tmp/authorized_entitlement.lic
-              echo "------authorized_entitlement.lic--------------"
+              export ENTITLEMENT_KEY=$(cat /etc/mas/deploy/secrets/entitlement_key)
+              export AUTHORIZED_ENTITLEMENT=$(cat /etc/mas/deploy/secrets/authorized_entitlement)
+              ##echo "ENTITLEMENT_KEY=${ENTITLEMENT_KEY}"
+              ##echo "AUTHORIZED_ENTITLEMENT=${AUTHORIZED_ENTITLEMENT}"
+              SLS_LICENSE_FILE_LOCAL=/etc/mas/deploy/secrets/authorized_entitlement
+              ##echo "------authorized_entitlement.lic--------------"
+              ##cat $SLS_LICENSE_FILE_LOCAL
+              ##echo "------authorized_entitlement.lic--------------"
 
               echo "MAS_INSTANCE_ID=${MAS_INSTANCE_ID}"
               echo "MAS_WORKSPACE_ID${MAS_WORKSPACE_ID}"
               echo "MAS_WORKSPACE_NAME=${MAS_WORKSPACE_NAME}"
               echo "MAS_CATALOG_VERSION=${MAS_CATALOG_VERSION}"
               echo "MAS_CHANNEL=${MAS_CHANNEL}"
-              echo "ENTITLEMENT_KEY=${ENTITLEMENT_KEY}"
               echo "SLS_LICENSE_ID=${SLS_LICENSE_ID}"
-              echo "SLS_LICENSE_FILE_LOCAL=${SLS_LICENSE_FILE_LOCAL}"
+              ##echo "SLS_LICENSE_FILE_LOCAL=${SLS_LICENSE_FILE_LOCAL}"
               echo "UDS_CONTACT_EMAIL=${UDS_CONTACT_EMAIL}"
               echo "UDS_CONTACT_FIRSTNAME=${UDS_CONTACT_FIRSTNAME}"
               echo "UDS_CONTACT_LASTNAME=${UDS_CONTACT_LASTNAME}"
@@ -142,7 +176,7 @@ spec:
                 mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
                   -W "${MAS_WORKSPACE_NAME}" -c "${MAS_CATALOG_VERSION}" \
                   --mas-channel "${MAS_CHANNEL}" --ibm-entitlement-key ${ENTITLEMENT_KEY} \
-                  --license-id "${SLS_LICENSE_ID}" --license-file ${SLS_LICENSE_FILE_LOCAL} \
+                  --license-id "${SLS_LICENSE_ID}" --license-file "${SLS_LICENSE_FILE_LOCAL}" \
                   --uds-email "${UDS_CONTACT_EMAIL}" --uds-firstname "${UDS_CONTACT_FIRSTNAME}" \
                   --uds-lastname "${UDS_CONTACT_LASTNAME}" --storage-rwx "${STORAGE_CLASS_RWX}" --storage-rwo "${STORAGE_CLASS_RWO}" \
                   --storage-pipeline "${PIPELINE_STORAGE_CLASS}" --storage-accessmode "${PIPELINE_STORAGE_ACCESSMODE}" \
@@ -224,15 +258,29 @@ spec:
             - name: ENTITLEMENT_KEY
               valueFrom:
                 secretKeyRef:
-                  name: mas-deploy
+                  name: {{ $secret_name }}
                   key: entitlement_key
 
             - name: AUTHORIZED_ENTITLEMENT
               valueFrom:
                 secretKeyRef:
-                  name: mas-deploy
+                  name: {{ $secret_name }}
                   key: authorized_entitlement
 
-      restartPolicy: Never
-      serviceAccountName: sync-sa
+          volumeMounts:
+            - name: {{ $secret_name }}
+              readOnly: true
+              mountPath: /etc/mas/deploy/secrets
+            #- mountPath: /opt/app-root/src
+            #  name: app-root-volume
+
+      volumes:
+        - name: {{ $secret_name }}
+          secret:
+            secretName: {{ $secret_name }}
+            defaultMode: 420
+            optional: false
+        #- name: app-root-volume
+        #  emptyDir: {}
+
   backoffLimit: 6
