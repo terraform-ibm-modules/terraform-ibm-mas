@@ -47,7 +47,7 @@ def verifyPipelineStatus(kube_config, instid, capability):
                     break
                     
                 elif pipeline_status_reason == "Running":
-		    print("Pipeline is still running")
+                    print("Pipeline is still running")
                     time.sleep(TIME_TO_WAIT)
                     pass
                 elif pipeline_status_reason == "Failed":
