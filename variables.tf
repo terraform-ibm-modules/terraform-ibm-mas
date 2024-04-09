@@ -19,7 +19,7 @@ variable "mas_instance_id" {
   type        = string
   description = "Enter the MAS instance Id"
   nullable    = false
-  default     = "pkinst1"
+  default     = "natinst1"
 }
 
 variable "mas_workspace_id" {
@@ -41,7 +41,7 @@ variable "cluster_id" {
   type        = string
   description = "Id of the target IBM Cloud OpenShift Cluster"
   nullable    = false
-  default     = "masubda81-workload-cluster"
+  default     = "masdaub9-management-cluster"
 }
 
 variable "cluster_config_endpoint_type" {
