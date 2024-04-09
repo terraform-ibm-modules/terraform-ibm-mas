@@ -102,9 +102,9 @@ if __name__ == "__main__":
     #capability = sys.argv[2]
     #workspaceId = sys.argv[3]
 
-    instanceId = natinst1
-    capability = core
-    workspaceId = wrkid1
+    instanceId = "natinst1"
+    capability = "core"
+    workspaceId = "wrkid1"
     
     if capability == "core":
         getAdminURLCore(kube_config=kubeconfig, instid=instanceId)
