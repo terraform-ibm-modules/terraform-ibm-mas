@@ -92,9 +92,9 @@ spec:
         runAsNonRoot: true
       containers:
         - name: {{ $job_name }}
-          #image: quay.io/ibmmas/cli:7.16.0-pre.master
-          # 8.0.0-pre.master
-          image: quay.io/ibmmas/cli@sha256:5b5222caecdd860840fd1eb070999e29ed356310474741f76934d0a9f8921d99
+          # 8.0.0-pre.master - sha256:5b5222caecdd860840fd1eb070999e29ed356310474741f76934d0a9f8921d99
+          # below sha is from quay.io/ibmmas/cli:8.0.0-pre.mascore-2054, update this sha when new tag gets released
+          image: quay.io/ibmmas/cli@sha256:2e82de3f6bf025ccbecbd9c704bca60f884c7a3cef8211690ebec1ba2ae02791
 
           imagePullPolicy: Always
           securityContext:
