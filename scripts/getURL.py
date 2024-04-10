@@ -98,13 +98,13 @@ if __name__ == "__main__":
     # get the KUBECONFIG path from the json
     kubeconfig = input_json['KUBECONFIG']
 
-    #capability = sys.argv[1]
-    #instanceId = sys.argv[2]    
-    #workspaceId = sys.argv[3]
+    capability = sys.argv[1]
+    instanceId = sys.argv[2]    
+    workspaceId = sys.argv[3]
     
-    instanceId = "natinst2"
-    capability = "manage"
-    workspaceId = "wrkid2"
+    #instanceId = "natinst2"
+    #capability = "manage"
+    #workspaceId = "wrkid2"
     
     if capability == "core":
         getAdminURLCore(kube_config=kubeconfig, instid=instanceId)
