@@ -104,44 +104,20 @@ resource "helm_release" "maximo_operator_catalog" {
 
 }
 
-resource "null_resource" "install_verify" {
+data "external" "maximo_admin_url" {
 
-provisioner "local-exec" {
-    interpreter = ["/bin/bash", "-c"]
-    command     = "${path.module}/scripts/installVerify.sh ${var.deployment_flavour} ${var.mas_instance_id}"
-	environment = {
-      KUBECONFIG = data.ibm_container_cluster_config.cluster_config.config_file_path
-    }
-  }
-  depends_on = [time_sleep.wait_300_seconds]
-}
-
-resource "null_resource" "admin_url" {
-
-provisioner "local-exec" {
-    interpreter = ["/bin/bash", "-c"]
-    command     = "${path.module}/scripts/getAdminURL.sh ${var.deployment_flavour} ${var.mas_instance_id} ${var.mas_workspace_id}"
-	environment = {
-      KUBECONFIG = data.ibm_container_cluster_config.cluster_config.config_file_path
-    }
-  }
-  depends_on = [null_resource.install_verify]
-}
-
-data "external" "get_pipeline_result" {
-
-  program    = ["/bin/bash", "-c", "${path.module}/scripts/getResult.sh"]
+  #program    = ["/bin/bash", "-c", "${path.module}/scripts/getAdminURL.sh ${var.deployment_flavour} ${var.mas_instance_id} ${var.mas_workspace_id}"]
+  program    = ["python3", "${path.module}/scripts/getAdminURL.py", "${var.deployment_flavour}", "${var.mas_instance_id}", "${var.mas_workspace_id}"]
   query = {
     KUBECONFIG   = data.ibm_container_cluster_config.cluster_config.config_file_path
   }
-depends_on = [null_resource.install_verify]
 }
 
-data "external" "get_admin_url" {
+data "external" "install_verify" {
 
-  program    = ["/bin/bash", "-c", "${path.module}/scripts/getURL.sh"]
+  #program    = ["/bin/bash", "-c", "${path.module}/scripts/installVerify.sh ${var.deployment_flavour} ${var.mas_instance_id}"]
+  program    = ["python3", "${path.module}/scripts/installVerify.py", "${var.mas_instance_id}", "${var.deployment_flavour}"]
   query = {
     KUBECONFIG   = data.ibm_container_cluster_config.cluster_config.config_file_path
   }
-depends_on = [null_resource.admin_url]
 }
