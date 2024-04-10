@@ -7,3 +7,8 @@ output "maximo_admin_url" {
   value       = data.external.maximo_admin_url.result.admin_url
   #value       = jsondecode(data.external.maximo_admin_url.result.admin_url)
 }
+
+output "pipeline_execution_status" {
+  description = "Status of pipeline execution is"
+  value       = data.external.install_verify.result.PipelineRunStatus
+}
