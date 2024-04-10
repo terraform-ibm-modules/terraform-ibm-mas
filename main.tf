@@ -101,7 +101,16 @@ resource "helm_release" "maximo_operator_catalog" {
   recreate_pods              = true
   disable_openapi_validation = false
 
+}
 
+data "external" "install_verify" {
+
+  #program    = ["/bin/bash", "-c", "${path.module}/scripts/installVerify.sh ${var.deployment_flavour} ${var.mas_instance_id}"]
+  program    = ["python3", "${path.module}/scripts/installVerify.py", "${var.mas_instance_id}", "${var.deployment_flavour}"]
+  query = {
+    KUBECONFIG   = data.ibm_container_cluster_config.cluster_config.config_file_path
+  }
+depends_on = [time_sleep.wait_300_seconds]
 }
 
 data "external" "maximo_admin_url" {
@@ -114,12 +123,4 @@ data "external" "maximo_admin_url" {
 depends_on = [data.external.install_verify]
 }
 
-data "external" "install_verify" {
 
-  #program    = ["/bin/bash", "-c", "${path.module}/scripts/installVerify.sh ${var.deployment_flavour} ${var.mas_instance_id}"]
-  program    = ["python3", "${path.module}/scripts/installVerify.py", "${var.mas_instance_id}", "${var.deployment_flavour}"]
-  query = {
-    KUBECONFIG   = data.ibm_container_cluster_config.cluster_config.config_file_path
-  }
-depends_on = [time_sleep.wait_300_seconds]
-}
