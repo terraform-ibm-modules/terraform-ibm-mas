@@ -12,3 +12,12 @@ data "external" "maximo_admin_url" {
     KUBECONFIG   = data.ibm_container_cluster_config.cluster_config.config_file_path
   }
 }
+
+data "external" "install_verify" {
+
+  #program    = ["/bin/bash", "-c", "${path.module}/scripts/installVerify.sh ${var.deployment_flavour} ${var.mas_instance_id}"]
+  program    = ["python3", "${path.module}/scripts/installVerify.py"]
+  query = {
+    KUBECONFIG   = data.ibm_container_cluster_config.cluster_config.config_file_path
+  }
+}
