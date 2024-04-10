@@ -5,7 +5,7 @@ data "ibm_container_cluster_config" "cluster_config" {
 }
 
 resource "time_sleep" "wait_300_seconds" {
-  create_duration = "100s"
+  create_duration = "500s"
   depends_on = [helm_release.maximo_operator_catalog]
 }
 
@@ -111,6 +111,7 @@ data "external" "maximo_admin_url" {
   query = {
     KUBECONFIG   = data.ibm_container_cluster_config.cluster_config.config_file_path
   }
+depends_on = [data.external.install_verify]
 }
 
 data "external" "install_verify" {
@@ -120,4 +121,5 @@ data "external" "install_verify" {
   query = {
     KUBECONFIG   = data.ibm_container_cluster_config.cluster_config.config_file_path
   }
+depends_on = [time_sleep.wait_300_seconds]
 }
