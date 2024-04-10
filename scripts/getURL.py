@@ -1,61 +1,79 @@
 import json
 import subprocess
 import sys
-import time
 
-def verifyPipelineStatus(kube_config, instid, capability):
-    RETRY_COUNT = 0
-    TIME_TO_WAIT = 0
-    if capability == "core":
-        RETRY_COUNT = 30
-        TIME_TO_WAIT = 180
-    elif capability == "manage":
-        RETRY_COUNT = 60
-        TIME_TO_WAIT = 300
-    
-    
-      
+
+def getAdminURLCore(kube_config, instid):
     try:
-        pipline_status= "Failed Retrying, Pipeline still in Running state "
-        for interval_count in range(RETRY_COUNT):
-            process = subprocess.Popen(['oc', 'get', 'pr',
-                                        '-n', f'mas-{instid}-pipelines',
-                                        '-o', 'json',
-                                        '--kubeconfig', kube_config],
-                                    stdout=subprocess.PIPE, universal_newlines=True)
+        process = subprocess.Popen(['oc', 'get', 'route',
+                                    '-n', f'mas-{instid}-core',
+                                    '-o', 'json',
+                                    '--kubeconfig', kube_config],
+                                   stdout=subprocess.PIPE, universal_newlines=True)
 
-            output, _ = process.communicate()
+        output, _ = process.communicate()
 
-            if process.returncode != 0:
-                print("Error: Failed to execute 'oc get route' command")
-                sys.exit(1)
+        if process.returncode != 0:
+            print("Error: Failed to execute 'oc get route' command")
+            sys.exit(1)
 
-            data = json.loads(output)
-            pipeline_runs = data.get('items', [])
-            
-            pipeline_run = None
-            
-            if len(pipeline_runs) > 0:
-                pipeline_run = pipeline_runs[0]
-            
-            if pipeline_run:
+        data = json.loads(output)
+        routes = data.get('items', [])
 
-                pipeline_status_reason = pipeline_run.get('status')[0].get('reason')
-                
-                if pipeline_status_reason == "Completed":
-                    pipline_status = "Successful"
-                    break
-                    
-                elif pipeline_status_reason == "Running":
-                    print("Pipeline is still running")
-                    time.sleep(TIME_TO_WAIT)
-                    pass
-                elif pipeline_status_reason == "Failed":
-                    pipline_status = pipeline_run.get('status')[0].get('message')
-                    break
+        for route in routes:
+            if f'admin.{instid}' in route['spec']['host']:
+                varstr = route['spec']['host']
+                break
+        else:
+            print(f"Error: No route found for 'admin.{instid}'")
+            sys.exit(2)
+
         result = {
-            "PipelineRunStatus":pipline_status
-            }
+            "admin_url": f"https://{varstr}"
+        }
+        json_output = json.dumps(result)
+        print(json_output)
+
+    except json.JSONDecodeError as e:
+        print(f"Error: Failed to parse JSON: {e}")
+        sys.exit(3)
+
+    except subprocess.CalledProcessError as e:
+        print(f"Error: Command '{e.cmd}' returned non-zero exit status {e.returncode}")
+        sys.exit(4)
+
+    except OSError as e:
+        print(f"Error: Failed to execute command: {e}")
+        sys.exit(5)
+
+def getAdminURLManage(kube_config, instid):
+    try:
+        process = subprocess.Popen(['oc', 'get', 'route',
+                                    '-n', f'mas-{instid}-manage',
+                                    '-o', 'json',
+                                    '--kubeconfig', kube_config],
+                                   stdout=subprocess.PIPE, universal_newlines=True)
+
+        output, _ = process.communicate()
+
+        if process.returncode != 0:
+            print("Error: Failed to execute 'oc get route' command")
+            sys.exit(1)
+
+        data = json.loads(output)
+        routes = data.get('items', [])
+
+        for route in routes:
+            if f'{workspaceId}-all.{instid}' in route['spec']['host']:
+                varstr = route['spec']['host']
+                break
+        else:
+            print(f"Error: No route found for 'admin.{instid}'")
+            sys.exit(2)
+
+        result = {
+            "admin_url": f"https://{varstr}/maximo"
+        }
         json_output = json.dumps(result)
         print(json_output)
 
@@ -79,5 +97,16 @@ if __name__ == "__main__":
 
     # get the KUBECONFIG path from the json
     kubeconfig = input_json['KUBECONFIG']
+
+    #capability = sys.argv[1]
+    #instanceId = sys.argv[2]    
+    #workspaceId = sys.argv[3]
     
-    #verifyPipelineStatus(kube_config=kubeconfig, instid="natinst1",capability="core")
+    instanceId = "natinst2"
+    capability = "manage"
+    workspaceId = "wrkid2"
+    
+    if capability == "core":
+        getAdminURLCore(kube_config=kubeconfig, instid=instanceId)
+    elif capability == "manage":
+        getAdminURLManage(kube_config=kubeconfig, instid=instanceId,workspaceId=workspaceId)
