@@ -79,5 +79,5 @@ if __name__ == "__main__":
     # get the KUBECONFIG path from the json
     kubeconfig = input_json['KUBECONFIG']
     
-    #verifyPipelineStatus(kube_config=kubeconfig, instid=sys.argv[1],capability=sys.argv[2])
-    verifyPipelineStatus(kube_config=kubeconfig, instid="natinst2",capability="manage")
+    verifyPipelineStatus(kube_config=kubeconfig, instid=sys.argv[1],capability=sys.argv[2])
+    #verifyPipelineStatus(kube_config=kubeconfig, instid="natinst2",capability="manage")
