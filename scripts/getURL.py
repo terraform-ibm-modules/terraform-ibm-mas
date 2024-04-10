@@ -64,7 +64,7 @@ def getAdminURLManage(kube_config, instid):
         routes = data.get('items', [])
 
         for route in routes:
-            if f'{workspaceId}-all.{instid}' in route['spec']['host']:
+            if f'{workspaceId}-all.manage.{instid}' in route['spec']['host']:
                 varstr = route['spec']['host']
                 break
         else:
