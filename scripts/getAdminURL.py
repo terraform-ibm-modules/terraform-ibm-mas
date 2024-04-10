@@ -23,10 +23,7 @@ def getAdminURLCore(kube_config, instid):
         for route in routes:
             if f'admin.{instid}' in route['spec']['host']:
                 varstr = route['spec']['host']
-                break
-        else:
-            print(f"Error: No route found for 'admin.{instid}'")
-            sys.exit(2)
+                break       
 
         result = {
             "admin_url": f"https://{varstr}"
