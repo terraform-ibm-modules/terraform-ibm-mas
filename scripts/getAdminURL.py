@@ -5,6 +5,10 @@ import sys
 
 def getAdminURLCore(kube_config, instid):
     try:
+        result = {
+            "admin_url": ""
+        }
+        varstr = ""
         process = subprocess.Popen(['oc', 'get', 'route',
                                     '-n', f'mas-{instid}-core',
                                     '-o', 'json',
@@ -12,39 +16,42 @@ def getAdminURLCore(kube_config, instid):
                                    stdout=subprocess.PIPE, universal_newlines=True)
 
         output, _ = process.communicate()
-
+        
         if process.returncode != 0:
-            print("Error: Failed to execute 'oc get route' command")
-            sys.exit(1)
+            varstr = ""
+            result['admin_url'] = varstr
+            json_output = json.dumps(result)
+            return json_output
 
         data = json.loads(output)
         routes = data.get('items', [])
-
+        
         for route in routes:
             if f'admin.{instid}' in route['spec']['host']:
                 varstr = route['spec']['host']
-                break       
-
-        result = {
-            "admin_url": f"https://{varstr}"
-        }
+                break
+        if varstr != "":
+            result['admin_url'] = f'https://{varstr}'
+        else:
+            varstr = "INSTALL_FAILED_CONDITION"
+            result['admin_url'] = varstr
+        
         json_output = json.dumps(result)
         print(json_output)
 
-    except json.JSONDecodeError as e:
-        print(f"Error: Failed to parse JSON: {e}")
-        sys.exit(3)
+    except Exception as e:
+        varstr = "INSTALL_FAILED_CONDITION"
+        result['admin_url'] = varstr
+        json_output = json.dumps(result)
+        print(json_output)
+        
 
-    except subprocess.CalledProcessError as e:
-        print(f"Error: Command '{e.cmd}' returned non-zero exit status {e.returncode}")
-        sys.exit(4)
-
-    except OSError as e:
-        print(f"Error: Failed to execute command: {e}")
-        sys.exit(5)
-
-def getAdminURLManage(kube_config, instid, workspaceId):
+def getAdminURLManage(kube_config, instid,workspaceId):
     try:
+        result = {
+            "admin_url": ""
+        }
+        varstr = ""
         process = subprocess.Popen(['oc', 'get', 'route',
                                     '-n', f'mas-{instid}-manage',
                                     '-o', 'json',
@@ -54,37 +61,35 @@ def getAdminURLManage(kube_config, instid, workspaceId):
         output, _ = process.communicate()
 
         if process.returncode != 0:
-            print("Error: Failed to execute 'oc get route' command")
-            sys.exit(1)
+            varstr = "INSTALL_FAILED_CONDITION"
+            result['admin_url'] = varstr
+            json_output = json.dumps(result)
+            return json_output
 
         data = json.loads(output)
         routes = data.get('items', [])
-
+        
         for route in routes:
             if f'{workspaceId}-all.manage.{instid}' in route['spec']['host']:
                 varstr = route['spec']['host']
                 break
+        
+        if varstr != "":
+            result['admin_url'] = f'https://{varstr}/maximo'
         else:
-            print(f"Error: No route found for 'admin.{instid}'")
-            sys.exit(2)
-
-        result = {
-            "admin_url": f"https://{varstr}/maximo"
-        }
+            varstr = "INSTALL_FAILED_CONDITION"
+            result['admin_url'] = varstr
+        
+        json_output = json.dumps(result)
+        print(json_output)
+    
+    except Exception as e:
+        varstr = "INSTALL_FAILED_CONDITION"
+        result['admin_url'] = varstr
         json_output = json.dumps(result)
         print(json_output)
 
-    except json.JSONDecodeError as e:
-        print(f"Error: Failed to parse JSON: {e}")
-        sys.exit(3)
 
-    except subprocess.CalledProcessError as e:
-        print(f"Error: Command '{e.cmd}' returned non-zero exit status {e.returncode}")
-        sys.exit(4)
-
-    except OSError as e:
-        print(f"Error: Failed to execute command: {e}")
-        sys.exit(5)
 
 
 if __name__ == "__main__":
@@ -96,12 +101,8 @@ if __name__ == "__main__":
     kubeconfig = input_json['KUBECONFIG']
 
     capability = sys.argv[1]
-    instanceId = sys.argv[2]    
+    instanceId = sys.argv[2]
     workspaceId = sys.argv[3]
-    
-    #instanceId = "natinst2"
-    #capability = "manage"
-    #workspaceId = "wrkid2"
     
     if capability == "core":
         getAdminURLCore(kube_config=kubeconfig, instid=instanceId)
