@@ -3,31 +3,31 @@
 ##############################################################################
 
 variable "ibmcloud_api_key" {
-  description = "APIkey that's associated with the account to use"
+  description = "Enter the IBM Cloud APIkey that's associated with the account to use"
   type        = string
   sensitive   = true
 }
 
 variable "cluster_id" {
   type        = string
-  description = "Id of the target IBM Cloud OpenShift Cluster"
+  description = "Enter Id of the target IBM Cloud OpenShift Cluster"
   nullable    = false
 }
 
 variable "region" {
   type        = string
-  description = "Region of the target IBM Cloud OpenShift Cluster"
+  description = "Enter region of the target IBM Cloud OpenShift Cluster"
   nullable    = false
 }
 
 variable "mas_entitlement_key" {
-  description = "Entitlement key to access MAS Image registry"
+  description = "Enter entitlement key to access MAS Image registry"
   type        = string
   sensitive   = true
 }
 
 variable "mas_license" {
-  description = "MAS License file content"
+  description = "Enter MAS License file content"
   type        = string
   sensitive   = true
 }
@@ -41,7 +41,7 @@ variable "sls_license_id" {
 
 variable "deployment_flavour" {
   type        = string
-  description = "Enter core for MAS Core deployment and enter manage for MAS Core+Manage deployment"
+  description = "Enter "core" for MAS Core deployment and enter "manage" for MAS Core+Manage deployment"
   nullable    = false
   validation {
     error_message = "Invalid deployment flavour type! Valid values are 'core' or 'manage'"
@@ -75,7 +75,7 @@ variable "storage_class_rwo" {
 
 variable "storage_class_rwx" {
   type        = string
-  description = "Enter the storage class (read-write many). Enter file storage class for DB2."
+  description = "Enter the storage class (read-write many). Note: Enter file storage class for DB2."
   default     = "ibmc-vpc-file-dp2"
 }
 
@@ -105,7 +105,7 @@ variable "uds_contact_lastname" {
 }
 
 variable "cluster_config_endpoint_type" {
-  description = "Specify which type of endpoint to use for for cluster config access: 'default', 'private', 'vpe', 'link'. 'default' value will use the default endpoint of the cluster."
+  description = "Enter which type of endpoint to use for for cluster config access: 'default', 'private', 'vpe', 'link'. 'default' value will use the default endpoint of the cluster."
   type        = string
   default     = "default"
   nullable    = false # use default if null is passed in
