@@ -41,7 +41,7 @@ variable "sls_license_id" {
 
 variable "deployment_flavour" {
   type        = string
-  description = "Enter "core" for MAS Core deployment and enter "manage" for MAS Core+Manage deployment"
+  description = "Enter core for MAS Core deployment and enter manage for MAS Core+Manage deployment"
   nullable    = false
   validation {
     error_message = "Invalid deployment flavour type! Valid values are 'core' or 'manage'"
