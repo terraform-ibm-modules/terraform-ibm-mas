@@ -108,7 +108,7 @@ resource "helm_release" "maximo_helm_release" {
 #Verify the pipeline install status & get the the data on pipeline success status or in case of failure, get the data on failed task.
 data "external" "install_verify" {
 
-  program    = ["python3", "${path.module}/scripts/installVerify.py", "${var.deployment_flavour}", "${var.mas_instance_id}"]
+  program    = ["python3", "${path.module}/scripts/installVerify.py", var.deployment_flavour, var.mas_instance_id]
   query = {
     KUBECONFIG   = data.ibm_container_cluster_config.cluster_config.config_file_path
   }
@@ -119,7 +119,7 @@ depends_on = [time_sleep.wait_500_seconds]
 #Get the maximo admin URL if the deployment is successful.
 data "external" "maximo_admin_url" {
 
-  program    = ["python3", "${path.module}/scripts/getAdminURL.py", "${var.deployment_flavour}", "${var.mas_instance_id}", "${var.mas_workspace_id}"]
+  program    = ["python3", "${path.module}/scripts/getAdminURL.py", var.deployment_flavour, var.mas_instance_id, var.mas_workspace_id]
   query = {
     KUBECONFIG   = data.ibm_container_cluster_config.cluster_config.config_file_path
   }
