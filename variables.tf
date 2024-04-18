@@ -83,7 +83,7 @@ variable "pipeline_storage_class" {
   type        = string
   description = "Enter the storage class for pipeline"
   default     = "ibmc-vpc-block-retain-10iops-tier"
-  
+
 }
 
 variable "uds_contact_email" {

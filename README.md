@@ -91,9 +91,11 @@ statement instead the previous block.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, <1.7.0 |
+| <a name="requirement_external"></a> [external](#requirement\_external) | >=2.2.3, <3.0.0 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.8.0, <3.0.0 |
 | <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.59.0, < 2.0.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.16.1, <3.0.0 |
+| <a name="requirement_time"></a> [time](#requirement\_time) | >= 0.9.1, < 1.0.0 |
 
 ### Modules
 
@@ -103,7 +105,10 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [helm_release.maximo_operator_catalog](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.maximo_helm_release](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [time_sleep.wait_500_seconds](https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/sleep) | resource |
+| [external_external.install_verify](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
+| [external_external.maximo_admin_url](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
 | [ibm_container_cluster_config.cluster_config](https://registry.terraform.io/providers/ibm-cloud/ibm/latest/docs/data-sources/container_cluster_config) | data source |
 
 ### Inputs
@@ -112,16 +117,28 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_cluster_config_endpoint_type"></a> [cluster\_config\_endpoint\_type](#input\_cluster\_config\_endpoint\_type) | Specify which type of endpoint to use for for cluster config access: 'default', 'private', 'vpe', 'link'. 'default' value will use the default endpoint of the cluster. | `string` | `"default"` | no |
 | <a name="input_cluster_id"></a> [cluster\_id](#input\_cluster\_id) | Id of the target IBM Cloud OpenShift Cluster | `string` | n/a | yes |
+| <a name="input_deployment_flavour"></a> [deployment\_flavour](#input\_deployment\_flavour) | Enter core for MAS Core deployment and enter manage for MAS Core+Manage deployment | `string` | n/a | yes |
 | <a name="input_ibmcloud_api_key"></a> [ibmcloud\_api\_key](#input\_ibmcloud\_api\_key) | APIkey that's associated with the account to use | `string` | n/a | yes |
 | <a name="input_mas_entitlement_key"></a> [mas\_entitlement\_key](#input\_mas\_entitlement\_key) | Entitlement key to access MAS Image registry | `string` | n/a | yes |
+| <a name="input_mas_instance_id"></a> [mas\_instance\_id](#input\_mas\_instance\_id) | Enter the MAS instance Id | `string` | n/a | yes |
 | <a name="input_mas_license"></a> [mas\_license](#input\_mas\_license) | MAS License file content | `string` | n/a | yes |
-| <a name="input_region"></a> [region](#input\_region) | Cluster region | `string` | n/a | yes |
+| <a name="input_mas_workspace_id"></a> [mas\_workspace\_id](#input\_mas\_workspace\_id) | Enter the workspace Id | `string` | `"wrkid1"` | no |
+| <a name="input_mas_workspace_name"></a> [mas\_workspace\_name](#input\_mas\_workspace\_name) | Enter the workspace name | `string` | `"wrkns1"` | no |
+| <a name="input_pipeline_storage_class"></a> [pipeline\_storage\_class](#input\_pipeline\_storage\_class) | Enter the storage class for pipeline | `string` | `"ibmc-vpc-block-retain-10iops-tier"` | no |
+| <a name="input_region"></a> [region](#input\_region) | Region of the target IBM Cloud OpenShift Cluster | `string` | n/a | yes |
+| <a name="input_sls_license_id"></a> [sls\_license\_id](#input\_sls\_license\_id) | Enter the SLS license ID | `string` | n/a | yes |
+| <a name="input_storage_class_rwo"></a> [storage\_class\_rwo](#input\_storage\_class\_rwo) | Enter the storage class (read-write once) | `string` | `"ibmc-vpc-block-retain-10iops-tier"` | no |
+| <a name="input_storage_class_rwx"></a> [storage\_class\_rwx](#input\_storage\_class\_rwx) | Enter the storage class (read-write many). Enter file storage class for DB2. | `string` | `"ibmc-vpc-file-dp2"` | no |
+| <a name="input_uds_contact_email"></a> [uds\_contact\_email](#input\_uds\_contact\_email) | Enter the email ID for DRO | `string` | n/a | yes |
+| <a name="input_uds_contact_firstname"></a> [uds\_contact\_firstname](#input\_uds\_contact\_firstname) | Enter your first name to be used in DRO | `string` | n/a | yes |
+| <a name="input_uds_contact_lastname"></a> [uds\_contact\_lastname](#input\_uds\_contact\_lastname) | Enter your last name to be used in DRO | `string` | n/a | yes |
 
 ### Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_maximo_admin_url"></a> [maximo\_admin\_url](#output\_maximo\_admin\_url) | Deploying of MAS instance has started.. |
+| <a name="output_maximo_admin_url"></a> [maximo\_admin\_url](#output\_maximo\_admin\_url) | Admin URL of MAS/Manage application is |
+| <a name="output_pipeline_execution_status"></a> [pipeline\_execution\_status](#output\_pipeline\_execution\_status) | Status of pipeline execution is |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 <!-- Leave this section as is so that your module has a link to local development environment set up steps for contributors to follow -->
