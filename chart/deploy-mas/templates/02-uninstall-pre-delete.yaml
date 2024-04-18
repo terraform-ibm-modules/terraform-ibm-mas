@@ -1,4 +1,4 @@
-{{ $ns              :=  printf "mas-%s-pipelines" .Values.mas_instance_id }}
+{{ $ns              :=  printf "mas-uninstall-pipelines" }}
 {{ $role_name       :=  "mas-undeploy-role" }}
 {{ $secret_name     :=  "mas-undeploy-secret" }}
 {{ $crole_name      :=  "mas-undeploy-crole" }}
