@@ -78,9 +78,9 @@ def getFailureMessage(kube_config, instid):
     failure_msg = ""
     # oc get taskrun -A -n mas-natinst6-pipelines
     process = subprocess.Popen(['oc', 'get', 'taskrun',
-                                    '-A', '-n', f'mas-{instid}-pipelines',
-                                    '-o', 'json', '--kubeconfig', kube_config],
-                                    stdout=subprocess.PIPE, universal_newlines=True)
+                                '-A', '-n', f'mas-{instid}-pipelines',
+                                '-o', 'json', '--kubeconfig', kube_config],
+                                stdout=subprocess.PIPE, universal_newlines=True)
 
     output, _ = process.communicate()
     data = json.loads(output)
