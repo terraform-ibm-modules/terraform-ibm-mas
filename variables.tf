@@ -8,9 +8,15 @@ variable "ibmcloud_api_key" {
   sensitive   = true
 }
 
-variable "region" {
-  description = "Cluster region"
+variable "cluster_id" {
   type        = string
+  description = "Id of the target IBM Cloud OpenShift Cluster"
+  nullable    = false
+}
+
+variable "region" {
+  type        = string
+  description = "Region of the target IBM Cloud OpenShift Cluster"
   nullable    = false
 }
 
@@ -26,18 +32,77 @@ variable "mas_license" {
   sensitive   = true
 }
 
-variable "cluster_id" {
+variable "sls_license_id" {
   type        = string
-  description = "Id of the target IBM Cloud OpenShift Cluster"
+  description = "Enter the SLS license ID"
+  sensitive   = true
   nullable    = false
 }
 
-# variable "resource_group" {
-#   type        = string
-#   description = "Resource group to provision the cluster in"
-#   default     = null
-# }
+variable "deployment_flavour" {
+  type        = string
+  description = "Enter core for MAS Core deployment and enter manage for MAS Core+Manage deployment"
+  nullable    = false
+  validation {
+    error_message = "Invalid deployment flavour type! Valid values are 'core' or 'manage'"
+    condition     = contains(["core", "manage"], var.deployment_flavour)
+  }
+}
 
+variable "mas_instance_id" {
+  type        = string
+  description = "Enter the MAS instance Id"
+  nullable    = false
+}
+
+variable "mas_workspace_id" {
+  type        = string
+  description = "Enter the workspace Id"
+  default     = "wrkid1"
+}
+
+variable "mas_workspace_name" {
+  type        = string
+  description = "Enter the workspace name"
+  default     = "wrkns1"
+}
+
+variable "storage_class_rwo" {
+  type        = string
+  description = "Enter the storage class (read-write once)"
+  default     = "ibmc-vpc-block-retain-10iops-tier"
+}
+
+variable "storage_class_rwx" {
+  type        = string
+  description = "Enter the storage class (read-write many). Enter file storage class for DB2."
+  default     = "ibmc-vpc-file-dp2"
+}
+
+variable "pipeline_storage_class" {
+  type        = string
+  description = "Enter the storage class for pipeline"
+  default     = "ibmc-vpc-block-retain-10iops-tier"
+
+}
+
+variable "uds_contact_email" {
+  type        = string
+  description = "Enter the email ID for DRO"
+  nullable    = false
+}
+
+variable "uds_contact_firstname" {
+  type        = string
+  description = "Enter your first name to be used in DRO"
+  nullable    = false
+}
+
+variable "uds_contact_lastname" {
+  type        = string
+  description = "Enter your last name to be used in DRO"
+  nullable    = false
+}
 
 variable "cluster_config_endpoint_type" {
   description = "Specify which type of endpoint to use for for cluster config access: 'default', 'private', 'vpe', 'link'. 'default' value will use the default endpoint of the cluster."
