@@ -80,7 +80,7 @@ def getFailureMessage(kube_config, instid):
     process = subprocess.Popen(['oc', 'get', 'taskrun',
                                 '-A', '-n', f'mas-{instid}-pipelines',
                                 '-o', 'json', '--kubeconfig', kube_config],
-                                stdout=subprocess.PIPE, universal_newlines=True)
+                               stdout=subprocess.PIPE, universal_newlines=True)
 
     output, _ = process.communicate()
     data = json.loads(output)
