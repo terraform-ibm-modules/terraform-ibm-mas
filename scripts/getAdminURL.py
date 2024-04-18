@@ -46,7 +46,7 @@ def getAdminURLCore(kube_config, instid):
         print(json_output)
 
 
-def getAdminURLManage(kube_config, instid,workspaceId):
+def getAdminURLManage(kube_config, instid, workspaceId):
     try:
         result = {
             "admin_url": ""
@@ -89,9 +89,6 @@ def getAdminURLManage(kube_config, instid,workspaceId):
         json_output = json.dumps(result)
         print(json_output)
 
-
-
-
 if __name__ == "__main__":
     # get KUBECONFIG containing path from json passed to the command as an argument
     # Read the JSON input from stdin
@@ -107,4 +104,4 @@ if __name__ == "__main__":
     if capability == "core":
         getAdminURLCore(kube_config=kubeconfig, instid=instanceId)
     elif capability == "manage":
-        getAdminURLManage(kube_config=kubeconfig, instid=instanceId,workspaceId=workspaceId)
+        getAdminURLManage(kube_config=kubeconfig, instid=instanceId, workspaceId=workspaceId)

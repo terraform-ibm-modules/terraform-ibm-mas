@@ -56,7 +56,7 @@ def verifyPipelineStatus(kube_config, instid, capability):
                     time.sleep(TIME_TO_WAIT)
                     pass
                 elif pipeline_status_reason == "Failed":
-                    pipline_status = getFailureMessage(kube_config,instid)
+                    pipline_status = getFailureMessage(kube_config, instid)
                     break
                 else:
                     pipline_status = "UNKNOWN_PIPELINE_STATUS"
@@ -73,13 +73,14 @@ def verifyPipelineStatus(kube_config, instid, capability):
         json_error = json.dumps(error)
         print(json_error)
 
-def getFailureMessage(kube_config,instid):
+
+def getFailureMessage(kube_config, instid):
     failure_msg = ""
     # oc get taskrun -A -n mas-natinst6-pipelines
     process = subprocess.Popen(['oc', 'get', 'taskrun',
-                                        '-A', '-n',f'mas-{instid}-pipelines',
-                                        '-o', 'json','--kubeconfig', kube_config],
-                                       stdout=subprocess.PIPE, universal_newlines=True)
+                                    '-A', '-n', f'mas-{instid}-pipelines',
+                                    '-o', 'json', '--kubeconfig', kube_config],
+                                    stdout=subprocess.PIPE, universal_newlines=True)
 
     output, _ = process.communicate()
     data = json.loads(output)
