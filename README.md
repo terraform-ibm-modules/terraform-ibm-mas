@@ -1,5 +1,5 @@
 <!-- Update the title -->
-# Terraform Modules Template Project
+# Maximo Application Suite on Existing Red Hat OpenShift Cluster module
 
 <!--
 Update status and "latest release" badges:
@@ -13,7 +13,9 @@ Update status and "latest release" badges:
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 <!-- Add a description of module(s) in this repo -->
-TODO: Replace me with description of the module(s) in this repo
+Use this module to install Maximo Application Suite on your existing Red Hat OpenShift Cluster.
+
+For more information about the Maximo Application Suite refer to the official documentation avaiable [here](https://www.ibm.com/docs/en/mas-cd)
 
 
 <!-- Below content is automatically populated via pre-commit hook -->
@@ -37,7 +39,7 @@ https://terraform-ibm-modules.github.io/documentation/#/implementation-guideline
 
 
 <!-- This heading should always match the name of the root level module (aka the repo name) -->
-## terraform-ibm-module-template
+## terraform-ibm-mas
 
 ### Usage
 
