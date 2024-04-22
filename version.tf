@@ -5,7 +5,7 @@ terraform {
     ibm = {
       source  = "ibm-cloud/ibm"
       version = ">= 1.59.0, < 2.0.0"
-    }	
+    }
     time = {
       source  = "hashicorp/time"
       version = ">= 0.9.1, < 1.0.0"
@@ -18,7 +18,7 @@ terraform {
       source  = "hashicorp/helm"
       version = ">= 2.8.0, <3.0.0"
     }
-	null = {
+    null = {
       source  = "hashicorp/null"
       version = ">= 3.2.1, < 4.0.0"
     }

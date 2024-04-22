@@ -91,10 +91,10 @@ resource "helm_release" "maximo_helm_release" {
     value = var.uds_contact_lastname
   }
 
-  name             = "maximo-helm-release"
-  chart            = "${path.module}/chart/deploy-mas"
-  create_namespace = false
-  timeout          = 1200
+  name                       = "maximo-helm-release"
+  chart                      = "${path.module}/chart/deploy-mas"
+  create_namespace           = false
+  timeout                    = 1200
   force_update               = true
   cleanup_on_fail            = true
   wait                       = true
@@ -116,10 +116,10 @@ data "external" "install_verify" {
 
 resource "null_resource" "pipeline_verify" {
 
-provisioner "local-exec" {
+  provisioner "local-exec" {
     interpreter = ["/bin/bash", "-c"]
     command     = "${path.module}/scripts/pipelineVerify.sh ${var.mas_instance_id}"
-	environment = {
+    environment = {
       KUBECONFIG = data.ibm_container_cluster_config.cluster_config.config_file_path
     }
   }

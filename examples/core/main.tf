@@ -9,22 +9,22 @@ data "ibm_container_cluster_config" "cluster_config" {
 }
 
 module "mas_core" {
-  source                                    = "../.."
-  cluster_id                                = var.cluster_id
-  region                  					= var.region
-  mas_entitlement_key      					= var.mas_entitlement_key
-  ibmcloud_api_key      					= var.ibmcloud_api_key
-  mas_license             					= var.mas_license
-  sls_license_id      						= var.sls_license_id
-  deployment_flavour              			= var.deployment_flavour
-  mas_instance_id                    		= var.mas_instance_id  
-  uds_contact_email           				= var.uds_contact_email
-  uds_contact_firstname 					= var.uds_contact_firstname
-  uds_contact_lastname 						= var.uds_contact_lastname
-  cluster_config_endpoint_type 				= var.cluster_config_endpoint_type
+  source                       = "../.."
+  cluster_id                   = var.cluster_id
+  region                       = var.region
+  mas_entitlement_key          = var.mas_entitlement_key
+  ibmcloud_api_key             = var.ibmcloud_api_key
+  mas_license                  = var.mas_license
+  sls_license_id               = var.sls_license_id
+  deployment_flavour           = var.deployment_flavour
+  mas_instance_id              = var.mas_instance_id
+  uds_contact_email            = var.uds_contact_email
+  uds_contact_firstname        = var.uds_contact_firstname
+  uds_contact_lastname         = var.uds_contact_lastname
+  cluster_config_endpoint_type = var.cluster_config_endpoint_type
 }
 
 locals {
-maximo_admin_url = module.mas_core.maximo_admin_url
-pipeline_execution_status = module.mas_core.pipeline_execution_status
+  maximo_admin_url          = module.mas_core.maximo_admin_url
+  pipeline_execution_status = module.mas_core.pipeline_execution_status
 }

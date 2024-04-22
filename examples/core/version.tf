@@ -6,12 +6,12 @@ terraform {
       source  = "ibm-cloud/ibm"
       version = ">= 1.59.0, < 2.0.0"
     }
-	# tflint-ignore: terraform_unused_required_providers
+    # tflint-ignore: terraform_unused_required_providers
     time = {
       source  = "hashicorp/time"
       version = ">= 0.9.1, < 1.0.0"
     }
-	# tflint-ignore: terraform_unused_required_providers
+    # tflint-ignore: terraform_unused_required_providers
     external = {
       source  = "hashicorp/external"
       version = ">=2.2.3, <3.0.0"
@@ -20,8 +20,8 @@ terraform {
       source  = "hashicorp/helm"
       version = ">= 2.8.0, <3.0.0"
     }
-	# tflint-ignore: terraform_unused_required_providers
-	null = {
+    # tflint-ignore: terraform_unused_required_providers
+    null = {
       source  = "hashicorp/null"
       version = ">= 3.2.1, < 4.0.0"
     }
