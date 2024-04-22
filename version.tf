@@ -5,13 +5,11 @@ terraform {
     ibm = {
       source  = "ibm-cloud/ibm"
       version = ">= 1.59.0, < 2.0.0"
-    }
-	# tflint-ignore: terraform_unused_declarations
+    }	
     time = {
       source  = "hashicorp/time"
       version = ">= 0.9.1, < 1.0.0"
     }
-	# tflint-ignore: terraform_unused_declarations
     external = {
       source  = "hashicorp/external"
       version = ">=2.2.3, <3.0.0"
