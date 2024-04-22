@@ -9,7 +9,6 @@ import (
 )
 
 // Use existing resource group
-const resourceGroup = "masda-validation-testcasesrg"
 const coreExampleDir = "examples/core"
 const manageExampleDir = "examples/manage"
 
@@ -26,7 +25,17 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 func TestRunCoreExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "core", coreExampleDir)
+	options := setupOptionsBasicExample(t, "maximo-core", coreExampleDir)
+
+	output, err := options.RunTestConsistency()
+	assert.Nil(t, err, "This should not have errored")
+	assert.NotNil(t, output, "Expected some output")
+}
+
+func TestRunCompleteExample(t *testing.T) {
+	t.Parallel()
+
+	options := setupOptionsCompleteExample(t, "maximo-core", manageExampleDir)
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
