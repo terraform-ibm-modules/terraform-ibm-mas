@@ -56,30 +56,35 @@ variable "mas_instance_id" {
   nullable    = false
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "mas_workspace_id" {
   type        = string
   description = "Enter the Maximo Application Suite workspace Id"
   default     = "wrkid1"
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "mas_workspace_name" {
   type        = string
   description = "Enter the Maximo Application Suite workspace name"
   default     = "wrkns1"
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "storage_class_rwo" {
   type        = string
   description = "Enter the storage class (read-write once)"
   default     = "ibmc-vpc-block-retain-10iops-tier"
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "storage_class_rwx" {
   type        = string
   description = "Enter the storage class (read-write many). Enter file storage class for DB2."
   default     = "ibmc-vpc-file-dp2"
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "pipeline_storage_class" {
   type        = string
   description = "Enter the storage class for pipeline"

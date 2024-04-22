@@ -8,3 +8,11 @@ The text below should describe exactly what resources are provisioned / configur
 
 A basic example that will provision the following:
 - A new Maximo Application Suite (MAS) Core + Manage instance on an existing ROKS Cluster (VPC Gen2 Infrastructure).
+
+## Overview
+* [terraform-ibm-mas](#terraform-ibm-mas)
+* [Examples](./examples)
+    * [Core example](./examples/core)
+    * [Manage example](./examples/manage)
+* [Contributing](#contributing)
+<!-- END OVERVIEW HOOK -->
