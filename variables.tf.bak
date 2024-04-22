@@ -100,7 +100,7 @@ variable "uds_contact_firstname" {
 
 variable "uds_contact_lastname" {
   type        = string
-  description = "Enter your last name to be used in Data Reporter Operator"
+  description = "Enter your last name to be used in DRO"
   nullable    = false
 }
 

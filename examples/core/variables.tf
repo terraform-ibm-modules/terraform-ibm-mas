@@ -43,6 +43,7 @@ variable "deployment_flavour" {
   type        = string
   description = "Enter core for Maximo Application Suite Core deployment and enter manage for Maximo Application Suite Core+Manage deployment"
   nullable    = false
+  default     = "core"
   validation {
     error_message = "Invalid deployment flavour type! Valid values are 'core' or 'manage'"
     condition     = contains(["core", "manage"], var.deployment_flavour)

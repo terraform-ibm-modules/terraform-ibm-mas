@@ -1,4 +1,4 @@
-{{ $ns              :=  printf "mas-uninstall-pipelines" }}
+{{ $ns              :=  "mas-uninstall-pipelines" }}
 {{ $role_name       :=  "mas-undeploy-role" }}
 {{ $secret_name     :=  "mas-undeploy-secret" }}
 {{ $crole_name      :=  "mas-undeploy-crole" }}
@@ -128,45 +128,55 @@ spec:
 
               if [ "${DEPLOYMENT_FLAVOUR}" == "core" ]; then
                 echo "Inside helm pre-delete hook and uninstalling MAS Core instance"
-                mas uninstall -i "${MAS_INSTANCE_ID}" --no-confirm
-                for (( i=0; i<=15; i++ ));
-                do
-                varstr=$(oc get pr -n mas-${MAS_INSTANCE_ID}-pipelines | grep uninstall | awk -F' ' '{print $3}')
-                if [[ $varstr == "Completed"  ]]; then
-                echo "Uninstall pipeline has completed successfully"
-                break
-                elif [[ $varstr == "Running"  ]]; then
-                echo "Uninstall pipeline is still running"
-                sleep 120
-                elif [[ $varstr == "Failed"  ]]; then
-                echo "Uninstall pipeline has failed"
-                exit
-                fi
-                done
-
-              elif [ "${DEPLOYMENT_FLAVOUR}" == "manage" ]; then
+                varstr=$(oc get namespaces | grep mas-inst1-core | awk -F' ' '{print $2}')
+                   if [[ $varstr == "Active"  ]]; then
+                      echo "MAS instance namespace found"
+                      mas uninstall -i "${MAS_INSTANCE_ID}" --no-confirm
+                      for (( i=0; i<=15; i++ ));
+                   do
+                      varstr2=$(oc get pr -n mas-${MAS_INSTANCE_ID}-pipelines | grep uninstall | awk -F' ' '{print $3}')
+                   if [[ $varstr2 == "Completed"  ]]; then
+                      echo "Uninstall pipeline has completed successfully"
+                      break
+                   elif [[ $varstr2 == "Running"  ]]; then
+                      echo "Uninstall pipeline is still running"
+                      sleep 120
+                   elif [[ $varstr2 == "Failed"  ]]; then
+                      echo "Uninstall pipeline has failed"
+                      exit
+                   fi
+                      done
+                   else
+                      echo "No MAS instance namespace found due to a failed installation"
+                   fi
+             elif [ "${DEPLOYMENT_FLAVOUR}" == "manage" ]; then
                 echo "Inside helm pre-delete hook and uninstalling MAS Core + Manage instance"
-                mas uninstall -i "${MAS_INSTANCE_ID}" --no-confirm
-                for (( i=0; i<=15; i++ ));
-                do
-                varstr=$(oc get pr -n mas-${MAS_INSTANCE_ID}-pipelines | grep uninstall | awk -F' ' '{print $3}')
-                if [[ $varstr == "Completed"  ]]; then
-                echo "Uninstall pipeline has completed successfully"
-                break
-                elif [[ $varstr == "Running"  ]]; then
-                echo "Uninstall pipeline is still running"
-                sleep 120
-                elif [[ $varstr == "Failed"  ]]; then
-                echo "Uninstall pipeline has failed"
-                exit
-                fi
-                done
-                oc delete project db2u
-                sleep 600
-              fi
+                varstr=$(oc get namespaces | grep mas-inst1-core | awk -F' ' '{print $2}')
+                   if [[ $varstr == "Active"  ]]; then
+                      echo "MAS instance namespace found"
+                      mas uninstall -i "${MAS_INSTANCE_ID}" --no-confirm
+                      for (( i=0; i<=15; i++ ));
+                   do
+                      varstr2=$(oc get pr -n mas-${MAS_INSTANCE_ID}-pipelines | grep uninstall | awk -F' ' '{print $3}')
+                   if [[ $varstr2 == "Completed"  ]]; then
+                      echo "Uninstall pipeline has completed successfully"
+                      break
+                   elif [[ $varstr2 == "Running"  ]]; then
+                      echo "Uninstall pipeline is still running"
+                      sleep 120
+                   elif [[ $varstr2 == "Failed"  ]]; then
+                      echo "Uninstall pipeline has failed"
+                      exit
+                   fi
+                      oc delete project db2u
+                      sleep 600
+                   done
+                   else
+                      echo "No MAS instance namespace found due to a failed installation"
+                  fi
+             fi
 
-
-          env:
+        env:
             - name: MAS_INSTANCE_ID
               value: "{{ .Values.mas_instance_id }}"
             - name: DEPLOYMENT_FLAVOUR
