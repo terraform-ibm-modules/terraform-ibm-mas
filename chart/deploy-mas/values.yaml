@@ -4,7 +4,7 @@ mas_workspace_id:
 mas_workspace_name:
 mas_catalog_version: v8-240405-amd64
 mas_channel: 8.11.x
-sls_license_id:
+sls_license_id: replace
 uds_contact_email:
 uds_contact_firstname:
 uds_contact_lastname:
