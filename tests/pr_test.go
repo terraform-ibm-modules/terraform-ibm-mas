@@ -9,8 +9,8 @@ import (
 )
 
 // Use existing resource group
-const coreExampleDir = "examples/core"
-const manageExampleDir = "examples/manage"
+const resourceGroup = "geretain-test-resources"
+const completeExampleDir = "examples/complete"
 
 func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptions {
 	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
@@ -22,22 +22,24 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 	return options
 }
 
-func TestRunCoreExample(t *testing.T) {
+func TestRunCompleteExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptionsBasicExample(t, "maximo-core", coreExampleDir)
+	options := setupOptions(t, "mod-template", completeExampleDir)
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
 	assert.NotNil(t, output, "Expected some output")
 }
 
-func TestRunManageExample(t *testing.T) {
+func TestRunUpgradeExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptionsCompleteExample(t, "maximo-manage", manageExampleDir)
+	options := setupOptions(t, "mod-template-upg", completeExampleDir)
 
-	output, err := options.RunTestConsistency()
-	assert.Nil(t, err, "This should not have errored")
-	assert.NotNil(t, output, "Expected some output")
+	output, err := options.RunTestUpgrade()
+	if !options.UpgradeTestSkipped {
+		assert.Nil(t, err, "This should not have errored")
+		assert.NotNil(t, output, "Expected some output")
+	}
 }
