@@ -6,7 +6,6 @@ import sys
 def getAdminURLCore(kube_config, instid):
     try:
         result = {"admin_url": ""}
-        varstr = ""
         process = subprocess.Popen(
             [
                 "oc",
@@ -41,15 +40,15 @@ def getAdminURLCore(kube_config, instid):
         if varstr != "":
             result["admin_url"] = f"https://{varstr}"
         else:
-            varstr = ""
+            varstr = "InstallFailed"
             result["admin_url"] = varstr
 
         json_output = json.dumps(result)
         print(json_output)
 
     except Exception as e:
-        print(e)
-        varstr = ""
+        #print(e)
+        varstr = "CaughtException"
         result["admin_url"] = varstr
         json_output = json.dumps(result)
         print(json_output)
@@ -58,7 +57,6 @@ def getAdminURLCore(kube_config, instid):
 def getAdminURLManage(kube_config, instid, workspaceId):
     try:
         result = {"admin_url": ""}
-        varstr = ""
         process = subprocess.Popen(
             [
                 "oc",
@@ -94,15 +92,15 @@ def getAdminURLManage(kube_config, instid, workspaceId):
         if varstr != "":
             result["admin_url"] = f"https://{varstr}/maximo"
         else:
-            varstr = ""
+            varstr = "InstallFailed"
             result["admin_url"] = varstr
 
         json_output = json.dumps(result)
         print(json_output)
 
     except Exception as e:
-        print(e)
-        varstr = ""
+        #print(e)
+        varstr = "CaughtException"
         result["admin_url"] = varstr
         json_output = json.dumps(result)
         print(json_output)
