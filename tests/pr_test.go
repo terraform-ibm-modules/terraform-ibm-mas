@@ -9,8 +9,9 @@ import (
 )
 
 // Use existing resource group
-const resourceGroup = "geretain-test-resources"
-const completeExampleDir = "examples/complete"
+const resourceGroup = "masda-validation-testcasesrg"
+const coreExampleDir = "examples/core"
+const manageExampleDir = "examples/manage"
 
 func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptions {
 	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
@@ -22,24 +23,22 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 	return options
 }
 
-func TestRunCompleteExample(t *testing.T) {
+func TestRunCoreExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "mod-template", completeExampleDir)
+	options := setupOptions(t, "maximo-core", coreExampleDir)
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
 	assert.NotNil(t, output, "Expected some output")
 }
 
-func TestRunUpgradeExample(t *testing.T) {
+func TestRunManageExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "mod-template-upg", completeExampleDir)
+	options := setupOptions(t, "maximo-manage", manageExampleDir)
 
-	output, err := options.RunTestUpgrade()
-	if !options.UpgradeTestSkipped {
-		assert.Nil(t, err, "This should not have errored")
-		assert.NotNil(t, output, "Expected some output")
-	}
+	output, err := options.RunTestConsistency()
+	assert.Nil(t, err, "This should not have errored")
+	assert.NotNil(t, output, "Expected some output")
 }
