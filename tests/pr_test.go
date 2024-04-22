@@ -28,7 +28,7 @@ func TestRunCoreExample(t *testing.T) {
 
 	options := setupOptions(t, "maximo-core", coreExampleDir)
 
-	output, err := options.RunTestConsistency()
+	output, err := options.RunTest()
 	assert.Nil(t, err, "This should not have errored")
 	assert.NotNil(t, output, "Expected some output")
 }
@@ -38,7 +38,7 @@ func TestRunManageExample(t *testing.T) {
 
 	options := setupOptions(t, "maximo-manage", manageExampleDir)
 
-	output, err := options.RunTestConsistency()
+	output, err := options.RunTest()
 	assert.Nil(t, err, "This should not have errored")
 	assert.NotNil(t, output, "Expected some output")
 }
