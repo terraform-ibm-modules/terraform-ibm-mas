@@ -25,12 +25,6 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 
 func TestRunCoreExample(t *testing.T) {
 	t.Parallel()
-    // Verify ibmcloud_api_key variable is set
-    checkVariable := "TF_VAR_ibmcloud_api_key"
-    val, present := os.LookupEnv(checkVariable)
-    require.True(t, present, checkVariable+" environment variable not set")
-    require.NotEqual(t, "", val, checkVariable+" environment variable is empty")
-
 	options := setupOptions(t, "maximo-core", coreExampleDir)
 
 	output, err := options.RunTest()
@@ -40,11 +34,6 @@ func TestRunCoreExample(t *testing.T) {
 
 func TestRunManageExample(t *testing.T) {
 	t.Parallel()
-    // Verify ibmcloud_api_key variable is set
-    checkVariable := "TF_VAR_ibmcloud_api_key"
-    val, present := os.LookupEnv(checkVariable)
-    require.True(t, present, checkVariable+" environment variable not set")
-    require.NotEqual(t, "", val, checkVariable+" environment variable is empty")
 
 	options := setupOptions(t, "maximo-manage", manageExampleDir)
 
