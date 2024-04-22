@@ -124,4 +124,3 @@ if __name__ == "__main__":
         getAdminURLManage(
             kube_config=kubeconfig, instid=instanceId, workspaceId=workspaceId
         )
-        
