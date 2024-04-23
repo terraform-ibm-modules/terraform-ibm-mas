@@ -9,8 +9,8 @@ import (
 )
 
 // Use existing resource group
-const resourceGroup = "geretain-test-resources"
-const completeExampleDir = "examples/complete"
+const resourceGroup = "masda-validation-testcasesrg"
+const coreExampleDir = "examples/core"
 
 func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptions {
 	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
@@ -22,10 +22,9 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 	return options
 }
 
-func TestRunCompleteExample(t *testing.T) {
+func TestRunCoreExample(t *testing.T) {
 	t.Parallel()
-
-	options := setupOptions(t, "mod-template", completeExampleDir)
+	options := setupOptions(t, "maximo-core", coreExampleDir)
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
@@ -35,7 +34,7 @@ func TestRunCompleteExample(t *testing.T) {
 func TestRunUpgradeExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "mod-template-upg", completeExampleDir)
+	options := setupOptions(t, "maximo-core-upg", coreExampleDir)
 
 	output, err := options.RunTestUpgrade()
 	if !options.UpgradeTestSkipped {
