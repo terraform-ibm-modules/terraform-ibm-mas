@@ -11,7 +11,6 @@ import (
 // Use existing resource group
 const resourceGroup = "masda-validation-testcasesrg"
 const coreExampleDir = "examples/core"
-const manageExampleDir = "examples/manage"
 
 func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptions {
 	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
