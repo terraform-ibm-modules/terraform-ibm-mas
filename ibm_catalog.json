@@ -35,8 +35,8 @@
         ],
         "flavors": [
           {
-            "label": "Standard",
-            "name": "standard",
+            "label": "Existing Cluster",
+            "name": "Existing Cluster",
             "install_type": "extension",
             "dependencies": [
               {
