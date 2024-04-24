@@ -138,14 +138,17 @@ func TestRunDABasic(t *testing.T) {
 		return
 	}
 	defer terraform.Destroy(t, preReqOptions)
+	// Region is not required for DA
+	delete(options.TerraformVars, "region")
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
 	assert.NotNil(t, output, "Expected some output")
 }
 
-func TestRunUpgrade(t *testing.T) {
+func TestRunUpgradeDA(t *testing.T) {
 	t.Parallel()
+	t.Skip("Skipping upgrade test until solution is in the main branch")
 
 	options, preReqOptions, setupErr := setupOptions(t, "maximo-da-upg", solutuionExistingCluster, defaultTFVars)
 	if setupErr != nil {
