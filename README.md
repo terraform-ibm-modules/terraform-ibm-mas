@@ -22,8 +22,6 @@ For more information about the Maximo Application Suite refer to the official do
 <!-- BEGIN OVERVIEW HOOK -->
 ## Overview
 * [terraform-ibm-mas](#terraform-ibm-mas)
-* [Examples](./examples)
-    * [<!-- Update the title -->](./examples/core)
 * [Contributing](#contributing)
 <!-- END OVERVIEW HOOK -->
 
@@ -93,7 +91,6 @@ statement instead the previous block.
 | <a name="requirement_external"></a> [external](#requirement\_external) | >=2.2.3, <3.0.0 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.8.0, <3.0.0 |
 | <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.59.0, < 2.0.0 |
-| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.16.1, <3.0.0 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | >= 3.2.1, < 4.0.0 |
 | <a name="requirement_time"></a> [time](#requirement\_time) | >= 0.9.1, < 1.0.0 |
 
@@ -119,14 +116,12 @@ No modules.
 | <a name="input_cluster_config_endpoint_type"></a> [cluster\_config\_endpoint\_type](#input\_cluster\_config\_endpoint\_type) | Specify which type of endpoint to use for for cluster config access: 'default', 'private', 'vpe', 'link'. 'default' value will use the default endpoint of the cluster. | `string` | `"default"` | no |
 | <a name="input_cluster_id"></a> [cluster\_id](#input\_cluster\_id) | Enter Id of the target IBM Cloud Red Hat OpenShift Cluster | `string` | n/a | yes |
 | <a name="input_deployment_flavour"></a> [deployment\_flavour](#input\_deployment\_flavour) | Enter core for Maximo Application Suite Core deployment and enter manage for Maximo Application Suite Core+Manage deployment | `string` | n/a | yes |
-| <a name="input_ibmcloud_api_key"></a> [ibmcloud\_api\_key](#input\_ibmcloud\_api\_key) | Enter the IBM Cloud APIkey that's associated with this IBM Cloud account | `string` | n/a | yes |
 | <a name="input_mas_entitlement_key"></a> [mas\_entitlement\_key](#input\_mas\_entitlement\_key) | Enter entitlement key to access Maximo Application Suite Image registry | `string` | n/a | yes |
 | <a name="input_mas_instance_id"></a> [mas\_instance\_id](#input\_mas\_instance\_id) | Enter the Maximo Application Suite instance Id | `string` | n/a | yes |
 | <a name="input_mas_license"></a> [mas\_license](#input\_mas\_license) | Enter Maximo Application Suite License file content | `string` | n/a | yes |
 | <a name="input_mas_workspace_id"></a> [mas\_workspace\_id](#input\_mas\_workspace\_id) | Enter the Maximo Application Suite workspace Id | `string` | `"wrkid1"` | no |
 | <a name="input_mas_workspace_name"></a> [mas\_workspace\_name](#input\_mas\_workspace\_name) | Enter the Maximo Application Suite workspace name | `string` | `"wrkns1"` | no |
 | <a name="input_pipeline_storage_class"></a> [pipeline\_storage\_class](#input\_pipeline\_storage\_class) | Enter the storage class for pipeline | `string` | `"ibmc-vpc-block-retain-10iops-tier"` | no |
-| <a name="input_region"></a> [region](#input\_region) | Enter region of the target IBM Cloud Red Hat OpenShift Cluster | `string` | n/a | yes |
 | <a name="input_sls_license_id"></a> [sls\_license\_id](#input\_sls\_license\_id) | Enter Suite License Server license ID | `string` | n/a | yes |
 | <a name="input_storage_class_rwo"></a> [storage\_class\_rwo](#input\_storage\_class\_rwo) | Enter the storage class (read-write once) | `string` | `"ibmc-vpc-block-retain-10iops-tier"` | no |
 | <a name="input_storage_class_rwx"></a> [storage\_class\_rwx](#input\_storage\_class\_rwx) | Enter the storage class (read-write many). Enter file storage class for DB2. | `string` | `"ibmc-vpc-file-dp2"` | no |
