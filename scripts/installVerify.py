@@ -27,7 +27,7 @@ def verifyPipelineStatus(kube_config, instid, capability):
                     "-o",
                     "json",
                     "--kubeconfig",
-                    kube_config,
+                    kube_config
                 ],
                 stdout=subprocess.PIPE,
                 universal_newlines=True,
@@ -57,16 +57,20 @@ def verifyPipelineStatus(kube_config, instid, capability):
                 pipeline_status_reason = (
                     pipeline_run.get("status").get("conditions")[0].get("reason")
                 )
-
                 if pipeline_status_reason == "Completed":
                     pipline_status = "Successful"
                     break
 
                 elif pipeline_status_reason == "Running":
+                    current_task = findCurrentRunningTask(kube_config)
+                    current_status = {
+                        "currentRunningTask": current_task
+                    }
+                    print(json.dumps(current_status))
                     time.sleep(TIME_TO_WAIT)
                     pass
-                elif pipeline_status_reason == "Failed":
-                    pipline_status = getFailureMessage(kube_config, instid)
+                elif pipeline_status_reason == "Failed" or pipeline_status_reason == "PipelineRunStopping":
+                    pipline_status = getFailureMessage(kube_config)
                     break
                 else:
                     pipline_status = "UNKNOWN_PIPELINE_STATUS"
@@ -80,21 +84,18 @@ def verifyPipelineStatus(kube_config, instid, capability):
         print(json_error)
 
 
-def getFailureMessage(kube_config, instid):
+def getFailureMessage(kube_config):
     failure_msg = ""
-    # oc get taskrun -A -n mas-natinst6-pipelines
     process = subprocess.Popen(
         [
             "oc",
             "get",
             "taskrun",
             "-A",
-            "-n",
-            f"mas-{instid}-pipelines",
             "-o",
             "json",
             "--kubeconfig",
-            kube_config,
+            kube_config
         ],
         stdout=subprocess.PIPE,
         universal_newlines=True,
@@ -103,10 +104,38 @@ def getFailureMessage(kube_config, instid):
     output, _ = process.communicate()
     data = json.loads(output)
     pipeline_task_runs = data.get("items", [])
-    if len(pipeline_task_runs) > 0:
-        pipeline_task = pipeline_task_runs[0]
-        failure_msg = pipeline_task.get("status").get("conditions")[0].get("message")
+    for pipeline_task in pipeline_task_runs:
+        task_status = pipeline_task.get("status").get("conditions")[0].get("reason")
+        if task_status == "Failed":
+            failure_msg = pipeline_task.get("status").get("conditions")[0].get("message")
     return failure_msg
+
+def findCurrentRunningTask(kube_config):
+    current_running_task = ""
+    process = subprocess.Popen(
+        [
+            "oc",
+            "get",
+            "taskrun",
+            "-A",
+            "-o",
+            "json",
+            "--kubeconfig",
+            kube_config
+        ],
+        stdout=subprocess.PIPE,
+        universal_newlines=True,
+    )
+
+    output, _ = process.communicate()
+    data = json.loads(output)
+    pipeline_task_runs = data.get("items", [])
+    for pipeline_task in pipeline_task_runs:
+        task_status = pipeline_task.get("status").get("conditions")[0].get("reason")
+        if task_status == "Pending":
+            current_running_task = pipeline_task.get("labels").get("tekton.dev/pipelineTask")
+    return current_running_task
+
 
 
 if __name__ == "__main__":
