@@ -110,6 +110,7 @@ def getFailureMessage(kube_config):
             failure_msg = pipeline_task.get("status").get("conditions")[0].get("message")
     return failure_msg
 
+
 def findCurrentRunningTask(kube_config):
     current_running_task = ""
     process = subprocess.Popen(
@@ -135,7 +136,6 @@ def findCurrentRunningTask(kube_config):
         if task_status == "Pending":
             current_running_task = pipeline_task.get("labels").get("tekton.dev/pipelineTask")
     return current_running_task
-
 
 
 if __name__ == "__main__":
