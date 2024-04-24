@@ -16,7 +16,7 @@ def verifyPipelineStatus(kube_config, instid, capability):
 
     try:
         pipline_status = ""
-        for interval_count in range(RETRY_COUNT):
+        for _ in range(RETRY_COUNT):
             process = subprocess.Popen(
                 [
                     "oc",
@@ -39,7 +39,8 @@ def verifyPipelineStatus(kube_config, instid, capability):
                 pipline_status = "OC_COMMAND_EXECUTION_FAILRE"
                 result = {"PipelineRunStatus": pipline_status}
                 json_output = json.dumps(result)
-                return json_output
+                print(json_output)
+                return
 
             data = json.loads(output)
             pipeline_runs = data.get("items", [])
@@ -62,11 +63,10 @@ def verifyPipelineStatus(kube_config, instid, capability):
                     break
 
                 elif pipeline_status_reason == "Running":
-                    current_task = findCurrentRunningTask(kube_config)
-                    current_status = {
-                        "currentRunningTask": current_task
-                    }
-                    print(json.dumps(current_status))
+                    # current_task = findCurrentRunningTask(kube_config)
+                    # current_status = {
+                    #     "currentRunningTask": current_task
+                    # }
                     time.sleep(TIME_TO_WAIT)
                     pass
                 elif pipeline_status_reason == "Failed" or pipeline_status_reason == "PipelineRunStopping":
