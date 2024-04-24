@@ -14,12 +14,6 @@ variable "cluster_id" {
   nullable    = false
 }
 
-variable "region" {
-  type        = string
-  description = "Enter region of the target IBM Cloud Red Hat OpenShift Cluster"
-  nullable    = false
-}
-
 variable "mas_entitlement_key" {
   description = "Enter entitlement key to access Maximo Application Suite Image registry"
   type        = string
