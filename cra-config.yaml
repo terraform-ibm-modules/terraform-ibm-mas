@@ -11,6 +11,7 @@ CRA_TARGETS:
         TF_VAR_mas_license:  "dummy"
         TF_VAR_sls_license_id: "dummy"
         TF_VAR_cluster_id: "dummy"
+        TF_VAR_mas_instance_id: "dummy"
         TF_VAR_deployment_flavour: "core"
         TF_VAR_uds_contact_email: "dummy"
         TF_VAR_uds_contact_firstname: "dummy"
