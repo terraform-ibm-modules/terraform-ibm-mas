@@ -1,21 +1,20 @@
 ---
-mas_instance_id: inst1
-mas_workspace_id: wrkid1
-mas_workspace_name: wrkns1
-# catalog which install dro by default - v8-amd64 , v8-240227-amd64 , v8-240326-amd64 , v8-240405-amd64
+mas_instance_id:
+mas_workspace_id:
+mas_workspace_name:
 mas_catalog_version: v8-240405-amd64
 mas_channel: 8.11.x
-sls_license_id: 0242ac110002
-uds_contact_email: nataraj.s@in.ibm.com
-uds_contact_firstname: Nataraj
-uds_contact_lastname: Shivashankaraiah
+sls_license_id: replace
+uds_contact_email:
+uds_contact_firstname:
+uds_contact_lastname:
 storage_class_rwo: ibmc-vpc-block-retain-10iops-tier
 storage_class_rwx: ibmc-vpc-file-dp2
 pipeline_storage_class: ibmc-vpc-block-retain-10iops-tier
 pipeline_storage_accessmode: ReadWriteOnce
-mas_entitlement_key: replace
+mas_entitlement_key:
 mas_license: replace
-deployment_flavour: replace
+deployment_flavour:
 
 # manage specific
 manage_channel: 8.7.x

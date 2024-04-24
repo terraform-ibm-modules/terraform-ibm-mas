@@ -3,45 +3,45 @@
 ##############################################################################
 
 variable "ibmcloud_api_key" {
-  description = "APIkey that's associated with the account to use"
+  description = "Enter the IBM Cloud APIkey that's associated with this IBM Cloud account"
   type        = string
   sensitive   = true
 }
 
 variable "cluster_id" {
   type        = string
-  description = "Id of the target IBM Cloud OpenShift Cluster"
+  description = "Enter Id of the target IBM Cloud Red Hat OpenShift Cluster"
   nullable    = false
 }
 
 variable "region" {
   type        = string
-  description = "Region of the target IBM Cloud OpenShift Cluster"
+  description = "Enter region of the target IBM Cloud Red Hat OpenShift Cluster"
   nullable    = false
 }
 
 variable "mas_entitlement_key" {
-  description = "Entitlement key to access MAS Image registry"
+  description = "Enter entitlement key to access Maximo Application Suite Image registry"
   type        = string
   sensitive   = true
 }
 
 variable "mas_license" {
-  description = "MAS License file content"
+  description = "Enter Maximo Application Suite License file content"
   type        = string
   sensitive   = true
 }
 
 variable "sls_license_id" {
   type        = string
-  description = "Enter the SLS license ID"
+  description = "Enter Suite License Server license ID"
   sensitive   = true
   nullable    = false
 }
 
 variable "deployment_flavour" {
   type        = string
-  description = "Enter core for MAS Core deployment and enter manage for MAS Core+Manage deployment"
+  description = "Enter core for Maximo Application Suite Core deployment and enter manage for Maximo Application Suite Core+Manage deployment"
   nullable    = false
   validation {
     error_message = "Invalid deployment flavour type! Valid values are 'core' or 'manage'"
@@ -51,34 +51,38 @@ variable "deployment_flavour" {
 
 variable "mas_instance_id" {
   type        = string
-  description = "Enter the MAS instance Id"
+  description = "Enter the Maximo Application Suite instance Id"
   nullable    = false
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "mas_workspace_id" {
   type        = string
-  description = "Enter the workspace Id"
+  description = "Enter the Maximo Application Suite workspace Id"
   default     = "wrkid1"
 }
-
+# tflint-ignore: terraform_unused_declarations
 variable "mas_workspace_name" {
   type        = string
-  description = "Enter the workspace name"
+  description = "Enter the Maximo Application Suite workspace name"
   default     = "wrkns1"
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "storage_class_rwo" {
   type        = string
   description = "Enter the storage class (read-write once)"
   default     = "ibmc-vpc-block-retain-10iops-tier"
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "storage_class_rwx" {
   type        = string
   description = "Enter the storage class (read-write many). Enter file storage class for DB2."
   default     = "ibmc-vpc-file-dp2"
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "pipeline_storage_class" {
   type        = string
   description = "Enter the storage class for pipeline"
@@ -88,19 +92,19 @@ variable "pipeline_storage_class" {
 
 variable "uds_contact_email" {
   type        = string
-  description = "Enter the email ID for DRO"
+  description = "Enter the email ID for Data Reporter Operator"
   nullable    = false
 }
 
 variable "uds_contact_firstname" {
   type        = string
-  description = "Enter your first name to be used in DRO"
+  description = "Enter your first name to be used in Data Reporter Operator"
   nullable    = false
 }
 
 variable "uds_contact_lastname" {
   type        = string
-  description = "Enter your last name to be used in DRO"
+  description = "Enter your last name to be used in Data Reporter Operator"
   nullable    = false
 }
 
