@@ -35,7 +35,7 @@ var defaultTFVars = map[string]interface{}{
 	"uds_contact_email":            "test@ibm.com",
 	"uds_contact_firstname":        "John",
 	"uds_contact_lastname":         "Doe",
-	"cluster_config_endpoint_type": "public",
+	"cluster_config_endpoint_type": "default",
 }
 
 // TestMain will be run before any parallel tests, used to read data from yaml for use with tests
