@@ -47,8 +47,7 @@ def getAdminURLCore(kube_config, instid):
         print(json_output)
 
     except Exception as e:
-        print(e)
-        varstr = "CaughtException"
+        varstr = f"CaughtException: {e}"
         result["admin_url"] = varstr
         json_output = json.dumps(result)
         print(json_output)
@@ -99,8 +98,7 @@ def getAdminURLManage(kube_config, instid, workspaceId):
         print(json_output)
 
     except Exception as e:
-        print(e)
-        varstr = "CaughtException"
+        varstr = f"CaughtException: {e}"
         result["admin_url"] = varstr
         json_output = json.dumps(result)
         print(json_output)
