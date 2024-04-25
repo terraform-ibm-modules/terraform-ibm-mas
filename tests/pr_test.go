@@ -20,7 +20,7 @@ import (
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testhelper"
 )
 
-const solutuionExistingCluster = "solutions/existing-cluster"
+const solutionExistingCluster = "solutions/existing-cluster"
 const resourceGroup = "geretain-test-mas"
 
 // Define a struct with fields that match the structure of the YAML data
@@ -28,7 +28,7 @@ const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-res
 
 var permanentResources map[string]interface{}
 
-var defaultTFVars = map[string]interface{}{
+var coreTFVars = map[string]interface{}{
 	"deployment_flavour":           "core",
 	"mas_instance_id":              "mas-inst",
 	"region":                       "us-south",
@@ -110,7 +110,7 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 		Vars: map[string]interface{}{
 			"resource_group": resourceGroup,
 			"prefix":         options.Prefix,
-			"region":         defaultTFVars["region"],
+			"region":         terraformVars["region"],
 		},
 		// Set Upgrade to true to ensure latest version of providers and modules are used by terratest.
 		// This is the same as setting the -upgrade=true flag with terraform.
@@ -130,9 +130,9 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	return options, existingTerraformOptions, nil
 }
 
-func TestRunDABasic(t *testing.T) {
+func TestRunDACore(t *testing.T) {
 	t.Parallel()
-	options, preReqOptions, setupErr := setupOptions(t, "maximo-da", solutuionExistingCluster, defaultTFVars)
+	options, preReqOptions, setupErr := setupOptions(t, "maximo-da-core", solutionExistingCluster, coreTFVars)
 	if setupErr != nil {
 		assert.True(t, setupErr == nil, "Setup DA basic failed")
 		return
@@ -153,11 +153,11 @@ func TestRunDABasic(t *testing.T) {
 
 }
 
-func TestRunUpgradeDA(t *testing.T) {
+func TestRunUpgradeDACore(t *testing.T) {
 	t.Parallel()
 	t.Skip("Skipping upgrade test until solution is in the main branch")
 
-	options, preReqOptions, setupErr := setupOptions(t, "maximo-da-upg", solutuionExistingCluster, defaultTFVars)
+	options, preReqOptions, setupErr := setupOptions(t, "maximo-da-core-upg", solutionExistingCluster, coreTFVars)
 	if setupErr != nil {
 		assert.True(t, setupErr == nil, "Setup Upgrade failed")
 		return
@@ -171,6 +171,7 @@ func TestRunUpgradeDA(t *testing.T) {
 	}
 }
 
+// GetSecretsManagerKey retrieves a secret from Secrets Manager
 func GetSecretsManagerKey(smId string, smRegion string, smKeyId string) (*string, error) {
 	secretsManagerService, err := secretsmanagerv2.NewSecretsManagerV2(&secretsmanagerv2.SecretsManagerV2Options{
 		URL: fmt.Sprintf("https://%s.%s.secrets-manager.appdomain.cloud", smId, smRegion),
