@@ -138,8 +138,6 @@ func TestRunDACore(t *testing.T) {
 		return
 	}
 	defer terraform.Destroy(t, preReqOptions)
-	// Region is not required for DA
-	delete(options.TerraformVars, "region")
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
@@ -155,7 +153,6 @@ func TestRunDACore(t *testing.T) {
 
 func TestRunUpgradeDACore(t *testing.T) {
 	t.Parallel()
-	t.Skip("Skipping upgrade test until solution is in the main branch")
 
 	options, preReqOptions, setupErr := setupOptions(t, "maximo-da-core-upg", solutionExistingCluster, coreTFVars)
 	if setupErr != nil {

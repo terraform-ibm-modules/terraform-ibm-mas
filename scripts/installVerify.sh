@@ -5,11 +5,13 @@ set -e
 # Function to track the status of MAS Core+Manage pipeline and to exit in case of failure and to wait for all retries in case if the pipeline is still running.
 function verifyPipelineStatusManage() {
 
+  local namespace=$1
+  local local_file=$2
+
   for (( i=0; i<=10; i++ )); do
-    varstr3=$(oc get pr -n "mas-${var2}-pipelines" | awk -F' ' '{print $3}')
-    varstr3=$(echo "$varstr3" | cut -d ' ' -f 1)
-    varstr4=$(oc get pr -n "mas-${var2}-pipelines" | awk -F' ' '{print $3}')
-    varstr4=$(echo "$varstr4" | cut -d ' ' -f 2)
+    varstr=$(oc get pr -n "${namespace}" | awk -F' ' '{print $3}')
+    varstr3=$(echo "$varstr" | cut -d ' ' -f 1)
+    varstr4=$(echo "$varstr" | cut -d ' ' -f 2)
 
     if [[ $varstr3 == "REASON" && $varstr4 == "Running" ]]; then
       echo "Install pipeline has started succesfully"
@@ -24,18 +26,17 @@ function verifyPipelineStatusManage() {
   done
 
   for (( i=0; i<=60; i++ )); do
-    varstr3=$(oc get pr -n "mas-${var2}-pipelines" | awk -F' ' '{print $3}')
-    varstr3=$(echo "$varstr3" | cut -d ' ' -f 1)
-    varstr4=$(oc get pr -n "mas-${var2}-pipelines" | awk -F' ' '{print $3}')
-    varstr4=$(echo "$varstr4" | cut -d ' ' -f 2)
+    varstr=$(oc get pr -n "${namespace}" | awk -F' ' '{print $3}')
+    varstr3=$(echo "$varstr" | cut -d ' ' -f 1)
+    varstr4=$(echo "$varstr" | cut -d ' ' -f 2)
 
     if [[ $varstr3 == "REASON" && $varstr4 == "Completed"  ]]; then
       echo "Install pipeline has completed successfully"
-      echo -n "Successful" > result.txt
+      echo -n "Successful" > "${local_file}"
       break
     elif [[ $varstr3 == "REASON" && $varstr4 == "Running"  ]]; then
       echo "Install pipeline is still running"
-      varstr5=$(oc get taskrun -A -n "mas-${var2}-pipelines" | grep Failed | awk -F' ' '{print $2}')
+      varstr5=$(oc get taskrun -A -n "${namespace}" | grep Failed | awk -F' ' '{print $2}')
       echo "$varstr5 task is running"
 
       # If it's taking too long to complete then it's unusual behavior and looks like it's failing. Hence exit deployment after 60 retries.
@@ -55,11 +56,13 @@ function verifyPipelineStatusManage() {
 # Function to track the status of MAS Core pipeline and to exit in case of failure and to wait for all retries in case if the pipeline is still running.
 function verifyPipelineStatusCore() {
 
+  local namespace=$1
+  local local_file=$2
+
   for (( i=0; i<=10; i++ )); do
-    varstr3=$(oc get pr -n "mas-${var2}-pipelines" | awk -F' ' '{print $3}')
-    varstr3=$(echo "$varstr3" | cut -d ' ' -f 1)
-    varstr4=$(oc get pr -n "mas-${var2}-pipelines" | awk -F' ' '{print $3}')
-    varstr4=$(echo "$varstr4" | cut -d ' ' -f 2)
+    varstr=$(oc get pr -n "${namespace}" | awk -F' ' '{print $3}')
+    varstr3=$(echo "$varstr" | cut -d ' ' -f 1)
+    varstr4=$(echo "$varstr" | cut -d ' ' -f 2)
 
     if [[ $varstr3 == "REASON" && $varstr4 == "Running"  ]]; then
       echo "Install pipeline has started succesfully"
@@ -74,18 +77,17 @@ function verifyPipelineStatusCore() {
   done
 
   for (( i=0; i<=30; i++ )); do
-    varstr3=$(oc get pr -n "mas-${var2}-pipelines" | awk -F' ' '{print $3}')
-    varstr3=$(echo "$varstr3" | cut -d ' ' -f 1)
-    varstr4=$(oc get pr -n "mas-${var2}-pipelines" | awk -F' ' '{print $3}')
-    varstr4=$(echo "$varstr4" | cut -d ' ' -f 2)
+    varstr=$(oc get pr -n "${namespace}" | awk -F' ' '{print $3}')
+    varstr3=$(echo "$varstr" | cut -d ' ' -f 1)
+    varstr4=$(echo "$varstr" | cut -d ' ' -f 2)
 
     if [[ $varstr3 == "REASON" && $varstr4 == "Completed"  ]]; then
       echo "Install pipeline as completed successfully"
-      echo -n "Successful" > result.txt
+      echo -n "Successful" > "${local_file}"
       break
     elif [[ $varstr3 == "REASON" && $varstr4 == "Running"  ]]; then
       echo "Install pipeline is still running"
-      varstr5=$(oc get taskrun -A -n "mas-${var2}-pipelines" | grep Failed | awk -F' ' '{print $2}')
+      varstr5=$(oc get taskrun -A -n "${namespace}" | grep Failed | awk -F' ' '{print $2}')
       echo "$varstr5 task is running"
       # If it's taking too long to complete then it's unusual behavior and looks like it's failing. Hence exit deployment after 30 retries.
       if [[ $i == 30 ]]; then
@@ -94,10 +96,10 @@ function verifyPipelineStatusCore() {
       fi
       sleep 180
     elif [[ $varstr3 == "REASON" && $varstr4 == "Failed"  ]]; then
-      varstr5=$(oc get taskrun -A -n "mas-${var2}-pipelines" | grep Failed | awk -F' ' '{print $2}')
+      varstr5=$(oc get taskrun -A -n "${namespace}" | grep Failed | awk -F' ' '{print $2}')
       echo "$varstr5 task run failed"
-      varstr6=$varstr5"_failed"
-      echo -n "${varstr6}" > result.txt
+      varstr6="${varstr5}_failed"
+      echo -n "${varstr6}" > "${local_file}"
       exit 1
     fi
   done
@@ -106,13 +108,16 @@ function verifyPipelineStatusCore() {
 # main
 var1=$1
 var2=$2
+local_file=$3
 echo "Deployment flavour is: $1"
 echo "Instance Id is: $2"
 
+namespace="mas-${var2}-pipelines"
+
 if [[ $var1 == "core" ]]; then
-  verifyPipelineStatusCore
+  verifyPipelineStatusCore "${namespace}" "${local_file}"
 elif [[ $var1 == "manage" ]]; then
-  verifyPipelineStatusManage
+  verifyPipelineStatusManage "${namespace}" "${local_file}"
 else
   echo "Invalid deployment flavour option is inputted"
   exit 1
