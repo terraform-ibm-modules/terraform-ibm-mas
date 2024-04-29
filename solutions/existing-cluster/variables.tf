@@ -73,7 +73,7 @@ variable "storage_class_rwo" {
 variable "storage_class_rwx" {
   type        = string
   description = "Enter the storage class (read-write many). Enter file storage class for DB2."
-  default     = "ibmc-vpc-file-dp2"
+  default     = "ibmc-vpc-block-retain-10iops-tier"
 }
 
 # tflint-ignore: terraform_unused_declarations
