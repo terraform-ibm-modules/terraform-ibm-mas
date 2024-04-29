@@ -119,7 +119,7 @@ resource "null_resource" "maximo_admin_url" {
   }
   provisioner "local-exec" {
     interpreter = ["/bin/bash", "-c"]
-    command     = "${path.module}/scripts/getAdminURL.sh ${var.deployment_flavour} ${var.mas_instance_id}"
+    command     = "${path.module}/scripts/getAdminURL.sh ${var.mas_instance_id}"
     environment = {
       KUBECONFIG = data.ibm_container_cluster_config.cluster_config.config_file_path
     }
