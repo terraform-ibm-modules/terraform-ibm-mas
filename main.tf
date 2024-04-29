@@ -128,11 +128,11 @@ resource "null_resource" "maximo_admin_url" {
 }
 
 locals {
-  pipeline_status_file = "${path.module}/result.txt"
+  pipeline_status_file = "${path.module}/scripts/result.txt"
 }
 
 locals {
-  admin_url_file = "${path.module}/url.txt"
+  admin_url_file = "${path.module}/scripts/url.txt"
 }
 
 data "local_file" "admin_url" {
