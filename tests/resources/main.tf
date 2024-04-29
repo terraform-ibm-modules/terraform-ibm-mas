@@ -57,16 +57,10 @@ resource "ibm_resource_instance" "cos_instance" {
   tags              = var.resource_tags
 }
 
-# Lookup the current default kube version
-data "ibm_container_cluster_versions" "cluster_versions" {}
-locals {
-  default_ocp_version = "${data.ibm_container_cluster_versions.cluster_versions.default_openshift_version}_openshift"
-}
-
 resource "ibm_container_vpc_cluster" "cluster" {
   name             = "${var.prefix}-ocp"
   vpc_id           = ibm_is_vpc.example_vpc.id
-  kube_version     = local.default_ocp_version
+  kube_version     = "4.12_openshift"
   flavor           = "bx2.16x64"
   worker_count     = "3"
   entitlement      = "cloud_pak"
