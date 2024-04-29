@@ -30,7 +30,7 @@ var permanentResources map[string]interface{}
 
 var coreTFVars = map[string]interface{}{
 	"deployment_flavour":           "core",
-	"mas_instance_id":              "mas-inst",
+	"mas_instance_id":              "inst1",
 	"region":                       "us-south",
 	"uds_contact_email":            "test@ibm.com",
 	"uds_contact_firstname":        "John",

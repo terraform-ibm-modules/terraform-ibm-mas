@@ -2,7 +2,7 @@
 #shellcheck disable=SC2086
 set -e
 
-# Function to fetch admin URL of Maximo Application Suite console. This function retries for 5 times to fetch the URL with wait of 60 seconds between each retry.
+#Function to fetch admin URL of Maximo Application Suite console. This function retries for 5 times to fetch the URL with wait of 60 seconds between each retry.
 function getAdminURL()
 {
 for (( i=1; i<=5; i++ ));

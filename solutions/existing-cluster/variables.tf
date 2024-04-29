@@ -24,7 +24,7 @@ variable "region" {
   type        = string
   description = "Enter region of the target IBM Cloud Red Hat OpenShift Cluster"
   nullable    = false
-  default     = "us-east"
+  default     = "us-south"
 }
 
 variable "mas_license" {
