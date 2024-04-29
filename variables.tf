@@ -2,14 +2,26 @@
 # Input Variables
 ##############################################################################
 
+variable "ibmcloud_api_key" {
+  description = "Enter the IBM Cloud APIkey that's associated with this IBM Cloud account."
+  type        = string
+  sensitive   = true
+}
+
 variable "cluster_id" {
   type        = string
-  description = "Enter Id of the target IBM Cloud Red Hat OpenShift Cluster"
+  description = "Enter Id of the target IBM Cloud Red Hat OpenShift cluster. This cluster ID can be found under the Red Hat OpenShift clusters section."
+  nullable    = false
+}
+
+variable "region" {
+  type        = string
+  description = "Enter region of the target IBM Cloud Red Hat OpenShift Cluster"
   nullable    = false
 }
 
 variable "mas_entitlement_key" {
-  description = "Enter entitlement key to access Maximo Application Suite Image registry"
+  description = "Enter the Entitled Registry key to access the IBM Image registry."
   type        = string
   sensitive   = true
 }
@@ -59,21 +71,21 @@ variable "mas_workspace_name" {
 # tflint-ignore: terraform_unused_declarations
 variable "storage_class_rwo" {
   type        = string
-  description = "Enter the storage class (read-write once)"
+  description = "Enter the storage class (read-write once). Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section."
   default     = "ibmc-vpc-block-retain-10iops-tier"
 }
 
 # tflint-ignore: terraform_unused_declarations
 variable "storage_class_rwx" {
   type        = string
-  description = "Enter the storage class (read-write many). Enter file storage class for DB2."
-  default     = "ibmc-vpc-file-dp2"
+  description = "Enter the storage class (read-write many). Enter file storage class for DB2. Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section."
+  default     = "ibmc-vpc-block-retain-10iops-tier"
 }
 
 # tflint-ignore: terraform_unused_declarations
 variable "pipeline_storage_class" {
   type        = string
-  description = "Enter the storage class for pipeline"
+  description = "Enter the storage class for pipeline. Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section."
   default     = "ibmc-vpc-block-retain-10iops-tier"
 
 }

@@ -20,6 +20,13 @@ variable "mas_entitlement_key" {
   sensitive   = true
 }
 
+variable "region" {
+  type        = string
+  description = "Enter region of the target IBM Cloud Red Hat OpenShift Cluster"
+  nullable    = false
+  default     = "us-east"
+}
+
 variable "mas_license" {
   description = "Enter Maximo Application Suite License file content"
   type        = string
@@ -73,7 +80,7 @@ variable "storage_class_rwo" {
 variable "storage_class_rwx" {
   type        = string
   description = "Enter the storage class (read-write many). Enter file storage class for DB2."
-  default     = "ibmc-vpc-file-dp2"
+  default     = "ibmc-vpc-block-retain-10iops-tier"
 }
 
 # tflint-ignore: terraform_unused_declarations
