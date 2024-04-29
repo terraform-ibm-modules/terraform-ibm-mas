@@ -1,4 +1,5 @@
 #!/bin/bash
+#shellcheck disable=SC2086
 set -e
 
 # Function to track the status of MAS Core+Manage pipeline and to exit in case of failure and to wait for all retries in case if the pipeline is still running.

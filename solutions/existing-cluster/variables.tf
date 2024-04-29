@@ -20,6 +20,12 @@ variable "mas_entitlement_key" {
   sensitive   = true
 }
 
+variable "region" {
+  type        = string
+  description = "Enter region of the target IBM Cloud Red Hat OpenShift Cluster"
+  nullable    = false
+}
+
 variable "mas_license" {
   description = "Enter Maximo Application Suite License file content"
   type        = string
