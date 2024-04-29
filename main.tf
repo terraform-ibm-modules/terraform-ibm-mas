@@ -4,7 +4,7 @@ data "ibm_container_cluster_config" "cluster_config" {
   endpoint_type   = var.cluster_config_endpoint_type != "default" ? var.cluster_config_endpoint_type : null
 }
 
-#Deploy helm chart to install selected deployment offerings namely, MAS Core or MAS Core+Manage
+# Deploy helm chart to install selected deployment offerings namely, MAS Core or MAS Core+Manage
 resource "helm_release" "maximo_helm_release" {
 
   set {
@@ -97,7 +97,7 @@ resource "helm_release" "maximo_helm_release" {
 
 }
 
-#Verify the pipeline install status & get the the data on pipeline success status or in case of failure, get the data on failed task.
+# Verify the pipeline install status & get the the data on pipeline success status or in case of failure, get the data on failed task.
 resource "null_resource" "install_verify" {
   triggers = {
     always_run = timestamp()
