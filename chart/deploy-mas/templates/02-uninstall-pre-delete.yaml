@@ -97,7 +97,7 @@ spec:
         - name: {{ $job_name }}
           # 8.0.0-pre.master - sha256:5b5222caecdd860840fd1eb070999e29ed356310474741f76934d0a9f8921d99
           # below sha is for quay.io/ibmmas/cli:8.0.0-pre.mascore-2054 (tag 8.0.0), update it once we get a new release tag
-          image: quay.io/ibmmas/cli@sha256:2e82de3f6bf025ccbecbd9c704bca60f884c7a3cef8211690ebec1ba2ae02791
+          image: quay.io/ibmmas/cli@sha256:3400bac3bf97831cecec32a90d03220b05d2aba2c5d5f61e6d8bd6958cc69f7c
 
           imagePullPolicy: Always
           securityContext:
@@ -122,7 +122,42 @@ spec:
 
               set -e
 
+              export ENTITLEMENT_KEY=$(cat /etc/mas/deploy/secrets/entitlement_key)
+              export AUTHORIZED_ENTITLEMENT=$(cat /etc/mas/deploy/secrets/authorized_entitlement)
+              ##echo "ENTITLEMENT_KEY=${ENTITLEMENT_KEY}"
+              ##echo "AUTHORIZED_ENTITLEMENT=${AUTHORIZED_ENTITLEMENT}"
+              SLS_LICENSE_FILE_LOCAL=/etc/mas/deploy/secrets/authorized_entitlement
+              ##echo "------authorized_entitlement.lic--------------"
+              ##cat $SLS_LICENSE_FILE_LOCAL
+              ##echo "------authorized_entitlement.lic--------------"
+
               echo "MAS_INSTANCE_ID=${MAS_INSTANCE_ID}"
+              echo "MAS_WORKSPACE_ID${MAS_WORKSPACE_ID}"
+              echo "MAS_WORKSPACE_NAME=${MAS_WORKSPACE_NAME}"
+              echo "MAS_CATALOG_VERSION=${MAS_CATALOG_VERSION}"
+              echo "MAS_CHANNEL=${MAS_CHANNEL}"
+              echo "SLS_LICENSE_ID=${SLS_LICENSE_ID}"
+              ##echo "SLS_LICENSE_FILE_LOCAL=${SLS_LICENSE_FILE_LOCAL}"
+              echo "UDS_CONTACT_EMAIL=${UDS_CONTACT_EMAIL}"
+              echo "UDS_CONTACT_FIRSTNAME=${UDS_CONTACT_FIRSTNAME}"
+              echo "UDS_CONTACT_LASTNAME=${UDS_CONTACT_LASTNAME}"
+              echo "STORAGE_CLASS_RWX=${STORAGE_CLASS_RWX}"
+              echo "PIPELINE_STORAGE_CLASS=${PIPELINE_STORAGE_CLASS}"
+              echo "PIPELINE_STORAGE_ACCESSMODE=${PIPELINE_STORAGE_ACCESSMODE}"
+              echo "MANAGE_CHANNEL=${MANAGE_CHANNEL}"
+              echo "MANAGE_JDBC_CONFIG_SCOPE=${MANAGE_JDBC_CONFIG_SCOPE}"
+              echo "MANAGE_COMPONENTS=${MANAGE_COMPONENTS}"
+              echo "DB2U_CHANNEL=${DB2U_CHANNEL}"
+              echo "DB2U_CPU_REQUEST=${DB2U_CPU_REQUEST}"
+              echo "DB2U_CPU_LIMIT=${DB2U_CPU_LIMIT}"
+              echo "DB2U_MEMORY_REQUEST=${DB2U_MEMORY_REQUEST}"
+              echo "DB2U_MEMORY_LIMIT=${DB2U_MEMORY_LIMIT}"
+              echo "DB2U_BACKUP_STORAGE=${DB2U_BACKUP_STORAGE}"
+              echo "DB2U_DATA_STORAGE=${DB2U_DATA_STORAGE}"
+              echo "DB2U_LOGS_STORAGE=${DB2U_LOGS_STORAGE}"
+              echo "DB2U_META_STORAGE=${DB2U_META_STORAGE}"
+              echo "DB2U_TEMP_STORAGE=${DB2U_TEMP_STORAGE}"
+
               echo "DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR}"
               DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR:-"core"}
 
@@ -181,7 +216,6 @@ spec:
               echo "No MAS instance namespace found due to a failed installation"
               fi
               fi
-
 
           env:
             - name: MAS_INSTANCE_ID

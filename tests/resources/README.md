@@ -102,7 +102,6 @@ statement instead the previous block.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_mas_core"></a> [mas\_core](#module\_mas\_core) | ../.. | n/a |
 | <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | terraform-ibm-modules/resource-group/ibm | 1.1.4 |
 
 ### Resources
@@ -123,20 +122,16 @@ statement instead the previous block.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_ibmcloud_api_key"></a> [ibmcloud\_api\_key](#input\_ibmcloud\_api\_key) | Enter the IBM Cloud APIkey that's associated with this IBM Cloud account | `string` | n/a | yes |
-| <a name="input_mas_entitlement_key"></a> [mas\_entitlement\_key](#input\_mas\_entitlement\_key) | Enter entitlement key to access Maximo Application Suite Image registry | `string` | n/a | yes |
-| <a name="input_mas_license"></a> [mas\_license](#input\_mas\_license) | Enter Maximo Application Suite License file content | `string` | n/a | yes |
 | <a name="input_prefix"></a> [prefix](#input\_prefix) | Enter a prefix used for naming resources that are created | `string` | `"mas"` | no |
 | <a name="input_region"></a> [region](#input\_region) | Enter region of the target IBM Cloud Red Hat OpenShift Cluster | `string` | `"us-south"` | no |
 | <a name="input_resource_group"></a> [resource\_group](#input\_resource\_group) | An existing resource group name to use for this example, if unset a new resource group will be created | `string` | `null` | no |
 | <a name="input_resource_tags"></a> [resource\_tags](#input\_resource\_tags) | Optional list of tags to be added to created resources | `list(string)` | `[]` | no |
-| <a name="input_sls_license_id"></a> [sls\_license\_id](#input\_sls\_license\_id) | Enter Suite License Server license ID | `string` | n/a | yes |
 
 ### Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_maximo_admin_url"></a> [maximo\_admin\_url](#output\_maximo\_admin\_url) | Admin URL of MAS/Manage application is |
-| <a name="output_pipeline_execution_status"></a> [pipeline\_execution\_status](#output\_pipeline\_execution\_status) | Status of pipeline execution is |
+| <a name="output_cluster_id"></a> [cluster\_id](#output\_cluster\_id) | The ID of the cluster. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 <!-- Leave this section as is so that your module has a link to local development environment set up steps for contributors to follow -->

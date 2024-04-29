@@ -3,9 +3,7 @@
 ########################################################################################################################
 
 locals {
-  zone                      = "${var.region}-2"
-  maximo_admin_url          = module.mas_core.maximo_admin_url
-  pipeline_execution_status = module.mas_core.pipeline_execution_status
+  zone = "${var.region}-2"
 }
 ##############################################################################
 # Resource Group
@@ -94,23 +92,4 @@ data "ibm_container_cluster_config" "cluster_config" {
 resource "time_sleep" "wait_operators" {
   depends_on      = [data.ibm_container_cluster_config.cluster_config]
   create_duration = "5s"
-}
-
-##############################################################################
-# Deploy MAS Core
-##############################################################################
-
-module "mas_core" {
-  source                = "../.."
-  cluster_id            = ibm_container_vpc_cluster.cluster.id
-  region                = var.region
-  mas_entitlement_key   = var.mas_entitlement_key
-  ibmcloud_api_key      = var.ibmcloud_api_key
-  mas_license           = var.mas_license
-  sls_license_id        = var.sls_license_id
-  deployment_flavour    = "core"
-  mas_instance_id       = "inst"
-  uds_contact_email     = "test@ibm.com"
-  uds_contact_firstname = "test"
-  uds_contact_lastname  = "test"
 }

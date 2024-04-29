@@ -26,27 +26,6 @@ variable "resource_group" {
   default     = null
 }
 
-variable "mas_entitlement_key" {
-  description = "Enter entitlement key to access Maximo Application Suite Image registry"
-  type        = string
-  sensitive   = true
-  nullable    = false
-}
-
-variable "mas_license" {
-  description = "Enter Maximo Application Suite License file content"
-  type        = string
-  sensitive   = true
-  nullable    = false
-}
-
-variable "sls_license_id" {
-  type        = string
-  description = "Enter Suite License Server license ID"
-  sensitive   = true
-  nullable    = false
-}
-
 variable "resource_tags" {
   type        = list(string)
   description = "Optional list of tags to be added to created resources"
