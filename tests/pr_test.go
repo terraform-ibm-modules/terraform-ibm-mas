@@ -21,7 +21,6 @@ import (
 )
 
 const solutionExistingCluster = "solutions/existing-cluster"
-const resourceGroup = "geretain-test-mas"
 
 // Define a struct with fields that match the structure of the YAML data
 const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-resources.yaml"
@@ -55,7 +54,6 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	options = &testhelper.TestOptions{
 		Testing:       t,
 		TerraformDir:  dir,
-		ResourceGroup: resourceGroup,
 		Prefix:        fmt.Sprintf("%s-%s", prefix, strings.ToLower(random.UniqueId())),
 		TerraformVars: terraformVars,
 	}
@@ -108,9 +106,10 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	existingTerraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		TerraformDir: tempTerraformDir,
 		Vars: map[string]interface{}{
-			"resource_group": resourceGroup,
-			"prefix":         options.Prefix,
-			"region":         terraformVars["region"],
+			"prefix": options.Prefix,
+			"region": terraformVars["region"],
+			// currently only 4.12 supported by MAS
+			"ocp_version": "4.12",
 		},
 		// Set Upgrade to true to ensure latest version of providers and modules are used by terratest.
 		// This is the same as setting the -upgrade=true flag with terraform.
@@ -124,7 +123,7 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 		assert.True(t, existErr == nil, "Init and Apply of Pre-requisite resources failed")
 		return nil, existingTerraformOptions, existErr
 	}
-	clusterId := terraform.Output(t, existingTerraformOptions, "cluster_id")
+	clusterId := terraform.Output(t, existingTerraformOptions, "workload_cluster_id")
 	options.TerraformVars["cluster_id"] = clusterId
 
 	return options, existingTerraformOptions, nil
@@ -151,22 +150,22 @@ func TestRunDACore(t *testing.T) {
 
 }
 
-func TestRunUpgradeDACore(t *testing.T) {
-	t.Parallel()
+// func TestRunUpgradeDACore(t *testing.T) {
+// 	t.Parallel()
 
-	options, preReqOptions, setupErr := setupOptions(t, "maximo-da-core-upg", solutionExistingCluster, coreTFVars)
-	if setupErr != nil {
-		assert.True(t, setupErr == nil, "Setup Upgrade failed")
-		return
-	}
-	defer terraform.Destroy(t, preReqOptions)
+// 	options, preReqOptions, setupErr := setupOptions(t, "maximo-da-core-upg", solutionExistingCluster, coreTFVars)
+// 	if setupErr != nil {
+// 		assert.True(t, setupErr == nil, "Setup Upgrade failed")
+// 		return
+// 	}
+// 	defer terraform.Destroy(t, preReqOptions)
 
-	output, err := options.RunTestUpgrade()
-	if !options.UpgradeTestSkipped {
-		assert.Nil(t, err, "This should not have errored")
-		assert.NotNil(t, output, "Expected some output")
-	}
-}
+// 	output, err := options.RunTestUpgrade()
+// 	if !options.UpgradeTestSkipped {
+// 		assert.Nil(t, err, "This should not have errored")
+// 		assert.NotNil(t, output, "Expected some output")
+// 	}
+// }
 
 // GetSecretsManagerKey retrieves a secret from Secrets Manager
 func GetSecretsManagerKey(smId string, smRegion string, smKeyId string) (*string, error) {

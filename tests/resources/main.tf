@@ -1,89 +1,249 @@
-########################################################################################################################
-# MAS Core on an existing Openshift cluster
-########################################################################################################################
+##############################################################################
+# SLZ OCP
+##############################################################################
+
+data "ibm_container_cluster_versions" "cluster_versions" {
+}
 
 locals {
-  zone = "${var.region}-2"
-}
-##############################################################################
-# Resource Group
-##############################################################################
-
-module "resource_group" {
-  source  = "terraform-ibm-modules/resource-group/ibm"
-  version = "1.1.4"
-  # if an existing resource group is not set (null) create a new one using prefix
-  resource_group_name          = var.resource_group == null ? "${var.prefix}-resource-group" : null
-  existing_resource_group_name = var.resource_group
+  default_ocp_version = "${data.ibm_container_cluster_versions.cluster_versions.default_openshift_version}_openshift"
+  ocp_version         = var.ocp_version == null || var.ocp_version == "default" ? local.default_ocp_version : "${var.ocp_version}_openshift"
 }
 
-##############################################################################
-# Create a test VPC
-##############################################################################
-
-resource "ibm_is_vpc" "example_vpc" {
-  name           = "${var.prefix}-vpc"
-  resource_group = module.resource_group.resource_group_id
-  tags           = var.resource_tags
-
+module "landing_zone" {
+  source  = "terraform-ibm-modules/landing-zone/ibm//patterns//roks//module"
+  version = "5.21.0"
+  region  = var.region
+  prefix  = var.prefix
+  tags    = var.resource_tags
+  # Create 1 public cluster using override json
+  # TODO: Replace this with actual override.json that DA docs will point to
+  override_json_string = <<EOF
+{
+   "atracker": {
+      "collector_bucket_name": "",
+      "receive_global_events": false,
+      "resource_group": "",
+      "add_route": false
+   },
+   "clusters": [
+      {
+         "boot_volume_crk_name": "slz-vsi-volume-key",
+         "cos_name": "cos",
+         "kube_type": "openshift",
+         "kube_version": "${local.ocp_version}",
+         "machine_type": "bx2.4x16",
+         "name": "workload-cluster",
+         "resource_group": "workload-rg",
+         "kms_config": {
+            "crk_name": "roks-key",
+            "private_endpoint": true
+         },
+         "subnet_names": [
+               "vsi-zone-1",
+               "vsi-zone-2"
+         ],
+         "vpc_name": "workload",
+         "worker_pools": [],
+         "workers_per_subnet": 1,
+         "entitlement": "cloud_pak",
+         "disable_public_endpoint": false
+      }
+   ],
+   "cos": [
+      {
+         "access_tags": [],
+         "buckets": [],
+         "keys": [],
+         "name": "cos",
+         "plan": "standard",
+         "random_suffix": true,
+         "resource_group": "service-rg",
+         "use_data": false
+      }
+   ],
+   "enable_transit_gateway": false,
+   "transit_gateway_global": false,
+   "key_management": {
+      "keys": [
+         {
+            "key_ring": "slz-ring",
+            "name": "slz-vsi-volume-key",
+            "root_key": true,
+            "policies": {
+               "rotation": {
+                  "interval_month": 12
+               }
+            }
+         },
+         {
+            "key_ring": "slz-ring",
+            "name": "roks-key",
+            "policies": {
+               "rotation": {
+                  "interval_month": 12
+               }
+            },
+            "root_key": true
+         }
+      ],
+      "name": "slz-kms",
+      "resource_group": "service-rg",
+      "use_hs_crypto": false,
+      "use_data": false
+   },
+   "network_cidr": "10.0.0.0/8",
+   "resource_groups": [
+      {
+         "create": true,
+         "name": "service-rg",
+         "use_prefix": true
+      },
+      {
+         "create": true,
+         "name": "management-rg",
+         "use_prefix": true
+      },
+      {
+         "create": true,
+         "name": "workload-rg",
+         "use_prefix": true
+      }
+   ],
+   "security_groups": [],
+   "transit_gateway_connections": [],
+   "transit_gateway_resource_group": "service-rg",
+   "virtual_private_endpoints": [],
+   "vpcs": [
+      {
+         "default_security_group_rules": [],
+         "clean_default_sg_acl": false,
+         "flow_logs_bucket_name": null,
+         "network_acls": [
+            {
+               "add_cluster_rules": false,
+               "name": "management-acl",
+               "rules": [
+                  {
+                     "name": "allow-ssh-inbound",
+                     "action": "allow",
+                     "direction": "inbound",
+                     "tcp": {
+                        "port_min": 22,
+                        "port_max": 22
+                     },
+                     "source": "0.0.0.0/0",
+                     "destination": "10.0.0.0/8"
+                  },
+                  {
+                     "action": "allow",
+                     "destination": "10.0.0.0/8",
+                     "direction": "inbound",
+                     "name": "allow-ibm-inbound",
+                     "source": "161.26.0.0/16"
+                  },
+                  {
+                     "action": "allow",
+                     "destination": "10.0.0.0/8",
+                     "direction": "inbound",
+                     "name": "allow-all-network-inbound",
+                     "source": "10.0.0.0/8"
+                  },
+                  {
+                     "action": "allow",
+                     "destination": "0.0.0.0/0",
+                     "direction": "outbound",
+                     "name": "allow-all-outbound",
+                     "source": "0.0.0.0/0"
+                  }
+               ]
+            }
+         ],
+         "prefix": "management",
+         "resource_group": "management-rg",
+         "subnets": {
+            "zone-1": [
+               {
+                  "acl_name": "management-acl",
+                  "cidr": "10.10.10.0/24",
+                  "name": "vsi-zone-1",
+                  "public_gateway": false
+               }
+            ],
+            "zone-2": [],
+            "zone-3": []
+         },
+         "use_public_gateways": {
+            "zone-1": false,
+            "zone-2": false,
+            "zone-3": false
+         },
+         "address_prefixes": {
+            "zone-1": [],
+            "zone-2": [],
+            "zone-3": []
+         }
+      },
+      {
+         "default_security_group_rules": [],
+         "clean_default_sg_acl": false,
+         "flow_logs_bucket_name": null,
+         "network_acls": [
+            {
+               "add_cluster_rules": false,
+               "name": "workload-acl",
+               "rules": [
+                  {
+                     "action": "allow",
+                     "destination": "0.0.0.0/0",
+                     "direction": "inbound",
+                     "name": "allow-all-network-inbound",
+                     "source": "0.0.0.0/0"
+                  },
+                  {
+                     "action": "allow",
+                     "destination": "0.0.0.0/0",
+                     "direction": "outbound",
+                     "name": "allow-all-outbound",
+                     "source": "0.0.0.0/0"
+                  }
+               ]
+            }
+         ],
+         "prefix": "workload",
+         "resource_group": "workload-rg",
+         "subnets": {
+            "zone-1": [
+               {
+                  "acl_name": "workload-acl",
+                  "cidr": "10.40.10.0/24",
+                  "name": "vsi-zone-1",
+                  "public_gateway": true
+               }
+            ],
+            "zone-2": [
+               {
+                  "acl_name": "workload-acl",
+                  "cidr": "10.50.10.0/24",
+                  "name": "vsi-zone-2",
+                  "public_gateway": true
+               }
+            ],
+            "zone-3": []
+         },
+         "use_public_gateways": {
+            "zone-1": true,
+            "zone-2": true,
+            "zone-3": false
+         },
+         "address_prefixes": {
+            "zone-1": [],
+            "zone-2": [],
+            "zone-3": []
+         }
+      }
+   ],
+   "vpn_gateways": []
 }
-
-resource "ibm_is_public_gateway" "testacc_gateway" {
-  name           = "${var.prefix}-pgway"
-  vpc            = ibm_is_vpc.example_vpc.id
-  zone           = local.zone
-  resource_group = module.resource_group.resource_group_id
-}
-
-resource "ibm_is_subnet" "testacc_subnet" {
-  name                     = "${var.prefix}-subnet"
-  vpc                      = ibm_is_vpc.example_vpc.id
-  zone                     = local.zone
-  public_gateway           = ibm_is_public_gateway.testacc_gateway.id
-  total_ipv4_address_count = 256
-  resource_group           = module.resource_group.resource_group_id
-}
-
-##############################################################################
-# Create a test OCP Cluster
-##############################################################################
-
-resource "ibm_resource_instance" "cos_instance" {
-  name              = "${var.prefix}-cos"
-  service           = "cloud-object-storage"
-  plan              = "standard"
-  location          = "global"
-  resource_group_id = module.resource_group.resource_group_id
-  tags              = var.resource_tags
-}
-
-resource "ibm_container_vpc_cluster" "cluster" {
-  name             = "${var.prefix}-ocp"
-  vpc_id           = ibm_is_vpc.example_vpc.id
-  kube_version     = "4.12_openshift"
-  flavor           = "bx2.16x64"
-  worker_count     = "3"
-  entitlement      = "cloud_pak"
-  cos_instance_crn = ibm_resource_instance.cos_instance.id
-  zones {
-    subnet_id = ibm_is_subnet.testacc_subnet.id
-    name      = local.zone
-  }
-  resource_group_id = module.resource_group.resource_group_id
-  tags              = var.resource_tags
-}
-
-##############################################################################
-# Init cluster config for helm and kubernetes providers
-##############################################################################
-
-data "ibm_container_cluster_config" "cluster_config" {
-  cluster_name_id   = ibm_container_vpc_cluster.cluster.id
-  resource_group_id = module.resource_group.resource_group_id
-}
-
-# Sleep to allow RBAC sync on cluster
-resource "time_sleep" "wait_operators" {
-  depends_on      = [data.ibm_container_cluster_config.cluster_config]
-  create_duration = "5s"
+EOF
 }

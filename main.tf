@@ -94,6 +94,7 @@ resource "helm_release" "maximo_helm_release" {
   wait                       = true
   recreate_pods              = true
   disable_openapi_validation = false
+  wait_for_jobs              = true
 
 }
 
