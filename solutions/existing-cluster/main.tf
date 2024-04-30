@@ -15,6 +15,4 @@ module "existing_cluster" {
   pipeline_storage_class       = var.pipeline_storage_class
   storage_class_rwo            = var.storage_class_rwo
   storage_class_rwx            = var.storage_class_rwx
-  region                       = var.region
-  ibmcloud_api_key             = var.ibmcloud_api_key
 }
