@@ -18,6 +18,7 @@ variable "region" {
   type        = string
   description = "Enter region of the target IBM Cloud Red Hat OpenShift Cluster"
   nullable    = false
+  default     = "us-south"
 }
 
 variable "mas_entitlement_key" {
