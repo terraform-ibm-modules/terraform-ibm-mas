@@ -131,7 +131,7 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 
 func TestRunDACore(t *testing.T) {
 	t.Parallel()
-	options, preReqOptions, setupErr := setupOptions(t, "mas-core", solutionExistingCluster, coreTFVars)
+	options, preReqOptions, setupErr := setupOptions(t, "core", solutionExistingCluster, coreTFVars)
 	if setupErr != nil {
 		assert.True(t, setupErr == nil, "Setup DA basic failed")
 		return
@@ -153,7 +153,7 @@ func TestRunDACore(t *testing.T) {
 // func TestRunUpgradeDACore(t *testing.T) {
 // 	t.Parallel()
 
-// 	options, preReqOptions, setupErr := setupOptions(t, "maximo-da-core-upg", solutionExistingCluster, coreTFVars)
+// 	options, preReqOptions, setupErr := setupOptions(t, "upg", solutionExistingCluster, coreTFVars)
 // 	if setupErr != nil {
 // 		assert.True(t, setupErr == nil, "Setup Upgrade failed")
 // 		return
