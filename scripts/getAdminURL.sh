@@ -10,6 +10,7 @@ function getAdminURL() {
   local local_file=$2
 
   for (( i=1; i<=5; i++ )); do
+    # TODO: update to use -o=jsonpath
     varstr=$(oc get route -n "mas-${id}-core" --no-headers | grep "admin.${id}" | awk '{print $2}')
     if [[ -n ${varstr} ]]; then
       varstr="https://${varstr}"
