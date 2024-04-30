@@ -46,7 +46,7 @@ def getAdminURLCore(kube_config, instid):
         json_output = json.dumps(result)
         print(json_output)
         filename = "url.txt"
-        with open(filename,'w' ) as file:
+        with open(filename, "w") as file:
             file.write(result["admin_url"])
         return 0
 

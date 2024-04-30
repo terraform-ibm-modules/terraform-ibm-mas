@@ -55,7 +55,7 @@ def verifyPipelineStatus(kube_config, instid, capability):
                     PIPELINE_WAIT_TIME = 60
                     pipline_status = "NO_PIPELINE_RESOURCE_FOUND"
                     time.sleep(PIPELINE_WAIT_TIME)
-                    piplineRetryCounter-=1
+                    piplineRetryCounter -= 1
                     pass
                 else:
                     break
@@ -71,9 +71,7 @@ def verifyPipelineStatus(kube_config, instid, capability):
 
                 elif pipeline_status_reason == "Running":
                     current_task = findCurrentRunningTask(kube_config)
-                    current_status = {
-                        "currentRunningTask": current_task
-                    }
+                    current_status = {"currentRunningTask": current_task}
                     print(json.dumps(current_status))
                     time.sleep(TIME_TO_WAIT)
                     pass
@@ -89,7 +87,7 @@ def verifyPipelineStatus(kube_config, instid, capability):
         json_output = json.dumps(result)
         print(json_output)
         filename = "result.txt"
-        with open(filename,'w') as file:
+        with open(filename, "w") as file:
             file.write(pipline_status)
 
     except Exception as e:
@@ -97,6 +95,7 @@ def verifyPipelineStatus(kube_config, instid, capability):
         json_error = json.dumps(error)
         print(json_error)
         sys.exit(1)
+
 
 def getFailureMessage(kube_config):
     failure_msg = ""
