@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 deployment_flavour=$1
 instance_id=$2
 
