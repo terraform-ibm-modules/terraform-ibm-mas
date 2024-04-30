@@ -100,7 +100,6 @@ No modules.
 | [null_resource.maximo_admin_url](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [ibm_container_cluster_config.cluster_config](https://registry.terraform.io/providers/ibm-cloud/ibm/latest/docs/data-sources/container_cluster_config) | data source |
 | [local_file.admin_url](https://registry.terraform.io/providers/hashicorp/local/latest/docs/data-sources/file) | data source |
-| [local_file.pipeline_status](https://registry.terraform.io/providers/hashicorp/local/latest/docs/data-sources/file) | data source |
 
 ### Inputs
 
@@ -127,7 +126,6 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_maximo_admin_url"></a> [maximo\_admin\_url](#output\_maximo\_admin\_url) | Admin URL of MAS/Manage application |
-| <a name="output_pipeline_execution_status"></a> [pipeline\_execution\_status](#output\_pipeline\_execution\_status) | Status of pipeline execution is |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 <!-- Leave this section as is so that your module has a link to local development environment set up steps for contributors to follow -->

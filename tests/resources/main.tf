@@ -32,7 +32,7 @@ module "landing_zone" {
          "cos_name": "cos",
          "kube_type": "openshift",
          "kube_version": "${local.ocp_version}",
-         "machine_type": "bx2.4x16",
+         "machine_type": "bx2.16x64",
          "name": "workload-cluster",
          "resource_group": "workload-rg",
          "kms_config": {

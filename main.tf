@@ -99,8 +99,7 @@ resource "helm_release" "maximo_helm_release" {
 }
 
 locals {
-  admin_url_file       = "${path.module}/url.txt"
-  pipeline_status_file = "${path.module}/result.txt"
+  admin_url_file = "${path.module}/url.txt"
 }
 
 # Verify the pipeline install status & get the the data on pipeline success status or in case of failure, get the data on failed task.
@@ -110,7 +109,7 @@ resource "null_resource" "install_verify" {
   }
   provisioner "local-exec" {
     interpreter = ["/bin/bash", "-c"]
-    command     = "${path.module}/scripts/installVerify.sh ${var.deployment_flavour} ${var.mas_instance_id} ${local.pipeline_status_file}"
+    command     = "${path.module}/scripts/installVerify.sh ${var.deployment_flavour} ${var.mas_instance_id}"
     environment = {
       KUBECONFIG = data.ibm_container_cluster_config.cluster_config.config_file_path
     }
@@ -136,9 +135,4 @@ resource "null_resource" "maximo_admin_url" {
 data "local_file" "admin_url" {
   depends_on = [null_resource.maximo_admin_url]
   filename   = local.admin_url_file
-}
-
-data "local_file" "pipeline_status" {
-  depends_on = [null_resource.maximo_admin_url]
-  filename   = local.pipeline_status_file
 }

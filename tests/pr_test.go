@@ -142,10 +142,9 @@ func TestRunDACore(t *testing.T) {
 	assert.Nil(t, err, "This should not have errored")
 	assert.NotNil(t, output, "Expected some output")
 
-	expectedOutputs := []string{"pipeline_execution_status", "maximo_admin_url"}
+	expectedOutputs := []string{"maximo_admin_url"}
 	missingOutputs, outputErr := testhelper.ValidateTerraformOutputs(options.LastTestTerraformOutputs, expectedOutputs...)
 	assert.Empty(t, outputErr, fmt.Sprintf("Missing expected outputs: %s", missingOutputs))
-	assert.Equal(t, "Successful", options.LastTestTerraformOutputs["pipeline_execution_status"], "Pipeline execution status should be Successful")
 	assert.True(t, strings.HasPrefix(options.LastTestTerraformOutputs["maximo_admin_url"].(string), "https://admin.inst"), "maximo_admin_url should start with https://admin.inst")
 
 }
