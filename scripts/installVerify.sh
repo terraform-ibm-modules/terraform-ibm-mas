@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 # Function to track the status of MAS Core+Manage pipeline and to exit in case of failure and to wait for all retries in case if the pipeline is still running.
 function verifyPipelineStatusManage() {
@@ -46,7 +46,7 @@ function verifyPipelineStatusManage() {
       fi
       sleep 300
     elif [[ $varstr3 == "REASON" && $varstr4 == "Failed"  ]]; then
-      varstr5=$(oc get taskrun -A -n "mas-${var2}-pipelines" | grep Failed | awk -F' ' '{print $2}')
+      varstr5=$(oc get taskrun -A -n "${namespace}" | grep Failed | awk -F' ' '{print $2}')
       echo "$varstr5 task run failed"
       exit 1
     fi
