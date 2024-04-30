@@ -9,6 +9,9 @@ echo "Deployment flavour is: ${deployment_flavour}"
 echo "Instance ID is: ${instance_id}"
 echo
 
+# sleep for 30 seconds to allow some tasks to start
+sleep 30
+
 namespace="mas-${instance_id}-pipelines"
 
 if [[ "${deployment_flavour}" == "core" ]]; then
@@ -27,10 +30,10 @@ for (( i=0; i<=num_of_retries; i++ )); do
     break
   elif [[ "${reason}" == "Running"  ]]; then
     echo "Install pipeline is still running.."
-    running_tasks=$(oc get taskrun -A -n "${namespace}" | grep Running | awk -F' ' '{print $2}')
-    printf 'Current running task(s) are:\n  %s\n' "${running_tasks}"
+    running_tasks=$(oc get taskrun -n "${namespace}" | grep Running | awk -F' ' '{print $2}')
+    printf 'Current running task(s) are:\n%s\n' "${running_tasks}"
     # If it's taking too long to complete then it's unusual behavior and looks like it's failing. Hence exit deployment after 30 retries.
-    if [[ $i == 30 ]]; then
+    if [[ $i == "${num_of_retries}" ]]; then
       echo
       echo "Pipeline is taking too long time to complete which is unusual. Please check the pipeline status in the Openshift console."
       exit 1
@@ -38,11 +41,11 @@ for (( i=0; i<=num_of_retries; i++ )); do
     time_sleep=60
     echo
     echo "Sleeping for ${time_sleep} seconds before retrying.."
-    sleep 60
+    sleep ${time_sleep}
   elif [[ "${reason}" == "Failed"  ]]; then
-    failed_tasks=$(oc get taskrun -A -n "${namespace}" | grep Failed | awk -F' ' '{print $2}')
+    failed_tasks=$(oc get taskrun -n "${namespace}" | grep Failed | awk -F' ' '{print $2}')
     echo
-    printf 'Detected the following failed task(s):\n  %s\n' "${failed_tasks}"
+    printf 'Detected the following failed task(s):\n%s\n' "${failed_tasks}"
     echo "Exiting."
     exit 1
   fi

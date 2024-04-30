@@ -19,7 +19,10 @@ function getAdminURL() {
         echo "Admin URL can't be fetched. Something wrong. Please check on Openshift cluster."
         exit 1
       fi
-      sleep 60
+      time_sleep=60
+      echo
+      echo "Sleeping for ${time_sleep} seconds before retrying.."
+	  sleep ${time_sleep}
     fi
   done
 }
