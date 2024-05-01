@@ -56,6 +56,12 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 		TerraformDir:  dir,
 		Prefix:        fmt.Sprintf("%s-%s", prefix, strings.ToLower(random.UniqueId())),
 		TerraformVars: terraformVars,
+		IgnoreDestroys: testhelper.Exemptions{ // Ignore for consistency check since they are set to always run in the code
+			List: []string{
+				"module.existing_cluster.null_resource.install_verify",
+				"module.existing_cluster.null_resource.maximo_admin_url",
+			},
+		},
 	}
 	masEntitlementKey, masEntitlementKeyErr := GetSecretsManagerKey( // pragma: allowlist secret
 		permanentResources["secretsManagerGuid"].(string),
@@ -87,9 +93,10 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 		t.Error("TestProjectsFullTest Failed - sls_license_id not found in secrets manager")
 		panic(masLicenseErr)
 	}
-	options.TerraformVars["mas_entitlement_key"] = *masEntitlementKey
-	options.TerraformVars["mas_license"] = *masLicense
-	options.TerraformVars["sls_license_id"] = *slsLicenseId
+	// Set sensitive vars as variables so they are not exposed in logs
+	os.Setenv("TF_VAR_mas_license", *masLicense)
+	os.Setenv("TF_VAR_mas_entitlement_key", *masEntitlementKey)
+	os.Setenv("TF_VAR_sls_license_id", *slsLicenseId)
 
 	// Deploy Pre-requisite resources
 

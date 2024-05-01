@@ -7,19 +7,19 @@ data "ibm_container_cluster_config" "cluster_config" {
 # Deploy helm chart to install selected deployment offerings namely, MAS Core or MAS Core+Manage
 resource "helm_release" "maximo_helm_release" {
 
-  set {
+  set_sensitive {
     name  = "mas_entitlement_key"
     type  = "string"
     value = base64encode(var.mas_entitlement_key)
   }
 
-  set {
+  set_sensitive {
     name  = "mas_license"
     type  = "string"
     value = base64encode(var.mas_license)
   }
 
-  set {
+  set_sensitive {
     name  = "sls_license_id"
     type  = "string"
     value = var.sls_license_id
