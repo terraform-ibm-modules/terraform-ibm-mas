@@ -53,3 +53,5 @@ terraform.rc
 .vscode/
 
 kubeconfig/*
+url.txt
+result.txt

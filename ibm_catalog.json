@@ -2,7 +2,7 @@
     "products": [
       {
         "name": "deploy-arch-ibm-slz-mas",
-        "label": "IBM Maximo Application Suite on IBM Cloud landing zone",
+        "label": "Maximo Application Suite",
         "product_kind": "solution",
         "tags": [
           "ibm_created",
@@ -25,7 +25,7 @@
         "short_description": "Installs IBM Maximo Application Suite on IBM Cloud landing zone",
         "long_description": "Installs IBM Maximo Application Suite on IBM Cloud landing zone",
         "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-mas/blob/main/README.md",
-        "offering_icon_url": "https://github.com/terraform-ibm-modules/terraform-ibm-mas/blob/main/images/ibm-icon.svg",
+        "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/images/ibm-icon.svg",
         "provider_name": "IBM",
         "features": [
           {
@@ -38,6 +38,7 @@
             "label": "Existing Cluster",
             "name": "ExistingCluster",
             "install_type": "extension",
+            "working_directory": "solutions/existing-cluster",
             "dependencies": [
               {
                 "flavors": [
@@ -45,7 +46,7 @@
                 ],
                 "id": "95fccffc-ae3b-42df-b6d9-80be5914d852-global",
                 "name": "deploy-arch-ibm-slz-ocp",
-                "version": "v5.14.0-public"
+                "version": ">=v3.0.0"
               }
             ],
             "architecture": {
@@ -64,7 +65,7 @@
                 {
                   "diagram": {
                     "caption": "Maximo Application Suite on existing IBM landing zone cluster.",
-                    "url": "https://github.com/terraform-ibm-modules/terraform-ibm-mas/blob/main/images/MAS_DA_Architecture_Diagram.drawio.svg",
+                    "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/images/MAS_DA_Architecture_Diagram.drawio.svg",
                     "type": "image/svg+xml"
                   },
                   "description": "Maximo Application Suite on existing IBM landing zone cluster."
