@@ -87,9 +87,9 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 		t.Error("TestProjectsFullTest Failed - sls_license_id not found in secrets manager")
 		panic(masLicenseErr)
 	}
-	options.TerraformVars["mas_entitlement_key"] = masEntitlementKey
-	options.TerraformVars["mas_license"] = masLicense
-	options.TerraformVars["sls_license_id"] = slsLicenseId
+	options.TerraformVars["mas_entitlement_key"] = *masEntitlementKey
+	options.TerraformVars["mas_license"] = *masLicense
+	options.TerraformVars["sls_license_id"] = *slsLicenseId
 
 	// Deploy Pre-requisite resources
 
