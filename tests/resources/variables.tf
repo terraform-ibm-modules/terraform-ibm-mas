@@ -27,7 +27,7 @@ variable "resource_tags" {
 }
 
 #variable "ocp_version" {
-  #type        = string
-  #description = "OCP version to provision. If not provided, the current IKS default will be used."
-  #default     = null
+#type        = string
+#description = "OCP version to provision. If not provided, the current IKS default will be used."
+#default     = null
 #}
