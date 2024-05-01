@@ -16,6 +16,7 @@ module "landing_zone" {
   region  = var.region
   prefix  = var.prefix
   tags    = var.resource_tags
+
   # Create 1 public cluster using override json
   # TODO: Replace this with actual override.json that DA docs will point to
   override_json_string = <<EOF
@@ -32,7 +33,7 @@ module "landing_zone" {
          "cos_name": "cos",
          "kube_type": "openshift",
          "kube_version": "${local.ocp_version}",
-         "machine_type": "bx2.16x64",
+         "machine_type": "bx2.32x128",
          "name": "workload-cluster",
          "resource_group": "workload-rg",
          "kms_config": {
