@@ -3,13 +3,14 @@
       {
         "name": "deploy-arch-ibm-slz-mas",
         "label": "Maximo Application Suite",
-        "Category": "Enterprise applications",
+        "product_kind": "solution",
         "tags": [
           "ibm_created",
           "target_terraform",
           "terraform",
           "reference_architecture",
-          "solution"
+          "solution",
+		  "Enterprise applications"
         ],
         "keywords": [
           "Enterprise Asset Management",
