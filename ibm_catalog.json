@@ -10,12 +10,12 @@
           "terraform",
           "reference_architecture",
           "solution",
-	  "enterprise_app"
+		      "enterprise_app"
         ],
         "keywords": [
           "Enterprise Asset Management",
           "Asset Performance Management",
-          "Asset Lifecycle Management",       
+          "Asset Lifecycle Management",
           "Maximo Application Suite"
         ],
         "short_description": "Deploy an IBM Maximo¨ Application Suite instance in a Red Hat Openshift cluster",
@@ -93,4 +93,3 @@
       }
     ]
   }
-  
