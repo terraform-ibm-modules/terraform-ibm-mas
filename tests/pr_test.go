@@ -57,10 +57,12 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 		Prefix:        fmt.Sprintf("%s-%s", prefix, strings.ToLower(random.UniqueId())),
 		TerraformVars: terraformVars,
 		// Workaround for https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/78
+		ImplicitRequired: true,
 		ImplicitDestroy: []string{
-			"module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups[\"workload-rg\"]",
+			"module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups",
 		},
-		IgnoreDestroys: testhelper.Exemptions{ // Ignore for consistency check since they are set to always run in the code
+		// Ignore for consistency check since they are set to always run in the code
+		IgnoreDestroys: testhelper.Exemptions{
 			List: []string{
 				"module.existing_cluster.null_resource.install_verify",
 				"module.existing_cluster.null_resource.maximo_admin_url",
