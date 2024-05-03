@@ -108,7 +108,7 @@ No modules.
 | <a name="input_cluster_config_endpoint_type"></a> [cluster\_config\_endpoint\_type](#input\_cluster\_config\_endpoint\_type) | Specify which type of endpoint to use for for cluster config access: 'default', 'private', 'vpe', 'link'. 'default' value will use the default endpoint of the cluster. | `string` | `"default"` | no |
 | <a name="input_cluster_id"></a> [cluster\_id](#input\_cluster\_id) | Enter Id of the target IBM Cloud Red Hat OpenShift cluster. This cluster ID can be found under the Red Hat OpenShift clusters section. | `string` | n/a | yes |
 | <a name="input_deployment_flavour"></a> [deployment\_flavour](#input\_deployment\_flavour) | Enter core for Maximo Application Suite Core deployment and enter manage for Maximo Application Suite Core+Manage deployment | `string` | n/a | yes |
-| <a name="input_mas_entitlement_key"></a> [mas\_entitlement\_key](#input\_mas\_entitlement\_key) | Enter the Entitled Registry key to access the IBM Image registry. | `string` | n/a | yes |
+| <a name="input_entitlement_key"></a> [mas\_entitlement\_key](#input\_mas\_entitlement\_key) | Enter the Entitled Registry key to access the IBM Image registry. | `string` | n/a | yes |
 | <a name="input_mas_instance_id"></a> [mas\_instance\_id](#input\_mas\_instance\_id) | Enter the Maximo Application Suite instance Id | `string` | n/a | yes |
 | <a name="input_mas_license"></a> [mas\_license](#input\_mas\_license) | Enter Maximo Application Suite License file content | `string` | n/a | yes |
 | <a name="input_mas_workspace_id"></a> [mas\_workspace\_id](#input\_mas\_workspace\_id) | Enter the Maximo Application Suite workspace Id | `string` | `"wrkid1"` | no |
@@ -117,9 +117,9 @@ No modules.
 | <a name="input_sls_license_id"></a> [sls\_license\_id](#input\_sls\_license\_id) | Enter Suite License Server license ID | `string` | n/a | yes |
 | <a name="input_storage_class_rwo"></a> [storage\_class\_rwo](#input\_storage\_class\_rwo) | Enter the storage class (read-write once). Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section. | `string` | `"ibmc-vpc-block-retain-10iops-tier"` | no |
 | <a name="input_storage_class_rwx"></a> [storage\_class\_rwx](#input\_storage\_class\_rwx) | Enter the storage class (read-write many). Enter file storage class for DB2. Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section. | `string` | `"ibmc-vpc-block-retain-10iops-tier"` | no |
-| <a name="input_uds_contact_email"></a> [uds\_contact\_email](#input\_uds\_contact\_email) | Enter the email ID for Data Reporter Operator | `string` | n/a | yes |
-| <a name="input_uds_contact_firstname"></a> [uds\_contact\_firstname](#input\_uds\_contact\_firstname) | Enter your first name to be used in Data Reporter Operator | `string` | n/a | yes |
-| <a name="input_uds_contact_lastname"></a> [uds\_contact\_lastname](#input\_uds\_contact\_lastname) | Enter your last name to be used in Data Reporter Operator | `string` | n/a | yes |
+| <a name="input_contact_email"></a> [contact\_email](#input\_contact\_email) | Enter the email ID for Data Reporter Operator | `string` | n/a | yes |
+| <a name="input_contact_firstname"></a> [contact\_firstname](#input\_contact\_firstname) | Enter your first name to be used in Data Reporter Operator | `string` | n/a | yes |
+| <a name="input_contact_lastname"></a> [contact\_lastname](#input\_contact\_lastname) | Enter your last name to be used in Data Reporter Operator | `string` | n/a | yes |
 
 ### Outputs
 

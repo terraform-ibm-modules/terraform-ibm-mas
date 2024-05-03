@@ -31,9 +31,9 @@ var coreTFVars = map[string]interface{}{
 	"deployment_flavour":           "core",
 	"mas_instance_id":              "inst1",
 	"region":                       "us-south",
-	"uds_contact_email":            "test@ibm.com",
-	"uds_contact_firstname":        "John",
-	"uds_contact_lastname":         "Doe",
+	"contact_email":            "test@ibm.com",
+	"contact_firstname":        "John",
+	"contact_lastname":         "Doe",
 	"cluster_config_endpoint_type": "default",
 }
 
@@ -76,7 +76,7 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	)
 
 	if !assert.NoError(t, masEntitlementKeyErr) {
-		t.Error("TestProjectsFullTest Failed - mas_entitlement_key not found in secrets manager")
+		t.Error("TestProjectsFullTest Failed - entitlement_key not found in secrets manager")
 		panic(masEntitlementKeyErr)
 	}
 
@@ -101,7 +101,7 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	}
 	// Set sensitive vars as variables so they are not exposed in logs
 	os.Setenv("TF_VAR_mas_license", *masLicense)
-	os.Setenv("TF_VAR_mas_entitlement_key", *masEntitlementKey)
+	os.Setenv("TF_VAR_entitlement_key", *masEntitlementKey)
 	os.Setenv("TF_VAR_sls_license_id", *slsLicenseId)
 
 	// Deploy Pre-requisite resources

@@ -9,28 +9,44 @@
           "target_terraform",
           "terraform",
           "reference_architecture",
-          "solution"
+          "solution",
+		      "enterprise_app"
         ],
         "keywords": [
-          "vpc",
-          "slz",
-          "IaC",
-          "infrastructure as code",
-          "terraform",
-          "solution",
-          "mas",
-          "maximo",
+          "Enterprise Asset Management",
+          "Asset Performance Management",
+          "Asset Lifecycle Management",
           "Maximo Application Suite"
         ],
-        "short_description": "Installs IBM Maximo Application Suite on IBM Cloud landing zone",
-        "long_description": "Installs IBM Maximo Application Suite on IBM Cloud landing zone",
+        "short_description": "Deploy an IBM Maximo¨ Application Suite instance in a Red Hat Openshift cluster",
+        "long_description": "This deployable architecture provides a simple automated way to get started with IBM Maximo Application Suite on IBM Cloud. \n \n IBM Maximo Application Suite is a set of applications for asset monitoring, management, predictive maintenance and reliability planning. \n \n Get the most value from your enterprise assets with Maximo Application Suite. It's a single, integrated cloud-based platform that uses AI, IoT and analytics to optimize performance, extend asset lifecycles and reduce operational downtime and costs. \n \n With market-leading technology from IBM Maximo, you'll have access to configurable CMMS, EAM, APM and RCM applications, along with streamlined installation and administration, plus a better user experience with shared data and workflows.",
         "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-mas/blob/main/README.md",
         "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/images/ibm-icon.svg",
         "provider_name": "IBM",
         "features": [
           {
-            "description": "Supports installing the Maximo Application Suite on existing IBM landing zone cluster.",
-            "title": "Installs the Maximo Application Suite on existing IBM landing zone cluster."
+            "description": "Manage and maintain high-value assets with AI and analytics to optimize performance, extend asset lifecycles and reduce downtime and costs.",
+            "title": "Enterprise Asset Management"
+          },
+		  {
+            "description": "Deliver the right asset operational data and step-by-step guidance to field technicians when and where they need it with remote and AI-power.",
+            "title": "Mobile EAM."
+          },
+		  {
+            "description": "Move beyond time schedules and improve asset reliability by using insights from operational data and analytics for maintenance planning.",
+            "title": "Predictive maintenance."
+          },
+		  {
+            "description": "Jumpstart your operations by capitalizing on the IBM Maximo Reliability Strategies app and Library, based on more than 25years of RCM studio.",
+            "title": "Reliability centered maintenance."
+          },
+		  {
+            "description": "Get advanced remote asset monitoring for real-time visibility, root-cause troubleshooting, anomaly detection, and AI-driven alerts at scale.",
+            "title": "Remote monitoring."
+          },
+		  {
+            "description": "Increase productivity, identify production defects faster and gain operational insight with AI computer vision for automated inspection.",
+            "title": "Visual Inspection."
           }
         ],
         "flavors": [
@@ -57,7 +73,7 @@
                   "description": "Yes"
                 },
                 {
-                  "title": "Supports installing the Maximo Application Suite on existing IBM landing zone cluster.",
+                  "title": "Supports installing the Maximo Application Suite on existing Openshift cluster.",
                   "description": "Yes"
                 }
               ],
@@ -65,7 +81,7 @@
                 {
                   "diagram": {
                     "caption": "Maximo Application Suite on existing IBM landing zone cluster.",
-                    "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/images/MAS_DA_Architecture_Diagram.drawio.svg",
+                    "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/reference-architecture/mas_deployable_architecure.svg",
                     "type": "image/svg+xml"
                   },
                   "description": "Maximo Application Suite on existing IBM landing zone cluster."

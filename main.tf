@@ -8,9 +8,9 @@ data "ibm_container_cluster_config" "cluster_config" {
 resource "helm_release" "maximo_helm_release" {
 
   set_sensitive {
-    name  = "mas_entitlement_key"
+    name  = "entitlement_key"
     type  = "string"
-    value = base64encode(var.mas_entitlement_key)
+    value = base64encode(var.entitlement_key)
   }
 
   set_sensitive {
@@ -68,21 +68,21 @@ resource "helm_release" "maximo_helm_release" {
   }
 
   set {
-    name  = "uds_contact_email"
+    name  = "contact_email"
     type  = "string"
-    value = var.uds_contact_email
+    value = var.contact_email
   }
 
   set {
-    name  = "uds_contact_firstname"
+    name  = "contact_firstname"
     type  = "string"
-    value = var.uds_contact_firstname
+    value = var.contact_firstname
   }
 
   set {
-    name  = "uds_contact_lastname"
+    name  = "contact_lastname"
     type  = "string"
-    value = var.uds_contact_lastname
+    value = var.contact_lastname
   }
 
   name                       = "maximo-helm-release"
