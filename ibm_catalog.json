@@ -65,6 +65,7 @@
                 "version": ">=v3.0.0"
               }
             ],
+			"release_notes_url": "https://test.cloud.ibm.com/docs-draft/maximo-application-suite?topic=maximo-application-suite-release-notes",
             "architecture": {
               "descriptions": "",
               "features": [

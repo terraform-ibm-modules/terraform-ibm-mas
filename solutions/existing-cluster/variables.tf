@@ -21,13 +21,13 @@ variable "region" {
 }
 
 variable "entitlement_key" {
-  description = "Enter entitlement key to access IBM Image registry. For more information, see https://myibm.ibm.com/products-services/containerlibrary. You can use an existing secret in Secrets Manager or add your entitlement key directly."
+  description = "Enter entitlement key to access IBM Image registry. For more information, see [Entitlement Keys](https://myibm.ibm.com/products-services/containerlibrary) You can use an existing secret in Secrets Manager or add your entitlement key directly."
   type        = string
   sensitive   = true
 }
 
 variable "mas_license" {
-  description = "Enter Maximo Application Suite License file content. For more information, see https://www.ibm.com/support/pages/ibm-support-licensing-start-page. You can use an existing secret in Secrets Manager or add your entitlement key directly."
+  description = "Enter Maximo Application Suite License file content. For more information, see [IBM Support - Licensing](https://www.ibm.com/support/pages/ibm-support-licensing-start-page) You can use an existing secret in Secrets Manager or add your entitlement key directly."
   type        = string
   sensitive   = true
 }
