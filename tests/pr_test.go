@@ -143,7 +143,13 @@ func TestRunDACore(t *testing.T) {
 		assert.True(t, setupErr == nil, "Setup DA basic failed")
 		return
 	}
-	defer terraform.Destroy(t, preReqOptions)
+
+	// Workaround for https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/78
+	// defer terraform.Destroy(t, preReqOptions)
+	defer func() {
+		terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups[\"workload-rg\"]")
+		terraform.Destroy(t, preReqOptions)
+	}()
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
