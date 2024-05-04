@@ -32,7 +32,7 @@ module "landing_zone" {
             "boot_volume_crk_name": "slz-vsi-volume-key",
             "cos_name": "cos",
             "kube_type": "openshift",
-            "kube_version": "4.12_openshift",
+            "kube_version": "${local.ocp_version}",
             "machine_type": "bx2.16x64",
             "name": "workload-cluster",
             "resource_group": "workload-rg",
