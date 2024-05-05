@@ -3,6 +3,11 @@ package test
 
 import (
 	"fmt"
+	"log"
+	"os"
+	"strings"
+	"testing"
+
 	"github.com/IBM/go-sdk-core/v5/core"
 	"github.com/gruntwork-io/terratest/modules/files"
 	"github.com/gruntwork-io/terratest/modules/logger"
@@ -10,10 +15,6 @@ import (
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/require"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/common"
-	"log"
-	"os"
-	"strings"
-	"testing"
 
 	"github.com/IBM/secrets-manager-go-sdk/v2/secretsmanagerv2"
 	"github.com/stretchr/testify/assert"
@@ -31,9 +32,9 @@ var coreTFVars = map[string]interface{}{
 	"deployment_flavour":           "core",
 	"mas_instance_id":              "inst1",
 	"region":                       "us-south",
-	"uds_contact_email":            "test@ibm.com",
-	"uds_contact_firstname":        "John",
-	"uds_contact_lastname":         "Doe",
+	"contact_email":                "test@ibm.com",
+	"contact_firstname":            "John",
+	"contact_lastname":             "Doe",
 	"cluster_config_endpoint_type": "default",
 }
 
@@ -143,7 +144,13 @@ func TestRunDACore(t *testing.T) {
 		assert.True(t, setupErr == nil, "Setup DA basic failed")
 		return
 	}
-	defer terraform.Destroy(t, preReqOptions)
+
+	// Workaround for https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/78
+	// defer terraform.Destroy(t, preReqOptions)
+	defer func() {
+		terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups[\"workload-rg\"]")
+		terraform.Destroy(t, preReqOptions)
+	}()
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")

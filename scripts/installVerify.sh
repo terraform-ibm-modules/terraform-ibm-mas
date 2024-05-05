@@ -17,7 +17,7 @@ namespace="mas-${instance_id}-pipelines"
 if [[ "${deployment_flavour}" == "core" ]]; then
   num_of_retries=90
 elif [[ "${deployment_flavour}" == "manage" ]]; then
-  num_of_retries=200
+  num_of_retries=300
 else
   echo "Unsupported deployment flavour: ${deployment_flavour}"
   exit 1
