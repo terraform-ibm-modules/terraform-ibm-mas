@@ -28,57 +28,45 @@ If this repo contains any reference architectures, uncomment the heading below a
 See "Reference architecture" in Authoring Guidelines in the public documentation at
 https://terraform-ibm-modules.github.io/documentation/#/implementation-guidelines?id=reference-architecture
 -->
-<!-- ## Reference architectures -->
 
+## Reference architectures
+
+[Maximo Application Suite Deployable Architecture](https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/reference-architecture/mas_deployable_architecure.svg)
 
 <!-- This heading should always match the name of the root level module (aka the repo name) -->
 ## terraform-ibm-mas
 
 ### Usage
 
-<!--
-Add an example of the use of the module in the following code block.
+You can use the modular design of this module to provision Maximo Application Suite Core offering or Maximo Application Suite Core + Manage offering.
+Include a provider block and a copy of the [variables.tf](https://github.com/terraform-ibm-modules/terraform-ibm-mas/blob/main/variables.tf) file.
+
+module "existing_cluster" {
+  source                       = "terraform-ibm-modules/terraform-ibm-mas"
+  cluster_id                   = var.cluster_id
+  deployment_flavour           = var.deployment_flavour
+  mas_entitlement_key          = var.mas_entitlement_key
+  mas_instance_id              = var.mas_instance_id
+  mas_license                  = var.mas_license
+  sls_license_id               = var.sls_license_id
+  uds_contact_email            = var.uds_contact_email
+  uds_contact_firstname        = var.uds_contact_firstname
+  uds_contact_lastname         = var.uds_contact_lastname
+  cluster_config_endpoint_type = var.cluster_config_endpoint_type
+  mas_workspace_id             = var.mas_workspace_id
+  mas_workspace_name           = var.mas_workspace_name
+  pipeline_storage_class       = var.pipeline_storage_class
+  storage_class_rwo            = var.storage_class_rwo
+  storage_class_rwx            = var.storage_class_rwx
+}
 
 Use real values instead of "var.<var_name>" or other placeholder values
 unless real values don't help users know what to change.
--->
-
-```hcl
-
-```
 
 ### Required IAM access policies
 
-<!-- PERMISSIONS REQUIRED TO RUN MODULE
-If this module requires permissions, uncomment the following block and update
-the sample permissions, following the format.
-Replace the sample Account and IBM Cloud service names and roles with the
-information in the console at
-Manage > Access (IAM) > Access groups > Access policies.
--->
+You need Administrator role to perform deployment of Maixmo Application Suite on an existing Openshift cluster.
 
-<!--
-You need the following permissions to run this module.
-
-- Account Management
-    - **Sample Account Service** service
-        - `Editor` platform access
-        - `Manager` service access
-    - IAM Services
-        - **Sample Cloud Service** service
-            - `Administrator` platform access
--->
-
-<!-- NO PERMISSIONS FOR MODULE
-If no permissions are required for the module, uncomment the following
-statement instead the previous block.
--->
-
-<!-- No permissions are needed to run this module.-->
-
-
-<!-- Below content is automatically populated via pre-commit hook -->
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ### Requirements
 
 | Name | Version |
