@@ -42,6 +42,7 @@ You can use the modular design of this module to provision Maximo Application Su
 Include a provider block and a copy of the [variables.tf](https://github.com/terraform-ibm-modules/terraform-ibm-mas/blob/main/variables.tf) file.
 
 module "existing_cluster" {
+
   source                       = "terraform-ibm-modules/terraform-ibm-mas"
   cluster_id                   = var.cluster_id
   deployment_flavour           = var.deployment_flavour
@@ -58,10 +59,8 @@ module "existing_cluster" {
   pipeline_storage_class       = var.pipeline_storage_class
   storage_class_rwo            = var.storage_class_rwo
   storage_class_rwx            = var.storage_class_rwx
-}
 
-Use real values instead of "var.<var_name>" or other placeholder values
-unless real values don't help users know what to change.
+}
 
 ### Required IAM access policies
 
