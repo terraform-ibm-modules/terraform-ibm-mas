@@ -15,7 +15,3 @@ module "mas_core" {
   contact_lastname             = var.contact_lastname
   cluster_config_endpoint_type = var.cluster_config_endpoint_type
 }
-
-locals {
-  maximo_admin_url = module.mas_core.maximo_admin_url
-}
