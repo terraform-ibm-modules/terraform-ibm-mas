@@ -43,6 +43,7 @@ variable "deployment_flavour" {
   type        = string
   description = "Enter core for Maximo Application Suite Core deployment and enter manage for Maximo Application Suite Core+Manage deployment. Maximo Application Suite Core is deployed by using the MongoDB Community edition and Maximo Manage is deployed with internal Db2 on Red Hat OpenShift cluster."
   nullable    = false
+  default     = "core"
   validation {
     error_message = "Invalid deployment flavour type! Valid values are 'core' or 'manage'"
     condition     = contains(["core", "manage"], var.deployment_flavour)
@@ -51,39 +52,42 @@ variable "deployment_flavour" {
 
 variable "mas_instance_id" {
   type        = string
-  description = "Enter the Maximo Application Suite instance Id. It can be any instance name lesser than 8 characters in length such as inst1"
+  description = "Enter the Maximo Application Suite instance Id. It can be any instance name lesser than 8 characters in length. For example, inst1"
   nullable    = false
 }
 
-
+# tflint-ignore: terraform_unused_declarations
 variable "mas_workspace_id" {
   type        = string
   description = "Enter the Maximo Application Suite workspace Id"
   default     = "wrkid1"
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "mas_workspace_name" {
   type        = string
   description = "Enter the Maximo Application Suite workspace name"
   default     = "wrkns1"
 }
 
-
+# tflint-ignore: terraform_unused_declarations
 variable "storage_class_rwo" {
   type        = string
-  description = "Enter the storage class (read-write once). Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section."
+  description = "Enter the storage class (read-write once)"
   default     = "ibmc-vpc-block-retain-10iops-tier"
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "storage_class_rwx" {
   type        = string
-  description = "Enter the storage class (read-write many). Enter file storage class for DB2. Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section."
+  description = "Enter the storage class (read-write many). Enter file storage class for DB2."
   default     = "ibmc-vpc-block-retain-10iops-tier"
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "pipeline_storage_class" {
   type        = string
-  description = "Enter the storage class for pipeline. Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section."
+  description = "Enter the storage class for pipeline"
   default     = "ibmc-vpc-block-retain-10iops-tier"
 
 }

@@ -1,134 +1,142 @@
 {
-  "products": [
-    {
-      "name": "deploy-arch-ibm-slz-mas",
-      "label": "Maximo Application Suite",
-      "product_kind": "solution",
-      "tags": [
-        "ibm_created",
-        "target_terraform",
-        "terraform",
-        "reference_architecture",
-        "solution",
-        "enterprise_app"
-      ],
-      "keywords": [
-        "Enterprise Asset Management",
-        "Asset Performance Management",
-        "Asset Lifecycle Management",
-        "Maximo Application Suite"
-      ],
-      "short_description": "Deploy an IBM Maximo¨ Application Suite instance in a Red Hat Openshift cluster",
-      "long_description": "This deployable architecture provides a simple automated way to get started with IBM Maximo Application Suite on IBM Cloud. \n \n IBM Maximo Application Suite is a set of applications for asset monitoring, management, predictive maintenance and reliability planning. \n \n Get the most value from your enterprise assets with Maximo Application Suite. It's a single, integrated cloud-based platform that uses AI, IoT and analytics to optimize performance, extend asset lifecycles and reduce operational downtime and costs. \n \n With market-leading technology from IBM Maximo, you'll have access to configurable CMMS, EAM, APM and RCM applications, along with streamlined installation and administration, plus a better user experience with shared data and workflows.",
-      "offering_docs_url": "https://test.cloud.ibm.com/docs-draft/maximo-application-suite?topic=maximo-application-suite-overview",
-      "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/images/ibm-icon.svg",
-      "provider_name": "IBM",
-      "features": [
-        {
-          "description": "Manage and maintain high-value assets with AI and analytics to optimize performance, extend asset lifecycles and reduce downtime and costs.",
-          "title": "Enterprise Asset Management"
-        },
-        {
-          "description": "Deliver the right asset operational data and step-by-step guidance to field technicians when and where they need it with remote and AI-power.",
-          "title": "Mobile EAM."
-        },
-        {
-          "description": "Move beyond time schedules and improve asset reliability by using insights from operational data and analytics for maintenance planning.",
-          "title": "Predictive maintenance."
-        },
-        {
-          "description": "Jumpstart your operations by capitalizing on the IBM Maximo Reliability Strategies app and Library, based on more than 25years of RCM studio.",
-          "title": "Reliability centered maintenance."
-        },
-        {
-          "description": "Get advanced remote asset monitoring for real-time visibility, root-cause troubleshooting, anomaly detection, and AI-driven alerts at scale.",
-          "title": "Remote monitoring."
-        },
-        {
-          "description": "Increase productivity, identify production defects faster and gain operational insight with AI computer vision for automated inspection.",
-          "title": "Visual Inspection."
-        }
-      ],
-      "flavors": [
-        {
-          "label": "Existing Cluster",
-          "name": "ExistingCluster",
-          "install_type": "extension",
-          "working_directory": "solutions/existing-cluster",
-          "dependencies": [
-            {
-              "flavors": [
-                "standard"
-              ],
-              "id": "95fccffc-ae3b-42df-b6d9-80be5914d852-global",
-              "name": "deploy-arch-ibm-slz-ocp",
-              "version": ">=v3.0.0"
-            }
-          ],
-          "release_notes_url": "https://test.cloud.ibm.com/docs-draft/maximo-application-suite?topic=maximo-application-suite-release-notes",
-          "configuration": [
-            {
-              "custom_config": {
-                "config_constraints": {
-                  "generationType": "2"
-                },
-                "grouping": "deployment",
-                "original_grouping": "deployment",
-                "type": "deployment_flavour"
-              },
-              "key": "deployment_flavour",
-              "type": "string",
-              "required": true,
-              "options": [
-                {
-                  "displayname": "core",
-                  "value": "core"
-                },
-                {
-                  "displayname": "manage",
-                  "value": "manage"
-                }
-              ]
-            },
-            {
-              "custom_config": {
-                "config_constraints": {
-                  "generationType": "2"
-                },
-                "grouping": "deployment",
-                "original_grouping": "deployment",
-                "type": "vpc_region"
-              },
-              "key": "region",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "architecture": {
-            "descriptions": "",
-            "features": [
-              {
-                "title": "Works with the landing zone",
-                "description": "Yes"
-              },
-              {
-                "title": "Supports installing the Maximo Application Suite on existing Openshift cluster.",
-                "description": "Yes"
-              }
-            ],
-            "diagrams": [
-              {
-                "diagram": {
-                  "caption": "Maximo Application Suite on existing IBM landing zone cluster.",
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/reference-architecture/mas_deployable_architecure.svg",
-                  "type": "image/svg+xml"
-                },
-                "description": "Maximo Application Suite on existing IBM landing zone cluster."
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ]
+	"products": [
+		{
+			"name": "deploy-arch-ibm-slz-mas",
+			"label": "Maximo Application Suite",
+			"product_kind": "solution",
+			"tags": [
+				"ibm_created",
+				"target_terraform",
+				"terraform",
+				"reference_architecture",
+				"solution",
+				"enterprise_app"
+			],
+			"keywords": [
+				"Enterprise Asset Management",
+				"Asset Performance Management",
+				"Asset Lifecycle Management",
+				"Maximo Application Suite"
+			],
+			"short_description": "Deploy an IBM Maximo Application Suite instance in a Red Hat Openshift cluster",
+			"long_description": "This deployable architecture provides a simple automated way to get started with IBM Maximo Application Suite on IBM Cloud. \n \n IBM Maximo Application Suite is a set of applications for asset monitoring, management, predictive maintenance and reliability planning. \n \n Get the most value from your enterprise assets with Maximo Application Suite. It's a single, integrated cloud-based platform that uses AI, IoT and analytics to optimize performance, extend asset lifecycles and reduce operational downtime and costs. \n \n With market-leading technology from IBM Maximo, you'll have access to configurable CMMS, EAM, APM and RCM applications, along with streamlined installation and administration, plus a better user experience with shared data and workflows.",
+			"offering_docs_url": "https://test.cloud.ibm.com/docs-draft/maximo-application-suite?topic=maximo-application-suite-overview",
+			"offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/images/ibm-icon.svg",
+			"provider_name": "IBM",
+			"features": [
+				{
+					"description": "Manage and maintain high-value assets with AI and analytics to optimize performance, extend asset lifecycles and reduce downtime and costs.",
+					"title": "Enterprise Asset Management"
+				},
+				{
+					"description": "Deliver the right asset operational data and step-by-step guidance to field technicians when and where they need it with remote and AI-power.",
+					"title": "Mobile EAM."
+				},
+				{
+					"description": "Move beyond time schedules and improve asset reliability by using insights from operational data and analytics for maintenance planning.",
+					"title": "Predictive maintenance."
+				},
+				{
+					"description": "Jumpstart your operations by capitalizing on the IBM Maximo Reliability Strategies app and Library, based on more than 25years of RCM studio.",
+					"title": "Reliability centered maintenance."
+				},
+				{
+					"description": "Get advanced remote asset monitoring for real-time visibility, root-cause troubleshooting, anomaly detection, and AI-driven alerts at scale.",
+					"title": "Remote monitoring."
+				},
+				{
+					"description": "Increase productivity, identify production defects faster and gain operational insight with AI computer vision for automated inspection.",
+					"title": "Visual Inspection."
+				}
+			],
+			"flavors": [
+				{
+					"label": "Existing Cluster",
+					"name": "ExistingCluster",
+					"install_type": "extension",
+					"working_directory": "solutions/existing-cluster",
+					"dependencies": [
+						{
+							"flavors": [
+								"standard"
+							],
+							"id": "95fccffc-ae3b-42df-b6d9-80be5914d852-global",
+							"name": "deploy-arch-ibm-slz-ocp",
+							"version": ">=v3.0.0"
+						}
+					],
+					"iam_permissions": [
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Administrator"
+							],
+							"service_name": "iam-identity"
+						}
+					],
+					"release_notes_url": "https://test.cloud.ibm.com/docs-draft/maximo-application-suite?topic=maximo-application-suite-release-notes",
+					"configuration": [
+						{
+							"custom_config": {
+								"config_constraints": {
+									"generationType": "2"
+								},
+								"grouping": "deployment",
+								"original_grouping": "deployment",
+								"type": "deployment_flavour"
+							},
+							"key": "deployment_flavour",
+							"type": "string",
+							"required": true,
+							"options": [
+								{
+									"displayname": "core",
+									"value": "core"
+								},
+								{
+									"displayname": "manage",
+									"value": "manage"
+								}
+							]
+						},
+						{
+							"custom_config": {
+								"config_constraints": {
+									"generationType": "2"
+								},
+								"grouping": "deployment",
+								"original_grouping": "deployment",
+								"type": "vpc_region"
+							},
+							"key": "region",
+							"required": true,
+							"type": "string"
+						}
+					],
+					"architecture": {
+						"descriptions": "",
+						"features": [
+							{
+								"title": "Works with the landing zone",
+								"description": "Yes"
+							},
+							{
+								"title": "Supports installing the Maximo Application Suite on existing Openshift cluster.",
+								"description": "Yes"
+							}
+						],
+						"diagrams": [
+							{
+								"diagram": {
+									"caption": "Maximo Application Suite on existing IBM landing zone cluster.",
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/reference-architecture/mas_deployable_architecure.svg",
+									"type": "image/svg+xml"
+								},
+								"description": "Maximo Application Suite on existing IBM landing zone cluster."
+							}
+						]
+					}
+				}
+			]
+		}
+	]
 }
