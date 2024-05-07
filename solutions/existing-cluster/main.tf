@@ -1,7 +1,7 @@
 module "existing_cluster" {
   source                       = "../../"
   cluster_id                   = var.cluster_id
-  deployment_flavour           = var.deployment_flavour
+  deployment_flavor           = var.deployment_flavor
   entitlement_key              = var.entitlement_key
   mas_instance_id              = var.mas_instance_id
   mas_license                  = var.mas_license

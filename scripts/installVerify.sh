@@ -2,10 +2,10 @@
 
 set -e
 
-deployment_flavour=$1
+deployment_flavor=$1
 instance_id=$2
 
-echo "Deployment flavour is: ${deployment_flavour}"
+echo "Deployment flavor is: ${deployment_flavor}"
 echo "Instance ID is: ${instance_id}"
 echo
 
@@ -14,12 +14,12 @@ sleep 30
 
 namespace="mas-${instance_id}-pipelines"
 
-if [[ "${deployment_flavour}" == "core" ]]; then
+if [[ "${deployment_flavor}" == "core" ]]; then
   num_of_retries=90
-elif [[ "${deployment_flavour}" == "manage" ]]; then
+elif [[ "${deployment_flavor}" == "manage" ]]; then
   num_of_retries=300
 else
-  echo "Unsupported deployment flavour: ${deployment_flavour}"
+  echo "Unsupported deployment flavor: ${deployment_flavor}"
   exit 1
 fi
 

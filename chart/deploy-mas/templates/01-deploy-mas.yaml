@@ -154,10 +154,10 @@ spec:
               echo "DB2U_META_STORAGE=${DB2U_META_STORAGE}"
               echo "DB2U_TEMP_STORAGE=${DB2U_TEMP_STORAGE}"
 
-              echo "DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR}"
-              DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR:-"core"}
+              echo "DEPLOYMENT_flavor=${DEPLOYMENT_flavor}"
+              DEPLOYMENT_flavor=${DEPLOYMENT_flavor:-"core"}
 
-              if [ "${DEPLOYMENT_FLAVOUR}" == "core" ]; then
+              if [ "${DEPLOYMENT_flavor}" == "core" ]; then
                 echo "Core installation started"
 
                 mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
@@ -169,7 +169,7 @@ spec:
                   --storage-pipeline "${PIPELINE_STORAGE_CLASS}" --storage-accessmode "${PIPELINE_STORAGE_ACCESSMODE}" \
                   --no-confirm --no-wait-for-pvcs --accept-license
 
-              elif [ "${DEPLOYMENT_FLAVOUR}" == "manage" ]; then
+              elif [ "${DEPLOYMENT_flavor}" == "manage" ]; then
                 echo "Core+Manage installation started"
 
                 mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
@@ -190,7 +190,7 @@ spec:
                   --no-confirm --no-wait-for-pvcs --accept-license
 
               else
-                echo "Passed DEPLOYMENT_FLAVOUR not supported, Supported values = core, mange"
+                echo "Passed DEPLOYMENT_flavor not supported, Supported values = core, mange"
                 exit 1
               fi
 
@@ -251,8 +251,8 @@ spec:
               value: "{{ .Values.db2u_meta_storage }}"
             - name: DB2U_TEMP_STORAGE
               value: "{{ .Values.db2u_temp_storage }}"
-            - name: DEPLOYMENT_FLAVOUR
-              value: "{{ .Values.deployment_flavour }}"
+            - name: DEPLOYMENT_flavor
+              value: "{{ .Values.deployment_flavor }}"
 
             - name: ENTITLEMENT_KEY
               valueFrom:

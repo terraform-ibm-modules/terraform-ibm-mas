@@ -14,7 +14,7 @@ pipeline_storage_class: ibmc-vpc-block-retain-10iops-tier
 pipeline_storage_accessmode: ReadWriteOnce
 entitlement_key:
 mas_license: replace
-deployment_flavour:
+deployment_flavor:
 
 # manage specific
 manage_channel: 8.7.x

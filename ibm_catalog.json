@@ -82,9 +82,9 @@
 								},
 								"grouping": "deployment",
 								"original_grouping": "deployment",
-								"type": "deployment_flavour"
+								"type": "deployment_flavor"
 							},
-							"key": "deployment_flavour",
+							"key": "deployment_flavor",
 							"type": "string",
 							"required": true,
 							"options": [

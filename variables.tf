@@ -27,13 +27,13 @@ variable "sls_license_id" {
   nullable    = false
 }
 
-variable "deployment_flavour" {
+variable "deployment_flavor" {
   type        = string
-  description = "Enter core for Maximo Application Suite Core deployment and enter manage for Maximo Application Suite Core+Manage deployment. Maximo Application Suite Core is deployed by using the MongoDB Community edition and Maximo Manage is deployed with internal Db2 on Red Hat OpenShift cluster."
+  description = "Select core for Maximo Application Suite Core deployment and select manage for Maximo Application Suite Core+Manage deployment. Maximo Application Suite Core is deployed by using the MongoDB Community edition and Maximo Manage is deployed with internal Db2 on Red Hat OpenShift cluster."
   nullable    = false
   validation {
-    error_message = "Invalid deployment flavour type! Valid values are 'core' or 'manage'"
-    condition     = contains(["core", "manage"], var.deployment_flavour)
+    error_message = "Invalid deployment flavor type! Valid values are 'core' or 'manage'"
+    condition     = contains(["core", "manage"], var.deployment_flavor)
   }
 }
 
@@ -64,7 +64,7 @@ variable "storage_class_rwo" {
 variable "storage_class_rwx" {
   type        = string
   description = "Enter the storage class (read-write many). Enter file storage class for DB2. Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section."
-  default     = "ibmc-vpc-block-retain-10iops-tier"
+  default     = "ibmc-vpc-file-dp2"
 }
 
 variable "pipeline_storage_class" {

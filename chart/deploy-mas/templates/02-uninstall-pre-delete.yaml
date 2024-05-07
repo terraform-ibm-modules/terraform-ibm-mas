@@ -158,10 +158,10 @@ spec:
               echo "DB2U_META_STORAGE=${DB2U_META_STORAGE}"
               echo "DB2U_TEMP_STORAGE=${DB2U_TEMP_STORAGE}"
 
-              echo "DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR}"
-              DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR:-"core"}
+              echo "DEPLOYMENT_flavor=${DEPLOYMENT_flavor}"
+              DEPLOYMENT_flavor=${DEPLOYMENT_flavor:-"core"}
 
-              if [ "${DEPLOYMENT_FLAVOUR}" == "core" ]; then
+              if [ "${DEPLOYMENT_flavor}" == "core" ]; then
               echo "Inside helm pre-delete hook and uninstalling MAS Core instance"
               varstr=$(oc get namespaces | grep mas-"${MAS_INSTANCE_ID}"-core | awk -F' ' '{print $2}')
               if [[ $varstr == "Active"  ]]; then
@@ -187,7 +187,7 @@ spec:
               else
               echo "No MAS instance namespace found due to a failed installation"
               fi
-              elif [ "${DEPLOYMENT_FLAVOUR}" == "manage" ]; then
+              elif [ "${DEPLOYMENT_flavor}" == "manage" ]; then
               echo "Inside helm pre-delete hook and uninstalling MAS Core + Manage instance"
               varstr=$(oc get namespaces | grep mas-"${MAS_INSTANCE_ID}"-core | awk -F' ' '{print $2}')
               if [[ $varstr == "Active"  ]]; then
@@ -220,8 +220,8 @@ spec:
           env:
             - name: MAS_INSTANCE_ID
               value: "{{ .Values.mas_instance_id }}"
-            - name: DEPLOYMENT_FLAVOUR
-              value: "{{ .Values.deployment_flavour }}"
+            - name: DEPLOYMENT_flavor
+              value: "{{ .Values.deployment_flavor }}"
 
             - name: ENTITLEMENT_KEY
               valueFrom:

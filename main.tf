@@ -26,9 +26,9 @@ resource "helm_release" "maximo_helm_release" {
   }
 
   set {
-    name  = "deployment_flavour"
+    name  = "deployment_flavor"
     type  = "string"
-    value = var.deployment_flavour
+    value = var.deployment_flavor
   }
 
   set {
@@ -109,7 +109,7 @@ resource "null_resource" "install_verify" {
   }
   provisioner "local-exec" {
     interpreter = ["/bin/bash", "-c"]
-    command     = "${path.module}/scripts/installVerify.sh ${var.deployment_flavour} ${var.mas_instance_id}"
+    command     = "${path.module}/scripts/installVerify.sh ${var.deployment_flavor} ${var.mas_instance_id}"
     environment = {
       KUBECONFIG = data.ibm_container_cluster_config.cluster_config.config_file_path
     }

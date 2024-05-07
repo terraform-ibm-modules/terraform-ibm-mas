@@ -29,7 +29,7 @@ const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-res
 var permanentResources map[string]interface{}
 
 var coreTFVars = map[string]interface{}{
-	"deployment_flavour":           "manage",
+	"deployment_flavor":           "manage",
 	"mas_instance_id":              "inst1",
 	"region":                       "us-south",
 	"contact_email":                "test@ibm.com",
