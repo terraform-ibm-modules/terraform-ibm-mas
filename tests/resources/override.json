@@ -122,11 +122,13 @@
 	"resource_groups": [
 		{
 			"create": true,
-			"name": "service-rg"
+			"name": "service-rg",
+			"use_prefix": true
 		},
 		{
 			"create": true,
-			"name": "workload-rg"
+			"name": "workload-rg",
+			"use_prefix": true
 		}
 	],
 	"security_groups": [
