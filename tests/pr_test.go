@@ -116,8 +116,6 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 		Vars: map[string]interface{}{
 			"prefix": options.Prefix,
 			"region": terraformVars["region"],
-			// currently only 4.12 supported by MAS
-			"ocp_version": "4.12",
 		},
 		// Set Upgrade to true to ensure latest version of providers and modules are used by terratest.
 		// This is the same as setting the -upgrade=true flag with terraform.
