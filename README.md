@@ -31,15 +31,16 @@ https://terraform-ibm-modules.github.io/documentation/#/implementation-guideline
 
 ## Reference architectures
 
-[Maximo Application Suite Deployable Architecture](https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/reference-architecture/mas_deployable_architecure.svg)
+[![Maximo Application Suite Deployable Architecture](https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/reference-architecture/mas_deployable_architecure.svg)]
 
 <!-- This heading should always match the name of the root level module (aka the repo name) -->
 ## terraform-ibm-mas
 
 ### Usage
 
-```hcl
 You can use the modular design of this module to provision Maximo Application Suite Core offering or Maximo Application Suite Core + Manage offering.
+
+```hcl
 
 module "maximo" {
 
@@ -51,9 +52,9 @@ module "maximo" {
   mas_instance_id              = var.mas_instance_id # For example, inst1
   mas_license                  = var.mas_license
   sls_license_id               = var.sls_license_id
-  uds_contact_email            = var.uds_contact_email
-  uds_contact_firstname        = var.uds_contact_firstname
-  uds_contact_lastname         = var.uds_contact_lastname
+  contact_email                = var.contact_email
+  contact_firstname            = var.contact_firstname
+  contact_lastname             = var.contact_lastname
   cluster_config_endpoint_type = var.cluster_config_endpoint_type
   mas_workspace_id             = var.mas_workspace_id # For example, wrkid1
   mas_workspace_name           = var.mas_workspace_name # For example, wrkns1
@@ -64,6 +65,15 @@ module "maximo" {
 }
 ```
 ### Required IAM access policies
+
+    You need the following permissions to run this module.
+
+        IAM services
+            Kubernetes Service service
+                Editor platform access
+                Manager service access
+
+
 
 
 <!-- Below content is automatically populated via pre-commit hook -->
