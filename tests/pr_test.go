@@ -96,7 +96,7 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	}
 	// Set sensitive vars as variables so they are not exposed in logs
 	os.Setenv("TF_VAR_mas_license", *masLicense)
-	os.Setenv("TF_VAR_entitlement_key", *masEntitlementKey)
+	os.Setenv("TF_VAR_mas_entitlement_key", *masEntitlementKey)
 	os.Setenv("TF_VAR_sls_license_id", *slsLicenseId)
 
 	// Deploy Pre-requisite resources
