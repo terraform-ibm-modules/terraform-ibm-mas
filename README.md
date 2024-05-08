@@ -48,7 +48,7 @@ module "maximo" {
   version                      = "X.X.X" # Replace "X.X.X" with a release version to lock into a specific release. For example, 1.6.1
   cluster_id                   = var.cluster_id
   deployment_flavor            = var.deployment_flavor # For example, core
-  mas_entitlement_key          = var.mas_entitlement_key
+  entitlement_key              = var.entitlement_key
   mas_instance_id              = var.mas_instance_id # For example, inst1
   mas_license                  = var.mas_license
   sls_license_id               = var.sls_license_id
@@ -66,15 +66,11 @@ module "maximo" {
 ```
 ### Required IAM access policies
 
-    You need the following permissions to run this module.
-
-        IAM services
-            Kubernetes Service service
-                Editor platform access
-                Manager service access
-
-
-
+You need the following permissions to run this module.
+- IAM services
+      - **Kubernetes Service** service
+          - `Editor` platform access
+          - `Manager` service access
 
 <!-- Below content is automatically populated via pre-commit hook -->
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
