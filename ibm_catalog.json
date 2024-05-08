@@ -65,14 +65,6 @@
 							"version": ">=v3.0.0"
 						}
 					],
-					"iam_permissions": [
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Administrator"
-							],
-							"service_name": "iam-identity"
-						}
-					],
 					"release_notes_url": "https://test.cloud.ibm.com/docs-draft/maximo-application-suite?topic=maximo-application-suite-release-notes",
 					"configuration": [
 						{

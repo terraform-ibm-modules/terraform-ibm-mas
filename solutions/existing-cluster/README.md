@@ -1,4 +1,7 @@
+# Maximo Application Suite on Existing Red Hat OpenShift Cluster module
+
 <!-- BEGIN_TF_DOCS -->
+
 ## Requirements
 
 | Name | Version |

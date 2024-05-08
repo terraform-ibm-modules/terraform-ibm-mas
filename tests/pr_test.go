@@ -28,7 +28,7 @@ const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-res
 
 var permanentResources map[string]interface{}
 
-var coreTFVars = map[string]interface{}{
+var manageTFVars = map[string]interface{}{
 	"deployment_flavor":            "manage",
 	"mas_instance_id":              "inst1",
 	"region":                       "us-south",
@@ -135,9 +135,9 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	return options, existingTerraformOptions, nil
 }
 
-func TestRunDACore(t *testing.T) {
+func TestRunDAManage(t *testing.T) {
 	t.Parallel()
-	options, preReqOptions, setupErr := setupOptions(t, "manage", solutionExistingCluster, coreTFVars)
+	options, preReqOptions, setupErr := setupOptions(t, "manage", solutionExistingCluster, manageTFVars)
 	if setupErr != nil {
 		assert.True(t, setupErr == nil, "Setup DA basic failed")
 		return
