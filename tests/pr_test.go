@@ -3,6 +3,11 @@ package test
 
 import (
 	"fmt"
+	"log"
+	"os"
+	"strings"
+	"testing"
+
 	"github.com/IBM/go-sdk-core/v5/core"
 	"github.com/gruntwork-io/terratest/modules/files"
 	"github.com/gruntwork-io/terratest/modules/logger"
@@ -10,10 +15,6 @@ import (
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/require"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/common"
-	"log"
-	"os"
-	"strings"
-	"testing"
 
 	"github.com/IBM/secrets-manager-go-sdk/v2/secretsmanagerv2"
 	"github.com/stretchr/testify/assert"
@@ -115,8 +116,6 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 		Vars: map[string]interface{}{
 			"prefix": options.Prefix,
 			"region": terraformVars["region"],
-			// currently only 4.12 supported by MAS
-			"ocp_version": "4.12",
 		},
 		// Set Upgrade to true to ensure latest version of providers and modules are used by terratest.
 		// This is the same as setting the -upgrade=true flag with terraform.
@@ -143,7 +142,13 @@ func TestRunDACore(t *testing.T) {
 		assert.True(t, setupErr == nil, "Setup DA basic failed")
 		return
 	}
-	defer terraform.Destroy(t, preReqOptions)
+
+	// Workaround for https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/78
+	// defer terraform.Destroy(t, preReqOptions)
+	defer func() {
+		terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups[\"workload-rg\"]")
+		terraform.Destroy(t, preReqOptions)
+	}()
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
