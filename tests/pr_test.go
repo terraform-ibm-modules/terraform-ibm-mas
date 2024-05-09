@@ -7,6 +7,7 @@ import (
 	"os"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
 	"github.com/gruntwork-io/terratest/modules/files"
@@ -146,10 +147,21 @@ func TestRunDAManage(t *testing.T) {
 	// Workaround for https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/78
 	// defer terraform.Destroy(t, preReqOptions)
 	defer func() {
-		terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups[\"workload-rg\"]")
-		terraform.Destroy(t, preReqOptions)
+		// Check if "DO_NOT_DESTROY_ON_FAILURE" is set
+		envVal, _ := os.LookupEnv("DO_NOT_DESTROY_ON_FAILURE")
+
+		// Do not destroy if tests failed and "DO_NOT_DESTROY_ON_FAILURE" is true
+		if options.Testing.Failed() && strings.ToLower(envVal) == "true" {
+			fmt.Println("Terratest failed. Debug the Test and delete resources manually.")
+		} else {
+			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups[\"workload-rg\"]")
+			terraform.Destroy(t, preReqOptions)
+		}
 	}()
 
+	// Temp workaround for cluster instability issues
+	fmt.Println("Sleeping for 30mins to allow cluster to stabilize..")
+	time.Sleep(1800 * time.Second)
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
 	assert.NotNil(t, output, "Expected some output")
