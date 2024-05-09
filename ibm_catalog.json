@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "name": "deploy-arch-ibm-slz-mas",
+      "name": "deploy-arch-ibm-mas",
       "label": "Maximo Application Suite",
       "product_kind": "solution",
       "tags": [
