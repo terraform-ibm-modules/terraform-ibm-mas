@@ -21,7 +21,7 @@ metadata:
   name: {{ $secret_name }}
   namespace: {{ $ns }}
 data:
-  entitlement_key: {{ .Values.mas_entitlement_key }}
+  entitlement_key: {{ .Values.entitlement_key }}
   authorized_entitlement: {{ .Values.mas_license }}
 type: Opaque
 
@@ -81,7 +81,7 @@ spec:
         - name: {{ $job_name }}
           # 8.0.0-pre.master - sha256:5b5222caecdd860840fd1eb070999e29ed356310474741f76934d0a9f8921d99
           # below sha is for quay.io/ibmmas/cli:8.0.0-pre.mascore-2054 (tag 8.0.0), update it once we get a new release tag
-          image: quay.io/ibmmas/cli@sha256:3400bac3bf97831cecec32a90d03220b05d2aba2c5d5f61e6d8bd6958cc69f7c
+          image: quay.io/ibmmas/cli@sha256:9f6e76d8c303e4838159959a6c54f00ac1c6710ef1c87ebd60a38d0642e99ec5
 
           imagePullPolicy: Always
           securityContext:
@@ -122,9 +122,9 @@ spec:
               echo "MAS_CHANNEL=${MAS_CHANNEL}"
               echo "SLS_LICENSE_ID=${SLS_LICENSE_ID}"
               ##echo "SLS_LICENSE_FILE_LOCAL=${SLS_LICENSE_FILE_LOCAL}"
-              echo "UDS_CONTACT_EMAIL=${UDS_CONTACT_EMAIL}"
-              echo "UDS_CONTACT_FIRSTNAME=${UDS_CONTACT_FIRSTNAME}"
-              echo "UDS_CONTACT_LASTNAME=${UDS_CONTACT_LASTNAME}"
+              echo "CONTACT_EMAIL=${CONTACT_EMAIL}"
+              echo "CONTACT_FIRSTNAME=${CONTACT_FIRSTNAME}"
+              echo "CONTACT_LASTNAME=${CONTACT_LASTNAME}"
               echo "STORAGE_CLASS_RWX=${STORAGE_CLASS_RWX}"
               echo "PIPELINE_STORAGE_CLASS=${PIPELINE_STORAGE_CLASS}"
               echo "PIPELINE_STORAGE_ACCESSMODE=${PIPELINE_STORAGE_ACCESSMODE}"
@@ -142,10 +142,10 @@ spec:
               echo "DB2U_META_STORAGE=${DB2U_META_STORAGE}"
               echo "DB2U_TEMP_STORAGE=${DB2U_TEMP_STORAGE}"
 
-              echo "DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR}"
-              DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR:-"core"}
+              echo "DEPLOYMENT_FLAVOR=${DEPLOYMENT_FLAVOR}"
+              DEPLOYMENT_FLAVOR=${DEPLOYMENT_FLAVOR:-"core"}
 
-              if [ "${DEPLOYMENT_FLAVOUR}" == "core" ]; then
+              if [ "${DEPLOYMENT_FLAVOR}" == "core" ]; then
               echo "Inside helm pre-delete hook and uninstalling MAS Core instance"
               varstr=$(oc get namespaces | grep mas-"${MAS_INSTANCE_ID}"-core | awk -F' ' '{print $2}')
               if [[ $varstr == "Active"  ]]; then
@@ -171,7 +171,7 @@ spec:
               else
               echo "No MAS instance namespace found due to a failed installation"
               fi
-              elif [ "${DEPLOYMENT_FLAVOUR}" == "manage" ]; then
+              elif [ "${DEPLOYMENT_FLAVOR}" == "manage" ]; then
               echo "Inside helm pre-delete hook and uninstalling MAS Core + Manage instance"
               varstr=$(oc get namespaces | grep mas-"${MAS_INSTANCE_ID}"-core | awk -F' ' '{print $2}')
               if [[ $varstr == "Active"  ]]; then
@@ -204,8 +204,8 @@ spec:
           env:
             - name: MAS_INSTANCE_ID
               value: "{{ .Values.mas_instance_id }}"
-            - name: DEPLOYMENT_FLAVOUR
-              value: "{{ .Values.deployment_flavour }}"
+            - name: DEPLOYMENT_FLAVOR
+              value: "{{ .Values.deployment_flavor }}"
 
             - name: ENTITLEMENT_KEY
               valueFrom:

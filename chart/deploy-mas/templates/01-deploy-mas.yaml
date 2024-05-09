@@ -21,7 +21,7 @@ metadata:
   name: {{ $secret_name }}
   namespace: {{ $ns }}
 data:
-  entitlement_key: {{ .Values.mas_entitlement_key }}
+  entitlement_key: {{ .Values.entitlement_key }}
   authorized_entitlement: {{ .Values.mas_license }}
 type: Opaque
 
@@ -78,7 +78,7 @@ spec:
         - name: {{ $job_name }}
           # 8.0.0-pre.master - sha256:5b5222caecdd860840fd1eb070999e29ed356310474741f76934d0a9f8921d99
           # below sha is for quay.io/ibmmas/cli:8.0.0-pre.mascore-2054 (tag 8.0.0), update it once we get a new release tag
-          image: quay.io/ibmmas/cli@sha256:3400bac3bf97831cecec32a90d03220b05d2aba2c5d5f61e6d8bd6958cc69f7c
+          image: quay.io/ibmmas/cli@sha256:9f6e76d8c303e4838159959a6c54f00ac1c6710ef1c87ebd60a38d0642e99ec5
           imagePullPolicy: Always
           securityContext:
             readOnlyRootFilesystem: {{ $readonly_root_filesystem }}
@@ -118,9 +118,9 @@ spec:
               echo "MAS_CHANNEL=${MAS_CHANNEL}"
               echo "SLS_LICENSE_ID=${SLS_LICENSE_ID}"
               ##echo "SLS_LICENSE_FILE_LOCAL=${SLS_LICENSE_FILE_LOCAL}"
-              echo "UDS_CONTACT_EMAIL=${UDS_CONTACT_EMAIL}"
-              echo "UDS_CONTACT_FIRSTNAME=${UDS_CONTACT_FIRSTNAME}"
-              echo "UDS_CONTACT_LASTNAME=${UDS_CONTACT_LASTNAME}"
+              echo "CONTACT_EMAIL=${CONTACT_EMAIL}"
+              echo "CONTACT_FIRSTNAME=${CONTACT_FIRSTNAME}"
+              echo "CONTACT_LASTNAME=${CONTACT_LASTNAME}"
               echo "STORAGE_CLASS_RWX=${STORAGE_CLASS_RWX}"
               echo "PIPELINE_STORAGE_CLASS=${PIPELINE_STORAGE_CLASS}"
               echo "PIPELINE_STORAGE_ACCESSMODE=${PIPELINE_STORAGE_ACCESSMODE}"
@@ -138,30 +138,30 @@ spec:
               echo "DB2U_META_STORAGE=${DB2U_META_STORAGE}"
               echo "DB2U_TEMP_STORAGE=${DB2U_TEMP_STORAGE}"
 
-              echo "DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR}"
-              DEPLOYMENT_FLAVOUR=${DEPLOYMENT_FLAVOUR:-"core"}
+              echo "DEPLOYMENT_FLAVOR=${DEPLOYMENT_FLAVOR}"
+              DEPLOYMENT_FLAVOR=${DEPLOYMENT_FLAVOR:-"core"}
 
-              if [ "${DEPLOYMENT_FLAVOUR}" == "core" ]; then
+              if [ "${DEPLOYMENT_FLAVOR}" == "core" ]; then
                 echo "Core installation started"
 
                 mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
                   -W "${MAS_WORKSPACE_NAME}" -c "${MAS_CATALOG_VERSION}" \
                   --mas-channel "${MAS_CHANNEL}" --ibm-entitlement-key "${ENTITLEMENT_KEY}" \
                   --license-id "${SLS_LICENSE_ID}" --license-file "${SLS_LICENSE_FILE_LOCAL}" \
-                  --uds-email "${UDS_CONTACT_EMAIL}" --uds-firstname "${UDS_CONTACT_FIRSTNAME}" \
-                  --uds-lastname "${UDS_CONTACT_LASTNAME}" --storage-rwx "${STORAGE_CLASS_RWX}" \
+                  --uds-email "${CONTACT_EMAIL}" --uds-firstname "${CONTACT_FIRSTNAME}" \
+                  --uds-lastname "${CONTACT_LASTNAME}" --storage-rwx "${STORAGE_CLASS_RWX}" \
                   --storage-pipeline "${PIPELINE_STORAGE_CLASS}" --storage-accessmode "${PIPELINE_STORAGE_ACCESSMODE}" \
                   --no-confirm --no-wait-for-pvcs --accept-license
 
-              elif [ "${DEPLOYMENT_FLAVOUR}" == "manage" ]; then
+              elif [ "${DEPLOYMENT_FLAVOR}" == "manage" ]; then
                 echo "Core+Manage installation started"
 
                 mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
                   -W "${MAS_WORKSPACE_NAME}" -c "${MAS_CATALOG_VERSION}" \
                   --mas-channel "${MAS_CHANNEL}" --ibm-entitlement-key ${ENTITLEMENT_KEY} \
                   --license-id "${SLS_LICENSE_ID}" --license-file "${SLS_LICENSE_FILE_LOCAL}" \
-                  --uds-email "${UDS_CONTACT_EMAIL}" --uds-firstname "${UDS_CONTACT_FIRSTNAME}" \
-                  --uds-lastname "${UDS_CONTACT_LASTNAME}" --storage-rwx "${STORAGE_CLASS_RWX}" --storage-rwo "${STORAGE_CLASS_RWO}" \
+                  --uds-email "${CONTACT_EMAIL}" --uds-firstname "${CONTACT_FIRSTNAME}" \
+                  --uds-lastname "${CONTACT_LASTNAME}" --storage-rwx "${STORAGE_CLASS_RWX}" --storage-rwo "${STORAGE_CLASS_RWO}" \
                   --storage-pipeline "${PIPELINE_STORAGE_CLASS}" --storage-accessmode "${PIPELINE_STORAGE_ACCESSMODE}" \
                   --manage-channel "${MANAGE_CHANNEL}" \
                   --manage-jdbc "${MANAGE_JDBC_CONFIG_SCOPE}" --manage-components "${MANAGE_COMPONENTS}" \
@@ -174,7 +174,7 @@ spec:
                   --no-confirm --no-wait-for-pvcs --accept-license
 
               else
-                echo "Passed DEPLOYMENT_FLAVOUR not supported, Supported values = core, mange"
+                echo "Passed DEPLOYMENT_FLAVOR not supported, Supported values = core, mange"
                 exit 1
               fi
 
@@ -193,12 +193,12 @@ spec:
 
             - name: SLS_LICENSE_ID
               value: "{{ .Values.sls_license_id }}"
-            - name: UDS_CONTACT_EMAIL
-              value: "{{ .Values.uds_contact_email }}"
-            - name: UDS_CONTACT_FIRSTNAME
-              value: "{{ .Values.uds_contact_firstname }}"
-            - name: UDS_CONTACT_LASTNAME
-              value: "{{ .Values.uds_contact_lastname }}"
+            - name: CONTACT_EMAIL
+              value: "{{ .Values.contact_email }}"
+            - name: CONTACT_FIRSTNAME
+              value: "{{ .Values.contact_firstname }}"
+            - name: CONTACT_LASTNAME
+              value: "{{ .Values.contact_lastname }}"
             - name: STORAGE_CLASS_RWO
               value: "{{ .Values.storage_class_rwo }}"
             - name: STORAGE_CLASS_RWX
@@ -235,8 +235,8 @@ spec:
               value: "{{ .Values.db2u_meta_storage }}"
             - name: DB2U_TEMP_STORAGE
               value: "{{ .Values.db2u_temp_storage }}"
-            - name: DEPLOYMENT_FLAVOUR
-              value: "{{ .Values.deployment_flavour }}"
+            - name: DEPLOYMENT_FLAVOR
+              value: "{{ .Values.deployment_flavor }}"
 
             - name: ENTITLEMENT_KEY
               valueFrom:

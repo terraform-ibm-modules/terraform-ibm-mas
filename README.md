@@ -16,6 +16,8 @@ For more information about the Maximo Application Suite refer to the official do
 <!-- BEGIN OVERVIEW HOOK -->
 ## Overview
 * [terraform-ibm-mas](#terraform-ibm-mas)
+* [Examples](./examples)
+    * [Basic example](./examples/basic)
 * [Contributing](#contributing)
 <!-- END OVERVIEW HOOK -->
 
@@ -26,54 +28,49 @@ If this repo contains any reference architectures, uncomment the heading below a
 See "Reference architecture" in Authoring Guidelines in the public documentation at
 https://terraform-ibm-modules.github.io/documentation/#/implementation-guidelines?id=reference-architecture
 -->
-<!-- ## Reference architectures -->
 
+## Reference architectures
+
+[![Maximo Application Suite Deployable Architecture](https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/reference-architecture/mas_deployable_architecure.svg)]
 
 <!-- This heading should always match the name of the root level module (aka the repo name) -->
 ## terraform-ibm-mas
 
 ### Usage
 
-<!--
-Add an example of the use of the module in the following code block.
-
-Use real values instead of "var.<var_name>" or other placeholder values
-unless real values don't help users know what to change.
--->
+You can use the modular design of this module to provision Maximo Application Suite Core offering or Maximo Application Suite Core + Manage offering.
 
 ```hcl
 
-```
+module "maximo" {
 
+  source                       = "terraform-ibm-modules/mas/ibm"
+  version                      = "X.X.X" # Replace "X.X.X" with a release version to lock into a specific release. For example, 1.6.1
+  cluster_id                   = var.cluster_id
+  deployment_flavor            = var.deployment_flavor # For example, core
+  entitlement_key              = var.entitlement_key
+  mas_instance_id              = var.mas_instance_id # For example, inst1
+  mas_license                  = var.mas_license
+  sls_license_id               = var.sls_license_id
+  contact_email                = var.contact_email
+  contact_firstname            = var.contact_firstname
+  contact_lastname             = var.contact_lastname
+  cluster_config_endpoint_type = var.cluster_config_endpoint_type
+  mas_workspace_id             = var.mas_workspace_id # For example, wrkid1
+  mas_workspace_name           = var.mas_workspace_name # For example, wrkns1
+  pipeline_storage_class       = var.pipeline_storage_class # For example, ibmc-vpc-block-retain-10iops-tier
+  storage_class_rwo            = var.storage_class_rwo # For example, ibmc-vpc-block-retain-10iops-tier
+  storage_class_rwx            = var.storage_class_rwx # For example, ibmc-vpc-file-dp2 (file storage required for db2)
+
+}
+```
 ### Required IAM access policies
 
-<!-- PERMISSIONS REQUIRED TO RUN MODULE
-If this module requires permissions, uncomment the following block and update
-the sample permissions, following the format.
-Replace the sample Account and IBM Cloud service names and roles with the
-information in the console at
-Manage > Access (IAM) > Access groups > Access policies.
--->
-
-<!--
 You need the following permissions to run this module.
-
-- Account Management
-    - **Sample Account Service** service
-        - `Editor` platform access
-        - `Manager` service access
-    - IAM Services
-        - **Sample Cloud Service** service
-            - `Administrator` platform access
--->
-
-<!-- NO PERMISSIONS FOR MODULE
-If no permissions are required for the module, uncomment the following
-statement instead the previous block.
--->
-
-<!-- No permissions are needed to run this module.-->
-
+- IAM services
+      - **Kubernetes Service** service
+          - `Editor` platform access
+          - `Manager` service access
 
 <!-- Below content is automatically populated via pre-commit hook -->
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -107,19 +104,19 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_cluster_config_endpoint_type"></a> [cluster\_config\_endpoint\_type](#input\_cluster\_config\_endpoint\_type) | Specify which type of endpoint to use for for cluster config access: 'default', 'private', 'vpe', 'link'. 'default' value will use the default endpoint of the cluster. | `string` | `"default"` | no |
 | <a name="input_cluster_id"></a> [cluster\_id](#input\_cluster\_id) | Enter Id of the target IBM Cloud Red Hat OpenShift cluster. This cluster ID can be found under the Red Hat OpenShift clusters section. | `string` | n/a | yes |
-| <a name="input_deployment_flavour"></a> [deployment\_flavour](#input\_deployment\_flavour) | Enter core for Maximo Application Suite Core deployment and enter manage for Maximo Application Suite Core+Manage deployment | `string` | n/a | yes |
-| <a name="input_mas_entitlement_key"></a> [mas\_entitlement\_key](#input\_mas\_entitlement\_key) | Enter the Entitled Registry key to access the IBM Image registry. | `string` | n/a | yes |
-| <a name="input_mas_instance_id"></a> [mas\_instance\_id](#input\_mas\_instance\_id) | Enter the Maximo Application Suite instance Id | `string` | n/a | yes |
-| <a name="input_mas_license"></a> [mas\_license](#input\_mas\_license) | Enter Maximo Application Suite License file content | `string` | n/a | yes |
-| <a name="input_mas_workspace_id"></a> [mas\_workspace\_id](#input\_mas\_workspace\_id) | Enter the Maximo Application Suite workspace Id | `string` | `"wrkid1"` | no |
+| <a name="input_contact_email"></a> [contact\_email](#input\_contact\_email) | Enter the email ID for Data Reporter Operator | `string` | n/a | yes |
+| <a name="input_contact_firstname"></a> [contact\_firstname](#input\_contact\_firstname) | Enter your first name to be used in Data Reporter Operator | `string` | n/a | yes |
+| <a name="input_contact_lastname"></a> [contact\_lastname](#input\_contact\_lastname) | Enter your last name to be used in Data Reporter Operator | `string` | n/a | yes |
+| <a name="input_deployment_flavor"></a> [deployment\_flavor](#input\_deployment\_flavor) | Select core for Maximo Application Suite Core deployment and select manage for Maximo Application Suite Core+Manage deployment. Maximo Application Suite Core is deployed by using the MongoDB Community edition and Maximo Manage is deployed with internal Db2 on Red Hat OpenShift cluster. | `string` | n/a | yes |
+| <a name="input_entitlement_key"></a> [entitlement\_key](#input\_entitlement\_key) | Enter entitlement key to access IBM Image registry. For more information, see [Entitlement Keys](https://myibm.ibm.com/products-services/containerlibrary) You can use an existing secret in Secrets Manager or add your entitlement key directly. | `string` | n/a | yes |
+| <a name="input_mas_instance_id"></a> [mas\_instance\_id](#input\_mas\_instance\_id) | Enter the Maximo Application Suite instance Id. It can be any instance name lesser than 8 characters in length such as inst1 | `string` | n/a | yes |
+| <a name="input_mas_license"></a> [mas\_license](#input\_mas\_license) | Enter Maximo Application Suite License file content. For more information, see [IBM Support - Licensing](https://www.ibm.com/support/pages/ibm-support-licensing-start-page) You can use an existing secret in Secrets Manager or add your entitlement key directly. | `string` | n/a | yes |
+| <a name="input_mas_workspace_id"></a> [mas\_workspace\_id](#input\_mas\_workspace\_id) | Enter the Maximo Application Suite workspace Id. | `string` | `"wrkid1"` | no |
 | <a name="input_mas_workspace_name"></a> [mas\_workspace\_name](#input\_mas\_workspace\_name) | Enter the Maximo Application Suite workspace name | `string` | `"wrkns1"` | no |
 | <a name="input_pipeline_storage_class"></a> [pipeline\_storage\_class](#input\_pipeline\_storage\_class) | Enter the storage class for pipeline. Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section. | `string` | `"ibmc-vpc-block-retain-10iops-tier"` | no |
-| <a name="input_sls_license_id"></a> [sls\_license\_id](#input\_sls\_license\_id) | Enter Suite License Server license ID | `string` | n/a | yes |
+| <a name="input_sls_license_id"></a> [sls\_license\_id](#input\_sls\_license\_id) | Enter Suite License Server license ID. A unique 12-character hexadecimal value in the first line of your Maximo Application Suite license key file. For example, SERVER sls-rlks-0.rlks 0242ac110002 27000, where the 12-character hexadecimal value is 0242ac110002. You can use an existing secret in Secrets Manager or add your entitlement key directly. | `string` | n/a | yes |
 | <a name="input_storage_class_rwo"></a> [storage\_class\_rwo](#input\_storage\_class\_rwo) | Enter the storage class (read-write once). Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section. | `string` | `"ibmc-vpc-block-retain-10iops-tier"` | no |
-| <a name="input_storage_class_rwx"></a> [storage\_class\_rwx](#input\_storage\_class\_rwx) | Enter the storage class (read-write many). Enter file storage class for DB2. Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section. | `string` | `"ibmc-vpc-block-retain-10iops-tier"` | no |
-| <a name="input_uds_contact_email"></a> [uds\_contact\_email](#input\_uds\_contact\_email) | Enter the email ID for Data Reporter Operator | `string` | n/a | yes |
-| <a name="input_uds_contact_firstname"></a> [uds\_contact\_firstname](#input\_uds\_contact\_firstname) | Enter your first name to be used in Data Reporter Operator | `string` | n/a | yes |
-| <a name="input_uds_contact_lastname"></a> [uds\_contact\_lastname](#input\_uds\_contact\_lastname) | Enter your last name to be used in Data Reporter Operator | `string` | n/a | yes |
+| <a name="input_storage_class_rwx"></a> [storage\_class\_rwx](#input\_storage\_class\_rwx) | Enter the storage class (read-write many). Enter file storage class for DB2. Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section. | `string` | `"ibmc-vpc-file-dp2"` | no |
 
 ### Outputs
 
