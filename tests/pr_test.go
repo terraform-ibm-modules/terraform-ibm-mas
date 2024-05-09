@@ -146,8 +146,16 @@ func TestRunDAManage(t *testing.T) {
 	// Workaround for https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/78
 	// defer terraform.Destroy(t, preReqOptions)
 	defer func() {
-		terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups[\"workload-rg\"]")
-		terraform.Destroy(t, preReqOptions)
+		// Check if "DO_NOT_DESTROY_ON_FAILURE" is set
+		envVal, _ := os.LookupEnv("DO_NOT_DESTROY_ON_FAILURE")
+
+		// Do not destroy if tests failed and "DO_NOT_DESTROY_ON_FAILURE" is true
+		if options.Testing.Failed() && strings.ToLower(envVal) == "true" {
+			fmt.Println("Terratest failed. Debug the Test and delete resources manually.")
+		} else {
+			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups[\"workload-rg\"]")
+			terraform.Destroy(t, preReqOptions)
+		}
 	}()
 
 	output, err := options.RunTestConsistency()
