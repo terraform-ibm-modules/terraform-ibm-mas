@@ -7,6 +7,7 @@ import (
 	"os"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
 	"github.com/gruntwork-io/terratest/modules/files"
@@ -150,6 +151,8 @@ func TestRunDAManage(t *testing.T) {
 		terraform.Destroy(t, preReqOptions)
 	}()
 
+	// Temp workaround for cluster instability issues
+	time.Sleep(1800 * time.Second)
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
 	assert.NotNil(t, output, "Expected some output")
