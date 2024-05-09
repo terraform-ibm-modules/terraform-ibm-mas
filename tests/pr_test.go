@@ -28,13 +28,13 @@ const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-res
 
 var permanentResources map[string]interface{}
 
-var coreTFVars = map[string]interface{}{
-	"deployment_flavour":           "core",
+var manageTFVars = map[string]interface{}{
+	"deployment_flavor":            "manage",
 	"mas_instance_id":              "inst1",
 	"region":                       "us-south",
-	"uds_contact_email":            "test@ibm.com",
-	"uds_contact_firstname":        "John",
-	"uds_contact_lastname":         "Doe",
+	"contact_email":                "test@ibm.com",
+	"contact_firstname":            "John",
+	"contact_lastname":             "Doe",
 	"cluster_config_endpoint_type": "default",
 }
 
@@ -96,7 +96,7 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	}
 	// Set sensitive vars as variables so they are not exposed in logs
 	os.Setenv("TF_VAR_mas_license", *masLicense)
-	os.Setenv("TF_VAR_mas_entitlement_key", *masEntitlementKey)
+	os.Setenv("TF_VAR_entitlement_key", *masEntitlementKey)
 	os.Setenv("TF_VAR_sls_license_id", *slsLicenseId)
 
 	// Deploy Pre-requisite resources
@@ -135,9 +135,9 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	return options, existingTerraformOptions, nil
 }
 
-func TestRunDACore(t *testing.T) {
+func TestRunDAManage(t *testing.T) {
 	t.Parallel()
-	options, preReqOptions, setupErr := setupOptions(t, "core", solutionExistingCluster, coreTFVars)
+	options, preReqOptions, setupErr := setupOptions(t, "manage", solutionExistingCluster, manageTFVars)
 	if setupErr != nil {
 		assert.True(t, setupErr == nil, "Setup DA basic failed")
 		return
