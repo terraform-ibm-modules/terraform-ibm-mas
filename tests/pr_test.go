@@ -38,6 +38,16 @@ var manageTFVars = map[string]interface{}{
 	"cluster_config_endpoint_type": "default",
 }
 
+var coreTFVars = map[string]interface{}{
+	"deployment_flavor":            "core",
+	"mas_instance_id":              "inst1",
+	"region":                       "us-south",
+	"contact_email":                "test@ibm.com",
+	"contact_firstname":            "John",
+	"contact_lastname":             "Doe",
+	"cluster_config_endpoint_type": "default",
+}
+
 // TestMain will be run before any parallel tests, used to read data from yaml for use with tests
 func TestMain(m *testing.M) {
 
@@ -139,7 +149,7 @@ func TestRunDAManage(t *testing.T) {
 	t.Parallel()
 	options, preReqOptions, setupErr := setupOptions(t, "manage", solutionExistingCluster, manageTFVars)
 	if setupErr != nil {
-		assert.True(t, setupErr == nil, "Setup DA basic failed")
+		assert.True(t, setupErr == nil, "Setup DA manage failed")
 		return
 	}
 
@@ -169,22 +179,36 @@ func TestRunDAManage(t *testing.T) {
 
 }
 
-// func TestRunUpgradeDACore(t *testing.T) {
-// 	t.Parallel()
+func TestRunUpgradeDACore(t *testing.T) {
+	t.Parallel()
 
-// 	options, preReqOptions, setupErr := setupOptions(t, "upg", solutionExistingCluster, coreTFVars)
-// 	if setupErr != nil {
-// 		assert.True(t, setupErr == nil, "Setup Upgrade failed")
-// 		return
-// 	}
-// 	defer terraform.Destroy(t, preReqOptions)
+	options, preReqOptions, setupErr := setupOptions(t, "upg", solutionExistingCluster, coreTFVars)
+	if setupErr != nil {
+		assert.True(t, setupErr == nil, "Setup Upgrade failed")
+		return
+	}
 
-// 	output, err := options.RunTestUpgrade()
-// 	if !options.UpgradeTestSkipped {
-// 		assert.Nil(t, err, "This should not have errored")
-// 		assert.NotNil(t, output, "Expected some output")
-// 	}
-// }
+	// Workaround for https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/78
+	// defer terraform.Destroy(t, preReqOptions)
+	defer func() {
+		// Check if "DO_NOT_DESTROY_ON_FAILURE" is set
+		envVal, _ := os.LookupEnv("DO_NOT_DESTROY_ON_FAILURE")
+
+		// Do not destroy if tests failed and "DO_NOT_DESTROY_ON_FAILURE" is true
+		if options.Testing.Failed() && strings.ToLower(envVal) == "true" {
+			fmt.Println("Terratest failed. Debug the Test and delete resources manually.")
+		} else {
+			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups[\"workload-rg\"]")
+			terraform.Destroy(t, preReqOptions)
+		}
+	}()
+
+	output, err := options.RunTestUpgrade()
+	if !options.UpgradeTestSkipped {
+		assert.Nil(t, err, "This should not have errored")
+		assert.NotNil(t, output, "Expected some output")
+	}
+}
 
 // GetSecretsManagerKey retrieves a secret from Secrets Manager
 func GetSecretsManagerKey(smId string, smRegion string, smKeyId string) (*string, error) {
