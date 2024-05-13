@@ -11,7 +11,7 @@ version: 1.0
 deployment-url: https://cloud.ibm.com/catalog/architecture/deploy-arch-ibm-mas-fc308868-e530-4605-884e-e1b3f50b3b66-global?catalog_query=aHR0cHM6Ly9jbG91ZC5pYm0uY29tL2NhdGFsb2c%2Fc2VhcmNoPW1heGltbyNzZWFyY2hfcmVzdWx0cw%3D%3D
 docs: https://cloud.ibm.com/docs/maximo-application-suite
 
-image_source: https://github.com/terraform-ibm-modules/terraform-ibm-mas/blob/nat-url-updates/reference-architectures/mas_deployable_architecture.svg
+image_source: https://github.com/terraform-ibm-modules/terraform-ibm-mas/blob/main/reference-architectures/mas_deployable_architecture.svg
 
 use-case: Automation
 
