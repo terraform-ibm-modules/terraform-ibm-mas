@@ -129,7 +129,7 @@
               {
                 "diagram": {
                   "caption": "Maximo Application Suite on existing IBM landing zone cluster.",
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/reference-architectures/mas_deployable_architecure.svg",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/reference-architectures/mas_deployable_architecture.svg",
                   "type": "image/svg+xml"
                 },
                 "description": "Maximo Application Suite on existing IBM landing zone cluster."

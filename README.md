@@ -31,7 +31,7 @@ https://terraform-ibm-modules.github.io/documentation/#/implementation-guideline
 
 ## Reference architectures
 
-[![Maximo Application Suite Deployable Architecture](https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/reference-architecture/mas_deployable_architecure.svg)]
+[![Maximo Application Suite Deployable Architecture](https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mas/main/reference-architecture/mas_deployable_architecture.svg)]
 
 <!-- This heading should always match the name of the root level module (aka the repo name) -->
 ## terraform-ibm-mas
