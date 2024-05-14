@@ -3,7 +3,7 @@
 ##############################################################################
 
 locals {
-  override_json_path = abspath("../../override-json-file/override.json")
+  override_json_path = "${path.module}/override-json-file/override.json"
 }
 
 module "landing_zone" {
