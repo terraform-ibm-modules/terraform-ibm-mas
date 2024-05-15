@@ -113,16 +113,16 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	// Deploy Pre-requisite resources
 	realTerraformDir := "./resources"
 	tempTerraformDir, tempCopyErr := files.CopyTerraformFolderToTemp(realTerraformDir, options.Prefix)
-	require.Nil(t, tempCopyErr, "error copying resources to temp folder: "+tempCopyErr.Error())
+	require.NoError(t, tempCopyErr, fmt.Sprintf("error copying resources to temp folder: %s", tempCopyErr))
 	// Need to replace the symlinked file with the actual file since symlink will break when tests moves files to temp directory
 	override_location := tempTerraformDir + "/override.json"
 	removeOverrideErr := os.Remove(override_location)
 	if removeOverrideErr != nil {
 		// only fail test if the error is not a "file does not exist"
-		require.NotErrorIs(t, removeOverrideErr, fs.ErrNotExist, "error removing override file: "+removeOverrideErr.Error())
+		require.NotErrorIs(t, removeOverrideErr, fs.ErrNotExist, fmt.Sprintf("error removing override file: %s", removeOverrideErr))
 	}
 	copyOverrideErr := files.CopyFile("../override-json-file/override.json", override_location)
-	require.Nil(t, copyOverrideErr, "error copying override file to temp folder: "+copyOverrideErr.Error())
+	require.NoError(t, copyOverrideErr, fmt.Sprintf("error copying override file to temp folder: %s", copyOverrideErr))
 
 	// Verify ibmcloud_api_key variable is set
 	checkVariable := "TF_VAR_ibmcloud_api_key"
