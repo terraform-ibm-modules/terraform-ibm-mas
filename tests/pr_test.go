@@ -113,9 +113,15 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	realTerraformDir := "./resources"
 	tempTerraformDir, _ := files.CopyTerraformFolderToTemp(realTerraformDir, options.Prefix)
 	// Need to replace the symlinked file with the actual file since symlink will break when tests moves files to temp directory
-	err = files.CopyFile("../override-json-file/override.json", tempTerraformDir+"/override.json")
+	override_location := tempTerraformDir + "/override.json"
+	e := os.Remove(override_location)
+	if e != nil {
+		t.Error(e)
+		return
+	}
+	err = files.CopyFile("../override-json-file/override.json", override_location)
 	if err != nil {
-		assert.True(t, err == nil, "Replacement of symlinked override.json failed")
+		t.Error(err)
 		return
 	}
 
