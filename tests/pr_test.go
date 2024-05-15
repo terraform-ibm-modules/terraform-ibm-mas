@@ -119,11 +119,6 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 		return
 	}
 
-	// if err != nil {
-	// 	// assert.True(t, err == nil, "Replacement of symlinked override.json failed")
-	// 	return nil, fmt.Errorf("failed to copy state file: %v", err)
-	// }
-
 	// Verify ibmcloud_api_key variable is set
 	checkVariable := "TF_VAR_ibmcloud_api_key"
 	val, present := os.LookupEnv(checkVariable)
