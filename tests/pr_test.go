@@ -110,9 +110,19 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	os.Setenv("TF_VAR_sls_license_id", *slsLicenseId)
 
 	// Deploy Pre-requisite resources
-
 	realTerraformDir := "./resources"
 	tempTerraformDir, _ := files.CopyTerraformFolderToTemp(realTerraformDir, options.Prefix)
+	// Need to replace the symlinked file with the actual file since symlink will break when tests moves files to temp directory
+	err = files.CopyFile("../override-json-file/override.json", tempTerraformDir+"/override.json")
+	if err != nil {
+		assert.True(t, err == nil, "Replacement of symlinked override.json failed")
+		return
+	}
+
+	// if err != nil {
+	// 	// assert.True(t, err == nil, "Replacement of symlinked override.json failed")
+	// 	return nil, fmt.Errorf("failed to copy state file: %v", err)
+	// }
 
 	// Verify ibmcloud_api_key variable is set
 	checkVariable := "TF_VAR_ibmcloud_api_key"
