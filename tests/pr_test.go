@@ -32,7 +32,7 @@ var permanentResources map[string]interface{}
 var manageTFVars = map[string]interface{}{
 	"deployment_flavor":            "manage",
 	"mas_instance_id":              "inst1",
-	"region":                       "us-south",
+	"region":                       "au-syd",
 	"contact_email":                "test@ibm.com",
 	"contact_firstname":            "John",
 	"contact_lastname":             "Doe",
@@ -42,7 +42,7 @@ var manageTFVars = map[string]interface{}{
 var coreTFVars = map[string]interface{}{
 	"deployment_flavor":            "core",
 	"mas_instance_id":              "inst1",
-	"region":                       "us-south",
+	"region":                       "au-syd",
 	"contact_email":                "test@ibm.com",
 	"contact_firstname":            "John",
 	"contact_lastname":             "Doe",
