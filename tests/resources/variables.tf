@@ -17,7 +17,7 @@ variable "prefix" {
 variable "region" {
   type        = string
   description = "Enter region of the target IBM Cloud Red Hat OpenShift Cluster"
-  default     = "us-south"
+  default     = "au-syd"
 }
 
 variable "resource_tags" {

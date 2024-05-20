@@ -3,6 +3,7 @@ package test
 
 import (
 	"fmt"
+	"io/fs"
 	"log"
 	"os"
 	"strings"
@@ -31,7 +32,7 @@ var permanentResources map[string]interface{}
 var manageTFVars = map[string]interface{}{
 	"deployment_flavor":            "manage",
 	"mas_instance_id":              "inst1",
-	"region":                       "us-south",
+	"region":                       "au-syd",
 	"contact_email":                "test@ibm.com",
 	"contact_firstname":            "John",
 	"contact_lastname":             "Doe",
@@ -41,7 +42,7 @@ var manageTFVars = map[string]interface{}{
 var coreTFVars = map[string]interface{}{
 	"deployment_flavor":            "core",
 	"mas_instance_id":              "inst1",
-	"region":                       "us-south",
+	"region":                       "au-syd",
 	"contact_email":                "test@ibm.com",
 	"contact_firstname":            "John",
 	"contact_lastname":             "Doe",
@@ -110,9 +111,18 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	os.Setenv("TF_VAR_sls_license_id", *slsLicenseId)
 
 	// Deploy Pre-requisite resources
-
 	realTerraformDir := "./resources"
-	tempTerraformDir, _ := files.CopyTerraformFolderToTemp(realTerraformDir, options.Prefix)
+	tempTerraformDir, tempCopyErr := files.CopyTerraformFolderToTemp(realTerraformDir, options.Prefix)
+	require.NoError(t, tempCopyErr, fmt.Sprintf("error copying resources to temp folder: %s", tempCopyErr))
+	// Need to replace the symlinked file with the actual file since symlink will break when tests moves files to temp directory
+	override_location := tempTerraformDir + "/override.json"
+	removeOverrideErr := os.Remove(override_location)
+	if removeOverrideErr != nil {
+		// only fail test if the error is not a "file does not exist"
+		require.NotErrorIs(t, removeOverrideErr, fs.ErrNotExist, fmt.Sprintf("error removing override file: %s", removeOverrideErr))
+	}
+	copyOverrideErr := files.CopyFile("../override-json-file/override.json", override_location)
+	require.NoError(t, copyOverrideErr, fmt.Sprintf("error copying override file to temp folder: %s", copyOverrideErr))
 
 	// Verify ibmcloud_api_key variable is set
 	checkVariable := "TF_VAR_ibmcloud_api_key"
