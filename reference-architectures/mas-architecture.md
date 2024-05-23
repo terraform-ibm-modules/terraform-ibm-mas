@@ -66,9 +66,9 @@ The following table outlines the products or services used in the architecture f
 | Aspects | Architecture components | How the component is used |
 | -------------- | -------------- | -------------- |
 | Compute | Containers | Web, App, and database servers |
-| Storage | Primary Storage | Database servers shared storage |
+| Storage | Primary Storage | Database servers storage |
 | Networking | Enterprise connectivity | Maximo Application Suite uses networking setup by Red Hat OpenShift Container Platform for its internal communications. |
-|  | Cloud native connectivity |  |
+|  | Cloud native connectivity | Secure connection to Cloud Services |
 | Security | IAM | IBM Cloud Identity & Access Management |
-| Service Management | Automated deployment |  |
+| Service Management | Automated deployment | Automated deployment of standard client-managed Maximo Application Suite instance with its dependencies. |
 {: caption="Table 2. Components" caption-side="bottom"}
