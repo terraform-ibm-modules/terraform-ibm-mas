@@ -49,6 +49,7 @@ The following table outlines the requirements that are addressed in this archite
 
 | Aspect | Requirements |
 | -------------- | -------------- |
+| Application Platform | The solution should be fully managed from end to end. |
 | Compute            | Provide properly isolated compute resources with adequate compute capacity for the applications. |
 | Storage            | Provide storage that meets the application and database performance requirements. |
 | Networking         | Deploy workloads in isolated environment and enforce information flow policies.  \n Provide secure, encrypted connectivity to the cloud's private network for management purposes.  \n Distribute incoming application requests across available compute resources.  \n Support failover of application to alternate site in the event of planned or unplanned outages.  \n Provide public and private DNS resolution to support use of hostnames instead of IP addresses. |
@@ -64,19 +65,10 @@ The following table outlines the products or services used in the architecture f
 
 | Aspects | Architecture components | How the component is used |
 | -------------- | -------------- | -------------- |
-| Compute | PowerVS | Web, App, and database servers |
-| Storage | PowerVS | Database servers shared storage for RAC |
-|  | VPC Block Storage | Web app storage if needed |
-| Networking | VPC Virtual Private Network (VPN) | Remote access to manage resources in private network |
-|  | Virtual Private Gateway & Virtual Private Endpoint (VPE) | For private network access to Cloud Services, e.g., Key Protect, Cloud Object Storage, etc. |
-|  | VPC Load Balancers | Application Load Balancing for web servers, app servers, and database servers |
-|  | Public Gateway | For web server access to the internet |
+| Compute | Containers | Web, App, and database servers |
+| Storage | Primary Storage | Database servers shared storage |
+| Networking | Enterprise connectivity | Maximo Application Suite uses networking setup by Red Hat OpenShift Container Platform for its internal communications. |
+|  | Cloud native connectivity |  |
 | Security | IAM | IBM Cloud Identity & Access Management |
-|  | BYO Bastion Host on VPC VSI | Remote access with Privileged Access Management |
-|  | Key protect or HPCS | Hardware security module (HSM) and Key Management Service |
-|  | Secrets Manager | Certificate and Secrets Management |
-| Resiliency | PowerVS | Multiple PowerVS on separate physical servers with VM and Storage anti-affinity policy |
-| Service Management | IBM Cloud Monitoring | Apps and operational monitoring |
-|  | IBM Log Analysis | Apps and operational logs |
-|  | Activity Tracker Event Routing | Audit logs |
+| Service Management | Automated deployment |  |
 {: caption="Table 2. Components" caption-side="bottom"}
