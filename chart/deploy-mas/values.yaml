@@ -2,8 +2,8 @@
 mas_instance_id:
 mas_workspace_id:
 mas_workspace_name:
-mas_catalog_version: v8-amd64
-mas_channel: 8.11.x
+mas_catalog_version: v9-240625-amd64
+mas_channel: 9.0.x
 sls_license_id: replace
 contact_email:
 contact_firstname:
@@ -17,7 +17,7 @@ mas_license: replace
 deployment_flavor:
 
 # manage specific
-manage_channel: 8.7.x
+manage_channel: 9.0.x
 manage_jdbc_config_scope: workspace-application
 manage_components: "base=latest,health=latest"
 db2u_channel: "v110508.0"
