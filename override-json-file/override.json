@@ -19,11 +19,11 @@
 			},
 			"kube_type": "openshift",
 			"kube_version": "4.14_openshift",
-			"machine_type": "bx2.16x64",
+			"machine_type": "bx2.32x128",
 			"manage_all_addons": false,
 			"name": "workload-cluster",
 			"resource_group": "workload-rg",
-			"secondary_storage": "300gb.20iops-tier",
+			"secondary_storage": "300gb.10iops-tier",
 			"subnet_names": [
 				"vsi-zone-1",
 				"vsi-zone-2",
