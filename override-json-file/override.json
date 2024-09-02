@@ -23,7 +23,7 @@
 			"manage_all_addons": false,
 			"name": "workload-cluster",
 			"resource_group": "workload-rg",
-			"secondary_storage": "300gb.10iops-tier",
+			"secondary_storage": "300gb.20iops-tier",
 			"subnet_names": [
 				"vsi-zone-1",
 				"vsi-zone-2",
