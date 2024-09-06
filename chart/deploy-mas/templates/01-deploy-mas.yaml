@@ -166,7 +166,7 @@ spec:
                   --manage-channel "${MANAGE_CHANNEL}" \
                   --manage-jdbc "${MANAGE_JDBC_CONFIG_SCOPE}" --manage-components "${MANAGE_COMPONENTS}" \
                   --manage-server-bundle-size "dev" \                  
-                  --no-confirm --no-wait-for-pvcs --accept-license
+                  --no-confirm --accept-license
 
               else
                 echo "Passed DEPLOYMENT_FLAVOR not supported, Supported values = core, mange"
