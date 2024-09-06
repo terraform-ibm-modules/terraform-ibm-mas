@@ -159,18 +159,13 @@ spec:
                 mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
                   -W "${MAS_WORKSPACE_NAME}" -c "${MAS_CATALOG_VERSION}" \
                   --mas-channel "${MAS_CHANNEL}" --ibm-entitlement-key ${ENTITLEMENT_KEY} \
-                  --license-id "${SLS_LICENSE_ID}" --license-file "${SLS_LICENSE_FILE_LOCAL}" \
+                  --license-file "${SLS_LICENSE_FILE_LOCAL}" --disable-walkme \
                   --uds-email "${CONTACT_EMAIL}" --uds-firstname "${CONTACT_FIRSTNAME}" \
-                  --uds-lastname "${CONTACT_LASTNAME}" --storage-rwx "${STORAGE_CLASS_RWX}" --storage-rwo "${STORAGE_CLASS_RWO}" \
+                  --uds-lastname "${CONTACT_LASTNAME}" --storage-class-rwx "${STORAGE_CLASS_RWX}" --storage-class-rwo "${STORAGE_CLASS_RWO}" \
                   --storage-pipeline "${PIPELINE_STORAGE_CLASS}" --storage-accessmode "${PIPELINE_STORAGE_ACCESSMODE}" \
                   --manage-channel "${MANAGE_CHANNEL}" \
                   --manage-jdbc "${MANAGE_JDBC_CONFIG_SCOPE}" --manage-components "${MANAGE_COMPONENTS}" \
-                  --db2u-channel "${DB2U_CHANNEL}" --db2u-manage \
-                  --db2u-cpu-request "${DB2U_CPU_REQUEST}" --db2u-cpu-limit "${DB2U_CPU_LIMIT}" \
-                  --db2u-memory-request "${DB2U_MEMORY_REQUEST}" --db2u-memory-limit "${DB2U_MEMORY_LIMIT}" \
-                  --db2u-backup-storage "${DB2U_BACKUP_STORAGE}" --db2u-data-storage "${DB2U_DATA_STORAGE}" \
-                  --db2u-logs-storage "${DB2U_LOGS_STORAGE}" --db2u-meta-storage "${DB2U_META_STORAGE}" \
-                  --db2u-temp-storage "${DB2U_TEMP_STORAGE}" \
+                  --manage-server-bundle-size "dev" \                  
                   --no-confirm --no-wait-for-pvcs --accept-license
 
               else
