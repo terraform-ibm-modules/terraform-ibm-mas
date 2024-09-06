@@ -20,7 +20,7 @@ deployment_flavor:
 manage_channel: 9.0.x
 manage_jdbc_config_scope: workspace-application
 manage_components: "base=latest,health=latest"
-db2u_channel: "v110508.0"
+db2u_channel: "v110509.0"
 db2u_cpu_request: 4000m
 db2u_cpu_limit: 6000m
 db2u_memory_request: 8Gi
