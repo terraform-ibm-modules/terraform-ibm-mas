@@ -2,8 +2,8 @@
 mas_instance_id:
 mas_workspace_id:
 mas_workspace_name:
-mas_catalog_version: v8-amd64
-mas_channel: 8.11.x
+mas_catalog_version: v9-240730-amd64
+mas_channel: 9.0.x
 sls_license_id: replace
 contact_email:
 contact_firstname:
@@ -17,17 +17,17 @@ mas_license: replace
 deployment_flavor:
 
 # manage specific
-manage_channel: 8.7.x
+manage_channel: 9.0.x
 manage_jdbc_config_scope: workspace-application
 manage_components: "base=latest,health=latest"
-db2u_channel: "v110508.0"
-db2u_cpu_request: 4000m
-db2u_cpu_limit: 6000m
-db2u_memory_request: 8Gi
-db2u_memory_limit: 12Gi
-db2u_backup_storage: 100Gi
-db2u_data_storage: 100Gi
-db2u_logs_storage: 100Gi
-db2u_meta_storage: 20Gi
-db2u_temp_storage: 100Gi
+db2_channel: "v110509.0"
+db2_cpu_request: 4000m
+db2_cpu_limit: 6000m
+db2_memory_request: 8Gi
+db2_memory_limit: 12Gi
+db2_backup_storage: 100Gi
+db2_data_storage: 100Gi
+db2_logs_storage: 100Gi
+db2_meta_storage: 20Gi
+db2_temp_storage: 100Gi
 readonly_root_filesystem: "false"

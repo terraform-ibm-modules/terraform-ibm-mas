@@ -171,7 +171,7 @@ spec:
                   --db2-backup-storage "${DB2U_BACKUP_STORAGE}" --db2-data-storage "${DB2U_DATA_STORAGE}" \
                   --db2-logs-storage "${DB2U_LOGS_STORAGE}" --db2-meta-storage "${DB2U_META_STORAGE}" \
                   --db2-temp-storage "${DB2U_TEMP_STORAGE}" \
-                  --no-confirm --no-wait-for-pvcs --accept-license
+                  --accept-license
 
               else
                 echo "Passed DEPLOYMENT_FLAVOR not supported, Supported values = core, mange"
