@@ -19,7 +19,7 @@
 			},
 			"kube_type": "openshift",
 			"kube_version": "4.14_openshift",
-			"machine_type": "gx3.24x120.l40s",
+			"machine_type": "bx2.32x128",
 			"manage_all_addons": false,
 			"name": "workload-cluster",
 			"resource_group": "workload-rg",
