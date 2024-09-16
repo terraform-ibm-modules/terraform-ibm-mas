@@ -150,7 +150,7 @@ spec:
               varstr=$(oc get namespaces | grep mas-"${MAS_INSTANCE_ID}"-core | awk -F' ' '{print $2}')
               if [[ $varstr == "Active"  ]]; then
               echo "MAS instance namespace found"
-              mas uninstall -i "${MAS_INSTANCE_ID}" --no-confirm
+              mas uninstall -i "${MAS_INSTANCE_ID}" --uninstall-all-deps --uninstall-cert-manager --uninstall-common-services --uninstall-grafana --uninstall-ibm-catalog --uninstall-mongodb --uninstall-sls --uninstall-uds --no-confirm
               for (( i=0; i<=15; i++ ));
               do
               varstr2=$(oc get pr -n mas-${MAS_INSTANCE_ID}-pipelines | grep uninstall | awk -F' ' '{print $3}')
@@ -176,7 +176,7 @@ spec:
               varstr=$(oc get namespaces | grep mas-"${MAS_INSTANCE_ID}"-core | awk -F' ' '{print $2}')
               if [[ $varstr == "Active"  ]]; then
               echo "MAS instance namespace found"
-              mas uninstall -i "${MAS_INSTANCE_ID}" --no-confirm
+              mas uninstall -i "${MAS_INSTANCE_ID}" --uninstall-all-deps --uninstall-cert-manager --uninstall-common-services --uninstall-grafana --uninstall-ibm-catalog --uninstall-mongodb --uninstall-sls --uninstall-uds --no-confirm
               for (( i=0; i<=15; i++ ));
               do
               varstr2=$(oc get pr -n mas-${MAS_INSTANCE_ID}-pipelines | grep uninstall | awk -F' ' '{print $3}')
