@@ -78,7 +78,7 @@ spec:
         - name: {{ $job_name }}
           # 8.0.0-pre.master - sha256:5b5222caecdd860840fd1eb070999e29ed356310474741f76934d0a9f8921d99
           # below sha is for quay.io/ibmmas/cli:8.0.0-pre.mascore-2054 (tag 8.0.0), update it once we get a new release tag
-          image: quay.io/ibmmas/cli@sha256:63cc89547409eb4e85c56383bc5281557ede0e5a63748789b5548ce8b9ed79b6
+          image: quay.io/ibmmas/cli@sha256:3e97627390fc2fa8372c49171ea06384da3439217acaf4545eb668a85d3be8cc
           imagePullPolicy: Always
           securityContext:
             readOnlyRootFilesystem: {{ $readonly_root_filesystem }}
@@ -163,7 +163,7 @@ spec:
                   --uds-email "${CONTACT_EMAIL}" --uds-firstname "${CONTACT_FIRSTNAME}" \
                   --uds-lastname "${CONTACT_LASTNAME}" --storage-class-rwx "${STORAGE_CLASS_RWX}" --storage-class-rwo "${STORAGE_CLASS_RWO}" \
                   --storage-pipeline "${PIPELINE_STORAGE_CLASS}" --storage-accessmode "${PIPELINE_STORAGE_ACCESSMODE}" \
-                  --manage-channel "${MANAGE_CHANNEL}" --manage-server-bundle-size "dev" \
+                  --manage-channel "${MANAGE_CHANNEL}" --manage-server-bundle-size "prod" \
                   --manage-jdbc "${MANAGE_JDBC_CONFIG_SCOPE}" --manage-components "${MANAGE_COMPONENTS}" \
                   --db2-channel "${DB2U_CHANNEL}" --db2-manage \
                   --db2-cpu-request "${DB2U_CPU_REQUEST}" --db2-cpu-limit "${DB2U_CPU_LIMIT}" \
@@ -171,7 +171,7 @@ spec:
                   --db2-backup-storage "${DB2U_BACKUP_STORAGE}" --db2-data-storage "${DB2U_DATA_STORAGE}" \
                   --db2-logs-storage "${DB2U_LOGS_STORAGE}" --db2-meta-storage "${DB2U_META_STORAGE}" \
                   --db2-temp-storage "${DB2U_TEMP_STORAGE}" \
-                  --no-confirm --no-wait-for-pvc --accept-license --skip-pre-check --skip-grafana-install
+                  --no-confirm --no-wait-for-pvc --accept-license
 
               else
                 echo "Passed DEPLOYMENT_FLAVOR not supported, Supported values = core, mange"
