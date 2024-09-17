@@ -149,7 +149,7 @@ spec:
                   --mas-channel "${MAS_CHANNEL}" --ibm-entitlement-key "${ENTITLEMENT_KEY}" \
                   --license-file "${SLS_LICENSE_FILE_LOCAL}" \
                   --uds-email "${CONTACT_EMAIL}" --uds-firstname "${CONTACT_FIRSTNAME}" \
-                  --uds-lastname "${CONTACT_LASTNAME}" --storage-class-rwx "${STORAGE_CLASS_RWX}" \
+                  --uds-lastname "${CONTACT_LASTNAME}" --storage-class-rwx "${STORAGE_CLASS_RWX}" --storage-class-rwo "${STORAGE_CLASS_RWO}" \
                   --storage-pipeline "${PIPELINE_STORAGE_CLASS}" --storage-accessmode "${PIPELINE_STORAGE_ACCESSMODE}" \
                   --no-confirm --no-wait-for-pvc --accept-license
 
