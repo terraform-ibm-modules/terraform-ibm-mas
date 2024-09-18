@@ -51,7 +51,6 @@ module "maximo" {
   entitlement_key              = var.entitlement_key
   mas_instance_id              = var.mas_instance_id # For example, inst1
   mas_license                  = var.mas_license
-  sls_license_id               = var.sls_license_id
   contact_email                = var.contact_email
   contact_firstname            = var.contact_firstname
   contact_lastname             = var.contact_lastname

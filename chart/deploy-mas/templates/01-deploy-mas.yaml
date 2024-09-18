@@ -78,7 +78,7 @@ spec:
         - name: {{ $job_name }}
           # 8.0.0-pre.master - sha256:5b5222caecdd860840fd1eb070999e29ed356310474741f76934d0a9f8921d99
           # below sha is for quay.io/ibmmas/cli:8.0.0-pre.mascore-2054 (tag 8.0.0), update it once we get a new release tag
-          image: quay.io/ibmmas/cli@sha256:9f6e76d8c303e4838159959a6c54f00ac1c6710ef1c87ebd60a38d0642e99ec5
+          image: quay.io/ibmmas/cli@sha256:63cc89547409eb4e85c56383bc5281557ede0e5a63748789b5548ce8b9ed79b6
           imagePullPolicy: Always
           securityContext:
             readOnlyRootFilesystem: {{ $readonly_root_filesystem }}
@@ -116,7 +116,6 @@ spec:
               echo "MAS_WORKSPACE_NAME=${MAS_WORKSPACE_NAME}"
               echo "MAS_CATALOG_VERSION=${MAS_CATALOG_VERSION}"
               echo "MAS_CHANNEL=${MAS_CHANNEL}"
-              echo "SLS_LICENSE_ID=${SLS_LICENSE_ID}"
               ##echo "SLS_LICENSE_FILE_LOCAL=${SLS_LICENSE_FILE_LOCAL}"
               echo "CONTACT_EMAIL=${CONTACT_EMAIL}"
               echo "CONTACT_FIRSTNAME=${CONTACT_FIRSTNAME}"
@@ -147,11 +146,11 @@ spec:
                 mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
                   -W "${MAS_WORKSPACE_NAME}" -c "${MAS_CATALOG_VERSION}" \
                   --mas-channel "${MAS_CHANNEL}" --ibm-entitlement-key "${ENTITLEMENT_KEY}" \
-                  --license-id "${SLS_LICENSE_ID}" --license-file "${SLS_LICENSE_FILE_LOCAL}" \
+                  --license-file "${SLS_LICENSE_FILE_LOCAL}" \
                   --uds-email "${CONTACT_EMAIL}" --uds-firstname "${CONTACT_FIRSTNAME}" \
-                  --uds-lastname "${CONTACT_LASTNAME}" --storage-rwx "${STORAGE_CLASS_RWX}" \
+                  --uds-lastname "${CONTACT_LASTNAME}" --storage-class-rwx "${STORAGE_CLASS_RWX}" --storage-class-rwo "${STORAGE_CLASS_RWO}" \
                   --storage-pipeline "${PIPELINE_STORAGE_CLASS}" --storage-accessmode "${PIPELINE_STORAGE_ACCESSMODE}" \
-                  --no-confirm --no-wait-for-pvcs --accept-license
+                  --no-confirm --no-wait-for-pvc --accept-license
 
               elif [ "${DEPLOYMENT_FLAVOR}" == "manage" ]; then
                 echo "Core+Manage installation started"
@@ -159,19 +158,19 @@ spec:
                 mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
                   -W "${MAS_WORKSPACE_NAME}" -c "${MAS_CATALOG_VERSION}" \
                   --mas-channel "${MAS_CHANNEL}" --ibm-entitlement-key ${ENTITLEMENT_KEY} \
-                  --license-id "${SLS_LICENSE_ID}" --license-file "${SLS_LICENSE_FILE_LOCAL}" \
+                  --license-file "${SLS_LICENSE_FILE_LOCAL}" \
                   --uds-email "${CONTACT_EMAIL}" --uds-firstname "${CONTACT_FIRSTNAME}" \
-                  --uds-lastname "${CONTACT_LASTNAME}" --storage-rwx "${STORAGE_CLASS_RWX}" --storage-rwo "${STORAGE_CLASS_RWO}" \
+                  --uds-lastname "${CONTACT_LASTNAME}" --storage-class-rwx "${STORAGE_CLASS_RWX}" --storage-class-rwo "${STORAGE_CLASS_RWO}" \
                   --storage-pipeline "${PIPELINE_STORAGE_CLASS}" --storage-accessmode "${PIPELINE_STORAGE_ACCESSMODE}" \
-                  --manage-channel "${MANAGE_CHANNEL}" \
+                  --manage-channel "${MANAGE_CHANNEL}" --manage-server-bundle-size "dev" \
                   --manage-jdbc "${MANAGE_JDBC_CONFIG_SCOPE}" --manage-components "${MANAGE_COMPONENTS}" \
-                  --db2u-channel "${DB2U_CHANNEL}" --db2u-manage \
-                  --db2u-cpu-request "${DB2U_CPU_REQUEST}" --db2u-cpu-limit "${DB2U_CPU_LIMIT}" \
-                  --db2u-memory-request "${DB2U_MEMORY_REQUEST}" --db2u-memory-limit "${DB2U_MEMORY_LIMIT}" \
-                  --db2u-backup-storage "${DB2U_BACKUP_STORAGE}" --db2u-data-storage "${DB2U_DATA_STORAGE}" \
-                  --db2u-logs-storage "${DB2U_LOGS_STORAGE}" --db2u-meta-storage "${DB2U_META_STORAGE}" \
-                  --db2u-temp-storage "${DB2U_TEMP_STORAGE}" \
-                  --no-confirm --no-wait-for-pvcs --accept-license
+                  --db2-channel "${DB2U_CHANNEL}" --db2-manage \
+                  --db2-cpu-request "${DB2U_CPU_REQUEST}" --db2-cpu-limit "${DB2U_CPU_LIMIT}" \
+                  --db2-memory-request "${DB2U_MEMORY_REQUEST}" --db2-memory-limit "${DB2U_MEMORY_LIMIT}" \
+                  --db2-backup-storage "${DB2U_BACKUP_STORAGE}" --db2-data-storage "${DB2U_DATA_STORAGE}" \
+                  --db2-logs-storage "${DB2U_LOGS_STORAGE}" --db2-meta-storage "${DB2U_META_STORAGE}" \
+                  --db2-temp-storage "${DB2U_TEMP_STORAGE}" \
+                  --no-confirm --no-wait-for-pvc --accept-license
 
               else
                 echo "Passed DEPLOYMENT_FLAVOR not supported, Supported values = core, mange"
@@ -190,9 +189,6 @@ spec:
               value: "{{ .Values.mas_catalog_version }}"
             - name: MAS_CHANNEL
               value: "{{ .Values.mas_channel }}"
-
-            - name: SLS_LICENSE_ID
-              value: "{{ .Values.sls_license_id }}"
             - name: CONTACT_EMAIL
               value: "{{ .Values.contact_email }}"
             - name: CONTACT_FIRSTNAME
