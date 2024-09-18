@@ -32,13 +32,6 @@ variable "mas_license" {
   sensitive   = true
 }
 
-variable "sls_license_id" {
-  type        = string
-  description = "Enter Suite License Server license ID. A unique 12-character hexadecimal value in the first line of your Maximo Application Suite license key file. For example, SERVER sls-rlks-0.rlks 0242ac110002 27000, where the 12-character hexadecimal value is 0242ac110002. You can use an existing secret in Secrets Manager or add your entitlement key directly."
-  sensitive   = true
-  nullable    = false
-}
-
 variable "deployment_flavor" {
   type        = string
   description = "Select core for Maximo Application Suite Core deployment and select manage for Maximo Application Suite Core+Manage deployment. Maximo Application Suite Core is deployed by using the MongoDB Community edition and Maximo Manage is deployed with internal Db2 on Red Hat OpenShift cluster."
