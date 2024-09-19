@@ -57,7 +57,7 @@ variable "storage_class_rwo" {
 variable "storage_class_rwx" {
   type        = string
   description = "Enter the storage class (read-write many). Enter file storage class for DB2. Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section."
-  default     = "ibmc-vpc-file-dp2"
+  default     = "ibmc-vpc-file-500-iops"
 }
 
 variable "pipeline_storage_class" {

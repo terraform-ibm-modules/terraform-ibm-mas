@@ -8,7 +8,7 @@
 	"clusters": [
 		{
 			"addons": {
-				"vpc-file-csi-driver": "1.2"
+				"vpc-file-csi-driver": "2.0"
 			},
 			"boot_volume_crk_name": "roks-key",
 			"cos_name": "cos",
@@ -18,7 +18,7 @@
 				"private_endpoint": true
 			},
 			"kube_type": "openshift",
-			"kube_version": "4.14_openshift",
+			"kube_version": "4.15_openshift",
 			"machine_type": "bx2.16x64",
 			"manage_all_addons": false,
 			"name": "workload-cluster",
@@ -33,7 +33,8 @@
 			"worker_pools": [
 			],
 			"workers_per_subnet": 1,
-			"disable_public_endpoint": false
+			"disable_public_endpoint": false,
+			"disable_outbound_traffic_protection": true
 		}
 	],
 	"cos": [
