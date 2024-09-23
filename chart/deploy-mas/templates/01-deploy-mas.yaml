@@ -75,10 +75,8 @@ spec:
           type: RuntimeDefault
         runAsNonRoot: true
       containers:
-        - name: {{ $job_name }}
-          # 8.0.0-pre.master - sha256:5b5222caecdd860840fd1eb070999e29ed356310474741f76934d0a9f8921d99
-          # below sha is for quay.io/ibmmas/cli:8.0.0-pre.mascore-2054 (tag 8.0.0), update it once we get a new release tag
-          image: quay.io/ibmmas/cli@sha256:63cc89547409eb4e85c56383bc5281557ede0e5a63748789b5548ce8b9ed79b6
+        - name: {{ $job_name }}          
+          image: quay.io/ibmmas/cli@sha256:b992e2bb4870fceac492d885b7b38d22bd85044e6c70fe66f6fca68d0fdad63c
           imagePullPolicy: Always
           securityContext:
             readOnlyRootFilesystem: {{ $readonly_root_filesystem }}
