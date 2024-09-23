@@ -76,7 +76,7 @@ spec:
         runAsNonRoot: true
       containers:
         - name: {{ $job_name }}          
-          image: quay.io/ibmmas/cli@sha256:b992e2bb4870fceac492d885b7b38d22bd85044e6c70fe66f6fca68d0fdad63c
+          image: quay.io/ibmmas/cli@sha256:9df66d5a0bd46a7340831a16daac207e2c733df015bbaeff821c8001d32d773a
           imagePullPolicy: Always
           securityContext:
             readOnlyRootFilesystem: {{ $readonly_root_filesystem }}
