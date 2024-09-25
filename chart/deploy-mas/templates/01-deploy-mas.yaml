@@ -75,7 +75,7 @@ spec:
           type: RuntimeDefault
         runAsNonRoot: true
       containers:
-        - name: {{ $job_name }}          
+        - name: {{ $job_name }}
           image: quay.io/ibmmas/cli@sha256:9df66d5a0bd46a7340831a16daac207e2c733df015bbaeff821c8001d32d773a
           imagePullPolicy: Always
           securityContext:
