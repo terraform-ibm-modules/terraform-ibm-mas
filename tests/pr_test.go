@@ -6,6 +6,7 @@ import (
 	"io/fs"
 	"log"
 	"os"
+	"os/exec"
 	"strings"
 	"testing"
 
@@ -123,6 +124,14 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	}
 	copyOverrideErr := files.CopyFile("../override-json-file/override.json", override_location)
 	require.NoError(t, copyOverrideErr, fmt.Sprintf("error copying override file to temp folder: %s", copyOverrideErr))
+	// Since the GHA runtime does not have access to private endpoints, use below jq command to set 'use_ibm_cloud_private_api_endpoints' and 'verify_cluster_network_readiness' to false
+	// This is purposely done in the test only so that the in this repo override.json that is shared with customers does not do this by default
+	jqcmd := exec.Command("/bin/sh", "-c", "cat override.json | jq '.clusters[0] += {\"use_ibm_cloud_private_api_endpoints\": false,\"verify_cluster_network_readiness\": false}' | tee override.json")
+	jqcmd.Dir = tempTerraformDir
+	jqerr := jqcmd.Run()
+	if jqerr != nil {
+		log.Fatal("error attempting to update override.json", jqerr)
+	}
 
 	// Verify ibmcloud_api_key variable is set
 	checkVariable := "TF_VAR_ibmcloud_api_key"
