@@ -124,9 +124,10 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	}
 	copyOverrideErr := files.CopyFile("../override-json-file/override.json", override_location)
 	require.NoError(t, copyOverrideErr, fmt.Sprintf("error copying override file to temp folder: %s", copyOverrideErr))
-	// Since the GHA runtime does not have access to private endpoints, use below jq command to set 'use_ibm_cloud_private_api_endpoints' and 'verify_cluster_network_readiness' to false
-	// This is purposely done in the test only so that the in this repo override.json that is shared with customers does not do this by default
-	jqcmd := exec.Command("/bin/sh", "-c", "cat override.json | jq '.clusters[0] += {\"use_ibm_cloud_private_api_endpoints\": false,\"verify_cluster_network_readiness\": false}' | tee override.json")
+	// Since the GHA runtime does not have access to private endpoints, use below jq command to set 'use_ibm_cloud_private_api_endpoints' and 'verify_cluster_network_readiness' to false.
+	// This is purposely done in the test only so that the in this repo override.json that is shared with customers does not do this by default.
+	// The command also sets 'cluster_force_delete_storage' to true to allow cluster storage created by the DA to be deleted so the resource group created by the test can also be destroyed.
+	jqcmd := exec.Command("/bin/sh", "-c", "cat override.json | jq '.clusters[0] += {\"use_ibm_cloud_private_api_endpoints\": false,\"verify_cluster_network_readiness\": false, \"cluster_force_delete_storage\": true}' | tee override.json")
 	jqcmd.Dir = tempTerraformDir
 	jqerr := jqcmd.Run()
 	if jqerr != nil {
@@ -172,8 +173,6 @@ func TestRunDAManage(t *testing.T) {
 		return
 	}
 
-	// Workaround for https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/78
-	// defer terraform.Destroy(t, preReqOptions)
 	defer func() {
 		// Check if "DO_NOT_DESTROY_ON_FAILURE" is set
 		envVal, _ := os.LookupEnv("DO_NOT_DESTROY_ON_FAILURE")
@@ -182,7 +181,6 @@ func TestRunDAManage(t *testing.T) {
 		if options.Testing.Failed() && strings.ToLower(envVal) == "true" {
 			fmt.Println("Terratest failed. Debug the Test and delete resources manually.")
 		} else {
-			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups[\"workload-rg\"]")
 			terraform.Destroy(t, preReqOptions)
 		}
 	}()
