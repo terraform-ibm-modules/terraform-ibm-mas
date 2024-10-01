@@ -181,6 +181,8 @@ func TestRunDAManage(t *testing.T) {
 		if options.Testing.Failed() && strings.ToLower(envVal) == "true" {
 			fmt.Println("Terratest failed. Debug the Test and delete resources manually.")
 		} else {
+			// Temp workaround for https://github.ibm.com/GoldenEye/issues/issues/10743
+			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.module.cluster[0].ibm_container_vpc_worker_pool.pool[\"default\"]")
 			terraform.Destroy(t, preReqOptions)
 		}
 	}()
@@ -215,7 +217,8 @@ func TestRunUpgradeDACore(t *testing.T) {
 		if options.Testing.Failed() && strings.ToLower(envVal) == "true" {
 			fmt.Println("Terratest failed. Debug the Test and delete resources manually.")
 		} else {
-			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups[\"workload-rg\"]")
+			// Temp workaround for https://github.ibm.com/GoldenEye/issues/issues/10743
+			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.module.cluster[0].ibm_container_vpc_worker_pool.pool[\"default\"]")
 			terraform.Destroy(t, preReqOptions)
 		}
 	}()
