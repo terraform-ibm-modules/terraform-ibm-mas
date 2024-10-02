@@ -97,19 +97,9 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 		panic(masLicenseKeyErr)
 	}
 
-	slsLicenseId, masLicenseErr := GetSecretsManagerKey( // pragma: allowlist secret
-		permanentResources["secretsManagerGuid"].(string),
-		permanentResources["secretsManagerRegion"].(string),
-		permanentResources["masSlsLicenseIdSecretId"].(string),
-	)
-	if !assert.NoError(t, masLicenseErr) {
-		t.Error("TestProjectsFullTest Failed - sls_license_id not found in secrets manager")
-		panic(masLicenseErr)
-	}
 	// Set sensitive vars as variables so they are not exposed in logs
 	os.Setenv("TF_VAR_mas_license", *masLicense)
 	os.Setenv("TF_VAR_entitlement_key", *masEntitlementKey)
-	os.Setenv("TF_VAR_sls_license_id", *slsLicenseId)
 
 	// Deploy Pre-requisite resources
 	realTerraformDir := "./resources"
