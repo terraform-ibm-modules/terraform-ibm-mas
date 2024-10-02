@@ -51,7 +51,6 @@ module "maximo" {
   entitlement_key              = var.entitlement_key
   mas_instance_id              = var.mas_instance_id # For example, inst1
   mas_license                  = var.mas_license
-  sls_license_id               = var.sls_license_id
   contact_email                = var.contact_email
   contact_firstname            = var.contact_firstname
   contact_lastname             = var.contact_lastname
@@ -60,7 +59,7 @@ module "maximo" {
   mas_workspace_name           = var.mas_workspace_name # For example, wrkns1
   pipeline_storage_class       = var.pipeline_storage_class # For example, ibmc-vpc-block-retain-10iops-tier
   storage_class_rwo            = var.storage_class_rwo # For example, ibmc-vpc-block-retain-10iops-tier
-  storage_class_rwx            = var.storage_class_rwx # For example, ibmc-vpc-file-dp2 (file storage required for db2)
+  storage_class_rwx            = var.storage_class_rwx # For example, ibmc-vpc-file-500-iops (file storage required for db2)
 
 }
 ```
@@ -114,9 +113,8 @@ No modules.
 | <a name="input_mas_workspace_id"></a> [mas\_workspace\_id](#input\_mas\_workspace\_id) | Enter the Maximo Application Suite workspace Id. | `string` | `"wrkid1"` | no |
 | <a name="input_mas_workspace_name"></a> [mas\_workspace\_name](#input\_mas\_workspace\_name) | Enter the Maximo Application Suite workspace name | `string` | `"wrkns1"` | no |
 | <a name="input_pipeline_storage_class"></a> [pipeline\_storage\_class](#input\_pipeline\_storage\_class) | Enter the storage class for pipeline. Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section. | `string` | `"ibmc-vpc-block-retain-10iops-tier"` | no |
-| <a name="input_sls_license_id"></a> [sls\_license\_id](#input\_sls\_license\_id) | Enter Suite License Server license ID. A unique 12-character hexadecimal value in the first line of your Maximo Application Suite license key file. For example, SERVER sls-rlks-0.rlks 0242ac110002 27000, where the 12-character hexadecimal value is 0242ac110002. You can use an existing secret in Secrets Manager or add your entitlement key directly. | `string` | n/a | yes |
 | <a name="input_storage_class_rwo"></a> [storage\_class\_rwo](#input\_storage\_class\_rwo) | Enter the storage class (read-write once). Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section. | `string` | `"ibmc-vpc-block-retain-10iops-tier"` | no |
-| <a name="input_storage_class_rwx"></a> [storage\_class\_rwx](#input\_storage\_class\_rwx) | Enter the storage class (read-write many). Enter file storage class for DB2. Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section. | `string` | `"ibmc-vpc-file-dp2"` | no |
+| <a name="input_storage_class_rwx"></a> [storage\_class\_rwx](#input\_storage\_class\_rwx) | Enter the storage class (read-write many). Enter file storage class for DB2. Default value is ibmc-vpc-block-retain-10iops-tier. Make sure this storage class is present under Storage > StorageClasses section on your Red Hat OpenShift cluster section. | `string` | `"ibmc-vpc-file-500-iops"` | no |
 
 ### Outputs
 

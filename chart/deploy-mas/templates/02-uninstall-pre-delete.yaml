@@ -79,9 +79,8 @@ spec:
           type: RuntimeDefault
       containers:
         - name: {{ $job_name }}
-          # 8.0.0-pre.master - sha256:5b5222caecdd860840fd1eb070999e29ed356310474741f76934d0a9f8921d99
-          # below sha is for quay.io/ibmmas/cli:8.0.0-pre.mascore-2054 (tag 8.0.0), update it once we get a new release tag
-          image: quay.io/ibmmas/cli@sha256:9f6e76d8c303e4838159959a6c54f00ac1c6710ef1c87ebd60a38d0642e99ec5
+          # Using MAS CLI release version 11.1.0
+          image: quay.io/ibmmas/cli@sha256:9df66d5a0bd46a7340831a16daac207e2c733df015bbaeff821c8001d32d773a
 
           imagePullPolicy: Always
           securityContext:
@@ -120,7 +119,6 @@ spec:
               echo "MAS_WORKSPACE_NAME=${MAS_WORKSPACE_NAME}"
               echo "MAS_CATALOG_VERSION=${MAS_CATALOG_VERSION}"
               echo "MAS_CHANNEL=${MAS_CHANNEL}"
-              echo "SLS_LICENSE_ID=${SLS_LICENSE_ID}"
               ##echo "SLS_LICENSE_FILE_LOCAL=${SLS_LICENSE_FILE_LOCAL}"
               echo "CONTACT_EMAIL=${CONTACT_EMAIL}"
               echo "CONTACT_FIRSTNAME=${CONTACT_FIRSTNAME}"
@@ -150,7 +148,7 @@ spec:
               varstr=$(oc get namespaces | grep mas-"${MAS_INSTANCE_ID}"-core | awk -F' ' '{print $2}')
               if [[ $varstr == "Active"  ]]; then
               echo "MAS instance namespace found"
-              mas uninstall -i "${MAS_INSTANCE_ID}" --no-confirm
+              mas uninstall --mas-instance-id "${MAS_INSTANCE_ID}" --uninstall-all-deps --uninstall-cert-manager --uninstall-common-services --uninstall-grafana --uninstall-ibm-catalog --uninstall-mongodb --uninstall-sls --uninstall-uds --no-confirm
               for (( i=0; i<=15; i++ ));
               do
               varstr2=$(oc get pr -n mas-${MAS_INSTANCE_ID}-pipelines | grep uninstall | awk -F' ' '{print $3}')
@@ -176,7 +174,7 @@ spec:
               varstr=$(oc get namespaces | grep mas-"${MAS_INSTANCE_ID}"-core | awk -F' ' '{print $2}')
               if [[ $varstr == "Active"  ]]; then
               echo "MAS instance namespace found"
-              mas uninstall -i "${MAS_INSTANCE_ID}" --no-confirm
+              mas uninstall --mas-instance-id "${MAS_INSTANCE_ID}" --uninstall-all-deps --uninstall-cert-manager --uninstall-common-services --uninstall-grafana --uninstall-ibm-catalog --uninstall-mongodb --uninstall-sls --uninstall-uds --no-confirm
               for (( i=0; i<=15; i++ ));
               do
               varstr2=$(oc get pr -n mas-${MAS_INSTANCE_ID}-pipelines | grep uninstall | awk -F' ' '{print $3}')
