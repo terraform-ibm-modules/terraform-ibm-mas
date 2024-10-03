@@ -78,10 +78,8 @@ spec:
         seccompProfile:
           type: RuntimeDefault
       containers:
-        - name: {{ $job_name }}
-          # 8.0.0-pre.master - sha256:5b5222caecdd860840fd1eb070999e29ed356310474741f76934d0a9f8921d99
-          # below sha is for quay.io/ibmmas/cli:8.0.0-pre.mascore-2054 (tag 8.0.0), update it once we get a new release tag
-          image: quay.io/ibmmas/cli@sha256:c4d0d02e5d21d1118a77f9e3ba7d72aeb76ad69632c275429b2ad7747d366c67
+        - name: {{ $job_name }}         
+          image: quay.io/ibmmas/cli@sha256:3c798e5f40437e7db163e9df5a9e763d98aba9988a6a619eb6167bc8733342d5
 
           imagePullPolicy: Always
           securityContext:
