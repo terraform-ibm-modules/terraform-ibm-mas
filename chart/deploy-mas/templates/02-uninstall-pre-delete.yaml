@@ -79,8 +79,8 @@ spec:
           type: RuntimeDefault
       containers:
         - name: {{ $job_name }}
-          # Using MAS CLI release version 11.3.0
-          image: quay.io/ibmmas/cli@sha256:17ddf12a3606188b4272766705a04301b77d75dcf58ee8822f589826dc1a67f1
+          # Using MAS CLI release version 11.1.0
+          image: quay.io/ibmmas/cli@sha256:9df66d5a0bd46a7340831a16daac207e2c733df015bbaeff821c8001d32d773a
 
           imagePullPolicy: Always
           securityContext:
