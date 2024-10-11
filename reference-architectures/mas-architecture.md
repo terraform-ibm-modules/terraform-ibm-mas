@@ -1,12 +1,12 @@
 ---
 copyright:
-  years: 2024
-lastupdated: "2024-05-09"
+  years: [{CURRENT_YEAR}]
+lastupdated: "[{LAST_UPDATED_DATE}]"
 
 keywords:
 
 subcollection: deployable-reference-architectures
-version: 1.0
+version: 2.0.1
 
 deployment-url: https://cloud.ibm.com/catalog/architecture/deploy-arch-ibm-mas-fc308868-e530-4605-884e-e1b3f50b3b66-global?catalog_query=aHR0cHM6Ly9jbG91ZC5pYm0uY29tL2NhdGFsb2c%2Fc2VhcmNoPW1heGltbyNzZWFyY2hfcmVzdWx0cw%3D%3D
 docs: https://cloud.ibm.com/docs/maximo-application-suite
@@ -27,7 +27,7 @@ production: true
 {: #deployable-architecture-mas-components}
 {: toc-content-type="reference-architecture"}
 {: toc-use-case="Automation"}
-{: toc-version="1.0"}
+{: toc-version="2.0.1"}
 
 The IBM Maximo Application Suite deployable architecture provides a simple automated way to get started with Maximo Application Suite on IBM Cloud. Maximo Application Suite is a set of applications for asset monitoring, management, predictive maintenance, and reliability planning. It is a single, integrated cloud-based platform that uses Artificial Intelligence (AI), Internet of Things (IoT), and analytics to optimize performance, extend asset lifecycles, and reduce operational downtime and costs.
 {: shortdesc}
