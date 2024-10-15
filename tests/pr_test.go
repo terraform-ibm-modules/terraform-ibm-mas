@@ -6,6 +6,7 @@ import (
 	"io/fs"
 	"log"
 	"os"
+	"os/exec"
 	"strings"
 	"testing"
 
@@ -61,6 +62,15 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
+func cleanupStorage(rg string) {
+	cleancmd := exec.Command("/bin/sh", "-c", "./cleanup-storage.sh", rg)
+	cleancmd.Dir = "."
+	cleanerr := cleancmd.Run()
+	if cleanerr != nil {
+		log.Fatal("error attempting to delete persistent storage created by the tests: ", cleanerr)
+	}
+}
+
 func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[string]interface{}) (options *testhelper.TestOptions, preReqTfOptions *terraform.Options, err error) {
 
 	options = &testhelper.TestOptions{
@@ -113,6 +123,15 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 	}
 	copyOverrideErr := files.CopyFile("../override-json-file/override.json", override_location)
 	require.NoError(t, copyOverrideErr, fmt.Sprintf("error copying override file to temp folder: %s", copyOverrideErr))
+	// Since the GHA runtime does not have access to private endpoints, use below jq command to set 'use_ibm_cloud_private_api_endpoints' and 'verify_cluster_network_readiness' to false.
+	// This is purposely done in the test only so that the in this repo override.json that is shared with customers does not do this by default.
+	// The command also sets 'cluster_force_delete_storage' to true.
+	jqcmd := exec.Command("/bin/sh", "-c", "cat override.json | jq '.clusters[0] += {\"use_ibm_cloud_private_api_endpoints\": false,\"verify_cluster_network_readiness\": false, \"cluster_force_delete_storage\": true}' | tee override.json")
+	jqcmd.Dir = tempTerraformDir
+	jqerr := jqcmd.Run()
+	if jqerr != nil {
+		log.Fatal("error attempting to update override.json", jqerr)
+	}
 
 	// Verify ibmcloud_api_key variable is set
 	checkVariable := "TF_VAR_ibmcloud_api_key"
@@ -153,8 +172,6 @@ func TestRunDAManage(t *testing.T) {
 		return
 	}
 
-	// Workaround for https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/78
-	// defer terraform.Destroy(t, preReqOptions)
 	defer func() {
 		// Check if "DO_NOT_DESTROY_ON_FAILURE" is set
 		envVal, _ := os.LookupEnv("DO_NOT_DESTROY_ON_FAILURE")
@@ -163,7 +180,10 @@ func TestRunDAManage(t *testing.T) {
 		if options.Testing.Failed() && strings.ToLower(envVal) == "true" {
 			fmt.Println("Terratest failed. Debug the Test and delete resources manually.")
 		} else {
-			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups[\"workload-rg\"]")
+			cleanupStorage(fmt.Sprintf("%s-workload-rg", options.Prefix))
+			// Temp workaround for https://github.ibm.com/GoldenEye/issues/issues/10743
+			address := fmt.Sprintf("module.landing_zone.module.landing_zone.module.cluster[\"%s-workload-cluster\"].ibm_container_vpc_worker_pool.pool[\"default\"]", options.Prefix)
+			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", address)
 			terraform.Destroy(t, preReqOptions)
 		}
 	}()
@@ -188,8 +208,6 @@ func TestRunUpgradeDACore(t *testing.T) {
 		return
 	}
 
-	// Workaround for https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/78
-	// defer terraform.Destroy(t, preReqOptions)
 	defer func() {
 		// Check if "DO_NOT_DESTROY_ON_FAILURE" is set
 		envVal, _ := os.LookupEnv("DO_NOT_DESTROY_ON_FAILURE")
@@ -198,7 +216,10 @@ func TestRunUpgradeDACore(t *testing.T) {
 		if options.Testing.Failed() && strings.ToLower(envVal) == "true" {
 			fmt.Println("Terratest failed. Debug the Test and delete resources manually.")
 		} else {
-			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups[\"workload-rg\"]")
+			cleanupStorage(fmt.Sprintf("%s-workload-rg", options.Prefix))
+			// Temp workaround for https://github.ibm.com/GoldenEye/issues/issues/10743
+			address := fmt.Sprintf("module.landing_zone.module.landing_zone.module.cluster[\"%s-workload-cluster\"].ibm_container_vpc_worker_pool.pool[\"default\"]", options.Prefix)
+			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", address)
 			terraform.Destroy(t, preReqOptions)
 		}
 	}()

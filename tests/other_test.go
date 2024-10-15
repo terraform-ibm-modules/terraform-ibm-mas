@@ -20,8 +20,6 @@ func TestRunDACore(t *testing.T) {
 		return
 	}
 
-	// Workaround for https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/78
-	// defer terraform.Destroy(t, preReqOptions)
 	defer func() {
 		// Check if "DO_NOT_DESTROY_ON_FAILURE" is set
 		envVal, _ := os.LookupEnv("DO_NOT_DESTROY_ON_FAILURE")
@@ -30,7 +28,9 @@ func TestRunDACore(t *testing.T) {
 		if options.Testing.Failed() && strings.ToLower(envVal) == "true" {
 			fmt.Println("Terratest failed. Debug the Test and delete resources manually.")
 		} else {
-			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", "module.landing_zone.module.landing_zone.ibm_resource_group.resource_groups[\"workload-rg\"]")
+			// Temp workaround for https://github.ibm.com/GoldenEye/issues/issues/10743
+			address := fmt.Sprintf("module.landing_zone.module.landing_zone.module.cluster[\"%s-workload-cluster\"].ibm_container_vpc_worker_pool.pool[\"default\"]", options.Prefix)
+			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", address)
 			terraform.Destroy(t, preReqOptions)
 		}
 	}()
