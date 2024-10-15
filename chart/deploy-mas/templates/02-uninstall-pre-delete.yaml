@@ -75,6 +75,7 @@ spec:
       serviceAccountName: {{ $sa_name }}
       securityContext:
         runAsNonRoot: true
+        runAsUser: 1000
         seccompProfile:
           type: RuntimeDefault
       containers:
@@ -86,6 +87,7 @@ spec:
           securityContext:
             readOnlyRootFilesystem: {{ $readonly_root_filesystem }}
             runAsNonRoot: true
+            runAsUser: 1000
             allowPrivilegeEscalation: false
             seccompProfile:
               type: RuntimeDefault
