@@ -55,6 +55,7 @@
           "name": "ExistingCluster",
           "install_type": "extension",
           "working_directory": "solutions/existing-cluster",
+          "dependency_version_2": true,
           "dependencies": [
             {
               "flavors": [
