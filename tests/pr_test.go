@@ -181,9 +181,6 @@ func TestRunDAManage(t *testing.T) {
 			fmt.Println("Terratest failed. Debug the Test and delete resources manually.")
 		} else {
 			cleanupStorage(fmt.Sprintf("%s-workload-rg", options.Prefix))
-			// Temp workaround for https://github.ibm.com/GoldenEye/issues/issues/10743
-			address := fmt.Sprintf("module.landing_zone.module.landing_zone.module.cluster[\"%s-workload-cluster\"].ibm_container_vpc_worker_pool.pool[\"default\"]", options.Prefix)
-			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", address)
 			terraform.Destroy(t, preReqOptions)
 		}
 	}()
@@ -217,9 +214,6 @@ func TestRunUpgradeDACore(t *testing.T) {
 			fmt.Println("Terratest failed. Debug the Test and delete resources manually.")
 		} else {
 			cleanupStorage(fmt.Sprintf("%s-workload-rg", options.Prefix))
-			// Temp workaround for https://github.ibm.com/GoldenEye/issues/issues/10743
-			address := fmt.Sprintf("module.landing_zone.module.landing_zone.module.cluster[\"%s-workload-cluster\"].ibm_container_vpc_worker_pool.pool[\"default\"]", options.Prefix)
-			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", address)
 			terraform.Destroy(t, preReqOptions)
 		}
 	}()

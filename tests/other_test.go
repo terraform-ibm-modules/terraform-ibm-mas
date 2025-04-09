@@ -28,9 +28,6 @@ func TestRunDACore(t *testing.T) {
 		if options.Testing.Failed() && strings.ToLower(envVal) == "true" {
 			fmt.Println("Terratest failed. Debug the Test and delete resources manually.")
 		} else {
-			// Temp workaround for https://github.ibm.com/GoldenEye/issues/issues/10743
-			address := fmt.Sprintf("module.landing_zone.module.landing_zone.module.cluster[\"%s-workload-cluster\"].ibm_container_vpc_worker_pool.pool[\"default\"]", options.Prefix)
-			terraform.RunTerraformCommand(t, preReqOptions, "state", "rm", address)
 			terraform.Destroy(t, preReqOptions)
 		}
 	}()
