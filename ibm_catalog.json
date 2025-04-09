@@ -103,6 +103,48 @@
               "key": "region",
               "required": true,
               "type": "string"
+            },
+            {
+              "key": "cluster_config_endpoint_type"
+            },
+            {
+              "key": "cluster_id"
+            },
+            {
+              "key": "contact_email"
+            },
+            {
+              "key": "contact_firstname"
+            },
+            {
+              "key": "contact_lastname"
+            },
+            {
+              "key": "entitlement_key"
+            },
+            {
+              "key": "ibmcloud_api_key"
+            },
+            {
+              "key": "mas_instance_id"
+            },
+            {
+              "key": "mas_license"
+            },
+            {
+              "key": "mas_workspace_id"
+            },
+            {
+              "key": "mas_workspace_name"
+            },
+            {
+              "key": "pipeline_storage_class"
+            },
+            {
+              "key": "storage_class_rwo"
+            },
+            {
+              "key": "storage_class_rwx"
             }
           ],
           "iam_permissions": [
