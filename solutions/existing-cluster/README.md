@@ -5,9 +5,9 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.14.0 |
-| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | 1.68.0 |
-| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.31.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.17.0 |
+| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | 1.78.2 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.36.0 |
 
 ### Modules
 
@@ -19,7 +19,7 @@
 
 | Name | Type |
 |------|------|
-| [ibm_container_cluster_config.cluster_config](https://registry.terraform.io/providers/ibm-cloud/ibm/1.68.0/docs/data-sources/container_cluster_config) | data source |
+| [ibm_container_cluster_config.cluster_config](https://registry.terraform.io/providers/ibm-cloud/ibm/1.78.2/docs/data-sources/container_cluster_config) | data source |
 
 ### Inputs
 
