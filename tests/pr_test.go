@@ -96,9 +96,14 @@ func setupOptions(t *testing.T, prefix string, dir string, terraformVars map[str
 		panic(masLicenseKeyErr)
 	}
 
+	tkey := new(testing.T)
 	// Set sensitive vars as variables so they are not exposed in logs
-	os.Setenv("TF_VAR_mas_license", *masLicense)
-	os.Setenv("TF_VAR_entitlement_key", *masEntitlementKey)
+	if err := os.Setenv("TF_VAR_mas_license", *masLicense); err != nil {
+		tkey.Fatalf("failed to set TF_VAR_mas_license: %v", err) // pragma: allowlist secret
+	}
+	if err := os.Setenv("TF_VAR_entitlement_key", *masEntitlementKey); err != nil {
+		tkey.Fatalf("failed to set TF_VAR_entitlement_key: %v", err) // pragma: allowlist secret
+	}
 
 	// Deploy Pre-requisite resources
 	realTerraformDir := "./resources"
