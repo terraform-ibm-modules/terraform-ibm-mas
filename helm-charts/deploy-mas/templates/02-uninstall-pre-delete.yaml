@@ -1,12 +1,12 @@
-{{ $ns              :=  printf "mas-%s-pipelines" .Values.mas_instance_id }}
-{{ $role_name       :=  "mas-deploy-role" }}
-{{ $secret_name     :=  "mas-deploy-secret" }}
-{{ $crole_name      :=  "mas-deploy-crole" }}
-{{ $sa_name         :=  "mas-deploy-sa" }}
-{{ $scc_name        :=  "mas-deploy-scc" }}
-{{ $rb_name         :=  "mas-deploy-rb" }}
-{{ $crb_name        :=  "mas-deploy-crb" }}
-{{ $job_name        :=  "mas-deploy-job" }}
+{{ $ns              :=  "mas-uninstall-pipelines" }}
+{{ $role_name       :=  "mas-undeploy-role" }}
+{{ $secret_name     :=  "mas-undeploy-secret" }}
+{{ $crole_name      :=  "mas-undeploy-crole" }}
+{{ $sa_name         :=  "mas-undeploy-sa" }}
+{{ $scc_name        :=  "mas-undeploy-scc" }}
+{{ $rb_name         :=  "mas-undeploy-rb" }}
+{{ $crb_name        :=  "mas-undeploy-crb" }}
+{{ $job_name        :=  "mas-undeploy-job" }}
 {{ $readonly_root_filesystem        :=  printf "%s" .Values.readonly_root_filesystem }}
 ---
 apiVersion: v1
@@ -55,7 +55,10 @@ metadata:
   generateName: "{{ $job_name }}-"
   namespace: {{ $ns }}
   annotations:
-
+    "helm.sh/hook": "pre-delete"
+    "helm.sh/hook-delete-policy": hook-succeeded,hook-failed
+    "helm.sh/hook-weight": "10"
+    checkov.io/skip22: CKV2_K8S_6
     checkov.io/skip3: CKV_K8S_40
     checkov.io/skip4: CKV_K8S_35
     checkov.io/skip6: CKV_K8S_38
@@ -71,17 +74,20 @@ spec:
       restartPolicy: Never
       serviceAccountName: {{ $sa_name }}
       securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
         seccompProfile:
           type: RuntimeDefault
-        runAsNonRoot: true
       containers:
         - name: {{ $job_name }}
           # Using MAS CLI release version 11.1.0
           image: quay.io/ibmmas/cli@sha256:9df66d5a0bd46a7340831a16daac207e2c733df015bbaeff821c8001d32d773a
+
           imagePullPolicy: Always
           securityContext:
             readOnlyRootFilesystem: {{ $readonly_root_filesystem }}
             runAsNonRoot: true
+            runAsUser: 1000
             allowPrivilegeEscalation: false
             seccompProfile:
               type: RuntimeDefault
@@ -140,96 +146,64 @@ spec:
               DEPLOYMENT_FLAVOR=${DEPLOYMENT_FLAVOR:-"core"}
 
               if [ "${DEPLOYMENT_FLAVOR}" == "core" ]; then
-                echo "Core installation started"
-
-                mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
-                  -W "${MAS_WORKSPACE_NAME}" -c "${MAS_CATALOG_VERSION}" \
-                  --mas-channel "${MAS_CHANNEL}" --ibm-entitlement-key "${ENTITLEMENT_KEY}" \
-                  --license-file "${SLS_LICENSE_FILE_LOCAL}" \
-                  --uds-email "${CONTACT_EMAIL}" --uds-firstname "${CONTACT_FIRSTNAME}" \
-                  --uds-lastname "${CONTACT_LASTNAME}" --storage-class-rwx "${STORAGE_CLASS_RWX}" --storage-class-rwo "${STORAGE_CLASS_RWO}" \
-                  --storage-pipeline "${PIPELINE_STORAGE_CLASS}" --storage-accessmode "${PIPELINE_STORAGE_ACCESSMODE}" \
-                  --no-confirm --no-wait-for-pvc --accept-license
-
-              elif [ "${DEPLOYMENT_FLAVOR}" == "manage" ]; then
-                echo "Core+Manage installation started"
-
-                mas install -i "${MAS_INSTANCE_ID}" -w "${MAS_WORKSPACE_ID}" \
-                  -W "${MAS_WORKSPACE_NAME}" -c "${MAS_CATALOG_VERSION}" \
-                  --mas-channel "${MAS_CHANNEL}" --ibm-entitlement-key ${ENTITLEMENT_KEY} \
-                  --license-file "${SLS_LICENSE_FILE_LOCAL}" \
-                  --uds-email "${CONTACT_EMAIL}" --uds-firstname "${CONTACT_FIRSTNAME}" \
-                  --uds-lastname "${CONTACT_LASTNAME}" --storage-class-rwx "${STORAGE_CLASS_RWX}" --storage-class-rwo "${STORAGE_CLASS_RWO}" \
-                  --storage-pipeline "${PIPELINE_STORAGE_CLASS}" --storage-accessmode "${PIPELINE_STORAGE_ACCESSMODE}" \
-                  --manage-channel "${MANAGE_CHANNEL}" --manage-server-bundle-size "dev" \
-                  --manage-jdbc "${MANAGE_JDBC_CONFIG_SCOPE}" --manage-components "${MANAGE_COMPONENTS}" \
-                  --db2-channel "${DB2U_CHANNEL}" --db2-manage \
-                  --db2-cpu-request "${DB2U_CPU_REQUEST}" --db2-cpu-limit "${DB2U_CPU_LIMIT}" \
-                  --db2-memory-request "${DB2U_MEMORY_REQUEST}" --db2-memory-limit "${DB2U_MEMORY_LIMIT}" \
-                  --db2-backup-storage "${DB2U_BACKUP_STORAGE}" --db2-data-storage "${DB2U_DATA_STORAGE}" \
-                  --db2-logs-storage "${DB2U_LOGS_STORAGE}" --db2-meta-storage "${DB2U_META_STORAGE}" \
-                  --db2-temp-storage "${DB2U_TEMP_STORAGE}" \
-                  --no-confirm --no-wait-for-pvc --accept-license
-
+              echo "Inside helm pre-delete hook and uninstalling MAS Core instance"
+              varstr=$(oc get namespaces | grep mas-"${MAS_INSTANCE_ID}"-core | awk -F' ' '{print $2}')
+              if [[ $varstr == "Active"  ]]; then
+              echo "MAS instance namespace found"
+              mas uninstall --mas-instance-id "${MAS_INSTANCE_ID}" --uninstall-all-deps --uninstall-cert-manager --uninstall-common-services --uninstall-grafana --uninstall-ibm-catalog --uninstall-mongodb --uninstall-sls --uninstall-uds --no-confirm
+              for (( i=0; i<=15; i++ ));
+              do
+              varstr2=$(oc get pr -n mas-${MAS_INSTANCE_ID}-pipelines | grep uninstall | awk -F' ' '{print $3}')
+              if [[ $varstr2 == "Completed"  ]]; then
+              echo "Uninstall pipeline has completed successfully"
+              break
+              elif [[ $varstr2 == "Running"  ]]; then
+              echo "Uninstall pipeline is still running"
+              sleep 120
+              elif [[ $varstr2 == "Failed"  ]]; then
+              echo "Uninstall pipeline has failed"
+              exit
               else
-                echo "Passed DEPLOYMENT_FLAVOR not supported, Supported values = core, mange"
-                exit 1
+              echo "Other error condition"
+              exit
+              fi
+              done
+              else
+              echo "No MAS instance namespace found due to a failed installation"
+              fi
+              elif [ "${DEPLOYMENT_FLAVOR}" == "manage" ]; then
+              echo "Inside helm pre-delete hook and uninstalling MAS Core + Manage instance"
+              varstr=$(oc get namespaces | grep mas-"${MAS_INSTANCE_ID}"-core | awk -F' ' '{print $2}')
+              if [[ $varstr == "Active"  ]]; then
+              echo "MAS instance namespace found"
+              mas uninstall --mas-instance-id "${MAS_INSTANCE_ID}" --uninstall-all-deps --uninstall-cert-manager --uninstall-common-services --uninstall-grafana --uninstall-ibm-catalog --uninstall-mongodb --uninstall-sls --uninstall-uds --no-confirm
+              for (( i=0; i<=15; i++ ));
+              do
+              varstr2=$(oc get pr -n mas-${MAS_INSTANCE_ID}-pipelines | grep uninstall | awk -F' ' '{print $3}')
+              if [[ $varstr2 == "Completed"  ]]; then
+              echo "Uninstall pipeline has completed successfully"
+              break
+              elif [[ $varstr2 == "Running"  ]]; then
+              echo "Uninstall pipeline is still running"
+              sleep 120
+              elif [[ $varstr2 == "Failed"  ]]; then
+              echo "Uninstall pipeline has failed"
+              exit
+              else
+              echo "Other error condition"
+              exit
+              fi
+              oc delete project db2u
+              sleep 600
+              done
+              else
+              echo "No MAS instance namespace found due to a failed installation"
+              fi
               fi
 
           env:
             - name: MAS_INSTANCE_ID
               value: "{{ .Values.mas_instance_id }}"
-
-            - name: MAS_WORKSPACE_ID
-              value: "{{ .Values.mas_workspace_id }}"
-            - name: MAS_WORKSPACE_NAME
-              value: "{{ .Values.mas_workspace_name }}"
-            - name: MAS_CATALOG_VERSION
-              value: "{{ .Values.mas_catalog_version }}"
-            - name: MAS_CHANNEL
-              value: "{{ .Values.mas_channel }}"
-            - name: CONTACT_EMAIL
-              value: "{{ .Values.contact_email }}"
-            - name: CONTACT_FIRSTNAME
-              value: "{{ .Values.contact_firstname }}"
-            - name: CONTACT_LASTNAME
-              value: "{{ .Values.contact_lastname }}"
-            - name: STORAGE_CLASS_RWO
-              value: "{{ .Values.storage_class_rwo }}"
-            - name: STORAGE_CLASS_RWX
-              value: "{{ .Values.storage_class_rwx }}"
-            - name: PIPELINE_STORAGE_CLASS
-              value: "{{ .Values.pipeline_storage_class }}"
-            - name: PIPELINE_STORAGE_ACCESSMODE
-              value: "{{ .Values.pipeline_storage_accessmode }}"
-
-            # Manage specific
-            - name: MANAGE_CHANNEL
-              value: "{{ .Values.manage_channel }}"
-            - name: MANAGE_JDBC_CONFIG_SCOPE
-              value: "{{ .Values.manage_jdbc_config_scope }}"
-            - name: MANAGE_COMPONENTS
-              value: "{{ .Values.manage_components }}"
-            - name: DB2U_CHANNEL
-              value: "{{ .Values.db2u_channel }}"
-            - name: DB2U_CPU_REQUEST
-              value: "{{ .Values.db2u_cpu_request }}"
-            - name: DB2U_CPU_LIMIT
-              value: "{{ .Values.db2u_cpu_limit }}"
-            - name: DB2U_MEMORY_REQUEST
-              value: "{{ .Values.db2u_memory_request }}"
-            - name: DB2U_MEMORY_LIMIT
-              value: "{{ .Values.db2u_memory_limit }}"
-            - name: DB2U_BACKUP_STORAGE
-              value: "{{ .Values.db2u_backup_storage }}"
-            - name: DB2U_DATA_STORAGE
-              value: "{{ .Values.db2u_data_storage }}"
-            - name: DB2U_LOGS_STORAGE
-              value: "{{ .Values.db2u_logs_storage }}"
-            - name: DB2U_META_STORAGE
-              value: "{{ .Values.db2u_meta_storage }}"
-            - name: DB2U_TEMP_STORAGE
-              value: "{{ .Values.db2u_temp_storage }}"
             - name: DEPLOYMENT_FLAVOR
               value: "{{ .Values.deployment_flavor }}"
 
@@ -248,7 +222,7 @@ spec:
           volumeMounts:
             - name: {{ $secret_name }}
               readOnly: true
-              mountPath: /etc/mas/deploy/secrets
+              mountPath: /etc/mas/undeploy/secrets
             #- mountPath: /opt/app-root/src
             #  name: app-root-volume
 

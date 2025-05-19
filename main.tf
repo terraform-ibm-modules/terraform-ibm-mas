@@ -80,7 +80,7 @@ resource "helm_release" "maximo_helm_release" {
   }
 
   name                       = "maximo-helm-release"
-  chart                      = "${path.module}/chart/deploy-mas"
+  chart                      = "${path.module}/helm-charts/deploy-mas"
   create_namespace           = false
   timeout                    = 1200
   force_update               = true
