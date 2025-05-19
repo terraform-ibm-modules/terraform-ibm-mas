@@ -6,3 +6,9 @@ KSV020 # "Force the container to run with user ID > 10000" # https://github.com/
 KSV021 # "Force the container to run with group ID > 10000" # https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/87
 
 KSV111 # "Cluster admin role only used where required" # https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/88
+
+KSV032 # "All container images must start with specific registry domain" # https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/185
+
+KSV033 # "All container images must start with a GCR domain" # https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/187
+
+KSV035 # "All container images must start with an ECR domain" # https://github.com/terraform-ibm-modules/terraform-ibm-mas/issues/186
