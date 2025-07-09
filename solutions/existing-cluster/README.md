@@ -5,7 +5,7 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.14.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 3.0.2 |
 | <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | 1.68.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.31.0 |
 
