@@ -8,9 +8,10 @@
         "ibm_created",
         "target_terraform",
         "terraform",
-        "reference_architecture",
         "solution",
-        "enterprise_app"
+        "reference_architecture",
+        "enterprise_app",
+        "converged_infra"
       ],
       "keywords": [
         "Enterprise Asset Management",
