@@ -136,7 +136,8 @@
                 "description": "Maximo Application Suite on existing IBM landing zone cluster."
               }
             ]
-          }
+          },
+          "terraform_version": "1.10.5"
         }
       ]
     }
