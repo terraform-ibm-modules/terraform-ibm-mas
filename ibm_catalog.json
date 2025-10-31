@@ -136,7 +136,8 @@
                 "description": "Maximo Application Suite on existing IBM landing zone cluster."
               }
             ]
-          }
+          },
+          "ignore_readme": true
         }
       ]
     }
